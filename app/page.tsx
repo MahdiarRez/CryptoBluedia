@@ -11,8 +11,15 @@ const ManropeFont = Manrope({
 async function Page() {
   return (
     <div
-      className={`${ManropeFont.className} antialiased dark:bg-DarkBlue w-dvh h-dvh text-DarkBlue dark:text-WHITE bg-WHITE justify-center items-center flex`}
+      className={`${ManropeFont.className} antialiased px-4 dark:bg-DarkBlue w-dvh h-[1300px] sm:px-8 lg:px-40 text-DarkBlue dark:text-WHITE bg-WHITE items-center flex flex-col`}
     >
+      <div
+        className={
+          'h-72 w-full bg-black mt-36 rounded-2xl text-white p-10 text-xl font-bold'
+        }
+      >
+        Design for ambitious software companies
+      </div>
       <Link href={'/AboutUs'}>Page1</Link>
       <Link href={'/cryptos'} className={'bg-pink-600 text-white py-1 px-4'}>
         Cryptos

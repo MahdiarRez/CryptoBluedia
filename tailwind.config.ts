@@ -1,5 +1,7 @@
 import type { Config } from '@/node_modules/tailwindcss';
 
+import tailwindcss_animated from 'tailwindcss-animated';
+
 export default {
   darkMode: 'class',
   content: [
@@ -16,5 +18,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [tailwindcss_animated],
 } satisfies Config;
