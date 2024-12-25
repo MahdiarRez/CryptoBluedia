@@ -12,7 +12,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        WHITE: '#FFF7EF',
+        WHITE: '#F5F4F6',
         LightBlue: '#28c9e1',
         DarkBlue: '#0d1217',
       },

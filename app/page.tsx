@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import ThemeButton from '@/app/ui/themeButton';
 import { Manrope } from 'next/font/google';
+import { InputVanish } from '@/app/components/inputVanish';
 
 const ManropeFont = Manrope({
   subsets: ['latin'],
@@ -15,10 +16,22 @@ async function Page() {
     >
       <div
         className={
-          'h-72 w-full bg-black mt-36 rounded-2xl text-white p-10 text-xl font-bold'
+          'h-auto w-full bg-black dark:bg-WHITE mt-36 rounded-3xl flex flex-col gap-3 p-10 '
         }
       >
-        Design for ambitious software companies
+        <h2 className={'text-white dark:text-DarkBlue text-2xl font-bold'}>
+          Here is where Crypto currency Meet Timeless Brilliance.
+        </h2>
+        <h3
+          className={
+            'text-white dark:text-DarkBlue text-opacity-85 text-sm font-medium'
+          }
+        >
+          Reach the market&#39;s{' '}
+          <span className={'text-LightBlue dark:font-extrabold'}>diamond</span>{' '}
+          easily.
+        </h3>
+        <InputVanish />
       </div>
       <Link href={'/'}>Page1</Link>
       <Link href={'/cryptos'} className={'bg-pink-600 text-white py-1 px-4'}>

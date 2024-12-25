@@ -29,7 +29,7 @@ function HamberMenu() {
             exit={{ opacity: 0, filter: 'blur(4px)' }}
             transition={{ duration: 0.3 }}
             onClick={() => setMenuIsOpen(false)}
-            className="bg-white dark:bg-DarkBlue md:hidden dark:bg-opacity-80 dark:backdrop-blur-sm bg-opacity-80 backdrop-blur-sm absolute h-dvh top-20 w-dvw left-0 right-0 px-4 pt-3"
+            className="bg-white dark:bg-DarkBlue md:hidden z-50 dark:bg-opacity-80 dark:backdrop-blur-sm bg-opacity-80 backdrop-blur-sm absolute h-dvh top-20 w-dvw left-0 right-0 px-4 pt-3"
           >
             <motion.ul
               initial={{ opacity: 0, y: '-20px' }}
