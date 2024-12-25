@@ -4,6 +4,13 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { cn } from '@/app/lib/utils/framer';
 
+interface NewDataItem {
+  x: number;
+  y: number;
+  r: number;
+  color: string;
+}
+
 export function VanishInputAceternity({
   placeholders,
   onChange,
@@ -43,7 +50,7 @@ export function VanishInputAceternity({
   }, [placeholders]);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const newDataRef = useRef<any[]>([]);
+  const newDataRef = useRef<NewDataItem[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
   const [value, setValue] = useState('');
   const [animating, setAnimating] = useState(false);
