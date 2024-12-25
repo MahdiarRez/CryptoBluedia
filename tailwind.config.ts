@@ -11,6 +11,10 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        xs: '521px',
+        lg2: '1150px',
+      },
       colors: {
         WHITE: '#F5F4F6',
         LightBlue: '#28c9e1',

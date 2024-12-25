@@ -209,7 +209,7 @@ export function VanishInputAceternity({
         spellCheck={false}
         type="text"
         className={cn(
-          'w-full relative capitalize font-normal tracking-wide text-sm sm:text-base border-none dark:text-white bg-transparent text-black rounded-full focus:outline-none focus:ring-0 py-3 pl-4 sm:pl-10 pr-20',
+          'w-full relative capitalize font-normal tracking-wide text-sm sm:text-base border-none dark:text-white bg-transparent text-black rounded-full focus:outline-none focus:ring-0 py-3 pl-4 sm:pl-6 pr-20',
           animating && 'text-transparent dark:text-transparent'
         )}
       />
@@ -272,7 +272,7 @@ export function VanishInputAceternity({
                 duration: 0.3,
                 ease: 'linear',
               }}
-              className="dark:text-zinc-500 text-sm sm:text-base font-normal text-neutral-500 pl-4 sm:pl-12 text-left w-[calc(100%-2rem)] truncate"
+              className="dark:text-zinc-500 text-sm sm:text-base font-normal text-neutral-500 pl-4 sm:pl-6 text-left w-[calc(100%-2rem)] truncate"
             >
               {placeholders[currentPlaceholder]}
             </motion.p>

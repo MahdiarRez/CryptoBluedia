@@ -14,7 +14,7 @@ export function InputVanish() {
   };
 
   return (
-    <div className="w-full z-0 mt-3.5 flex flex-col justify-center items-center">
+    <div className="w-full z-0 max-w-[248px] lg:max-w-[295px] mt-3.5 flex flex-col justify-center items-center">
       <VanishInputAceternity
         placeholders={placeholders}
         onChange={handleChange}
