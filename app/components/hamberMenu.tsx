@@ -2,7 +2,7 @@
 
 import React, { useEffect } from 'react';
 import HamberMenuItem from '@/app/components/hamberMenuItem';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'motion/react';
 
 function HamberMenu() {
   const [menuIsOpen, setMenuIsOpen] = React.useState(false);
