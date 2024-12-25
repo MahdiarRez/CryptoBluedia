@@ -20,7 +20,7 @@ async function Page() {
       >
         Design for ambitious software companies
       </div>
-      <Link href={'/AboutUs'}>Page1</Link>
+      <Link href={'/'}>Page1</Link>
       <Link href={'/cryptos'} className={'bg-pink-600 text-white py-1 px-4'}>
         Cryptos
       </Link>
