@@ -11,7 +11,7 @@ interface NewDataItem {
   color: string;
 }
 
-export function VanishInputAceternity({
+export function VanishInputAcet({
   placeholders,
   onChange,
   onSubmit,

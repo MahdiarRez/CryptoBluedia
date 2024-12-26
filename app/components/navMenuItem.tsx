@@ -15,7 +15,7 @@ function NavMenuItem({
   const pathname = usePathname();
   return (
     <li className={'group relative py-3 rounded-lg min-w-fit'}>
-      <Link className={'px-4 py-2.5 h-full'} href={href}>
+      <Link className={'px-4 py-2.5 h-full font-semibold text-sm'} href={href}>
         {children}
       </Link>
       <span
