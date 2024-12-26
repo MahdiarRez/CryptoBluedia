@@ -7,7 +7,7 @@ import React, {
   useContext,
 } from 'react';
 import { cn } from '@/app/lib/utils/framer';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'motion/react';
 import Image, { ImageProps } from 'next/image';
 import { useOutsideClick } from '@/app/hooks/useOutsideClick';
 import { HiArrowNarrowRight } from 'react-icons/hi';
