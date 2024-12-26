@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import BluediaLogo from '../../public/logo.jpeg';
-import Button from '@/app/components/button';
 import HamberMenu from '@/app/components/hamberMenu';
 import Link from 'next/link';
 import NavMenuItem from '@/app/components/navMenuItem';
@@ -26,7 +25,7 @@ function Navbar() {
 
   return (
     <div
-      className={`text-DarkBlue fixed flex items-center right-1/2 translate-x-1/2 justify-between z-50 transition-all duration-500 ${isScrolled ? 'w-1/2 bg-WHITE p-1.5 rounded-2xl top-7' : 'w-full h-20 px-5 sm:px-8 lg:px-28 xl:px-40 bg-transparent backdrop-blur-sm rounded-lg'}`}
+      className={`text-DarkBlue fixed flex items-center right-1/2 translate-x-1/2 justify-between z-50 transition-all duration-500 ${isScrolled ? 'w-[224px] md:w-[530px] md:gap-1 bg-WHITE bg-opacity-70 backdrop-blur-sm p-1.5 rounded-2xl top-7' : 'w-full h-20 px-5 sm:px-8 lg:px-28 xl:px-40 bg-transparent dark:bg-white backdrop-blur-sm '}`}
     >
       <Link href={'/'}>
         <Image
@@ -34,7 +33,7 @@ function Navbar() {
           alt={'Bluedia logo'}
           placeholder={'blur'}
           className={
-            'w-10 h-10 rounded-lg object-cover sm:w-11 cursor-pointer sm:h-11'
+            'w-10 h-10 rounded-lg object-cover cursor-pointer md:h-11 md:w-11'
           }
         />
       </Link>
@@ -44,14 +43,33 @@ function Navbar() {
         <ul
           className={`hidden md:flex justify-items-stretch flex-row items-center gap-1 text-DarkBlue font-medium text-sm ${isScrolled ? 'bg-DarkBlue rounded-lg text-white min-h-full' : ' '}`}
         >
-          <NavMenuItem href={'/'}>Home</NavMenuItem>
-          <NavMenuItem href={'/cryptos'}>Cryptos</NavMenuItem>
-          <NavMenuItem href={'/123'}>About us</NavMenuItem>
-          <NavMenuItem href={'/qwe'}>Contact us</NavMenuItem>
+          <NavMenuItem isScrolled={isScrolled} href={'/'}>
+            Home
+          </NavMenuItem>
+          <NavMenuItem isScrolled={isScrolled} href={'/cryptos'}>
+            Cryptos
+          </NavMenuItem>
+          <NavMenuItem isScrolled={isScrolled} href={'/123'}>
+            About us
+          </NavMenuItem>
+          <NavMenuItem isScrolled={isScrolled} href={'/qwe'}>
+            Contact us
+          </NavMenuItem>
         </ul>
-        <Button isForNav={true} classes={'font-medium px-8'}>
-          Login
-        </Button>
+        <button
+          className={`text-white overflow-hidden flex flex-col justify-center items-center font-medium relative bg-DarkBlue rounded-lg px-8 transition-colors duration-300  ${isScrolled ? 'h-10 md:h-11' : 'h-10'} group`}
+        >
+          <span
+            className={`group-hover:translate-y-10 transition-transform duration-300`}
+          >
+            Login
+          </span>
+          <span
+            className={`${isScrolled ? 'bottom-12 group-hover:bottom-2.5' : 'bottom-10 group-hover:bottom-2'} transition-all duration-300 absolute`}
+          >
+            Login
+          </span>
+        </button>
         <HamberMenu />
       </div>
     </div>
