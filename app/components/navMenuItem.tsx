@@ -20,7 +20,7 @@ function NavMenuItem({
       </Link>
       <span
         className={clsx(
-          `w-1 h-1 absolute left-1/2 transform -translate-x-1/2 animate-fade-left bg-opacity-70 animate-duration-500 rounded-full ${isScrolled ? 'bg-white bottom-1.5' : 'bg-DarkBlue bottom-1'} group-hover:flex`,
+          `w-1 h-1 absolute left-1/2 transform -translate-x-1/2 animate-fade bg-opacity-70 animate-duration-500 rounded-full ${isScrolled ? 'bg-white bottom-1.5' : 'bg-DarkBlue bottom-1'} group-hover:flex`,
           {
             'flex group-hover:bg-opacity-70': pathname == href,
             'hidden group-hover:bg-opacity-55': pathname !== href,

@@ -9,8 +9,10 @@
 @keyframes diamondBob {
     from {
         transform: translateY(-10px);
+        filter: brightness(120%);
     }
     to {
         transform: translateY(10px);
+        filter: brightness(100%);
     }
 }

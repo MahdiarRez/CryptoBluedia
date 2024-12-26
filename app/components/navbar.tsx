@@ -33,7 +33,7 @@ function Navbar() {
           alt={'Bluedia logo'}
           placeholder={'blur'}
           className={
-            'w-10 h-10 rounded-lg object-cover cursor-pointer md:h-11 md:w-11'
+            'w-10 h-10 rounded-lg object-cover cursor-pointer md:h-11 md:w-11 z-50'
           }
         />
       </Link>
@@ -70,7 +70,7 @@ function Navbar() {
             Login
           </span>
         </button>
-        <HamberMenu />
+        <HamberMenu isScrolled={isScrolled} />
       </div>
     </div>
   );
