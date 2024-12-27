@@ -3,23 +3,23 @@ import { Timeline } from './aceternityUi/timelineAcet';
 import Link from 'next/link';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 import Image from 'next/image';
-import pic from '../../public/movieShot.png';
+import pic from '../../public/youtubePic.jpeg';
 
 export function TimelineDemo() {
   const data = [
     {
-      title: 'Bluedia channel',
+      title: 'Youtube',
       content: (
         <div>
-          <div className="text-neutral-800 dark:text-neutral-200 text-sm md:text-lg  font-normal mb-8">
+          <div className="text-neutral-800 dark:text-neutral-200 text-sm sm:text-base md:text-lg font-normal mb-8">
             <p>
               Subscribe to our channel and benefit from the analysis and review
               of various cryptocurrencies.
             </p>
             <Link
-              href={'/https://www.youtube.com/@CryptoBlueDiamond/videos'}
+              href={'https://www.youtube.com/@CryptoBluedia/videos'}
               className={
-                'font-extrabold mt-2.5 group text-base underline flex flex-row items-center gap-1'
+                'font-extrabold mt-2.5 group text-base underline flex flex-row max-w-fit items-center gap-1 md:text-lg'
               }
             >
               <FaExternalLinkAlt
@@ -36,14 +36,25 @@ export function TimelineDemo() {
               </span>
             </Link>
           </div>
-          <div className="bg-red-300 flex flex-row items-center justify-center rounded-2xl overflow-hidden">
-            <Image src={pic} alt={'ex'} />
+          <div className="flex flex-row items-center max-w-[380px] justify-center rounded-2xl overflow-hidden">
+            <Link
+              href={'https://www.youtube.com/@CryptoBluedia/videos'}
+              title={'Bluedia channel'}
+              className={'hover:scale-110 transition-transform duration-300'}
+            >
+              <Image
+                src={pic}
+                alt={'ex'}
+                placeholder={'blur'}
+                className={'w-full md:h-auto h-52 object-cover object-left'}
+              />
+            </Link>
           </div>
         </div>
       ),
     },
     {
-      title: 'Explore currencies',
+      title: 'Explore',
       content: (
         <div>
           <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
@@ -59,7 +70,7 @@ export function TimelineDemo() {
       ),
     },
     {
-      title: 'Search for it',
+      title: 'Mail',
       content: (
         <div>
           <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-4">

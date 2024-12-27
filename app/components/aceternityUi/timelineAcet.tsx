@@ -32,11 +32,11 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
       className="w-full bg-WHITE rounded-2xl overflow-hidden dark:bg-DarkBlue md:px-10"
       ref={containerRef}
     >
-      <div className="max-w-7xl md:px-8 lg:px-10 flex flex-col justify-center items-start md:items-center">
-        <h2 className="text-[1.7rem] leading-8 sm:text-4xl text-left md:text-center font-bold tracking-tight mb-4 flex flex-row-reverse items-center justify-end md:justify-center">
+      <div className="max-w-7xl md:px-8 lg:px-10 flex flex-col justify-center items-center">
+        <h2 className="text-[1.7rem] leading-8 sm:text-4xl text-center font-bold tracking-tight mb-4 flex flex-row-reverse items-center justify-center">
           How to use our web app ?
         </h2>
-        <p className="text-neutral-700 dark:text-neutral-300 text-base md:text-lg max-w-[332px] sm:max-w-xl font-medium">
+        <p className="text-neutral-700 dark:text-neutral-300 text-center text-base md:text-lg max-w-[332px] sm:max-w-xl font-medium">
           Here we will help you learn how to use the Blue
           <span className={'text-LightBlue'}>dia</span> web app.
         </p>
@@ -46,7 +46,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
         {data.map((item, index) => (
           <div
             key={index}
-            className="flex justify-start pt-16 md:pt-32 md:gap-10"
+            className="flex justify-start pt-16 first:pt-16 md:pt-32 md:gap-10"
           >
             <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
               <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-white dark:bg-black flex items-center justify-center">

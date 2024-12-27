@@ -10,7 +10,7 @@ export function AppleCardsCarouselDemo() {
 
   return (
     <div className="w-full h-full">
-      <h2 className="text-[1.7rem] leading-8 sm:text-4xl text-left md:text-center font-bold tracking-tight mb-16 flex flex-row-reverse items-center justify-end md:justify-center gap-3">
+      <h2 className="text-[1.7rem] leading-8 sm:text-4xl text-center font-bold tracking-tight mb-16 flex flex-row-reverse items-center justify-center gap-3">
         Most popular currencies
         <br className="md:hidden" /> of the month
         <FaChartLine className={'hidden md:block'} />

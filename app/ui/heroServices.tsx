@@ -8,22 +8,18 @@ function HeroServices() {
   return (
     <div
       className={
-        'h-auto mt-20 lg:mt-0 w-full flex flex-col items-start justify-center md:items-center pb-20'
+        'h-auto mt-20 lg:mt-0 w-full flex flex-col justify-center items-center pb-20'
       }
     >
       <h3
         className={
-          'text-3xl leading-8 sm:text-4xl text-left md:text-center font-bold tracking-tight'
+          'text-3xl leading-8 sm:text-4xl text-center font-bold tracking-tight'
         }
       >
         What are we doing <br className={'md:hidden'} /> here in Blue
         <span className={'text-LightBlue'}>dia</span>?
       </h3>
-      <p
-        className={
-          'text-left md:text-center font-normal text-base mt-4 md:text-lg'
-        }
-      >
+      <p className={'text-center font-normal text-base mt-4 md:text-lg'}>
         Empower your crypto journey with us. We provide detailed reviews and
         ratings of crypto currencies. <br /> Our goal is to equip you with the
         knowledge you need to invest wisely.
