@@ -10,8 +10,8 @@ import { cn } from '@/app/lib/utils/framer';
 import { AnimatePresence, motion } from 'motion/react';
 import Image, { ImageProps } from 'next/image';
 import { useOutsideClick } from '@/app/hooks/useOutsideClick';
-import { HiArrowNarrowRight } from 'react-icons/hi';
 import { IoIosCloseCircleOutline } from 'react-icons/io';
+import { BsArrowLeftSquareFill, BsArrowRightSquareFill } from 'react-icons/bs';
 
 interface CarouselProps {
   items: React.JSX.Element[];
@@ -102,7 +102,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
           <div
             className={cn(
               'flex flex-row justify-start gap-4',
-              'max-w-7xl mx-auto' // remove max-w-4xl if you want the carousel to span the full width of its container
+              'max-w-sm' // remove max-w-4xl if you want the carousel to span the full width of its container
             )}
           >
             {items.map((item, index) => (
@@ -122,27 +122,27 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
                   },
                 }}
                 key={'card' + index}
-                className="last:pr-[5%] md:last:pr-[33%]  rounded-3xl"
+                className="last:pr-[5%] rounded-3xl"
               >
                 {item}
               </motion.div>
             ))}
           </div>
         </div>
-        <div className="flex justify-end gap-2 mr-10">
+        <div className="flex justify-start gap-2.5 mt-7 ml-1">
           <button
-            className="relative z-40 h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center disabled:opacity-50"
+            className="relative z-40 flex items-center justify-center disabled:opacity-50 hover:opacity-80"
             onClick={scrollLeft}
             disabled={!canScrollLeft}
           >
-            <HiArrowNarrowRight className="h-6 w-6 text-gray-500" />
+            <BsArrowLeftSquareFill className="h-14 w-14 text-DarkBlue dark:text-white dark:bg-DarkBlue" />
           </button>
           <button
-            className="relative z-40 h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center disabled:opacity-50"
+            className="relative z-40 flex items-center justify-center disabled:opacity-50 hover:opacity-80"
             onClick={scrollRight}
             disabled={!canScrollRight}
           >
-            <HiArrowNarrowRight className="h-6 w-6 text-gray-500" />
+            <BsArrowRightSquareFill className="h-14 w-14 text-DarkBlue dark:text-white dark:bg-DarkBlue" />
           </button>
         </div>
       </div>
@@ -236,19 +236,19 @@ export const Card = ({
       <motion.button
         layoutId={layout ? `card-${card.title}` : undefined}
         onClick={handleOpen}
-        className="rounded-3xl bg-gray-100 dark:bg-neutral-900 h-80 w-56 md:h-[40rem] md:w-96 overflow-hidden flex flex-col items-start justify-start relative z-10"
+        className="rounded-2xl dark:bg-neutral-900 h-80 group w-60 overflow-hidden flex flex-col items-start justify-start relative z-10"
       >
-        <div className="absolute h-full top-0 inset-x-0 bg-gradient-to-b from-black/50 via-transparent to-transparent z-30 pointer-events-none" />
+        <div className="absolute h-full top-0 inset-x-0 bg-gradient-to-b from-LightBlue/70 via-transparent to-transparent z-30 pointer-events-none" />
         <div className="relative z-40 p-8">
           <motion.p
             layoutId={layout ? `category-${card.category}` : undefined}
-            className="text-white text-sm md:text-base font-medium font-sans text-left"
+            className="text-WHITE md:text-2xl text-base font-bold text-left"
           >
             {card.category}
           </motion.p>
           <motion.p
             layoutId={layout ? `title-${card.title}` : undefined}
-            className="text-white text-xl md:text-3xl font-semibold max-w-xs text-left [text-wrap:balance] font-sans mt-2"
+            className="text-WHITE text-xl md:text-2xl font-bold max-w-xs text-left [text-wrap:balance] mt-2"
           >
             {card.title}
           </motion.p>
@@ -257,7 +257,7 @@ export const Card = ({
           src={card.src}
           alt={card.title}
           fill
-          className="object-cover absolute z-10 inset-0"
+          className="object-cover absolute group-hover:scale-110 brightness-90 group-hover:brightness-100 transition-all duration-500 z-10 inset-0"
         />
       </motion.button>
     </>

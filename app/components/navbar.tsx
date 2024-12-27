@@ -27,7 +27,7 @@ function Navbar() {
 
   return (
     <div
-      className={`text-DarkBlue fixed flex items-center right-1/2 translate-x-1/2 justify-between z-50 transition-all duration-500 ${isScrolled ? `w-[224px] md:w-[530px] md:gap-1 ${isScrolledFar ? 'bg-gray-400' : 'bg-WHITE'}  dark:bg-DarkBlue bg-opacity-70 backdrop-blur-sm p-1.5 rounded-2xl top-7` : 'w-full h-20 px-5 sm:px-8 lg:px-28 xl:px-40 bg-transparent dark:bg-white backdrop-blur-sm '}`}
+      className={`text-DarkBlue fixed flex items-center right-1/2 translate-x-1/2 justify-between z-50 transition-all duration-500 ${isScrolled ? `w-[224px] md:w-[535px] md:gap-1 ${isScrolledFar ? 'bg-gray-400' : 'bg-WHITE'}  dark:bg-DarkBlue bg-opacity-70 backdrop-blur-sm p-1.5 rounded-2xl top-7` : 'w-full h-20 px-5 sm:px-8 lg:px-28 xl:px-40 bg-transparent dark:bg-white backdrop-blur-sm '}`}
     >
       <Link href={'/'}>
         <Image
