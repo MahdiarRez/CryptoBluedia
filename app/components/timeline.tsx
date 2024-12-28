@@ -5,6 +5,7 @@ import { FaExternalLinkAlt } from 'react-icons/fa';
 import Image from 'next/image';
 import pic from '../../public/youtubePic.jpeg';
 import { TiArrowForward } from 'react-icons/ti';
+import Button from '@/app/components/button';
 
 export function TimelineDemo() {
   const data = [
@@ -37,11 +38,11 @@ export function TimelineDemo() {
               </span>
             </Link>
           </div>
-          <div className="flex flex-row items-center max-w-[380px] justify-center rounded-2xl overflow-hidden">
+          <div className="flex flex-row items-center max-w-[380px] justify-center rounded-xl overflow-hidden">
             <Link
               href={'https://www.youtube.com/@CryptoBluedia/videos'}
               title={'Bluedia channel'}
-              className={'hover:scale-110 transition-transform duration-300'}
+              className={'hover:opacity-90 transition-opacity duration-300'}
             >
               <Image
                 src={pic}
@@ -83,11 +84,11 @@ export function TimelineDemo() {
               </span>
             </Link>
           </div>
-          <div className="flex flex-row items-center max-w-[380px] justify-center rounded-2xl overflow-hidden">
+          <div className="flex flex-row items-center max-w-[380px] justify-center rounded-xl overflow-hidden">
             <Link
               href={'https://www.youtube.com/@CryptoBluedia/videos'}
               title={'Bluedia channel'}
-              className={'hover:scale-110 transition-transform duration-300'}
+              className={'hover:opacity-90 transition-opacity duration-300'}
             >
               <Image
                 src={pic}
@@ -101,30 +102,23 @@ export function TimelineDemo() {
       ),
     },
     {
-      title: 'Mail',
+      title: 'Get news',
       content: (
         <div>
-          <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-4">
-            Deployed 5 new components on Aceternity today
-          </p>
-          <div className="mb-8">
-            <div className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-xs md:text-sm">
-              ✅ Card grid component
-            </div>
-            <div className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-xs md:text-sm">
-              ✅ Startup template Aceternity
-            </div>
-            <div className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-xs md:text-sm">
-              ✅ Random file upload lol
-            </div>
-            <div className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-xs md:text-sm">
-              ✅ Himesh Reshammiya Music CD
-            </div>
-            <div className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-xs md:text-sm">
-              ✅ Salman Bhai Fan Club registrations open
-            </div>
+          <div className="text-neutral-800 dark:text-neutral-200 text-sm sm:text-base md:text-lg font-normal mb-8">
+            <p>
+              Stay ahead of the curve. Subscribe to our email list for the
+              latest news, insights, and updates about Bluedia and the
+              cryptocurrency market.
+            </p>
           </div>
-          <div className="grid grid-cols-2 gap-4">hi</div>
+          <div className="flex flex-col sm:flex-row items-start max-w-[380px] gap-3 justify-center rounded-xl overflow-hidden">
+            <input
+              className={'w-full px-3 py-2 rounded-xl text-DarkBlue'}
+              placeholder={'Your email address'}
+            />
+            <Button classes={'rounded-xl text-base'}>Subscribe</Button>
+          </div>
         </div>
       ),
     },

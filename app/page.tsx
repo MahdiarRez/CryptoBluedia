@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import HeroDiamond from '@/app/ui/heroDiamond';
 import HeroServices from '@/app/ui/heroServices';
 import { AppleCardsCarouselDemo } from '@/app/components/carousel';
 import { TimelineDemo } from '@/app/components/timeline';
+import { HeroGridNews } from '@/app/ui/heroGridNews';
 
 async function Page() {
   return (
@@ -19,7 +20,11 @@ async function Page() {
       <div className={'py-20 w-full'}>
         <TimelineDemo />
       </div>
-      <HeroServices />
+      <div className={'py-20 w-full'}>
+        <Suspense fallback={null}>
+          <HeroGridNews />
+        </Suspense>
+      </div>
     </div>
   );
 }

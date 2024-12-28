@@ -1,6 +1,7 @@
 'use client';
 import { useScroll, useTransform, motion } from 'motion/react';
 import React, { useEffect, useRef, useState } from 'react';
+import { RiCustomerService2Fill } from 'react-icons/ri';
 
 interface TimelineEntry {
   title: string;
@@ -33,7 +34,8 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
       ref={containerRef}
     >
       <div className="max-w-7xl md:px-8 lg:px-10 flex flex-col justify-center items-center">
-        <h2 className="text-[1.7rem] leading-8 sm:text-4xl text-center font-bold tracking-tight mb-4 flex flex-row-reverse items-center justify-center">
+        <h2 className="text-[1.7rem] leading-8 sm:text-4xl text-center font-bold tracking-tight mb-4 flex flex-row gap-2 items-center">
+          <RiCustomerService2Fill />
           How to use our services ?
         </h2>
         <p className="text-neutral-700 dark:text-neutral-300 text-center text-base md:text-lg max-w-[332px] sm:max-w-xl font-medium">
@@ -52,7 +54,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
               <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-white dark:bg-black flex items-center justify-center">
                 <div className="h-4 w-4 rounded-full bg-neutral-200 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 p-2" />
               </div>
-              <h3 className="hidden md:block text-xl md:pl-20 md:text-5xl font-bold text-neutral-500 dark:text-neutral-500 ">
+              <h3 className="hidden md:block text-xl md:pl-20 md:text-5xl font-bold text-DarkBlue text-opacity-50 dark:text-WHITE dark:text-opacity-80 ">
                 {item.title}
               </h3>
             </div>

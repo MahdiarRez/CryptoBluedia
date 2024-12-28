@@ -3,6 +3,7 @@ import ServiceItem from '@/app/components/serviceItem';
 import { SiVictoriametrics } from 'react-icons/si';
 import { FaMagnifyingGlassChart } from 'react-icons/fa6';
 import { FaUserSecret } from 'react-icons/fa';
+import { BsPeopleFill } from 'react-icons/bs';
 
 function HeroServices() {
   return (
@@ -13,9 +14,10 @@ function HeroServices() {
     >
       <h3
         className={
-          'text-3xl leading-8 sm:text-4xl text-center font-bold tracking-tight'
+          'text-3xl leading-8 sm:text-4xl text-center font-bold tracking-tight flex flex-row items-center'
         }
       >
+        <BsPeopleFill className={'mr-2'} />
         What are we doing <br className={'md:hidden'} /> here in Blue
         <span className={'text-LightBlue'}>dia</span>?
       </h3>
