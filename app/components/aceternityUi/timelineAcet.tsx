@@ -34,11 +34,11 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
     >
       <div className="max-w-7xl md:px-8 lg:px-10 flex flex-col justify-center items-center">
         <h2 className="text-[1.7rem] leading-8 sm:text-4xl text-center font-bold tracking-tight mb-4 flex flex-row-reverse items-center justify-center">
-          How to use our web app ?
+          How to use our services ?
         </h2>
         <p className="text-neutral-700 dark:text-neutral-300 text-center text-base md:text-lg max-w-[332px] sm:max-w-xl font-medium">
           Here we will help you learn how to use the Blue
-          <span className={'text-LightBlue'}>dia</span> web app.
+          <span className={'text-LightBlue'}>dia</span> services.
         </p>
       </div>
 

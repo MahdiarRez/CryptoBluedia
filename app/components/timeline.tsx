@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 import Image from 'next/image';
 import pic from '../../public/youtubePic.jpeg';
+import { TiArrowForward } from 'react-icons/ti';
 
 export function TimelineDemo() {
   const data = [
@@ -57,15 +58,45 @@ export function TimelineDemo() {
       title: 'Explore',
       content: (
         <div>
-          <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
-            I usually run out of copy, but when I see content this big, I try to
-            integrate lorem ipsum.
-          </p>
-          <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
-            Lorem ipsum is for people who are too lazy to write copy. But we are
-            not. Here are some more example of beautiful designs I built.
-          </p>
-          <div className="grid grid-cols-2 gap-4">hi</div>
+          <div className="text-neutral-800 dark:text-neutral-200 text-sm sm:text-base md:text-lg font-normal mb-8">
+            <p>
+              Go to the crypto page and easily search for the currency you want
+              and see its information.
+            </p>
+            <Link
+              href={'/cryptos'}
+              className={
+                'font-extrabold mt-2.5 group text-base underline flex flex-row max-w-fit items-center gap-1 md:text-lg'
+              }
+            >
+              <TiArrowForward
+                className={
+                  'group-hover:opacity-70 transition-opacity duration-300 font-bold'
+                }
+              />
+              <span
+                className={
+                  'group-hover:opacity-70 transition-opacity duration-300'
+                }
+              >
+                Crypto page
+              </span>
+            </Link>
+          </div>
+          <div className="flex flex-row items-center max-w-[380px] justify-center rounded-2xl overflow-hidden">
+            <Link
+              href={'https://www.youtube.com/@CryptoBluedia/videos'}
+              title={'Bluedia channel'}
+              className={'hover:scale-110 transition-transform duration-300'}
+            >
+              <Image
+                src={pic}
+                alt={'ex'}
+                placeholder={'blur'}
+                className={'w-full md:h-auto h-52 object-cover object-left'}
+              />
+            </Link>
+          </div>
         </div>
       ),
     },
