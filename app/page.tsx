@@ -21,7 +21,7 @@ async function Page() {
         <TimelineDemo />
       </div>
       <div className={'py-20 w-full'}>
-        <Suspense fallback={null}>
+        <Suspense fallback={<p>ih</p>}>
           <HeroGridNews />
         </Suspense>
       </div>
