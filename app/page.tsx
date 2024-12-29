@@ -4,6 +4,8 @@ import HeroServices from '@/app/ui/heroServices';
 import { TimelineDemo } from '@/app/components/timeline';
 import { HeroGridNews } from '@/app/ui/heroGridNews';
 import { BentoGridSkeleton } from '@/app/ui/skeletons/bentoGridSkeleton';
+import { BestCurrencies } from '@/app/components/bestCurrencies';
+import { FaChartLine } from 'react-icons/fa6';
 
 async function Page() {
   return (
@@ -14,10 +16,16 @@ async function Page() {
         <HeroDiamond />
       </div>
       <HeroServices />
-      <div className={'py-20 w-full'}>
+      <div className={'pt-20 w-full'}>
         <TimelineDemo />
       </div>
-      <div className={'py-20 w-full'}>h</div>
+      <div className={'py-20 w-full flex flex-col items-center gap-16'}>
+        <h3 className="text-[1.7rem] capitalize leading-8 sm:text-4xl text-center font-bold tracking-tight flex flex-row-reverse items-center justify-center gap-3">
+          Best currencies of the month
+          <FaChartLine className={'hidden md:block'} />
+        </h3>
+        <BestCurrencies />
+      </div>
       <div className={'pt-20 pb-40 w-full'}>
         <Suspense fallback={<BentoGridSkeleton />}>
           <HeroGridNews />

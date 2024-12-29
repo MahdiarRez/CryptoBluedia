@@ -14,12 +14,11 @@ function HeroServices() {
     >
       <h3
         className={
-          'text-3xl leading-8 sm:text-4xl text-center font-bold tracking-tight flex flex-row items-center'
+          'text-2xl xs:text-3xl leading-8 sm:text-4xl text-center text-nowrap font-bold tracking-tight flex flex-row justify-center items-center'
         }
       >
         <BsPeopleFill className={'mr-2'} />
-        What are we doing <br className={'md:hidden'} /> here in Blue
-        <span className={'text-LightBlue'}>dia</span>?
+        What are we doing here?
       </h3>
       <p className={'text-center font-normal text-base mt-4 md:text-lg'}>
         Empower your crypto journey with us. We provide detailed reviews and

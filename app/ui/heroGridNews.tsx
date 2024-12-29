@@ -25,9 +25,9 @@ export async function HeroGridNews() {
           header={item.image}
           icon={
             i <= 3 ? (
-              <FaBitcoin className="h-4 w-4 text-neutral-500" />
+              <FaBitcoin className="h-5 w-5 text-DarkBlue" />
             ) : (
-              <TbWorld className="h-4 w-4 text-neutral-500" />
+              <TbWorld className="h-5 w-5 text-DarkBlue" />
             )
           }
           className={i === 3 || i === 9 ? 'md:col-span-2' : ''}
