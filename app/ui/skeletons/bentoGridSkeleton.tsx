@@ -1,6 +1,4 @@
 import React from 'react';
-import { cn } from '@/app/lib/utils/framer';
-import Image from 'next/image';
 
 const BentoGrid = ({ children }: { children?: React.ReactNode }) => {
   return (
