@@ -4,6 +4,7 @@ import Navbar from '@/app/components/navbar';
 import ThemeButton from '@/app/ui/themeButton';
 import React from 'react';
 import { Manrope } from 'next/font/google';
+import Footer from '@/app/footer';
 
 export const metadata: Metadata = {
   title: {
@@ -29,6 +30,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <ThemeButton />
+        <Footer />
       </body>
     </html>
   );

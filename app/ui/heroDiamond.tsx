@@ -13,7 +13,7 @@ function HeroDiamond() {
       <Image
         src={diamond}
         alt={'diamond'}
-        placeholder={'blur'}
+        placeholder={'empty'}
         className={
           'hidden xs:block static w-56 h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 xl:w-96 xl:h-96 max-w-56 object-contain diamond-motion'
         }

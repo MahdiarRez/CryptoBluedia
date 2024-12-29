@@ -1,9 +1,9 @@
 import React, { Suspense } from 'react';
 import HeroDiamond from '@/app/ui/heroDiamond';
 import HeroServices from '@/app/ui/heroServices';
-import { AppleCardsCarouselDemo } from '@/app/components/carousel';
 import { TimelineDemo } from '@/app/components/timeline';
 import { HeroGridNews } from '@/app/ui/heroGridNews';
+import { BentoGridSkeleton } from '@/app/ui/skeletons/bentoGridSkeleton';
 
 async function Page() {
   return (
@@ -15,13 +15,11 @@ async function Page() {
       </div>
       <HeroServices />
       <div className={'py-20 w-full'}>
-        <AppleCardsCarouselDemo />
-      </div>
-      <div className={'py-20 w-full'}>
         <TimelineDemo />
       </div>
-      <div className={'py-20 w-full'}>
-        <Suspense fallback={<p>ih</p>}>
+      <div className={'py-20 w-full'}>h</div>
+      <div className={'pt-20 pb-40 w-full'}>
+        <Suspense fallback={<BentoGridSkeleton />}>
           <HeroGridNews />
         </Suspense>
       </div>

@@ -7,6 +7,14 @@ import HamberMenu from '@/app/components/hamberMenu';
 import Link from 'next/link';
 import NavMenuItem from '@/app/components/navMenuItem';
 
+function ScrollUp() {
+  const timer = setTimeout(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, 200);
+
+  return () => clearTimeout(timer);
+}
+
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isScrolledFar, setIsScrolledFar] = useState(false);
@@ -24,6 +32,8 @@ function Navbar() {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  useEffect(() => ScrollUp(), []);
 
   return (
     <div
@@ -46,11 +56,11 @@ function Navbar() {
           <NavMenuItem isScrolled={isScrolled} href={'/'}>
             Home
           </NavMenuItem>
-          <NavMenuItem isScrolled={isScrolled} href={'/cryptos'}>
-            Cryptos
+          <NavMenuItem isScrolled={isScrolled} href={'/currencies'}>
+            Currencies
           </NavMenuItem>
-          <NavMenuItem isScrolled={isScrolled} href={'/123'}>
-            About us
+          <NavMenuItem isScrolled={isScrolled} href={'/news'}>
+            News
           </NavMenuItem>
           <NavMenuItem isScrolled={isScrolled} href={'/qwe'}>
             Contact us

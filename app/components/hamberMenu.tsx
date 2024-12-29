@@ -57,11 +57,14 @@ function HamberMenu({ isScrolled }: { isScrolled: boolean }) {
               <HamberMenuItem setMenuIsOpen={setMenuIsOpen} href={'/'}>
                 Home
               </HamberMenuItem>
-              <HamberMenuItem setMenuIsOpen={setMenuIsOpen} href={'/cryptos'}>
-                Cryptos
+              <HamberMenuItem
+                setMenuIsOpen={setMenuIsOpen}
+                href={'/currencies'}
+              >
+                Currencies
               </HamberMenuItem>
-              <HamberMenuItem setMenuIsOpen={setMenuIsOpen} href={'/aa'}>
-                About us
+              <HamberMenuItem setMenuIsOpen={setMenuIsOpen} href={'/news'}>
+                News{' '}
               </HamberMenuItem>
               <HamberMenuItem setMenuIsOpen={setMenuIsOpen} href={'/ww'}>
                 Contact us
