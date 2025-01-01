@@ -51,7 +51,7 @@ function Navbar() {
         className={`flex flex-row items-center ${!isScrolled ? 'gap-4' : 'gap-1'} h-10`}
       >
         <ul
-          className={`hidden md:flex justify-items-stretch flex-row items-center gap-1 text-DarkBlue font-medium text-sm ${isScrolled ? 'bg-DarkBlue rounded-lg text-white min-h-full' : ' '}`}
+          className={`hidden md:flex justify-items-stretch transition-all  duration-500 flex-row items-center gap-1 text-DarkBlue font-medium text-sm ${isScrolled ? 'bg-DarkBlue rounded-lg text-white min-h-full' : ' '}`}
         >
           <NavMenuItem isScrolled={isScrolled} href={'/'}>
             Home
