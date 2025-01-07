@@ -22,7 +22,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ['start 10%', 'end 50%'],
+    offset: ['start 30%', 'end 60%'],
   });
 
   const heightTransform = useTransform(scrollYProgress, [0, 1], [0, height]);
@@ -34,7 +34,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
       ref={containerRef}
     >
       <div className="max-w-7xl md:px-8 lg:px-10 flex flex-col justify-center items-center">
-        <h2 className="text-[1.7rem] leading-8 sm:text-4xl text-center font-bold tracking-tight mb-4 flex flex-row gap-2 items-center">
+        <h2 className="text-2xl leading-8 sm:text-4xl text-center font-bold tracking-tight mb-4 flex flex-row gap-2 items-center text-nowrap flex-nowrap">
           <RiCustomerService2Fill />
           How to use our services ?
         </h2>
@@ -78,7 +78,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
               height: heightTransform,
               opacity: opacityTransform,
             }}
-            className="absolute inset-x-0 top-0  w-[2px] bg-gradient-to-t from-purple-500 via-blue-500 to-transparent from-[0%] via-[10%] rounded-full"
+            className="absolute inset-x-0 top-0 w-[2px] bg-gradient-to-t from-LightBlue via-LightBlue to-transparent from-[0%] via-[10%] rounded-full"
           />
         </div>
       </div>

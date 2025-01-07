@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
-import { FaTelegram, FaYoutube } from 'react-icons/fa';
-import { AiFillInstagram } from 'react-icons/ai';
+import Logo from '../public/logo.jpeg';
+import Link from 'next/link';
 
 function Footer() {
   return (
@@ -11,89 +11,57 @@ function Footer() {
           'bg-DarkBlue dark:bg-WHITE rounded-3xl text-WHITE dark:text-DarkBlue w-full py-10 px-8 flex flex-col items-center justify-center'
         }
       >
-        <div className={'flex flex-col md:flex-row gap-10 w-full'}>
-          <div className={'flex flex-col gap-2.5 items-center '}>
-            <div className={'flex flex-row items-center justify-center gap-1'}>
-              <Image
-                src={'/logo.jpeg'}
-                alt={'logo'}
-                width={50}
-                height={50}
-                className={'w-10 h-10'}
-              />
-              <h4 className={'uppercase font-bold text-lg tracking-wide'}>
-                Crypto Blue<span className={'text-LightBlue '}>dia</span>
-              </h4>
-            </div>
-            <p className={'font-normal text-sm text-center tracking-wide'}>
-              Your Partner in Crypto Investing helping You Make Informed
-              Decisions in the Crypto World.
+        <footer className="footer sm:footer-horizontal footer-center py-7 px-4">
+          <aside>
+            <Image
+              src={Logo}
+              alt={'logo'}
+              className={'h-16 w-16 md:h-20 md:w-20 object-center'}
+            />
+            <p className="font-extrabold tracking-wide text-lg uppercase sm:text-2xl">
+              Crypto Blue<span className={'text-LightBlue'}>dia</span>
+              <br />
             </p>
-          </div>
-          <div
-            className={'flex flex-row w-full items-start justify-center gap-10'}
-          >
-            <div
-              className={
-                'grid grid-rows-4 grid-cols-1 gap-2 font-semibold text-center text-sm'
-              }
-            >
-              <h5
-                className={
-                  'text-center font-bold text-base opacity-85 text-gray-400 row-span-2'
-                }
-              >
-                Company
-              </h5>
-              <h6>Currencies</h6>
-              <h6>About us</h6>
-              <h6>Contact us</h6>
-              <h6>Market News</h6>
+            <p className={'font-bold text-base sm:text-lg'}>
+              Your Partner in Crypto Investing.
+            </p>
+            <p className={'text-xs font-light opacity-80 mt-2 sm:text-sm'}>
+              Copyright BLUEDIA team © {new Date().getFullYear()} - All right
+              reserved
+            </p>
+          </aside>
+          <nav>
+            <div className="grid grid-flow-col gap-4">
+              <Link href={'/'} className={'group'}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  className="w-7 h-7 sm:w-9 sm:h-9 transition-colors duration-300 fill-current group-hover:fill-LightBlue"
+                >
+                  <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path>
+                </svg>
+              </Link>
+              <Link href={'/'} className={'group'}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  className="w-7 h-7 sm:w-9 sm:h-9 transition-colors duration-300 fill-current group-hover:fill-LightBlue"
+                >
+                  <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path>
+                </svg>
+              </Link>
+              <Link href={'/'} className={'group'}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  className="w-7 h-7 sm:w-9 sm:h-9 transition-colors duration-300 fill-current group-hover:fill-LightBlue"
+                >
+                  <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path>
+                </svg>
+              </Link>
             </div>
-            <div
-              className={
-                'grid grid-rows-4 grid-cols-1 font-semibold text-center text-sm gap-2'
-              }
-            >
-              <h5
-                className={
-                  'text-center font-bold text-base opacity-95 text-gray-400 row-span-2'
-                }
-              >
-                Legal
-              </h5>
-              <h6>Privacy policy</h6>
-              <h6>Terms of us</h6>
-              <h6>Licencing</h6>
-            </div>
-          </div>
-        </div>
-        <div
-          className={
-            'mt-6 flex flex-col items-center justify-center border-solid border-t-[0.5px] border-opacity-40 pb-0 border-WHITE pt-6 p-5 gap-3.5'
-          }
-        >
-          <p className={'text-sm font-normal opacity-75 text-center'}>
-            © Crypto Bluedia | All rights deserved by Bluedia Company
-          </p>
-          <div className={'flex flex-row gap-3 items-center justify-center '}>
-            <FaYoutube
-              className={
-                'w-7 hover:opacity-100 opacity-75 transition-opacity duration-300 cursor-pointer h-7'
-              }
-            />
-            <AiFillInstagram
-              className={
-                'w-7 hover:opacity-100 opacity-75 transition-opacity duration-300 cursor-pointer h-7'
-              }
-            />
-            <FaTelegram
-              className={
-                'w-6 hover:opacity-100 opacity-75 transition-opacity duration-300 cursor-pointer h-6'
-              }
-            />
-          </div>
-        </div>
+          </nav>
+        </footer>
       </div>
     </div>
   );

@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 import Image from 'next/image';
 import pic from '../../public/youtubePic.jpeg';
-import { TiArrowForward } from 'react-icons/ti';
 import Button from '@/app/components/button';
 
 export function TimelineDemo() {
@@ -21,7 +20,7 @@ export function TimelineDemo() {
             <Link
               href={'https://www.youtube.com/@CryptoBluedia/videos'}
               className={
-                'font-extrabold mt-2.5 group text-base underline flex flex-row max-w-fit items-center gap-1 md:text-lg'
+                'font-extrabold mt-2.5 group text-base underline flex flex-row text-LightBlue max-w-fit items-center gap-1 md:text-lg'
               }
             >
               <FaExternalLinkAlt
@@ -65,23 +64,26 @@ export function TimelineDemo() {
               and see its information.
             </p>
             <Link
-              href={'/cryptos'}
+              href={'/currencies'}
               className={
-                'font-extrabold mt-2.5 group text-base underline flex flex-row max-w-fit items-center gap-1 md:text-lg'
+                'font-extrabold no-underline mt-2.5 group text-base flex flex-row max-w-fit items-center gap-1 md:text-lg'
               }
             >
-              <TiArrowForward
-                className={
-                  'group-hover:opacity-70 transition-opacity duration-300 font-bold'
-                }
-              />
-              <span
-                className={
-                  'group-hover:opacity-70 transition-opacity duration-300'
-                }
-              >
-                Crypto page
-              </span>
+              {/*<TiArrowForward*/}
+              {/*  className={*/}
+              {/*    'group-hover:opacity-70 transition-opacity duration-300 font-bold'*/}
+              {/*  }*/}
+              {/*/>*/}
+              {/*<span*/}
+              {/*  className={*/}
+              {/*    'group-hover:opacity-70 transition-opacity duration-300'*/}
+              {/*  }*/}
+              {/*>*/}
+              {/*  Crypto page*/}
+              {/*</span>*/}
+              <Button classes={'rounded-xl text-base font-medium'}>
+                Currencies
+              </Button>
             </Link>
           </div>
           <div className="flex flex-row items-center max-w-[380px] justify-center rounded-xl overflow-hidden">
@@ -114,10 +116,14 @@ export function TimelineDemo() {
           </div>
           <div className="flex flex-col sm:flex-row items-start max-w-[380px] gap-3 justify-center rounded-xl overflow-hidden">
             <input
-              className={'w-full px-3 py-2 rounded-xl text-DarkBlue'}
+              className={
+                'w-full px-3 py-2 rounded-xl text-DarkBlue bg-white outline-none border border-DarkBlue border-solid border-opacity-70'
+              }
               placeholder={'Your email address'}
             />
-            <Button classes={'rounded-xl text-base'}>Subscribe</Button>
+            <Button classes={'rounded-xl text-base font-medium'}>
+              Subscribe
+            </Button>
           </div>
         </div>
       ),

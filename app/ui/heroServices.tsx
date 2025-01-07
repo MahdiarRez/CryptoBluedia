@@ -9,12 +9,12 @@ function HeroServices() {
   return (
     <div
       className={
-        'h-auto mt-20 lg:mt-0 w-full flex flex-col justify-center items-center pb-20'
+        'h-auto mt-20 lg:mt-0 w-full flex flex-col justify-center items-center pb-20 '
       }
     >
       <h3
         className={
-          'text-2xl xs:text-3xl leading-8 sm:text-4xl text-center text-nowrap font-bold tracking-tight flex flex-row justify-center items-center'
+          'text-2xl xs:text-3xl leading-8 sm:text-4xl text-center text-nowrap font-bold tracking-tight flex flex-row justify-center items-center flex-nowrap'
         }
       >
         <BsPeopleFill className={'mr-2'} />

@@ -2,6 +2,11 @@ import type { Config } from '@/node_modules/tailwindcss';
 
 import tailwindcss_animated from 'tailwindcss-animated';
 
+import daisyui from 'daisyui';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
+import { default as fl } from 'tailwindcss/lib/util/flattenColorPalette';
+
 export default {
   darkMode: 'class',
   content: [
@@ -22,5 +27,16 @@ export default {
       },
     },
   },
-  plugins: [tailwindcss_animated],
+  plugins: [tailwindcss_animated, daisyui, addVariablesForColors],
 } satisfies Config;
+
+function addVariablesForColors({ addBase, theme }: any) {
+  const allColors = fl(theme('colors'));
+  const newVars = Object.fromEntries(
+    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+  );
+
+  addBase({
+    ':root': newVars,
+  });
+}
