@@ -30,7 +30,7 @@ export async function HeroGridNews() {
               <TbWorld className="h-5 w-5 text-DarkBlue" />
             )
           }
-          className={i === 3 || i === 9 ? 'md:col-span-2' : ''}
+          className={i === 3 || i === 9 ? 'lg:col-span-2' : ''}
         />
       ))}
     </BentoGrid>

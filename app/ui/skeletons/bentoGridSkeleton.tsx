@@ -12,7 +12,7 @@ const BentoGrid = ({ children }: { children?: React.ReactNode }) => {
       </h3>
       <div
         className={
-          'grid md:auto-rows-[23rem] grid-cols-1 md:grid-cols-3 gap-4 max-w-7xl mx-auto '
+          'grid md:auto-rows-[23rem] grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-sm sm:max-w-xl md:max-w-2xl lg:max-w-6xl mx-auto'
         }
       >
         {children}
@@ -70,7 +70,7 @@ export async function BentoGridSkeleton() {
 }
 
 const Skeleton = () => (
-  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-200 dark:from-neutral-900 dark:to-neutral-800 to-neutral-100"></div>
+  <div className="flex flex-1 w-full h-full min-h-[218px] max-h-[218px] rounded-xl bg-gradient-to-br from-neutral-200 dark:from-neutral-900 dark:to-neutral-800 to-neutral-100"></div>
 );
 
 const items = [

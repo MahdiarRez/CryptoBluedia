@@ -8,12 +8,16 @@ import Link from 'next/link';
 import NavMenuItem from '@/app/components/navMenuItem';
 
 function ScrollUp() {
-  const timer = setTimeout(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, 200);
-
-  return () => clearTimeout(timer);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
+// }function ScrollUp() {
+//   const timer = setTimeout(() => {
+//     window.scrollTo({ top: 0, behavior: 'smooth' });
+//   }, 200);
+//
+//   return () => clearTimeout(timer);
+// }
 
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -25,7 +29,6 @@ function Navbar() {
       setIsScrolled(scrollTop > 100);
       setIsScrolledFar(scrollTop > 395);
     };
-
     window.addEventListener('scroll', handleScroll);
 
     return () => {
