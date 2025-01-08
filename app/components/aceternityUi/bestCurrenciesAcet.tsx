@@ -43,8 +43,8 @@ export const BestCurrenciesAcet = ({
     return Math.floor(Math.random() * 21) - 10;
   };
   return (
-    <div className="max-w-sm md:max-w-4xl mx-auto antialiased font-sans px-4 md:px-8 lg:px-12 pt-3">
-      <div className="relative grid grid-cols-1 md:grid-cols-2 gap-14 md:gap-20">
+    <div className="max-w-xs md:max-w-4xl mx-auto antialiased font-sans px-4 md:px-8 lg:px-12 pt-3">
+      <div className="relative grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20">
         <div>
           <div className="relative h-80 w-full">
             <AnimatePresence>
@@ -146,7 +146,7 @@ export const BestCurrenciesAcet = ({
               ))}
             </motion.p>
           </motion.div>
-          <div className="flex gap-4 pt-12 md:pt-0">
+          <div className="flex gap-4 pt-7 md:pt-0">
             <button
               onClick={handlePrev}
               className="h-12 w-12 rounded-full bg-white dark:bg-DarkBlue flex items-center justify-center group/button"

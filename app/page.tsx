@@ -23,7 +23,7 @@ async function Page() {
         </div>
         <div
           className={
-            'py-20 w-full flex flex-col rounded-2xl bg-white dark:bg-DarkBlue items-center gap-16'
+            'py-20 w-full flex flex-col rounded-2xl bg-WHITE xs:bg-white dark:bg-DarkBlue items-center gap-16'
           }
         >
           <h3 className="text-[1.7rem] capitalize leading-8 sm:text-4xl text-center font-bold tracking-tight flex flex-row-reverse items-center justify-center gap-3">

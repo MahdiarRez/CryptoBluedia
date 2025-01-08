@@ -38,9 +38,9 @@ export async function HeroGridNews() {
 }
 
 async function getMarketNews(): Promise<MarketNewsItem[]> {
-  await new Promise((resolve) => {
-    setTimeout(resolve, 2000);
-  });
+  // await new Promise((resolve) => {
+  //   setTimeout(resolve, 10000);
+  // });
   const { data, error } = await supabase.from('marketNews').select('*');
 
   if (error) {

@@ -110,4 +110,29 @@ const items = [
     description: 'Embark on exciting journeys and thrilling discoveries.',
     header: <Skeleton />,
   },
+  {
+    title: 'The Spirit of Adventure',
+    description: 'Embark on exciting journeys and thrilling discoveries.',
+    header: <Skeleton />,
+  },
+  {
+    title: 'The Spirit of Adventure',
+    description: 'Embark on exciting journeys and thrilling discoveries.',
+    header: <Skeleton />,
+  },
+  {
+    title: 'The Spirit of Adventure',
+    description: 'Embark on exciting journeys and thrilling discoveries.',
+    header: <Skeleton />,
+  },
+  {
+    title: 'The Spirit of Adventure',
+    description: 'Embark on exciting journeys and thrilling discoveries.',
+    header: <Skeleton />,
+  },
+  {
+    title: 'The Spirit of Adventure',
+    description: 'Embark on exciting journeys and thrilling discoveries.',
+    header: <Skeleton />,
+  },
 ];
