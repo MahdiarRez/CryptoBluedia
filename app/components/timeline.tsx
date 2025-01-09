@@ -5,6 +5,8 @@ import { FaExternalLinkAlt } from 'react-icons/fa';
 import Image from 'next/image';
 import pic from '../../public/youtubePic.jpeg';
 import Button from '@/app/components/button';
+import { TextShimmer } from '@/app/components/motionPrimitive/ui/text-shimmer';
+import { SubscribeModal } from '@/app/ui/subModal';
 
 export function TimelineDemo() {
   const data = [
@@ -63,41 +65,29 @@ export function TimelineDemo() {
               Go to the crypto page and easily search for the currency you want
               and see its information.
             </p>
+            <div
+              className={
+                'flex flex-row items-center gap-2 w-auto justify-start text-lg pt-1 pb-3'
+              }
+            >
+              <span>Digging into the</span>
+              <TextShimmer
+                duration={1.8}
+                className="text-3xl font-bold [--base-color:theme(colors.cyan.500)] [--base-gradient-color:theme(colors.purple.400)] dark:[--base-color:theme(colors.blue.700)] dark:[--base-gradient-color:theme(colors.blue.400)]"
+              >
+                219
+              </TextShimmer>
+              <span> Currencies.</span>
+            </div>
             <Link
               href={'/currencies'}
               className={
                 'font-extrabold no-underline mt-2.5 group text-base flex flex-row max-w-fit items-center gap-1 md:text-lg'
               }
             >
-              {/*<TiArrowForward*/}
-              {/*  className={*/}
-              {/*    'group-hover:opacity-70 transition-opacity duration-300 font-bold'*/}
-              {/*  }*/}
-              {/*/>*/}
-              {/*<span*/}
-              {/*  className={*/}
-              {/*    'group-hover:opacity-70 transition-opacity duration-300'*/}
-              {/*  }*/}
-              {/*>*/}
-              {/*  Crypto page*/}
-              {/*</span>*/}
-              <Button classes={'rounded-xl text-base font-medium'}>
-                Currencies
+              <Button classes={'rounded-lg text-base font-medium'}>
+                Let&#39;s Explore
               </Button>
-            </Link>
-          </div>
-          <div className="flex flex-row items-center max-w-[380px] justify-center rounded-xl overflow-hidden">
-            <Link
-              href={'https://www.youtube.com/@CryptoBluedia/videos'}
-              title={'Bluedia channel'}
-              className={'hover:opacity-90 transition-opacity duration-300'}
-            >
-              <Image
-                src={pic}
-                alt={'ex'}
-                placeholder={'blur'}
-                className={'w-full md:h-auto h-52 object-cover object-left'}
-              />
             </Link>
           </div>
         </div>
@@ -114,17 +104,18 @@ export function TimelineDemo() {
               cryptocurrency market.
             </p>
           </div>
-          <div className="flex flex-col sm:flex-row items-start max-w-[380px] gap-3 justify-center rounded-xl overflow-hidden">
-            <input
-              className={
-                'w-full px-3 py-2 rounded-xl text-DarkBlue bg-white outline-none border border-DarkBlue border-solid border-opacity-70'
-              }
-              placeholder={'Your email address'}
-            />
-            <Button classes={'rounded-xl text-base font-medium'}>
-              Subscribe
-            </Button>
-          </div>
+          {/*<div className="flex flex-col sm:flex-row items-start max-w-[380px] gap-3 justify-center rounded-xl overflow-hidden">*/}
+          {/*  <input*/}
+          {/*    className={*/}
+          {/*      'w-full px-3 py-2 rounded-xl text-DarkBlue bg-white outline-none border border-DarkBlue border-solid border-opacity-70'*/}
+          {/*    }*/}
+          {/*    placeholder={'Your email address'}*/}
+          {/*  />*/}
+          {/*  <Button classes={'rounded-xl text-base font-medium'}>*/}
+          {/*    Subscribe*/}
+          {/*  </Button>*/}
+          {/*</div>*/}
+          <SubscribeModal>Subscribe</SubscribeModal>
         </div>
       ),
     },

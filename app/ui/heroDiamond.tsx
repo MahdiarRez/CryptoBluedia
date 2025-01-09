@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import diamond from '@/public/diamondB.png';
 import { InputVanish } from '@/app/components/inputVanish';
+import { TextGenerate } from '@/app/components/textGenerate';
 
 function HeroDiamond() {
   return (
@@ -23,22 +24,22 @@ function HeroDiamond() {
           'flex flex-col gap-3 md:max-w-[567px] lg:max-w-[unset] xl:max-w-[800px]'
         }
       >
-        <h2
-          className={
+        <TextGenerate
+          element={'h2'}
+          classes={
             'text-white dark:text-DarkBlue text-2xl font-bold md:text-4xl sm:text-3xl lg:text-5xl xl:text-6xl lg:leading-[3.25rem] xl:leading-[4rem]'
           }
-        >
-          Here is where Crypto currency Meet Timeless Brilliance.
-        </h2>
-        <h3
-          className={
+          text={'Here is where Crypto currency Meet Timeless Brilliance.'}
+        />
+        <TextGenerate
+          element={'h3'}
+          delay={1.5}
+          preset={'fade'}
+          text={"Reach the market's diamond easily."}
+          classes={
             'text-white dark:text-DarkBlue text-opacity-85 text-sm font-medium md:text-lg'
           }
-        >
-          Reach the market&#39;s{' '}
-          <span className={'text-LightBlue dark:font-extrabold'}>diamond</span>{' '}
-          easily.
-        </h3>
+        />
         <InputVanish />
       </div>
     </div>
