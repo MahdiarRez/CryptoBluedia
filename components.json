@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "new-york",
+  "rsc": true,
+  "tsx": true,
+  "tailwind": {
+    "config": "tailwind.config.ts",
+    "css": "app/global.css",
+    "baseColor": "gray",
+    "cssVariables": false,
+    "prefix": ""
+  },
+  "aliases": {
+    "components": "@/app/components/motionPrimitive",
+    "utils": "@/app/components/motionPrimitive/utils",
+    "ui": "@/app/components/ui",
+    "lib": "@/app/components/motionPrimitive/lib",
+    "hooks": "@/app/components/motionPrimitive/hooks"
+  },
+  "iconLibrary": "lucide"
+}
