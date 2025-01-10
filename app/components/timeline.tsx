@@ -67,7 +67,7 @@ export function TimelineDemo() {
             </p>
             <div
               className={
-                'flex flex-row items-center gap-2 w-auto justify-start text-lg pt-1 pb-3'
+                'flex flex-row flex-nowrap text-nowrap items-center gap-2 w-auto justify-start text-lg pt-1 pb-3'
               }
             >
               <span>Digging into the</span>
