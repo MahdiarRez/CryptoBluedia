@@ -2,18 +2,19 @@ import React from 'react';
 import { Timeline } from './aceternityUi/timelineAcet';
 import Link from 'next/link';
 import { FaExternalLinkAlt } from 'react-icons/fa';
-import Image from 'next/image';
-import pic from '../../public/youtubePic.jpeg';
 import Button from '@/app/components/button';
 import { TextShimmer } from '@/app/components/motionPrimitive/ui/text-shimmer';
 import { SubscribeModal } from '@/app/ui/subModal';
+import HeroVideoDialog from '@/app/components/magicUi/hero-video-dialog';
+import youtubePic from '../../public/youtubePic.jpeg';
+import { FadeLeft, FadeRight } from '@/app/components/motions/fade';
 
 export function TimelineDemo() {
   const data = [
     {
       title: 'Youtube',
       content: (
-        <div>
+        <FadeLeft>
           <div className="text-neutral-800 dark:text-neutral-200 text-sm sm:text-base md:text-lg font-normal mb-8">
             <p>
               Subscribe to our channel and benefit from the analysis and review
@@ -39,27 +40,16 @@ export function TimelineDemo() {
               </span>
             </Link>
           </div>
-          <div className="flex flex-row items-center max-w-[380px] justify-center rounded-xl overflow-hidden">
-            <Link
-              href={'https://www.youtube.com/@CryptoBluedia/videos'}
-              title={'Bluedia channel'}
-              className={'hover:opacity-90 transition-opacity duration-300'}
-            >
-              <Image
-                src={pic}
-                alt={'ex'}
-                placeholder={'blur'}
-                className={'w-full md:h-auto h-52 object-cover object-left'}
-              />
-            </Link>
+          <div className="flex flex-row items-center max-w-[380px] min-w-[380px] bg-red-300 justify-center rounded-2xl overflow-hidden">
+            <HeroVideoDialogDemo />
           </div>
-        </div>
+        </FadeLeft>
       ),
     },
     {
       title: 'Explore',
       content: (
-        <div>
+        <FadeRight>
           <div className="text-neutral-800 dark:text-neutral-200 text-sm sm:text-base md:text-lg font-normal mb-8">
             <p>
               Go to the crypto page and easily search for the currency you want
@@ -90,13 +80,13 @@ export function TimelineDemo() {
               </Button>
             </Link>
           </div>
-        </div>
+        </FadeRight>
       ),
     },
     {
       title: 'Get news',
       content: (
-        <div>
+        <FadeLeft>
           <div className="text-neutral-800 dark:text-neutral-200 text-sm sm:text-base md:text-lg font-normal mb-8">
             <p>
               Stay ahead of the curve. Subscribe to our email list for the
@@ -104,25 +94,29 @@ export function TimelineDemo() {
               cryptocurrency market.
             </p>
           </div>
-          {/*<div className="flex flex-col sm:flex-row items-start max-w-[380px] gap-3 justify-center rounded-xl overflow-hidden">*/}
-          {/*  <input*/}
-          {/*    className={*/}
-          {/*      'w-full px-3 py-2 rounded-xl text-DarkBlue bg-white outline-none border border-DarkBlue border-solid border-opacity-70'*/}
-          {/*    }*/}
-          {/*    placeholder={'Your email address'}*/}
-          {/*  />*/}
-          {/*  <Button classes={'rounded-xl text-base font-medium'}>*/}
-          {/*    Subscribe*/}
-          {/*  </Button>*/}
-          {/*</div>*/}
           <SubscribeModal>Subscribe</SubscribeModal>
-        </div>
+        </FadeLeft>
       ),
     },
   ];
+
   return (
     <div className="w-full">
       <Timeline data={data} />
+    </div>
+  );
+}
+
+function HeroVideoDialogDemo() {
+  return (
+    <div className="relative">
+      <HeroVideoDialog
+        className="block"
+        animationStyle="from-center"
+        videoSrc="/videos/vid1.mov"
+        thumbnailSrc={youtubePic}
+        thumbnailAlt="Bluedia video"
+      />
     </div>
   );
 }

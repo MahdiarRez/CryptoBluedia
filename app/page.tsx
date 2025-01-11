@@ -8,7 +8,10 @@ import { BestCurrencies } from '@/app/components/bestCurrencies';
 import { FaChartLine } from 'react-icons/fa6';
 import { TracingBeam } from '@/app/components/aceternityUi/tracingbemAcet';
 import { InfinitySlider } from '@/app/ui/infinitySlider';
-import { BorderTrail } from '@/app/components/motionPrimitive/ui/border-trail';
+import ShineBorder from '@/app/components/magicUi/shine-border';
+import { FadeUp } from '@/app/components/motions/fade';
+
+// import { RxDoubleArrowDown } from 'react-icons/rx';
 
 async function Page() {
   return (
@@ -24,21 +27,20 @@ async function Page() {
         <div className={'py-20 w-full'}>
           <TimelineDemo />
         </div>
-        <div
+        <ShineBorder
           className={
-            'py-20 w-full flex flex-col rounded-2xl bg-WHITE xs:bg-white dark:bg-DarkBlue items-center gap-16 relative'
+            'pb-20 pt-10 w-full flex flex-col rounded-2xl bg-WHITE xs:bg-white dark:bg-blue-700/5 items-center gap-12 relative'
           }
+          color={['#916CF5', '#44A5FB']}
         >
-          <h3 className="text-[1.7rem] capitalize leading-8 sm:text-4xl text-center font-bold tracking-tight flex flex-row-reverse items-center justify-center gap-3">
-            Best currencies of the month
-            <FaChartLine className={'hidden md:block'} />
-          </h3>
+          <FadeUp>
+            <h3 className="text-[1.7rem] capitalize leading-8 sm:text-4xl text-center font-bold tracking-tight flex flex-row-reverse items-center justify-center gap-3">
+              Best currencies of the month
+              <FaChartLine className={'hidden md:block'} />
+            </h3>
+          </FadeUp>
           <BestCurrencies />
-          <BorderTrail
-            className="bg-gradient-to-l via-purple-700 from-LightBlue to-blue-100 dark:from-blue-400 dark:via-blue-500 dark:to-blue-700"
-            size={500}
-          />
-        </div>
+        </ShineBorder>
         <div className={'pt-20 pb-40 w-full'}>
           <Suspense fallback={<BentoGridSkeleton />}>
             <HeroGridNews />

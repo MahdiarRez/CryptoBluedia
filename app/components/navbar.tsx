@@ -7,21 +7,34 @@ import HamberMenu from '@/app/components/hamberMenu';
 import Link from 'next/link';
 import NavMenuItem from '@/app/components/navMenuItem';
 
+// import { RxDoubleArrowDown } from 'react-icons/rx';
+
 function ScrollUp() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// }function ScrollUp() {
-//   const timer = setTimeout(() => {
-//     window.scrollTo({ top: 0, behavior: 'smooth' });
-//   }, 200);
-//
-//   return () => clearTimeout(timer);
-// }
-
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isScrolledFar, setIsScrolledFar] = useState(false);
+
+  // useEffect(() => {
+  //   if (typeof document !== 'undefined') {
+  //     document.body.style.pointerEvents = 'none';
+  //     document.body.style.overflowY = 'hidden';
+  //     const html = document.documentElement;
+  //     html.style.overflowY = 'hidden';
+  //     const timer = setTimeout(() => {
+  //       document.body.style.pointerEvents = 'auto';
+  //       document.body.style.overflowY = 'scroll';
+  //       html.style.overflowY = 'scroll';
+  //     }, 2000);
+  //     return () => {
+  //       clearTimeout(timer);
+  //       document.body.style.overflowY = 'scroll';
+  //       html.style.overflowY = 'scroll';
+  //     };
+  //   }
+  // }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,53 +52,58 @@ function Navbar() {
   useEffect(() => ScrollUp(), []);
 
   return (
-    <div
-      className={`text-DarkBlue fixed flex items-center right-1/2 translate-x-1/2 justify-between z-[2000] transition-all duration-500 ${isScrolled ? `w-[224px] md:w-[535px] md:gap-1 ${isScrolledFar ? 'bg-gray-400' : 'bg-WHITE'}  dark:bg-DarkBlue bg-opacity-70 backdrop-blur-sm p-1.5 rounded-2xl top-7` : 'w-full h-20 px-5 sm:px-8 lg:px-28 xl:px-40 bg-transparent dark:bg-white backdrop-blur-sm '}`}
-    >
-      <Link href={'/'}>
-        <Image
-          src={BluediaLogo}
-          alt={'Bluedia logo'}
-          placeholder={'blur'}
-          className={`w-10 h-10 rounded-lg object-cover cursor-pointer md:h-11 md:w-11 z-50 ${isScrolled ? 'dark:border dark:border-white' : 'dark:border-none'}`}
-        />
-      </Link>
+    <>
       <div
-        className={`flex flex-row items-center ${!isScrolled ? 'gap-4' : 'gap-1'} h-10`}
+        className={`text-DarkBlue fixed flex items-center right-1/2 translate-x-1/2 justify-between z-[2000] transition-all duration-500 ${isScrolled ? `w-[224px] md:w-[535px] md:gap-1 ${isScrolledFar ? 'bg-gray-400' : 'bg-WHITE'}  dark:bg-DarkBlue bg-opacity-70 backdrop-blur-sm p-1.5 rounded-2xl top-7` : 'w-full h-20 px-5 sm:px-8 lg:px-28 xl:px-40 bg-transparent dark:bg-white backdrop-blur-sm '}`}
       >
-        <ul
-          className={`hidden md:flex justify-items-stretch transition-all  duration-500 flex-row items-center gap-1 text-DarkBlue font-medium text-sm ${isScrolled ? 'bg-DarkBlue rounded-lg text-white min-h-full' : ' '}`}
+        <Link href={'/'}>
+          <Image
+            src={BluediaLogo}
+            alt={'Bluedia logo'}
+            placeholder={'blur'}
+            className={`w-10 h-10 rounded-lg object-cover cursor-pointer md:h-11 md:w-11 z-50 ${isScrolled ? 'dark:border dark:border-white' : 'dark:border-none'}`}
+          />
+        </Link>
+        <div
+          className={`flex flex-row items-center ${!isScrolled ? 'gap-4' : 'gap-1'} h-10`}
         >
-          <NavMenuItem isScrolled={isScrolled} href={'/'}>
-            Home
-          </NavMenuItem>
-          <NavMenuItem isScrolled={isScrolled} href={'/currencies'}>
-            Currencies
-          </NavMenuItem>
-          <NavMenuItem isScrolled={isScrolled} href={'/news'}>
-            News
-          </NavMenuItem>
-          <NavMenuItem isScrolled={isScrolled} href={'/qwe'}>
-            Contact us
-          </NavMenuItem>
-        </ul>
-        <button
-          className={`text-white overflow-hidden flex flex-col justify-center items-center font-medium relative bg-DarkBlue ${isScrolled && 'dark:bg-white dark:text-DarkBlue'} rounded-lg px-8 transition-colors duration-300  ${isScrolled ? 'h-10 md:h-11' : 'h-10'} group`}
-        >
-          <span
-            className={`group-hover:translate-y-10 transition-transform duration-300`}
+          <ul
+            className={`hidden md:flex justify-items-stretch transition-all  duration-500 flex-row items-center gap-1 text-DarkBlue font-medium text-sm ${isScrolled ? 'bg-DarkBlue rounded-lg text-white min-h-full' : ' '}`}
           >
-            Login
-          </span>
-          <span
-            className={`${isScrolled ? 'bottom-12 group-hover:bottom-2.5' : 'bottom-10 group-hover:bottom-2'} transition-all duration-300 absolute`}
+            <NavMenuItem isScrolled={isScrolled} href={'/'}>
+              Home
+            </NavMenuItem>
+            <NavMenuItem isScrolled={isScrolled} href={'/currencies'}>
+              Currencies
+            </NavMenuItem>
+            <NavMenuItem isScrolled={isScrolled} href={'/news'}>
+              News
+            </NavMenuItem>
+            <NavMenuItem isScrolled={isScrolled} href={'/qwe'}>
+              Contact us
+            </NavMenuItem>
+          </ul>
+          <button
+            className={`text-white overflow-hidden flex flex-col justify-center items-center font-medium relative bg-DarkBlue ${isScrolled && 'dark:bg-white dark:text-DarkBlue'} rounded-lg px-8 transition-colors duration-300  ${isScrolled ? 'h-10 md:h-11' : 'h-10'} group`}
           >
-            Login
-          </span>
-        </button>
-        <HamberMenu isScrolled={isScrolled} />
+            <span
+              className={`group-hover:translate-y-10 transition-transform duration-300`}
+            >
+              Login
+            </span>
+            <span
+              className={`${isScrolled ? 'bottom-12 group-hover:bottom-2.5' : 'bottom-10 group-hover:bottom-2'} transition-all duration-300 absolute`}
+            >
+              Login
+            </span>
+          </button>
+          <HamberMenu isScrolled={isScrolled} />
+        </div>
       </div>
-    </div>
+      {/*<RxDoubleArrowDown*/}
+      {/*  className={`fixed size-12 dark:text-WHITE ${isScrolled ? 'opacity-0' : ' opacity-0 lg:opacity-100'} xl:size-14 xl:bottom-12 xl:left-9 text-DarkBlue bottom-11 transition-all duration-700 left-7 arrow-motion`}*/}
+      {/*/>*/}
+    </>
   );
 }
 

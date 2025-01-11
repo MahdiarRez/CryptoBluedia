@@ -8,31 +8,52 @@ import daisyui from 'daisyui';
 import { default as fl } from 'tailwindcss/lib/util/flattenColorPalette';
 
 export default {
-  darkMode: ['class', 'class'],
+  darkMode: ['class'],
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-  	extend: {
-  		screens: {
-  			xs: '521px',
-  			lg2: '1150px'
-  		},
-  		colors: {
-  			WHITE: '#F5F4F6',
-  			LightBlue: '#28c9e1',
-  			DarkBlue: '#0d1217'
-  		},
-  		borderRadius: {
-  			lg: 'var(--radius)',
-  			md: 'calc(var(--radius) - 2px)',
-  			sm: 'calc(var(--radius) - 4px)'
-  		}
-  	}
+    extend: {
+      screens: {
+        xs: '521px',
+        lg2: '1150px',
+      },
+      colors: {
+        WHITE: '#F5F4F6',
+        LightBlue: '#28c9e1',
+        DarkBlue: '#0d1217',
+      },
+      borderRadius: {
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
+        sm: 'calc(var(--radius) - 4px)',
+      },
+      animation: {
+        shine: 'shine var(--duration) infinite linear',
+      },
+      keyframes: {
+        shine: {
+          '0%': {
+            'background-position': '0% 0%',
+          },
+          '50%': {
+            'background-position': '100% 100%',
+          },
+          to: {
+            'background-position': '0% 0%',
+          },
+        },
+      },
+    },
   },
-  plugins: [tailwindcss_animated, daisyui, addVariablesForColors, require("tailwindcss-animate")],
+  plugins: [
+    tailwindcss_animated,
+    daisyui,
+    addVariablesForColors,
+    require('tailwindcss-animate'),
+  ],
 } satisfies Config;
 
 function addVariablesForColors({ addBase, theme }: any) {

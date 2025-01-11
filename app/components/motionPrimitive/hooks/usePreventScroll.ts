@@ -34,7 +34,7 @@ export const useIsomorphicLayoutEffect =
 interface PreventScrollOptions {
   /** Whether the scroll lock is disabled. */
   isDisabled?: boolean;
-  focusCallback?: () => void;
+  // focusCallback?: () => void;
 }
 
 function chain(...callbacks: unknown[]): (...args: unknown[]) => void {
@@ -197,7 +197,7 @@ function preventScrollMobileSafari() {
       // so it doesnt try to scroll it into view. When tapping on an input, this needs to
       // be done before the "focus" event, so we have to focus the element ourselves.
       target.style.transform = 'translateY(-2000px)';
-      // target.focus();
+      target.focus();
       requestAnimationFrame(() => {
         target.style.transform = '';
       });
