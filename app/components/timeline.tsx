@@ -40,7 +40,7 @@ export function TimelineDemo() {
               </span>
             </Link>
           </div>
-          <div className="flex flex-row items-center max-w-[380px] min-w-[380px] bg-red-300 justify-center rounded-2xl overflow-hidden">
+          <div className="flex flex-row items-center max-w-[380px] min-w-[180px] bg-red-300 justify-center rounded-2xl overflow-hidden">
             <HeroVideoDialogDemo />
           </div>
         </FadeLeft>
@@ -57,13 +57,13 @@ export function TimelineDemo() {
             </p>
             <div
               className={
-                'flex flex-row flex-nowrap text-nowrap items-center gap-2 w-auto justify-start text-lg pt-1 pb-3'
+                'flex flex-row flex-nowrap text-nowrap items-center gap-1 xs:gap-2 w-auto justify-start text-base xs:text-lg pt-1 pb-3'
               }
             >
               <span>Digging into the</span>
               <TextShimmer
                 duration={1.8}
-                className="text-3xl font-bold [--base-color:theme(colors.cyan.500)] [--base-gradient-color:theme(colors.purple.400)] dark:[--base-color:theme(colors.blue.700)] dark:[--base-gradient-color:theme(colors.blue.400)]"
+                className="text-xl xs:text-3xl font-bold [--base-color:theme(colors.cyan.500)] [--base-gradient-color:theme(colors.purple.400)] dark:[--base-color:theme(colors.blue.700)] dark:[--base-gradient-color:theme(colors.blue.400)]"
               >
                 219
               </TextShimmer>
