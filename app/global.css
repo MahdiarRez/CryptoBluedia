@@ -17,8 +17,23 @@
     }
 }
 
+.arrow-motion {
+    animation: arrowBottom 1s ease-in-out infinite alternate;
+}
+
+@keyframes arrowBottom {
+    from {
+        transform: translateY(-10px);
+        filter: brightness(120%);
+    }
+    to {
+        transform: translateY(10px);
+        filter: brightness(100%);
+    }
+}
+
 @layer base {
-  :root {
+    :root {
         --radius: 0.5rem;
     }
 }
