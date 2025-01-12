@@ -12,6 +12,7 @@ interface ShineBorderProps {
   color?: TColorProp;
   className?: string;
   children: React.ReactNode;
+  hiddenOnMobile?: boolean;
 }
 
 export default function ShineBorder({
@@ -21,6 +22,7 @@ export default function ShineBorder({
   color = '#000000',
   className,
   children,
+  hiddenOnMobile = true,
 }: ShineBorderProps) {
   return (
     <div
@@ -41,7 +43,7 @@ export default function ShineBorder({
             '--background-radial-gradient': `radial-gradient(transparent,transparent, ${color instanceof Array ? color.join(',') : color},transparent,transparent)`,
           } as React.CSSProperties
         }
-        className={`pointer-events-none hidden xs:block before:bg-shine-size before:absolute before:inset-0 before:size-full before:rounded-[--border-radius] before:p-[--border-width] before:will-change-[background-position] before:content-[""] before:![-webkit-mask-composite:xor] before:![mask-composite:exclude] before:[background-image:--background-radial-gradient] before:[background-size:300%_300%] before:[mask:--mask-linear-gradient] motion-safe:before:animate-shine`}
+        className={`pointer-events-none ${hiddenOnMobile ? 'hidden xs:block' : 'block'} before:bg-shine-size before:absolute before:inset-0 before:size-full before:rounded-[--border-radius] before:p-[--border-width] before:will-change-[background-position] before:content-[""] before:![-webkit-mask-composite:xor] before:![mask-composite:exclude] before:[background-image:--background-radial-gradient] before:[background-size:300%_300%] before:[mask:--mask-linear-gradient] motion-safe:before:animate-shine`}
       ></div>
       {children}
     </div>
