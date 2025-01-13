@@ -122,7 +122,7 @@ export const BestCurrenciesAcet = ({
               <p className="text-sm text-gray-500 dark:text-neutral-500">
                 {testimonials[active].designation}
               </p>
-              <motion.p className="text-lg text-gray-500 mt-8 dark:text-neutral-300">
+              <motion.p className="text-lg text-gray-500 mt-8 dark:text-neutral-300 line-clamp-3">
                 {testimonials[active].quote.split(' ').map((word, index) => (
                   <motion.span
                     key={index}

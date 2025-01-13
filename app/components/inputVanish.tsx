@@ -2,7 +2,13 @@
 
 import { VanishInputAcet } from '@/app/components/aceternityUi/vanishInputAcet';
 
-export function InputVanish() {
+export function InputVanish({
+  classes,
+  mt = 'mt-3.5',
+}: {
+  classes?: string;
+  mt?: string;
+}) {
   const placeholders = ['Currency name', 'Btc', 'Not', 'Ethfi', 'One'];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -14,7 +20,9 @@ export function InputVanish() {
   };
 
   return (
-    <div className="w-full z-0 max-w-[248px] lg:max-w-[295px] mt-3.5 flex flex-col justify-center items-center">
+    <div
+      className={`w-full ${classes} z-0 max-w-[248px] lg:max-w-[295px] ${mt} flex flex-col justify-center items-center`}
+    >
       <VanishInputAcet
         placeholders={placeholders}
         onChange={handleChange}

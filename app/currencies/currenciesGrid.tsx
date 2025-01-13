@@ -11,32 +11,52 @@ export default function CurrenciesGrid() {
 export const projects = [
   {
     title: 'Shibainu',
-    description: '71',
+    description: 71,
     link: 'https://stripe.com',
   },
   {
     title: 'Harmony',
-    description: '12',
+    description: 12,
     link: 'https://netflix.com',
   },
   {
     title: 'Vechain',
-    description: '182',
+    description: 183,
     link: 'https://google.com',
   },
   {
     title: 'Meta',
-    description: '102',
+    description: 103,
     link: 'https://meta.com',
   },
   {
     title: 'Hamster',
-    description: '98',
+    description: 98,
     link: 'https://amazon.com',
   },
   {
     title: 'Uniswap',
-    description: '77',
-    link: 'https://microsoft.com',
+    description: 77,
+    link: 'sasdw',
+  },
+  {
+    title: 'Uniswap',
+    description: 77,
+    link: 'sas2d',
+  },
+  {
+    title: 'Uniswap',
+    description: 77,
+    link: 'sas3d',
+  },
+  {
+    title: 'Uniswap',
+    description: 77,
+    link: 'sa1sd',
+  },
+  {
+    title: 'Uniswap',
+    description: 77,
+    link: 'sas123d',
   },
 ];

@@ -1,6 +1,8 @@
 import React from 'react';
 import { TextGenerate } from '@/app/components/textGenerate';
 import CurrenciesGrid from '@/app/currencies/currenciesGrid';
+import { InputVanish } from '@/app/components/inputVanish';
+import { FadeLeft } from '@/app/components/motions/fade';
 
 function Page() {
   return (
@@ -21,6 +23,9 @@ function Page() {
         text={
           'Delve into a vast selection of digital currencies, from established leaders to promising newcomers. Your journey into crypto starts here.'
         }
+      />
+      <InputVanish
+        mt={'mt-6 dark:border rounded-xl dark:border-solid dark:border-WHITE'}
       />
       <CurrenciesGrid />
     </div>

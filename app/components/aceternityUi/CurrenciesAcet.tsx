@@ -14,17 +14,19 @@ export const CurrenciesAcet = ({
 }: {
   items: {
     title: string;
-    description: string;
+    description: number;
     link: string;
   }[];
   className?: string;
 }) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const newItems = items.slice(0, 6);
+  const newItems2 = items.slice(0, 8);
 
   return (
     <div
       className={cn(
-        'grid grid-cols-2 xs:grid-cols-3 place-items-center place-content-center lg:grid-cols-3 py-10',
+        'grid grid-cols-2 xs:grid-rows-2 xs:grid-cols-3 place-items-center place-content-center lg:grid-cols-3 py-10',
         className
       )}
     >
@@ -39,7 +41,7 @@ export const CurrenciesAcet = ({
           <AnimatePresence>
             {hoveredIndex === idx && (
               <motion.span
-                className="absolute inset-0 h-full w-full bg-neutral-200 dark:bg-slate-800/[0.8] block rounded-2xl"
+                className="absolute inset-0 h-full w-full bg-LightBlue/30 dark:bg-LightBlue/20 block rounded-2xl"
                 layoutId="hoverBackground"
                 initial={{ opacity: 0 }}
                 animate={{
@@ -54,13 +56,8 @@ export const CurrenciesAcet = ({
             )}
           </AnimatePresence>
           <Card>
-            <Image
-              src={shiba}
-              alt={'currency pic'}
-              className={'w-14 h-14 rounded-lg object-cover object-center'}
-            />
             <CardTitle>{item.title}</CardTitle>
-            <CardDescription>{item.description}</CardDescription>
+            <CardDescription rate={item.description} />
           </Card>
         </Link>
       ))}
@@ -81,14 +78,23 @@ export const Card = ({
         borderWidth={1}
         borderRadius={15}
         hiddenOnMobile={false}
-        color={['#916CF5', '#44A5FB']}
+        color={['#b7a9f3', '#74bbf8']}
         className={cn(
-          'rounded-2xl h-auto w-full min-w-36 p-1 overflow-hidden bg-DarkBlue/95 border border-solid border-WHITE dark:border-white/[0.2] group-hover:border-transparent relative z-20',
+          'rounded-2xl h-40 min-h-40 flex items-start justify-start w-full min-w-28 xs:min-w-36 p-1 overflow-hidden border z-50 border-solid border-WHITE dark:border-white/[0.2] group-hover:border-transparent relative',
           className
         )}
       >
-        <div className="relative z-50 rounded-2xl">
-          <div className="p-4">{children}</div>
+        <Image
+          src={shiba}
+          alt={'shiba'}
+          className={
+            'z-30 absolute object-center object-cover brightness-[0.6] top-0 right-0 w-full h-full'
+          }
+        />
+        <div className="relative h-full z-50">
+          <div className="p-3 h-full justify-between flex flex-col items-start">
+            {children}
+          </div>
         </div>
       </ShineBorder>
     </FadeUp>
@@ -103,10 +109,7 @@ export const CardTitle = ({
 }) => {
   return (
     <h4
-      className={cn(
-        'text-white text-xl font-semibold tracking-normal mt-2.5',
-        className
-      )}
+      className={cn('text-white text-xl font-bold tracking-normal', className)}
     >
       {children}
     </h4>
@@ -114,20 +117,24 @@ export const CardTitle = ({
 };
 export const CardDescription = ({
   className,
-  children,
+  rate,
 }: {
   className?: string;
-  children: React.ReactNode;
+  rate: number;
 }) => {
   return (
     <p
       className={cn(
-        'mt-0.5 text-white/70 tracking-wide leading-relaxed text-sm',
+        'text-white font-semibold flex flex-col gap-1 tracking-wide leading-relaxed text-sm',
         className
       )}
     >
-      Total Rate : <br />{' '}
-      <span className={'text-base font-bold text-red-300'}>{children}</span>
+      <span>Total Rate :</span>
+      <span
+        className={`text-base font-bold ${rate < 100 ? 'text-red-600' : 'text-green-500'} max-w-min bg-white/80 px-2 py-0.5 rounded-sm`}
+      >
+        {rate}
+      </span>
     </p>
   );
 };
