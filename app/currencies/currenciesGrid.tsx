@@ -2,7 +2,7 @@ import { CurrenciesAcet } from '@/app/components/aceternityUi/CurrenciesAcet';
 
 export default function CurrenciesGrid() {
   return (
-    <div className="max-w-5xl mx-auto">
+    <div className="max-w-5xl lg:max-w-max mx-auto">
       <CurrenciesAcet items={projects} />
     </div>
   );
@@ -57,6 +57,16 @@ export const projects = [
   {
     title: 'Uniswap',
     description: 77,
-    link: 'sas123d',
+    link: '11',
+  },
+  {
+    title: 'Uniswap',
+    description: 77,
+    link: '123123',
+  },
+  {
+    title: 'Uniswap',
+    description: 77,
+    link: 'qwek1',
   },
 ];

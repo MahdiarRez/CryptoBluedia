@@ -7,14 +7,13 @@ import { TextShimmer } from '@/app/components/motionPrimitive/ui/text-shimmer';
 import { SubscribeModal } from '@/app/ui/subModal';
 import HeroVideoDialog from '@/app/components/magicUi/hero-video-dialog';
 import youtubePic from '../../public/youtubePic.jpeg';
-import { FadeLeft, FadeRight } from '@/app/components/motions/fade';
 
 export function TimelineDemo() {
   const data = [
     {
       title: 'Youtube',
       content: (
-        <FadeLeft>
+        <>
           <div className="text-neutral-800 dark:text-neutral-200 text-sm sm:text-base md:text-lg font-normal mb-8">
             <p>
               Subscribe to our channel and benefit from the analysis and review
@@ -43,50 +42,48 @@ export function TimelineDemo() {
           <div className="flex flex-row items-center max-w-[380px] min-w-[180px] bg-red-300 justify-center rounded-2xl overflow-hidden">
             <HeroVideoDialogDemo />
           </div>
-        </FadeLeft>
+        </>
       ),
     },
     {
       title: 'Explore',
       content: (
-        <FadeRight>
-          <div className="text-neutral-800 dark:text-neutral-200 text-sm sm:text-base md:text-lg font-normal mb-8">
-            <p>
-              Go to the crypto page and easily search for the currency you want
-              and see its information.
-            </p>
-            <div
-              className={
-                'flex flex-row flex-nowrap text-nowrap items-center gap-1 xs:gap-2 w-auto justify-start text-base xs:text-lg pt-1 pb-3'
-              }
+        <div className="text-neutral-800 dark:text-neutral-200 text-sm sm:text-base md:text-lg font-normal mb-8">
+          <p>
+            Go to the crypto page and easily search for the currency you want
+            and see its information.
+          </p>
+          <div
+            className={
+              'flex flex-row flex-nowrap text-nowrap items-center gap-1 xs:gap-2 w-auto justify-start text-base xs:text-lg pt-1 pb-3'
+            }
+          >
+            <span>Digging into the</span>
+            <TextShimmer
+              duration={1.8}
+              className="text-xl xs:text-3xl font-bold [--base-color:theme(colors.cyan.500)] [--base-gradient-color:theme(colors.purple.400)] dark:[--base-color:theme(colors.blue.700)] dark:[--base-gradient-color:theme(colors.blue.400)]"
             >
-              <span>Digging into the</span>
-              <TextShimmer
-                duration={1.8}
-                className="text-xl xs:text-3xl font-bold [--base-color:theme(colors.cyan.500)] [--base-gradient-color:theme(colors.purple.400)] dark:[--base-color:theme(colors.blue.700)] dark:[--base-gradient-color:theme(colors.blue.400)]"
-              >
-                219
-              </TextShimmer>
-              <span> Currencies.</span>
-            </div>
-            <Link
-              href={'/currencies'}
-              className={
-                'font-extrabold no-underline mt-2.5 group text-base flex flex-row max-w-fit items-center gap-1 md:text-lg'
-              }
-            >
-              <Button classes={'rounded-lg text-base font-medium'}>
-                Let&#39;s Explore
-              </Button>
-            </Link>
+              219
+            </TextShimmer>
+            <span> Currencies.</span>
           </div>
-        </FadeRight>
+          <Link
+            href={'/currencies'}
+            className={
+              'font-extrabold no-underline mt-2.5 group text-base flex flex-row max-w-fit items-center gap-1 md:text-lg'
+            }
+          >
+            <Button classes={'rounded-lg text-base font-medium'}>
+              Let&#39;s Explore
+            </Button>
+          </Link>
+        </div>
       ),
     },
     {
       title: 'Get news',
       content: (
-        <FadeLeft>
+        <>
           <div className="text-neutral-800 dark:text-neutral-200 text-sm sm:text-base md:text-lg font-normal mb-8">
             <p>
               Stay ahead of the curve. Subscribe to our email list for the
@@ -95,7 +92,7 @@ export function TimelineDemo() {
             </p>
           </div>
           <SubscribeModal>Subscribe</SubscribeModal>
-        </FadeLeft>
+        </>
       ),
     },
   ];

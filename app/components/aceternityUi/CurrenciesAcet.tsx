@@ -6,7 +6,6 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import shiba from '@/public/shibainu.png';
 import ShineBorder from '@/app/components/magicUi/shine-border';
-import { FadeUp } from '@/app/components/motions/fade';
 
 export const CurrenciesAcet = ({
   items,
@@ -20,13 +19,11 @@ export const CurrenciesAcet = ({
   className?: string;
 }) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const newItems = items.slice(0, 6);
-  const newItems2 = items.slice(0, 8);
 
   return (
     <div
       className={cn(
-        'grid grid-cols-2 xs:grid-rows-2 xs:grid-cols-3 place-items-center place-content-center lg:grid-cols-3 py-10',
+        'grid grid-cols-2 xs:grid-cols-3 lg:grid-cols-6 place-items-center place-content-center py-10',
         className
       )}
     >
@@ -73,31 +70,29 @@ export const Card = ({
   children: React.ReactNode;
 }) => {
   return (
-    <FadeUp>
-      <ShineBorder
-        borderWidth={1}
-        borderRadius={15}
-        hiddenOnMobile={false}
-        color={['#b7a9f3', '#74bbf8']}
-        className={cn(
-          'rounded-2xl h-40 min-h-40 flex items-start justify-start w-full min-w-28 xs:min-w-36 p-1 overflow-hidden border z-50 border-solid border-WHITE dark:border-white/[0.2] group-hover:border-transparent relative',
-          className
-        )}
-      >
-        <Image
-          src={shiba}
-          alt={'shiba'}
-          className={
-            'z-30 absolute object-center object-cover brightness-[0.6] top-0 right-0 w-full h-full'
-          }
-        />
-        <div className="relative h-full z-50">
-          <div className="p-3 h-full justify-between flex flex-col items-start">
-            {children}
-          </div>
+    <ShineBorder
+      borderWidth={1}
+      borderRadius={15}
+      hiddenOnMobile={false}
+      color={['#b7a9f3', '#74bbf8']}
+      className={cn(
+        'rounded-2xl h-40 min-h-40 flex items-start justify-start w-full min-w-28 xs:min-w-36 lg:min-w-32 p-1 overflow-hidden border z-50 border-solid border-WHITE dark:border-white/[0.2] group-hover:border-transparent relative',
+        className
+      )}
+    >
+      <Image
+        src={shiba}
+        alt={'shiba'}
+        className={
+          'z-30 absolute object-center object-cover brightness-[0.6] top-0 right-0 w-full h-full'
+        }
+      />
+      <div className="relative h-full z-50">
+        <div className="p-3 h-full justify-between flex flex-col items-start">
+          {children}
         </div>
-      </ShineBorder>
-    </FadeUp>
+      </div>
+    </ShineBorder>
   );
 };
 export const CardTitle = ({

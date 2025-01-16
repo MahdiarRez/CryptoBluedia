@@ -9,7 +9,6 @@ import { FaChartLine } from 'react-icons/fa6';
 import { TracingBeam } from '@/app/components/aceternityUi/tracingbemAcet';
 import { InfinitySlider } from '@/app/ui/infinitySlider';
 import ShineBorder from '@/app/components/magicUi/shine-border';
-import { FadeUp } from '@/app/components/motions/fade';
 
 // import { RxDoubleArrowDown } from 'react-icons/rx';
 
@@ -33,12 +32,10 @@ async function Page() {
           }
           color={['#916CF5', '#44A5FB']}
         >
-          <FadeUp>
-            <h3 className="text-[1.7rem] capitalize leading-8 sm:text-4xl text-center font-bold tracking-tight flex flex-row-reverse items-center justify-center gap-3">
-              Best currencies of the month
-              <FaChartLine className={'hidden md:block'} />
-            </h3>
-          </FadeUp>
+          <h3 className="text-[1.7rem] capitalize leading-8 sm:text-4xl text-center font-bold tracking-tight flex flex-row-reverse items-center justify-center gap-3">
+            Best currencies of the month
+            <FaChartLine className={'hidden md:block'} />
+          </h3>
           <BestCurrencies />
         </ShineBorder>
         <div className={'pt-20 pb-40 w-full'}>

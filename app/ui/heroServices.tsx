@@ -4,7 +4,6 @@ import { SiVictoriametrics } from 'react-icons/si';
 import { FaMagnifyingGlassChart } from 'react-icons/fa6';
 import { FaUserSecret } from 'react-icons/fa';
 import { BsPeopleFill } from 'react-icons/bs';
-import { FadeUp } from '@/app/components/motions/fade';
 
 function HeroServices() {
   return (
@@ -13,24 +12,20 @@ function HeroServices() {
         'h-auto mt-20 lg:mt-0 w-full flex flex-col justify-center items-center pb-20 '
       }
     >
-      <FadeUp>
-        <h3
-          className={
-            'text-2xl xs:text-3xl leading-8 sm:text-4xl text-center text-nowrap font-bold tracking-tight flex flex-row justify-center items-center flex-nowrap'
-          }
-        >
-          <BsPeopleFill className={'mr-2'} />
-          What are we doing here?
-        </h3>
-        <p className={'text-center font-normal text-base mt-4 md:text-lg'}>
-          Empower your crypto journey with us. We provide detailed reviews and
-          ratings of crypto currencies. <br /> Our goal is to equip you with the
-          knowledge you need to invest wisely.
-        </p>
-      </FadeUp>
-      <FadeUp>
-        <ServicesList />
-      </FadeUp>
+      <h3
+        className={
+          'text-2xl xs:text-3xl leading-8 sm:text-4xl text-center text-nowrap font-bold tracking-tight flex flex-row justify-center items-center flex-nowrap'
+        }
+      >
+        <BsPeopleFill className={'mr-2'} />
+        What are we doing here?
+      </h3>
+      <p className={'text-center font-normal text-base mt-4 md:text-lg'}>
+        Empower your crypto journey with us. We provide detailed reviews and
+        ratings of crypto currencies. <br /> Our goal is to equip you with the
+        knowledge you need to invest wisely.
+      </p>
+      <ServicesList />
     </div>
   );
 }

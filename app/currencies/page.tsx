@@ -2,12 +2,11 @@ import React from 'react';
 import { TextGenerate } from '@/app/components/textGenerate';
 import CurrenciesGrid from '@/app/currencies/currenciesGrid';
 import { InputVanish } from '@/app/components/inputVanish';
-import { FadeLeft } from '@/app/components/motions/fade';
 
 function Page() {
   return (
     <div
-      className={`px-4 dark:bg-DarkBlue w-dvh h-auto pt-32 sm:pt-40 pb-20 md:max-h-dvh md:min-h-dvh sm:px-8 lg:px-28 xl:px-40 text-DarkBlue dark:text-WHITE bg-WHITE items-center justify-center flex flex-col`}
+      className={`px-4 dark:bg-DarkBlue w-dvh h-auto pt-32 sm:pt-40 lg:pt-28 pb-20 lg:max-h-dvh lg:min-h-dvh sm:px-8 lg:px-16 xl:px-40 text-DarkBlue dark:text-WHITE bg-WHITE items-center justify-center flex flex-col`}
     >
       <TextGenerate
         preset={'fade-in-blur'}

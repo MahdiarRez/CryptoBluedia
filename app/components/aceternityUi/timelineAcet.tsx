@@ -2,7 +2,6 @@
 import { useScroll, useTransform, motion } from 'motion/react';
 import React, { useEffect, useRef, useState } from 'react';
 import { RiCustomerService2Fill } from 'react-icons/ri';
-import { FadeUp } from '@/app/components/motions/fade';
 
 interface TimelineEntry {
   title: string;
@@ -35,16 +34,14 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
       ref={containerRef}
     >
       <div className="max-w-7xl md:px-8 lg:px-10 flex flex-col justify-center items-center">
-        <FadeUp>
-          <h2 className="text-2xl leading-8 sm:text-4xl text-center font-bold tracking-tight mb-4 flex flex-row gap-2 items-center text-nowrap flex-nowrap">
-            <RiCustomerService2Fill />
-            How to use our services ?
-          </h2>
-          <p className="text-neutral-700 dark:text-neutral-300 text-center text-base md:text-lg max-w-[332px] sm:max-w-xl font-medium">
-            Here we will help you learn how to use the Blue
-            <span className={'text-LightBlue'}>dia</span> services.
-          </p>
-        </FadeUp>
+        <h2 className="text-2xl leading-8 sm:text-4xl text-center font-bold tracking-tight mb-4 flex flex-row gap-2 items-center text-nowrap flex-nowrap">
+          <RiCustomerService2Fill />
+          How to use our services ?
+        </h2>
+        <p className="text-neutral-700 dark:text-neutral-300 text-center text-base md:text-lg max-w-[332px] sm:max-w-xl font-medium">
+          Here we will help you learn how to use the Blue
+          <span className={'text-LightBlue'}>dia</span> services.
+        </p>
       </div>
 
       <div ref={ref} className="relative max-w-7xl mx-auto pb-20">
