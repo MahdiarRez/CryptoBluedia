@@ -2,41 +2,20 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
 import Button from '@/app/components/button';
-// charts import
+import {
+  Card,
+  CardBody,
+  Typography,
+  IconButton,
+  TypographyProps,
+  CardFooter,
+} from '@material-tailwind/react';
+import merge from 'deepmerge';
+
 const Chart = dynamic(() => import('react-apexcharts'), {
   ssr: false,
 });
 
-// @material-tailwind/react
-import {
-  Card,
-  Menu,
-  Input,
-  Button as btn,
-  MenuList,
-  MenuItem,
-  CardBody,
-  Typography,
-  CardHeader,
-  IconButton,
-  MenuHandler,
-  TypographyProps,
-  CardFooter,
-} from '@material-tailwind/react';
-
-// import {
-//   DocumentMagnifyingGlassIcon,
-//   FlagIcon,
-//   MagnifyingGlassIcon,
-// } from 'heroicons/20/solid';
-// import { ChevronDownIcon } from '@heroicons/react/24/outline';
-
-// deepmerge
-import merge from 'deepmerge';
-import { TextGenerate } from '@/app/components/textGenerate';
-import { InputVanish } from '@/app/components/inputVanish';
-
-// area chart
 interface ChartsPropsType {
   height: number;
   series: object[];
@@ -138,7 +117,7 @@ function AreaChart({
       type="area"
       height={height}
       series={series as ApexAxisChartSeries}
-      options={chartOptions as any}
+      options={chartOptions as never}
     />
   );
 }
