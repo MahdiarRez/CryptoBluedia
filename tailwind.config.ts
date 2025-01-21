@@ -53,6 +53,7 @@ export default {
     daisyui,
     addVariablesForColors,
     require('tailwindcss-animate'),
+    require('@material-tailwind/react/utils/withMT'),
   ],
 } satisfies Config;
 
