@@ -11,7 +11,6 @@ import {
   CardFooter,
 } from '@material-tailwind/react';
 import merge from 'deepmerge';
-import { IoIosArrowForward } from 'react-icons/io';
 import { RiInfoCardFill } from 'react-icons/ri';
 
 const Chart = dynamic(() => import('react-apexcharts'), {
