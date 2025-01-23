@@ -11,6 +11,8 @@ import {
   CardFooter,
 } from '@material-tailwind/react';
 import merge from 'deepmerge';
+import { IoIosArrowForward } from 'react-icons/io';
+import { RiInfoCardFill } from 'react-icons/ri';
 
 const Chart = dynamic(() => import('react-apexcharts'), {
   ssr: false,
@@ -189,11 +191,11 @@ const TABLE_HEAD = [
     customeStyle: 'text-right',
   },
   {
-    head: 'Trend',
+    head: 'Chart',
     customeStyle: 'text-right',
   },
   {
-    head: 'Info',
+    head: 'Bluedia-Scoring',
     customeStyle: 'text-right',
   },
 ];
@@ -201,22 +203,11 @@ const TABLE_HEAD = [
 export function CryptoTable() {
   return (
     <Card
-      className="h-full w-full rounded-2xl shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),_0px_1px_0px_0px_rgba(25,28,33,0.02),_0px_0px_0px_1px_rgba(25,28,33,0.08)]  overflow-hidden"
+      className="h-full w-full rounded-2xl dark:bg-DarkBlue dark:shadow-white shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),_0px_1px_0px_0px_rgba(25,28,33,0.02),_0px_0px_0px_1px_rgba(25,28,33,0.08)]  overflow-hidden"
       placeholder={undefined}
       onPointerEnterCapture={undefined}
       onPointerLeaveCapture={undefined}
     >
-      {/*<CardHeader*/}
-      {/*  floated={false}*/}
-      {/*  shadow={false}*/}
-      {/*  className="mb-4 flex flex-wrap justify-between items-center rounded-none bg-WHITE"*/}
-      {/*  placeholder={undefined}*/}
-      {/*  onPointerEnterCapture={undefined}*/}
-      {/*  onPointerLeaveCapture={undefined}*/}
-      {/*>*/}
-      {/*  <div className={'flex flex-col items-center justify-center'}>*/}
-      {/*    */}
-      {/*</CardHeader>*/}
       <CardBody
         className="overflow-x-auto overflow-y-hidden !px-0 py-2 "
         placeholder={undefined}
@@ -232,9 +223,8 @@ export function CryptoTable() {
                   className={`border-b border-gray-300 !p-4 pb-8 ${customeStyle}`}
                 >
                   <Typography
-                    color="blue-gray"
                     variant="small"
-                    className="!font-bold"
+                    className="!font-bold text-DarkBlue dark:text-WHITE"
                     placeholder={undefined}
                     onPointerEnterCapture={undefined}
                     onPointerLeaveCapture={undefined}
@@ -286,7 +276,7 @@ export function CryptoTable() {
                           </Typography>
                           <Typography
                             variant="small"
-                            className="!font-normal text-gray-600"
+                            className="!font-normal text-gray-600 dark:text-gray-400"
                             placeholder={undefined}
                             onPointerEnterCapture={undefined}
                             onPointerLeaveCapture={undefined}
@@ -302,7 +292,7 @@ export function CryptoTable() {
                         onPointerEnterCapture={undefined}
                         onPointerLeaveCapture={undefined}
                         variant="small"
-                        className="text-right !font-normal text-gray-600"
+                        className="text-right !font-normal text-gray-600 dark:text-gray-400"
                       >
                         {price}
                       </Typography>
@@ -325,7 +315,7 @@ export function CryptoTable() {
                         onPointerEnterCapture={undefined}
                         onPointerLeaveCapture={undefined}
                         variant="small"
-                        className="text-right !font-normal text-gray-600"
+                        className="text-right !font-normal text-gray-600 dark:text-gray-400"
                       >
                         {volume}
                       </Typography>
@@ -336,7 +326,7 @@ export function CryptoTable() {
                         onPointerEnterCapture={undefined}
                         onPointerLeaveCapture={undefined}
                         variant="small"
-                        className="text-right !font-normal text-gray-600"
+                        className="text-right !font-normal text-gray-600 dark:text-gray-400"
                       >
                         {market}
                       </Typography>
@@ -344,11 +334,11 @@ export function CryptoTable() {
                     <td className={classes}>
                       <div className="ml-auto h-12 max-w-[12rem] -translate-y-6">
                         <AreaChart
-                          colors={['#2196F373']}
+                          colors={['#28c9e1']}
                           options={{}}
                           series={[
                             {
-                              name: '2023 Sales',
+                              name: '2025 Sales',
                               data: [30, 40, 500, 420, 700, 350, 500, 330, 900],
                             },
                           ]}
@@ -357,13 +347,16 @@ export function CryptoTable() {
                     </td>
                     <td className={classes}>
                       <div className="flex justify-end gap-4">
-                        {/*<IconButton variant="text" size="sm">*/}
-                        {/*  <DocumentMagnifyingGlassIcon className="h-5 w-5 text-gray-900" />*/}
-                        {/*</IconButton>*/}
-                        {/*<IconButton variant="text" size="sm">*/}
-                        {/*  <FlagIcon className="h-5 w-5 text-gray-900" />*/}
-                        {/*</IconButton>*/}
-                        hi
+                        <Button
+                          classes={
+                            'rounded-lg px-6 flex flex-row-reverse items-center justify-center gap-1.5'
+                          }
+                        >
+                          <span className={'tracking-wide font-medium'}>
+                            More
+                          </span>{' '}
+                          <RiInfoCardFill className={'text-lg'} />
+                        </Button>
                       </div>
                     </td>
                   </tr>
@@ -379,13 +372,19 @@ export function CryptoTable() {
         onPointerEnterCapture={undefined}
         onPointerLeaveCapture={undefined}
       >
-        <Button classes={'rounded-lg font-medium min-w-[113px]'}>
+        <Button
+          classes={
+            'rounded-lg bg-transparent border-solid border border-DarkBlue font-normal min-w-[113px]'
+          }
+          text={'text-DarkBlue'}
+        >
           Previous
         </Button>
         <div className="flex items-center gap-2">
           <IconButton
             variant="outlined"
-            size="sm"
+            className={'border border-solid border-DarkBlue/40 text-DarkBlue'}
+            size="md"
             placeholder={undefined}
             onPointerEnterCapture={undefined}
             onPointerLeaveCapture={undefined}
@@ -394,51 +393,64 @@ export function CryptoTable() {
           </IconButton>{' '}
           <IconButton
             variant="outlined"
-            size="sm"
+            className={'border border-solid border-DarkBlue/40 text-DarkBlue'}
+            size="md"
             placeholder={undefined}
             onPointerEnterCapture={undefined}
             onPointerLeaveCapture={undefined}
           >
-            1
+            2
           </IconButton>{' '}
           <IconButton
             variant="outlined"
-            size="sm"
+            className={'border border-solid border-DarkBlue/40 text-DarkBlue'}
+            size="md"
             placeholder={undefined}
             onPointerEnterCapture={undefined}
             onPointerLeaveCapture={undefined}
           >
-            1
+            3
           </IconButton>{' '}
           <IconButton
             variant="outlined"
-            size="sm"
+            className={'border border-solid border-DarkBlue/40 text-DarkBlue'}
+            size="md"
             placeholder={undefined}
             onPointerEnterCapture={undefined}
             onPointerLeaveCapture={undefined}
           >
-            1
+            4
+          </IconButton>{' '}
+          <IconButton
+            color={'deep-purple'}
+            variant="outlined"
+            className={'border border-solid border-DarkBlue/40 text-DarkBlue'}
+            size="md"
+            placeholder={undefined}
+            onPointerEnterCapture={undefined}
+            onPointerLeaveCapture={undefined}
+          >
+            ...
           </IconButton>{' '}
           <IconButton
             variant="outlined"
-            size="sm"
+            className={'border border-solid border-DarkBlue/40 text-DarkBlue'}
+            size="md"
             placeholder={undefined}
             onPointerEnterCapture={undefined}
             onPointerLeaveCapture={undefined}
           >
-            1
-          </IconButton>{' '}
-          <IconButton
-            variant="outlined"
-            size="sm"
-            placeholder={undefined}
-            onPointerEnterCapture={undefined}
-            onPointerLeaveCapture={undefined}
-          >
-            1
+            54
           </IconButton>
         </div>
-        <Button classes={'rounded-lg font-medium min-w-[113px]'}>Next</Button>
+        <Button
+          classes={
+            'rounded-lg bg-transparent border-solid border border-DarkBlue font-normal min-w-[113px]'
+          }
+          text={'text-DarkBlue'}
+        >
+          Next
+        </Button>
       </CardFooter>
     </Card>
   );
