@@ -3,7 +3,14 @@ import { TextGenerate } from '@/app/components/textGenerate';
 import CurrenciesGrid from '@/app/currencies/currenciesGrid';
 import { InputVanish } from '@/app/components/inputVanish';
 
-function Page() {
+const APIKEY = 'Bs1aMHneHDYJvvZmccZgogg0sKT78e1YJNS';
+
+async function Page() {
+  const res = await fetch(
+    `https://www.worldcoinindex.com/apiservice/getmarkets?key=${APIKEY}&fiat=btc`
+  );
+  const data = await res.json();
+  console.log(data);
   return (
     <div
       className={`px-4 dark:bg-DarkBlue w-dvh h-auto pt-32 lg:pt-28 pb-20  lg:min-h-dvh sm:px-8 lg:px-16 lg2:px-28 xl:px-40 text-DarkBlue dark:text-WHITE bg-WHITE items-center justify-center flex flex-col`}

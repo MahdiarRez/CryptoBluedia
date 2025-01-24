@@ -2,8 +2,12 @@ import React from 'react';
 
 function Loading() {
   return (
-    <div className="flex justify-center items-center bg-amber-400 text-black">
-      Loading . . .
+    <div className="flex justify-center items-center bg-WHITE h-dvh w-dvw">
+      <div className={'container'}>
+        <div className={'box1'}></div>
+        <div className={'box2'}></div>
+        <div className={'box3'}></div>
+      </div>
     </div>
   );
 }
