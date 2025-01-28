@@ -1,17 +1,9 @@
 import React from 'react';
 import { TextGenerate } from '@/app/components/textGenerate';
-import CurrenciesGrid from '@/app/currencies/currenciesGrid';
+import CurrenciesGrid from '@/app/currencies/currencies';
 import { InputVanish } from '@/app/components/inputVanish';
 
-const options = { method: 'GET', headers: { accept: 'application/json' } };
-
-async function Page() {
-  const res = await fetch(
-    'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin%2Cethereum&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true&include_last_updated_at=true&x_cg_demo_api_key=CG-AKrNbSo1eQ5t23w4Mymx9XP7',
-    options
-  );
-  const data = await res.json();
-  console.log(data);
+function Page() {
   return (
     <div
       className={`px-4 dark:bg-DarkBlue w-dvh h-auto pt-32 lg:pt-28 pb-20  lg:min-h-dvh sm:px-8 lg:px-16 lg2:px-28 xl:px-40 text-DarkBlue dark:text-WHITE bg-WHITE items-center justify-center flex flex-col`}
