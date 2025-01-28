@@ -1,15 +1,15 @@
-interface PageProps {
-  params: {
-    currency: string;
-  };
-}
+// interface PageProps {
+//   params: {
+//     currency: string;
+//   };
+// }
 
-async function Page({ params }: PageProps) {
-  const { currency } = params;
+async function Page() {
+  // const { currency } = params;
 
   return (
     <div className={'h-dvh w-dvw bg-WHITE flex justify-center items-center'}>
-      {currency}
+      hi{' '}
     </div>
   );
 }
