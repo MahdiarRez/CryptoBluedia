@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { TextGenerate } from '@/app/components/textGenerate';
 import CurrenciesGrid from '@/app/currencies/currencies';
 import { InputVanish } from '@/app/components/inputVanish';
@@ -37,7 +37,11 @@ function Page() {
           mt={'mt-6 dark:border rounded-xl dark:border-solid dark:border-WHITE'}
         />
       </div>
-      <CurrenciesGrid />
+      <Suspense
+        fallback={<div className={'min-h-[465px] w-full bg-gray-500'}></div>}
+      >
+        <CurrenciesGrid />
+      </Suspense>
     </div>
   );
 }

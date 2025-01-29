@@ -5,6 +5,9 @@ import { RiInfoCardFill } from 'react-icons/ri';
 import React, { useContext } from 'react';
 import AreaChart from '@/app/currencies/areaChart';
 import { CurrenciesContext } from '@/app/currencies/currCard';
+import Link from 'next/link';
+import img from '@/public/shibainu.png';
+import Image from 'next/image';
 
 export interface itemT {
   DigitalAsset: string;
@@ -29,7 +32,12 @@ function CurrCardBody() {
           <tr key={item.DigitalAsset}>
             <td className={classes}>
               <div className="flex items-center gap-4 text-left">
-                {/*<img src={img} alt={item.DigitalAsset} className="h-10 w-10" />*/}
+                <Image
+                  src={img}
+                  alt={item.DigitalAsset}
+                  className="h-10 w-10 object-cover rounded-lg"
+                  placeholder={'blur'}
+                />
                 <div>
                   <Typography
                     variant="small"
@@ -114,14 +122,16 @@ function CurrCardBody() {
             </td>
             <td className={classes}>
               <div className="flex justify-end gap-4">
-                <Button
-                  classes={
-                    'rounded-lg px-6 flex flex-row-reverse items-center justify-center gap-1.5'
-                  }
-                >
-                  <span className={'tracking-wide font-medium'}>More</span>{' '}
-                  <RiInfoCardFill className={'text-lg'} />
-                </Button>
+                <Link href={`/currencies/${item.DigitalAsset}`}>
+                  <Button
+                    classes={
+                      'rounded-lg px-6 flex flex-row-reverse items-center justify-center gap-1.5'
+                    }
+                  >
+                    <span className={'tracking-wide font-medium'}>More</span>{' '}
+                    <RiInfoCardFill className={'text-lg'} />
+                  </Button>
+                </Link>
               </div>
             </td>
           </tr>

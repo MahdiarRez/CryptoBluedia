@@ -1,5 +1,5 @@
 'use client';
-import React, { createContext } from 'react';
+import React, { createContext, Suspense } from 'react';
 import { Card, CardBody, Typography } from '@material-tailwind/react';
 import { itemT } from '@/app/currencies/currCardBody';
 import Pagination from '@/app/currencies/pagination';
@@ -84,7 +84,9 @@ function CurrCard({ currencies }: { currencies: itemT[] }) {
                 ))}
               </tr>
             </thead>
-            <CurrCardBody />
+            <Suspense fallback={<p>loading . . . </p>}>
+              <CurrCardBody />
+            </Suspense>
           </table>
         </CardBody>
         <Pagination />
