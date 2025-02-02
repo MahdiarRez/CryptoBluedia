@@ -3,7 +3,7 @@ import { Typography } from '@material-tailwind/react';
 import Button from '@/app/components/button';
 import { RiInfoCardFill } from 'react-icons/ri';
 import React, { useContext } from 'react';
-import AreaChart from '@/app/currencies/areaChart';
+// import AreaChart from '@/app/currencies/areaChart';
 import { CurrenciesContext } from '@/app/currencies/currCard';
 import Link from 'next/link';
 import img from '@/public/shibainu.png';
@@ -15,7 +15,7 @@ export interface itemT {
   Change: number;
   Volume: number;
   MarketCap: number;
-  Chart: string;
+  // Chart: string;
   BluediaScoring: string;
 }
 
@@ -106,20 +106,20 @@ function CurrCardBody() {
                 {item.MarketCap}
               </Typography>
             </td>
-            <td className={classes}>
-              <div className="ml-auto h-12 max-w-[12rem] -translate-y-6">
-                <AreaChart
-                  colors={['#28c9e1']}
-                  options={{}}
-                  series={[
-                    {
-                      name: '2025 Sales',
-                      data: [30, 40, 500, 420, 700, 350, 500, 330, 900],
-                    },
-                  ]}
-                />
-              </div>
-            </td>
+            {/*<td className={classes}>*/}
+            {/*  <div className="ml-auto h-12 max-w-[12rem] -translate-y-6">*/}
+            {/*    <AreaChart*/}
+            {/*      colors={['#28c9e1']}*/}
+            {/*      options={{}}*/}
+            {/*      series={[*/}
+            {/*        {*/}
+            {/*          name: '2025 Sales',*/}
+            {/*          data: [30, 40, 500, 420, 700, 350, 500, 330, 900],*/}
+            {/*        },*/}
+            {/*      ]}*/}
+            {/*    />*/}
+            {/*  </div>*/}
+            {/*</td>*/}
             <td className={classes}>
               <div className="flex justify-end gap-4">
                 <Link href={`/currencies/${item.DigitalAsset}`}>

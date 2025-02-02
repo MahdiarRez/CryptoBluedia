@@ -38,7 +38,9 @@ function Page() {
         />
       </div>
       <Suspense
-        fallback={<div className={'min-h-[465px] w-full bg-gray-500'}></div>}
+        fallback={
+          <div className={'min-h-[465px] rounded-2xl w-full bg-gray-500'}></div>
+        }
       >
         <CurrenciesGrid />
       </Suspense>

@@ -6,8 +6,8 @@ import BluediaLogo from '../../public/logo.jpeg';
 import HamberMenu from '@/app/components/hamberMenu';
 import Link from 'next/link';
 import NavMenuItem from '@/app/components/navMenuItem';
-
-// import { RxDoubleArrowDown } from 'react-icons/rx';
+import { usePathname } from 'next/navigation';
+import clsx from 'clsx';
 
 function ScrollUp() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -17,24 +17,7 @@ function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isScrolledFar, setIsScrolledFar] = useState(false);
 
-  // useEffect(() => {
-  //   if (typeof document !== 'undefined') {
-  //     document.body.style.pointerEvents = 'none';
-  //     document.body.style.overflowY = 'hidden';
-  //     const html = document.documentElement;
-  //     html.style.overflowY = 'hidden';
-  //     const timer = setTimeout(() => {
-  //       document.body.style.pointerEvents = 'auto';
-  //       document.body.style.overflowY = 'scroll';
-  //       html.style.overflowY = 'scroll';
-  //     }, 2000);
-  //     return () => {
-  //       clearTimeout(timer);
-  //       document.body.style.overflowY = 'scroll';
-  //       html.style.overflowY = 'scroll';
-  //     };
-  //   }
-  // }, []);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -83,9 +66,28 @@ function Navbar() {
               Contact us
             </NavMenuItem>
           </ul>
-          <button
+          <Link
+            href={'/login'}
             className={`text-white overflow-hidden flex flex-col justify-center items-center font-medium relative bg-DarkBlue ${isScrolled && 'dark:bg-white dark:text-DarkBlue'} rounded-lg px-8 transition-colors duration-300  ${isScrolled ? 'h-10 md:h-11' : 'h-10'} group`}
           >
+            <span
+              className={clsx(
+                `w-1 h-1 absolute left-4 animate-fade bg-opacity-70 animate-duration-500 rounded-full bg-WHITE`,
+                {
+                  flex: pathname == '/login',
+                  hidden: pathname !== '/login',
+                }
+              )}
+            ></span>
+            <span
+              className={clsx(
+                `w-1 h-1 absolute right-4 animate-fade bg-opacity-70 animate-duration-500 rounded-full bg-WHITE`,
+                {
+                  flex: pathname == '/login',
+                  hidden: pathname !== '/login',
+                }
+              )}
+            ></span>
             <span
               className={`group-hover:translate-y-10 transition-transform duration-300`}
             >
@@ -96,7 +98,7 @@ function Navbar() {
             >
               Login
             </span>
-          </button>
+          </Link>
           <HamberMenu isScrolled={isScrolled} />
         </div>
       </div>

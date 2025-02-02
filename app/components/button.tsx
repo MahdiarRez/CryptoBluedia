@@ -11,7 +11,7 @@ function Button({
 }) {
   return (
     <button
-      className={`${classes} ${text} bg-DarkBlue dark:text-DarkBlue dark:bg-WHITE transition-all duration-300 ease-out hover:bg-LightBlue px-6 h-10`}
+      className={`${classes} ${text} bg-DarkBlue dark:text-DarkBlue dark:hover:bg-LightBlue dark:bg-WHITE transition-all duration-300 ease-out hover:bg-LightBlue px-6 h-10`}
     >
       {children}
     </button>

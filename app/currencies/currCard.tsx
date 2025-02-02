@@ -1,5 +1,5 @@
 'use client';
-import React, { createContext, Suspense } from 'react';
+import React, { createContext } from 'react';
 import { Card, CardBody, Typography } from '@material-tailwind/react';
 import { itemT } from '@/app/currencies/currCardBody';
 import Pagination from '@/app/currencies/pagination';
@@ -26,10 +26,10 @@ const TABLE_HEAD = [
     head: 'Market Cap',
     customeStyle: 'text-right',
   },
-  {
-    head: 'Chart',
-    customeStyle: 'text-right',
-  },
+  // {
+  //   head: 'Chart',
+  //   customeStyle: 'text-right',
+  // },
   {
     head: 'Bluedia-Scoring',
     customeStyle: 'text-right',
@@ -43,7 +43,7 @@ export const CurrenciesContext = createContext([
     Change: 22,
     Volume: 22,
     MarketCap: 22,
-    Chart: 'N/A',
+    // Chart: 'N/A',
     BluediaScoring: 'N/A',
   },
 ]);
@@ -84,9 +84,7 @@ function CurrCard({ currencies }: { currencies: itemT[] }) {
                 ))}
               </tr>
             </thead>
-            <Suspense fallback={<p>loading . . . </p>}>
-              <CurrCardBody />
-            </Suspense>
+            <CurrCardBody />
           </table>
         </CardBody>
         <Pagination />

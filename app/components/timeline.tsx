@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 import Button from '@/app/components/button';
 import { TextShimmer } from '@/app/components/motionPrimitive/ui/text-shimmer';
-import { SubscribeModal } from '@/app/ui/subModal';
+import { SubscribeModal } from '@/app/components/subModal';
 import HeroVideoDialog from '@/app/components/magicUi/hero-video-dialog';
 import youtubePic from '../../public/youtubePic.jpeg';
 
