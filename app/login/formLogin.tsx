@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useActionState } from 'react';
 import { Input } from '../components/aceternityUi/inputFormAcet';
 import { Label } from '../components/aceternityUi/labelFormAcet';
 import { cn } from '@/app/lib/utils/framer';
@@ -7,12 +7,12 @@ import { TextGenerate } from '@/app/components/textGenerate';
 import Button from '@/app/components/button';
 import { NeonGradientCard } from '@/app/components/magicUi/neon-gradient-card';
 import { MdAccountBox } from 'react-icons/md';
+import { formActionLogin } from '@/app/lib/utils/actions';
 
-export default function FormLogin() {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log('Form submitted');
-  };
+function FormLogin() {
+  const [state, formAction, isPending] = useActionState(formActionLogin, null);
+
+  console.log('state :', state);
   return (
     <div className="sm:max-w-md max-w-sm mt-[7.407vh] w-full mx-auto rounded-2xl p-5 shadow-input bg-white dark:bg-DarkBlue">
       <NeonGradientCard borderSize={0} borderRadius={9}>
@@ -39,15 +39,15 @@ export default function FormLogin() {
         {/*  Login to aceternity if you can because we don&apos;t have a login flow*/}
         {/*  yet*/}
         {/*</p>*/}
-        <form className="mt-8 mb-1" onSubmit={handleSubmit}>
+        <form className="mt-8 mb-1" action={formAction}>
           <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
             <LabelInputContainer>
-              <Label htmlFor="firstname">First name</Label>
-              <Input id="firstname" placeholder="Tyler" type="text" />
+              <Label htmlFor="firstName">First name</Label>
+              <Input id="firstName" placeholder="Tyler" type="text" />
             </LabelInputContainer>
             <LabelInputContainer>
-              <Label htmlFor="lastname">Last name</Label>
-              <Input id="lastname" placeholder="Durden" type="text" />
+              <Label htmlFor="lastName">Last name</Label>
+              <Input id="lastName" placeholder="Durden" type="text" />
             </LabelInputContainer>
           </div>
           <LabelInputContainer className="mb-4">
@@ -60,12 +60,14 @@ export default function FormLogin() {
           </LabelInputContainer>
 
           <Button
-            classes="w-full h-12 text-lg font-medium rounded-xl shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
+            classes="w-full h-12 text-lg  font-medium rounded-xl shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
             // type="submit"
+            isDisabled={isPending}
           >
-            Sign up
+            {isPending ? 'Signing up...' : 'Sign up'}
             <BottomGradient />
           </Button>
+
           <p className={'text-center mt-3'}>
             Already have account?{' '}
             <span
@@ -104,3 +106,5 @@ const LabelInputContainer = ({
     </div>
   );
 };
+
+export default FormLogin;

@@ -1,21 +1,27 @@
 'use server';
 
+export type FormState =
+  | null
+  | { email: string; password: string; firstName: string; lastName: string }
+  | string;
+
 export async function formActionLogin(
-  prevState: string | null, // Type based on what you expect from previous state
-  formData: FormData // FormData is built-in type
+  prevState: FormState,
+  formData: FormData
 ) {
-  // Return type matches your action's return value
   const email = formData.get('email') as string;
+  const firstName = formData.get('firstName') as string;
+  const lastName = formData.get('lastName') as string;
   const password = formData.get('password') as string;
 
-  if (!email || !password) {
-    await new Promise((resolve) => {
-      setTimeout(resolve, 2000);
-    });
-    return 'empty'; // Consistent string return type
+  await new Promise((resolve) => {
+    setTimeout(resolve, 2000);
+  });
+
+  if (email && password && firstName && lastName) {
+    return { email, password, firstName, lastName };
   }
 
-  // Add your authentication logic here
-  // Always return a string to match the Promise<string> type
-  return 'success'; // Example success return value
+  console.log('data form : ', formData);
+  return 'fill all inputs';
 }

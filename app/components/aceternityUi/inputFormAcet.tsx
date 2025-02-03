@@ -3,19 +3,21 @@ import * as React from 'react';
 import { cn } from '@/app/lib/utils/framer';
 import { useMotionTemplate, useMotionValue, motion } from 'motion/react';
 
-export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {}
+export type InputProps = React.InputHTMLAttributes<HTMLInputElement>;
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, type, ...props }, ref) => {
-    const radius = 100; // change this to increase the rdaius of the hover effect
+  ({ className, type, id, ...props }, ref) => {
+    const radius = 100;
     const [visible, setVisible] = React.useState(false);
 
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
 
-    // @ts-ignore
-    function handleMouseMove({ currentTarget, clientX, clientY }: any) {
+    function handleMouseMove({
+      currentTarget,
+      clientX,
+      clientY,
+    }: React.MouseEvent<HTMLDivElement>) {
       const { left, top } = currentTarget.getBoundingClientRect();
 
       mouseX.set(clientX - left);
@@ -40,6 +42,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       >
         <input
           type={type}
+          name={id}
           className={cn(
             `flex h-10 w-full border-none bg-gray-50 dark:bg-zinc-800 text-black dark:text-white shadow-input rounded-lg px-3 py-2 text-sm  file:border-0 file:bg-transparent 
           file:text-sm file:font-medium placeholder:text-neutral-400 dark:placeholder-text-neutral-600 
