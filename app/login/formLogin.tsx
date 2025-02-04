@@ -3,10 +3,7 @@ import React, { useActionState } from 'react';
 import { Input } from '../components/aceternityUi/inputFormAcet';
 import { Label } from '../components/aceternityUi/labelFormAcet';
 import { cn } from '@/app/lib/utils/framer';
-import { TextGenerate } from '@/app/components/textGenerate';
 import Button from '@/app/components/button';
-import { NeonGradientCard } from '@/app/components/magicUi/neon-gradient-card';
-import { MdAccountBox } from 'react-icons/md';
 import { formActionLogin } from '@/app/lib/utils/actions';
 
 function FormLogin() {
