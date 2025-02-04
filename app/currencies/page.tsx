@@ -2,6 +2,12 @@ import React, { Suspense } from 'react';
 import { TextGenerate } from '@/app/components/textGenerate';
 import CurrenciesGrid from '@/app/currencies/currencies';
 import { InputVanish } from '@/app/components/inputVanish';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Currencies',
+  description: 'List of currencies',
+};
 
 function Page() {
   return (

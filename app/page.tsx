@@ -10,9 +10,7 @@ import { TracingBeam } from '@/app/components/aceternityUi/tracingbemAcet';
 import { InfinitySlider } from '@/app/ui/infinitySlider';
 import ShineBorder from '@/app/components/magicUi/shine-border';
 
-// import { RxDoubleArrowDown } from 'react-icons/rx';
-
-async function Page() {
+function Page() {
   return (
     <TracingBeam>
       <div

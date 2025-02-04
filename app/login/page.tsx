@@ -3,6 +3,12 @@ import FormLogin from '@/app/login/formLogin';
 import { MdAccountBox } from 'react-icons/md';
 import { TextGenerate } from '@/app/components/textGenerate';
 import { NeonGradientCard } from '@/app/components/magicUi/neon-gradient-card';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: { absolute: 'Sign in | Sign up' },
+  description: 'Login and register of Bluedia',
+};
 
 function Page() {
   return (
