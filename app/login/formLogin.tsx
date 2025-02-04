@@ -33,7 +33,6 @@ function FormLogin() {
 
       <Button
         classes="w-full h-12 text-lg  font-medium rounded-xl shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
-        // type="submit"
         isDisabled={isPending}
       >
         {isPending ? 'Signing up...' : 'Sign up'}
