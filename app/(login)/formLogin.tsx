@@ -5,6 +5,7 @@ import { Label } from '../components/aceternityUi/labelFormAcet';
 import { cn } from '@/app/lib/utils/framer';
 import Button from '@/app/components/button';
 import { formActionLogin } from '@/app/lib/utils/actions';
+import Link from 'next/link';
 
 function FormLogin() {
   const [state, formAction, isPending] = useActionState(formActionLogin, null);
@@ -41,13 +42,14 @@ function FormLogin() {
 
       <p className={'text-center mt-3'}>
         Already have account?{' '}
-        <span
+        <Link
+          href={'/signIn'}
           className={
             'underline cursor-pointer ml-1 font-medium hover:text-DarkBlue transition-colors duration-300'
           }
         >
           Sign in
-        </span>
+        </Link>
       </p>
     </form>
   );

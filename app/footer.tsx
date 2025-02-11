@@ -2,16 +2,24 @@ import React from 'react';
 import Image from 'next/image';
 import Logo from '../public/logo.jpeg';
 import Link from 'next/link';
+import bg from '@/public/footerBg.jpg';
 
 function Footer() {
   return (
     <div className={'bg-WHITE dark:bg-DarkBlue w-full p-4'}>
       <div
         className={
-          'bg-DarkBlue dark:bg-WHITE rounded-3xl text-WHITE dark:text-DarkBlue w-full py-10 px-8 flex flex-col items-center justify-center'
+          'bg-DarkBlue dark:bg-WHITE relative overflow-hidden rounded-3xl text-WHITE dark:text-DarkBlue w-full py-10 px-8 flex flex-col items-center justify-center'
         }
       >
-        <footer className="footer sm:footer-horizontal footer-center py-7 px-4">
+        <Image
+          src={bg}
+          alt={'footer pic'}
+          className={
+            'absolute object-cover opacity-5  z-10 top-0 left-0 w-full h-full'
+          }
+        />
+        <footer className="footer z-30 sm:footer-horizontal footer-center py-7 px-4">
           <aside>
             <Image
               src={Logo}
@@ -22,8 +30,9 @@ function Footer() {
               Crypto Blue<span className={'text-LightBlue'}>dia</span>
               <br />
             </p>
-            <p className={'font-bold text-base sm:text-lg'}>
-              Your Partner in Crypto Investing.
+            <p className={'font-bold text-base sm:text-lg max-w-md'}>
+              Your Partner in Crypto Investing, Helping You Make Informed
+              Decisions in the Crypto World.
             </p>
             <p className={'text-xs font-light opacity-80 mt-2 sm:text-sm'}>
               Copyright BLUEDIA team © {new Date().getFullYear()} - All right

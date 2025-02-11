@@ -67,15 +67,15 @@ function Navbar() {
             </NavMenuItem>
           </ul>
           <Link
-            href={'/login'}
+            href={'/signUp'}
             className={`text-white overflow-hidden flex flex-col justify-center items-center font-medium relative bg-DarkBlue ${isScrolled && 'dark:bg-white dark:text-DarkBlue'} rounded-lg px-8 transition-colors duration-300  ${isScrolled ? 'h-10 md:h-11' : 'h-10'} group`}
           >
             <span
               className={clsx(
                 `w-1 h-1 absolute left-4 animate-fade bg-opacity-70 animate-duration-500 rounded-full bg-WHITE`,
                 {
-                  flex: pathname == '/login',
-                  hidden: pathname !== '/login',
+                  flex: pathname == '/signUp',
+                  hidden: pathname !== '/signUp',
                 }
               )}
             ></span>
@@ -83,8 +83,8 @@ function Navbar() {
               className={clsx(
                 `w-1 h-1 absolute right-4 animate-fade bg-opacity-70 animate-duration-500 rounded-full bg-WHITE`,
                 {
-                  flex: pathname == '/login',
-                  hidden: pathname !== '/login',
+                  flex: pathname == '/signUp',
+                  hidden: pathname !== '/signUp',
                 }
               )}
             ></span>
