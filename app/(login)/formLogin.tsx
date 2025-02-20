@@ -6,11 +6,14 @@ import { cn } from '@/app/lib/utils/framer';
 import Button from '@/app/components/button';
 import { formActionLogin } from '@/app/lib/utils/actions';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 function FormLogin() {
   const [state, formAction, isPending] = useActionState(formActionLogin, null);
+  const params = usePathname();
+  const isSignUp = params === '/signUp';
+  console.log(state);
 
-  console.log('state :', state);
   return (
     <form className="mt-8 mb-1" action={formAction}>
       <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
@@ -36,19 +39,25 @@ function FormLogin() {
         classes="w-full h-12 text-lg  font-medium rounded-xl shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
         isDisabled={isPending}
       >
-        {isPending ? 'Signing up...' : 'Sign up'}
+        {isSignUp
+          ? isPending
+            ? 'Signing up...'
+            : 'Sign up'
+          : isPending
+            ? 'Signing In...'
+            : 'Sign in'}
         <BottomGradient />
       </Button>
 
       <p className={'text-center mt-3'}>
-        Already have account?{' '}
+        {isSignUp ? 'Already have account?' : "Don't have an account?"}{' '}
         <Link
-          href={'/signIn'}
+          href={isSignUp ? '/signIn' : '/signUp'}
           className={
             'underline cursor-pointer ml-1 font-medium hover:text-DarkBlue transition-colors duration-300'
           }
         >
-          Sign in
+          {isSignUp ? 'Sign in' : 'Sign up'}
         </Link>
       </p>
     </form>
