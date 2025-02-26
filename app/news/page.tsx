@@ -2,6 +2,8 @@ import React from 'react';
 import type { Metadata } from 'next';
 import { TabTransitionPanel } from '@/app/news/transitionPanel';
 import { TextGenerate } from '@/app/components/textGenerate';
+import Image from 'next/image';
+import ppl from '@/public/newsPpl.jpg';
 
 export const metadata: Metadata = {
   title: 'Latest News',
@@ -16,20 +18,32 @@ function Page() {
     >
       <div
         className={
-          'flex flex-col items-start bg-DarkBlue text-WHITE w-full justify-center mt-32 p-8 rounded-3xl mb-11'
+          'flex relative flex-col items-start bg-DarkBlue text-WHITE w-full overflow-hidden justify-center mt-32 p-12 rounded-3xl mb-11'
         }
       >
+        <div
+          className={
+            'absolute w-full top-0 h-full right-0 bg-gradient-to-l from-WHITE/10 via-DarkBlue/60 z-[6] to-DarkBlue'
+          }
+        ></div>
+        <Image
+          src={ppl}
+          alt={'ppl'}
+          className={
+            'absolute top-0 w-full h-full right-0 z-[3] object-cover object-left opacity-40 translate-x-1/3'
+          }
+        />
         <TextGenerate
           preset={'fade-in-blur'}
           per={'line'}
-          classes={'text-3xl sm:text-4xl font-extrabold text-left'}
+          classes={'text-3xl sm:text-4xl z-[9] font-extrabold text-left'}
           text={'Get the latest market news.'}
         />
         <TextGenerate
           preset={'fade'}
           delay={0.8}
           classes={
-            'mt-1.5 text-sm md:text-base lg:text-sm xl:text-base font-medium max-w-[324px] sm:max-w-2xl text-center'
+            'mt-1.5 text-sm md:text-base z-[9] lg:text-sm xl:text-base font-medium max-w-[324px] sm:max-w-2xl text-center'
           }
           text={
             'At Bluedia, we cover all the news in the most up-to-date way possible.'

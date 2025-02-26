@@ -1,13 +1,21 @@
 'use client';
 import React, { useState } from 'react';
 import { TransitionPanel } from '@/app/components/motionPrimitive/ui/transition-panel';
+import { useRouter } from 'next/navigation';
 
 export function TabTransitionPanel() {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeTopic, setActiveTopic] = useState('All');
+  const router = useRouter();
+
+  function handleActiveIndexChange(i: string) {
+    setActiveTopic(i);
+    router.push(`?topic=${i}`);
+    console.log(i);
+  }
 
   const ITEMS = [
     {
-      title: 'All news',
+      title: 'All',
       subtitle: 'Refining Visual Harmony',
       content:
         'Explore the principles of motion aesthetics that enhance the visual appeal of interfaces. Learn to balance timing, easing, and the flow of motion to create seamless user experiences.',
@@ -49,10 +57,10 @@ export function TabTransitionPanel() {
       <div className="mb-4 flex space-x-2">
         {ITEMS.map((item, index) => (
           <button
-            key={index}
-            onClick={() => setActiveIndex(index)}
-            className={`rounded-md px-3 py-1 text-base font-medium  ${
-              activeIndex === index
+            key={item.title}
+            onClick={() => handleActiveIndexChange(item.title)}
+            className={`rounded-lg px-3 py-1 text-base font-medium  ${
+              activeTopic === item.title
                 ? 'bg-DarkBlue text-WHITE dark:bg-zinc-800 dark:text-zinc-100'
                 : 'bg-zinc-100 text-zinc-600 dark:bg-zinc-700 dark:text-zinc-400 sm:hover:bg-DarkBlue/10 '
             }`}
@@ -63,7 +71,7 @@ export function TabTransitionPanel() {
       </div>
       <div className="overflow-hidden border-t border-zinc-200 dark:border-zinc-700">
         <TransitionPanel
-          activeIndex={activeIndex}
+          activeIndex={ITEMS.findIndex((item) => item.title === activeTopic)}
           transition={{ duration: 0.2, ease: 'easeInOut' }}
           variants={{
             enter: { opacity: 0, y: -50 },
