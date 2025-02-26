@@ -7,28 +7,32 @@ export const metadata: Metadata = {
   title: 'Latest News',
 };
 
-async function Page() {
+function Page() {
   return (
     <div
       className={
-        'bg-WHITE w-dvh min-h-dvh flex text-DarkBlue flex-col justify-center items-center px-4 sm:px-8 lg:px-28 xl:px-40'
+        'bg-WHITE w-dvh min-h-dvh flex text-DarkBlue flex-col items-start px-4 sm:px-8 lg:px-28 xl:px-40'
       }
     >
-      <div className={'flex flex-col items-center justify-center'}>
+      <div
+        className={
+          'flex flex-col items-start bg-DarkBlue text-WHITE w-full justify-center mt-32 p-8 rounded-3xl mb-11'
+        }
+      >
         <TextGenerate
           preset={'fade-in-blur'}
           per={'line'}
-          classes={'text-3xl sm:text-4xl font-extrabold text-center'}
-          text={'Discover 219+ digital currencies.'}
+          classes={'text-3xl sm:text-4xl font-extrabold text-left'}
+          text={'Get the latest market news.'}
         />
         <TextGenerate
           preset={'fade'}
           delay={0.8}
           classes={
-            'mt-3 text-sm md:text-base lg:text-sm xl:text-base font-medium max-w-[324px] sm:max-w-2xl text-center'
+            'mt-1.5 text-sm md:text-base lg:text-sm xl:text-base font-medium max-w-[324px] sm:max-w-2xl text-center'
           }
           text={
-            'Delve into a vast selection of digital currencies. Your journey into crypto starts here.'
+            'At Bluedia, we cover all the news in the most up-to-date way possible.'
           }
         />
       </div>
