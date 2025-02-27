@@ -5,6 +5,7 @@ import ThemeButton from '@/app/ui/themeButton';
 import React from 'react';
 import { Manrope } from 'next/font/google';
 import Footer from '@/app/footer';
+import { ScrollProgress } from '@/app/components/magicUi/scrollProg';
 
 export const metadata: Metadata = {
   title: {
@@ -27,6 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`antialiased relative ${ManropeFont.className} `}>
+        <ScrollProgress />
         <Navbar />
         {children}
         <ThemeButton />

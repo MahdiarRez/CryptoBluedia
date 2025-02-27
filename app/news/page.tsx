@@ -5,6 +5,7 @@ import { TextGenerate } from '@/app/components/textGenerate';
 import Image from 'next/image';
 import ppl from '@/public/newsPpl.jpg';
 import NewsGrid from '@/app/news/newsGrid';
+import { HeroGridNews } from '@/app/ui/heroGridNews';
 
 export const metadata: Metadata = {
   title: 'Latest News',
@@ -53,7 +54,8 @@ function Page() {
         />
       </div>
       <TabTransitionPanel />
-      <NewsGrid />
+      {/*<NewsGrid />*/}
+      <HeroGridNews />
     </div>
   );
 }
