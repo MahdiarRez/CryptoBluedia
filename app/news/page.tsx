@@ -4,6 +4,7 @@ import { TabTransitionPanel } from '@/app/news/transitionPanel';
 import { TextGenerate } from '@/app/components/textGenerate';
 import Image from 'next/image';
 import ppl from '@/public/newsPpl.jpg';
+import NewsGrid from '@/app/news/newsGrid';
 
 export const metadata: Metadata = {
   title: 'Latest News',
@@ -29,6 +30,7 @@ function Page() {
         <Image
           src={ppl}
           alt={'ppl'}
+          placeholder={'empty'}
           className={
             'absolute top-0 w-full h-full right-0 z-[3] object-cover object-left opacity-40 translate-x-1/3'
           }
@@ -50,8 +52,8 @@ function Page() {
           }
         />
       </div>
-      {/*<FeaturesSection />*/}
       <TabTransitionPanel />
+      <NewsGrid />
     </div>
   );
 }
