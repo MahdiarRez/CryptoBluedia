@@ -2,7 +2,7 @@ import React from 'react';
 import { BentoGrid, BentoGridItem } from '../components/aceternityUi/gridAcet';
 import { FaBitcoin } from 'react-icons/fa6';
 import { TbWorld } from 'react-icons/tb';
-import supabase from '@/app/lib/utils/supabaseClient';
+import { supabaseClient } from '@/app/lib/utils/supabaseClient';
 
 interface MarketNewsItem {
   id: string;
@@ -41,7 +41,7 @@ async function getMarketNews(): Promise<MarketNewsItem[]> {
   // await new Promise((resolve) => {
   //   setTimeout(resolve, 10000);
   // });
-  const { data, error } = await supabase.from('marketNews').select('*');
+  const { data, error } = await supabaseClient.from('marketNews').select('*');
 
   if (error) {
     console.error('Error fetching market news:', error);

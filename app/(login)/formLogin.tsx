@@ -12,6 +12,7 @@ function FormLogin() {
   const [state, formAction, isPending] = useActionState(formActionLogin, null);
   const params = usePathname();
   const isSignUp = params === '/signUp';
+
   console.log(state);
 
   return (

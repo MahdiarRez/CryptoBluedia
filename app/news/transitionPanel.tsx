@@ -55,7 +55,7 @@ export function TabTransitionPanel() {
   return (
     <div>
       <div className="mb-4 flex space-x-2">
-        {ITEMS.map((item, index) => (
+        {ITEMS.map((item) => (
           <button
             key={item.title}
             onClick={() => handleActiveIndexChange(item.title)}
