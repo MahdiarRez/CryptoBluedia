@@ -1,5 +1,5 @@
 import React from 'react';
-import { BentoGrid, BentoGridItem } from '../components/aceternityUi/gridAcet';
+import { BentoGrid, BentoGridItem } from '../aceternityUi/gridAcet';
 import { FaBitcoin } from 'react-icons/fa6';
 import { TbWorld } from 'react-icons/tb';
 import { supabaseClient } from '@/app/lib/utils/supabaseClient';

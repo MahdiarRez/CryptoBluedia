@@ -1,12 +1,12 @@
 import React, { Suspense } from 'react';
-import HeroDiamond from '@/app/ui/heroDiamond';
-import HeroServices from '@/app/ui/heroServices';
+import HeroDiamond from '@/app/components/ui/heroDiamond';
+import HeroServices from '@/app/components/ui/heroServices';
 import { TimelineDemo } from '@/app/components/timeline';
-import { HeroGridNews } from '@/app/ui/heroGridNews';
-import { BentoGridSkeleton } from '@/app/ui/skeletons/bentoGridSkeleton';
+import { HeroGridNews } from '@/app/components/ui/heroGridNews';
+import { BentoGridSkeleton } from '@/app/components/ui/skeletons/bentoGridSkeleton';
 import { BestCurrencies } from '@/app/components/bestCurrencies';
 import { FaChartLine } from 'react-icons/fa6';
-import { InfinitySlider } from '@/app/ui/infinitySlider';
+import { InfinitySlider } from '@/app/components/ui/infinitySlider';
 import ShineBorder from '@/app/components/magicUi/shine-border';
 
 function Page() {

@@ -1,10 +1,10 @@
 import { InfiniteSlider } from '@/app/components/motionPrimitive/ui/infinite-slider';
 import Image from 'next/image';
-import shiba from '../../public/shibainu.png';
-import uniswap from '../../public/uniswap.png';
-import vechain from '../../public/vechain.png';
-import pancakeswap from '../../public/pancakeswap.png';
-import harmony from '../../public/harmony.png';
+import shiba from '../../../public/shibainu.png';
+import uniswap from '../../../public/uniswap.png';
+import vechain from '../../../public/vechain.png';
+import pancakeswap from '../../../public/pancakeswap.png';
+import harmony from '../../../public/harmony.png';
 
 export function InfinitySlider() {
   return (

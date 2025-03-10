@@ -57,11 +57,8 @@ function HamberMenu({ isScrolled }: { isScrolled: boolean }) {
               <HamberMenuItem setMenuIsOpen={setMenuIsOpen} href={'/'}>
                 Home
               </HamberMenuItem>
-              <HamberMenuItem
-                setMenuIsOpen={setMenuIsOpen}
-                href={'/currencies'}
-              >
-                Currencies
+              <HamberMenuItem setMenuIsOpen={setMenuIsOpen} href={'/youtube'}>
+                Youtube
               </HamberMenuItem>
               <HamberMenuItem setMenuIsOpen={setMenuIsOpen} href={'/news'}>
                 News{' '}
