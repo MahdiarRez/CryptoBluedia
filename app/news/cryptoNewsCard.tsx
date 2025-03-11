@@ -8,6 +8,7 @@ import {
   CardFooterShadcn,
   CardShadcn,
 } from '@/app/components/cardShadcn';
+import pic from '@/public/youtubePic.jpeg';
 
 interface CryptoNewsCardProps {
   newsItem: NewsItem;
@@ -15,10 +16,11 @@ interface CryptoNewsCardProps {
 
 export function CryptoNewsCard({ newsItem }: CryptoNewsCardProps) {
   return (
-    <CardShadcn className="overflow-hidden transition-all hover:shadow-md">
+    <CardShadcn className="overflow-hidden rounded-2xl transition-all hover:shadow-md">
       <div className="relative h-48 w-full">
         <Image
-          src={newsItem.imageUrl || '/placeholder.svg'}
+          // src={newsItem.imageUrl || '/placeholder.svg'}
+          src={pic}
           alt={newsItem.title}
           fill
           className="object-cover"

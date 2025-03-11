@@ -1,6 +1,5 @@
 'use client';
 
-import { Search } from 'lucide-react';
 import { ButtonShadcn } from '@/app/components/buttonShadcn';
 import {
   SelectShadcn,
@@ -9,6 +8,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/app/components/selectShadcn';
+import Image from 'next/image';
+import ppl from '@/public/newsPpl.jpg';
+import { TextGenerate } from '@/app/components/textGenerate';
 
 interface CryptoNewsFiltersProps {
   searchQuery: string;
@@ -34,13 +36,27 @@ export function CryptoNewsFilters({
   ];
 
   return (
-    <div className="mb-6 space-y-4">
-      <h2 className="text-2xl font-bold">Latest Crypto News</h2>
-      <div className="flex flex-col sm:flex-row gap-4">
-        <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-          <span>inut</span>
-        </div>
+    <div className="mb-6 bg-DarkBlue text-WHITE py-6 px-7 rounded-2xl relative overflow-hidden flex flex-col gap-y-4">
+      <TextGenerate
+        preset={'fade-in-blur'}
+        per={'line'}
+        classes={'text-3xl z-[9] relative font-bold mb-4 text-left'}
+        text={'Latest Crypto News'}
+      />
+      <div
+        className={
+          'absolute w-full top-0  h-full right-0 bg-gradient-to-l from-WHITE/10 via-DarkBlue/60 z-[1] to-DarkBlue'
+        }
+      ></div>
+      <Image
+        src={ppl}
+        alt={'ppl'}
+        placeholder={'empty'}
+        className={
+          'absolute top-0 w-full -bottom-5 h-full right-0 z-[0] object-cover object-left opacity-40 translate-x-1/3'
+        }
+      />
+      <div className="flex flex-col sm:flex-row gap-4 relative z-[9]">
         <SelectShadcn
           value={selectedCategory}
           onValueChange={setSelectedCategory}
@@ -57,7 +73,7 @@ export function CryptoNewsFilters({
           </SelectContent>
         </SelectShadcn>
       </div>
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap text-DarkBlue relative z-[9]  gap-2">
         {categories.slice(1).map((category) => (
           <ButtonShadcn
             key={category.value}
