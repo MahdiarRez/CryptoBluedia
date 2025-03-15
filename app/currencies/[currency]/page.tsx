@@ -1,3 +1,27 @@
+import { Metadata } from 'next';
+import CryptoDetails from '@/app/currencies/[currency]/crypto-details';
+
+export function generateMetadata({
+  params,
+}: {
+  params: { currency: string };
+}): Metadata {
+  return {
+    title: `${params.currency.toUpperCase()}`,
+    description: `Displaying information for currency: ${params.currency}`,
+  };
+}
+
+export default function Page() {
+  return (
+    <main className="min-h-screen bg-WHITE pb-8">
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="cosmic-background" />
+      </div>
+      <CryptoDetails cryptoId="polkadot" />
+    </main>
+  );
+}
 // import { Metadata } from 'next';
 //
 // export function generateMetadata({
@@ -22,10 +46,3 @@
 //     </main>
 //   );
 // }
-import React from 'react';
-
-function Page() {
-  return <div>hi</div>;
-}
-
-export default Page;

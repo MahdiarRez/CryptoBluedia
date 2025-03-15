@@ -4,21 +4,6 @@ import { itemT } from '@/app/currencies/currCardBody';
 const options = { method: 'GET', headers: { accept: 'application/json' } };
 const apiKey = 'da0Ighqcnxpfo3O1hYWAzSavsDZHQbV7VXL';
 
-export async function getCryptoData() {
-  await new Promise((resolve) => setTimeout(resolve, 2500));
-
-  const res = await fetch(
-    `https://www.worldcoinindex.com/apiservice/ticker?key=${apiKey}&label=onebtc&fiat=btc`
-  );
-
-  if (!res.ok) {
-    throw new Error('Network response was not ok');
-  }
-
-  const data = await res.json();
-  return data.Markets[0];
-}
-
 // --------------------- get currencies list data --------------------
 export async function getCurrencies() {
   let currs: itemT[] = [];
@@ -65,3 +50,20 @@ export async function generateStaticParams() {
     currency: post.DigitalAsset,
   }));
 }
+
+//
+// export async function getCryptoData() {
+//   await new Promise((resolve) => setTimeout(resolve, 2500));
+//
+//   const res = await fetch(
+//     `https://www.worldcoinindex.com/apiservice/ticker?key=${apiKey}&label=onebtc&fiat=btc`
+//   );
+//
+//   if (!res.ok) {
+//     throw new Error('Network response was not ok');
+//   }
+//
+//   const data = await res.json();
+//   return data.Markets[0];
+// }
+
