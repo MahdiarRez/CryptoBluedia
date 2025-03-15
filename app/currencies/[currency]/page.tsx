@@ -2,16 +2,16 @@ import { Metadata } from 'next';
 import CryptoDetails from '@/app/currencies/[currency]/crypto-details';
 import React from 'react';
 
-export function generateMetadata({
-  params,
-}: {
-  params: { currency: string };
-}): Metadata {
-  return {
-    title: `${params.currency.toUpperCase()}`,
-    description: `Displaying information for currency: ${params.currency}`,
-  };
-}
+// export function generateMetadata({
+//   params,
+// }: {
+//   params: { currency: string };
+// }): Metadata {
+//   return {
+//     title: `${params.currency.toUpperCase()}`,
+//     description: `Displaying information for currency: ${params.currency}`,
+//   };
+// }
 
 export default function Page() {
   return (

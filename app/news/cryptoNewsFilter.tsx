@@ -1,6 +1,6 @@
 'use client';
-
-import { ButtonShadcn } from '@/app/components/buttonShadcn';
+import React from 'react';
+import { Button } from '@/app/components/ShadcnUi/button';
 import {
   SelectShadcn,
   SelectContent,
@@ -75,7 +75,7 @@ export function CryptoNewsFilters({
       </div>
       <div className="flex flex-wrap text-DarkBlue relative z-[9]  gap-2">
         {categories.slice(1).map((category) => (
-          <ButtonShadcn
+          <Button
             key={category.value}
             variant={
               selectedCategory === category.value ? 'default' : 'outline'
@@ -85,7 +85,7 @@ export function CryptoNewsFilters({
             className="text-xs"
           >
             {category.label}
-          </ButtonShadcn>
+          </Button>
         ))}
       </div>
     </div>
