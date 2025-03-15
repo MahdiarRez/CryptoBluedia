@@ -27,12 +27,11 @@ import IndicatorsSection from '@/app/currencies/[currency]/indicators-section';
 import { GlassCard } from '@/app/components/ShadcnUi/glass-card';
 import { AnimatedTabsTrigger } from '@/app/components/ShadcnUi/animated-tabs-trigger';
 import CurrencyHeader from '@/app/currencies/[currency]/currencyHeader';
+import { useParams } from 'next/navigation';
 
-interface CryptoDetailsProps {
-  cryptoId: string;
-}
+export default function CryptoDetails() {
+  const { currency } = useParams();
 
-export default function CryptoDetails({ cryptoId }: CryptoDetailsProps) {
   const [cryptoData, setCryptoData] = useState<CryptoData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -51,7 +50,7 @@ export default function CryptoDetails({ cryptoId }: CryptoDetailsProps) {
     const loadData = async () => {
       try {
         setLoading(true);
-        const data = await fetchCryptoData(cryptoId);
+        const data = await fetchCryptoData(currency as string);
         setCryptoData(data);
 
         // Generate color palette from the currency's color
@@ -96,7 +95,7 @@ export default function CryptoDetails({ cryptoId }: CryptoDetailsProps) {
     // Set up polling for real-time updates
     const interval = setInterval(loadData, 60000); // Update every minute
     return () => clearInterval(interval);
-  }, [cryptoId]);
+  }, [currency]);
 
   if (error) {
     return (

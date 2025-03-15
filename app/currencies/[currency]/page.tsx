@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import CryptoDetails from '@/app/currencies/[currency]/crypto-details';
+import React from 'react';
 
 export function generateMetadata({
   params,
@@ -18,7 +19,7 @@ export default function Page() {
       <div className="absolute inset-0 overflow-hidden">
         <div className="cosmic-background" />
       </div>
-      <CryptoDetails cryptoId="polkadot" />
+      <CryptoDetails />
     </main>
   );
 }
