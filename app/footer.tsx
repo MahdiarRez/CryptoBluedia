@@ -24,7 +24,7 @@ function Footer() {
             <Image
               src={Logo}
               alt={'logo'}
-              className={'h-16 w-16 md:h-20 md:w-20 object-center'}
+              className={'h-16 w-16 md:h-20 md:w-20 rounded-full object-center'}
             />
             <p className="font-extrabold tracking-wide text-lg uppercase sm:text-2xl">
               Crypto Blue<span className={'text-LightBlue'}>dia</span>
