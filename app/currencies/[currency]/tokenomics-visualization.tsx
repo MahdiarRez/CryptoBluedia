@@ -11,7 +11,9 @@ import {
   DollarSign,
   BarChart3,
 } from 'lucide-react';
-import { FaDollarSign } from 'react-icons/fa6';
+import { FaDollarSign, FaRankingStar } from 'react-icons/fa6';
+import { MdOutlineAttachMoney } from 'react-icons/md';
+import { IoStatsChart } from 'react-icons/io5';
 
 interface TokenomicsVisualizationProps {
   data: CryptoData | null;
@@ -45,7 +47,7 @@ export default function TokenomicsVisualization({
   const metrics = [
     {
       title: 'Rank',
-      icon: <Award className="h-5 w-5" />,
+      icon: <FaRankingStar className={'w-5 h-5'} />,
       data: data.indicators.ranks,
       prefix: '#',
       format: (value: number) => value.toString(),
@@ -57,7 +59,7 @@ export default function TokenomicsVisualization({
     },
     {
       title: 'Price',
-      icon: <FaDollarSign className="h-5 w-5" />,
+      icon: <MdOutlineAttachMoney className="h-5 w-5" />,
       data: data.indicators.prices,
       prefix: '$',
       format: (value: number) => value.toFixed(1),
@@ -71,7 +73,7 @@ export default function TokenomicsVisualization({
     },
     {
       title: 'ROL',
-      icon: <BarChart3 className="h-5 w-5" />,
+      icon: <IoStatsChart className="h-5 w-5" />,
       data: data.indicators.rol,
       suffix: '%',
       format: (value: number) => value.toString(),
@@ -85,13 +87,13 @@ export default function TokenomicsVisualization({
   ];
 
   return (
-    <div className="space-y-8 bg-WHITE">
-      <div className="flex flex-col justify-between gap-2 md:flex-row md:items-center">
+    <div>
+      <div className="flex flex-col justify-between mb-5 gap-2 md:flex-row md:items-center">
         <h2 className="text-lg sm:text-3xl font-bold text-DarkBlue text-center">
           Historical Performance
         </h2>
         <p className="text-xs sm:text-lg text-gray-500 font-medium">
-          Year by year analysis of{' '}
+          2022 till now analysis of{' '}
           <span style={{ color: colors.primary }}>
             {data.symbol.toUpperCase()}
           </span>
@@ -99,7 +101,7 @@ export default function TokenomicsVisualization({
       </div>
 
       {/* Metrics cards */}
-      <div className="space-y-6">
+      <div className="space-y-4 mb-12">
         {metrics.map((metric, metricIndex) => (
           <motion.div
             key={metric.title}
@@ -112,10 +114,10 @@ export default function TokenomicsVisualization({
             {/* Metric header */}
             <div
               className="flex items-center gap-2 px-4 py-3"
-              style={{ backgroundColor: withOpacity(metric.color, 0.1) }}
+              style={{ backgroundColor: withOpacity(metric.color, 0.2) }}
             >
               <div
-                className="flex h-8 w-8 items-center justify-center rounded-full "
+                className="flex h-8 w-8 items-center justify-center rounded-lg "
                 style={{ backgroundColor: withOpacity(metric.color, 0.2) }}
               >
                 {React.cloneElement(metric.icon, {
@@ -129,7 +131,7 @@ export default function TokenomicsVisualization({
                 {metric.title}
               </h3>
               <div
-                className="ml-auto flex items-center gap-1 rounded-full px-3 py-1 text-sm font-medium"
+                className="ml-auto flex items-center gap-1 rounded-lg px-3 py-1 text-sm font-medium"
                 style={{
                   backgroundColor: withOpacity(metric.color, 0.1),
                   color: metric.color,
@@ -221,24 +223,33 @@ export default function TokenomicsVisualization({
 
       {/* Visual comparison */}
       <motion.div
-        className="mt-8 rounded-xl border p-6 shadow-sm"
+        className="p-8 rounded-2xl mb-12 flex flex-col gap-12 items-center lg2:flex-row lg2:items-start justify-between bg-DarkBlue"
         style={{ borderColor: themeColors.primaryWithOpacity(0.2) }}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.8 }}
       >
-        <h3 className="mb-6 text-center text-lg font-semibold text-gray-900">
-          Year-by-Year Comparison
-        </h3>
+        <div
+          className={
+            'flex flex-col items-center lg2::items-start justify-center gap-0.5'
+          }
+        >
+          <h3 className="text-lg sm:text-2xl font-bold text-white text-left">
+            2022 to 2025 comparison
+          </h3>
+          <h4 className="text-sm sm:text-lg font-semibold text-gray-200 text-left">
+            based on Blue<span className={'text-LightBlue'}>dia</span>{' '}
+            parameters
+          </h4>
+        </div>
 
-        <div className="flex flex-wrap justify-center gap-4">
+        <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4 justify-center gap-6 md:gap-3">
           {years.map((year, index) => (
             <motion.div
               key={year}
-              className="relative flex h-32 w-32 flex-col items-center justify-center rounded-lg border shadow-sm"
+              className="relative flex h-32 w-32 flex-col items-center bg-WHITE justify-center rounded-xl border"
               style={{
                 borderColor: themeColors.primaryWithOpacity(0.3),
-                background: `radial-gradient(circle, ${withOpacity(themeColors.primary, 0.05)}, white)`,
               }}
               initial={{ opacity: 0, rotate: -5, y: 20 }}
               animate={{ opacity: 1, rotate: 0, y: 0 }}
@@ -250,7 +261,7 @@ export default function TokenomicsVisualization({
               }}
             >
               <div
-                className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-white px-3 py-1 text-sm font-bold shadow-sm"
+                className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-lg bg-white px-3 py-1 text-sm font-bold shadow-sm"
                 style={{ color: themeColors.primary }}
               >
                 {year}
@@ -259,13 +270,13 @@ export default function TokenomicsVisualization({
               <div className="mt-4 space-y-2 text-center">
                 <div className="flex items-center justify-center gap-1">
                   <Award className="h-4 w-4 text-gray-500" />
-                  <span className="font-medium text-gray-900">
+                  <span className="font-bold text-gray-900">
                     #{data.indicators.ranks[year]}
                   </span>
                 </div>
 
                 <div className="flex items-center justify-center gap-1">
-                  <DollarSign className="h-4 w-4 text-gray-500" />
+                  <MdOutlineAttachMoney className="h-5 w-5 text-gray-500" />
                   <span className="font-medium text-gray-900">
                     ${data.indicators.prices[year].toFixed(1)}
                   </span>
