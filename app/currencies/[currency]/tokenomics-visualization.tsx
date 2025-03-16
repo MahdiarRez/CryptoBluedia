@@ -11,6 +11,7 @@ import {
   DollarSign,
   BarChart3,
 } from 'lucide-react';
+import { FaDollarSign } from 'react-icons/fa6';
 
 interface TokenomicsVisualizationProps {
   data: CryptoData | null;
@@ -56,7 +57,7 @@ export default function TokenomicsVisualization({
     },
     {
       title: 'Price',
-      icon: <DollarSign className="h-5 w-5" />,
+      icon: <FaDollarSign className="h-5 w-5" />,
       data: data.indicators.prices,
       prefix: '$',
       format: (value: number) => value.toFixed(1),
@@ -84,25 +85,26 @@ export default function TokenomicsVisualization({
   ];
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 bg-WHITE">
       <div className="flex flex-col justify-between gap-2 md:flex-row md:items-center">
-        <div>
-          <h2 className="text-lg sm:text-xl font-semibold text-white">
-            Historical Performance
-          </h2>
-          <p className="text-xs sm:text-sm text-gray-200">
-            Year by year analysis of {data.symbol.toUpperCase()}
-          </p>
-        </div>
+        <h2 className="text-lg sm:text-3xl font-bold text-DarkBlue text-center">
+          Historical Performance
+        </h2>
+        <p className="text-xs sm:text-lg text-gray-500 font-medium">
+          Year by year analysis of{' '}
+          <span style={{ color: colors.primary }}>
+            {data.symbol.toUpperCase()}
+          </span>
+        </p>
       </div>
 
       {/* Metrics cards */}
-      <div className="space-y-8">
+      <div className="space-y-6">
         {metrics.map((metric, metricIndex) => (
           <motion.div
             key={metric.title}
-            className="overflow-hidden rounded-xl border shadow-sm"
-            style={{ borderColor: withOpacity(metric.color, 0.3) }}
+            className="overflow-hidden rounded-2xl border shadow-sm"
+            style={{ borderColor: colors.background }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: metricIndex * 0.2 }}
@@ -113,16 +115,16 @@ export default function TokenomicsVisualization({
               style={{ backgroundColor: withOpacity(metric.color, 0.1) }}
             >
               <div
-                className="flex h-8 w-8 items-center justify-center rounded-full"
+                className="flex h-8 w-8 items-center justify-center rounded-full "
                 style={{ backgroundColor: withOpacity(metric.color, 0.2) }}
               >
                 {React.cloneElement(metric.icon, {
-                  style: { color: metric.color },
+                  style: { color: ' #0d1217' },
                 })}
               </div>
               <h3
-                className="text-lg font-semibold"
-                style={{ color: metric.color }}
+                className="text-lg font-semibold text-DarkBlue"
+                // style={{ color: metric.color }}
               >
                 {metric.title}
               </h3>
@@ -140,7 +142,7 @@ export default function TokenomicsVisualization({
             </div>
 
             {/* Year cards */}
-            <div className="grid grid-cols-2 gap-4 p-4 sm:grid-cols-4">
+            <div className="grid grid-cols-2 gap-4 p-4 sm:grid-cols-4 ">
               {years.map((year, yearIndex) => {
                 const value = metric.data[year];
                 const isHighlighted =
@@ -154,7 +156,7 @@ export default function TokenomicsVisualization({
                 return (
                   <motion.div
                     key={`${metric.title}-${year}`}
-                    className={`relative overflow-hidden rounded-lg border p-4 ${isHighlighted ? 'shadow-md' : ''}`}
+                    className={`relative overflow-hidden rounded-xl border p-4 ${isHighlighted ? 'shadow-md' : ''}`}
                     style={{
                       borderColor: withOpacity(
                         metric.color,
@@ -172,15 +174,6 @@ export default function TokenomicsVisualization({
                     }}
                     whileHover={{ scale: 1.03 }}
                   >
-                    {isHighlighted && (
-                      <div
-                        className="absolute -right-1 -top-1 flex h-6 w-6 items-center justify-center rounded-full text-xs font-bold text-white"
-                        style={{ backgroundColor: metric.color }}
-                      >
-                        ★
-                      </div>
-                    )}
-
                     <div className="mb-2 text-center text-sm font-medium text-gray-500">
                       {year}
                     </div>

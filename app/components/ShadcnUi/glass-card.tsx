@@ -6,20 +6,18 @@ interface GlassCardProps extends CardProps {
     primary: string;
     secondary: string;
     background: string;
-    primaryWithOpacity: (opacity: number) => string;
   };
 }
 
 export function GlassCard({ className, colors, ...props }: GlassCardProps) {
-  const borderColor = colors
-    ? colors.primaryWithOpacity(0.1)
-    : 'border-white/10';
+  const borderColor = colors ? colors?.primary : '#F5F4F6';
 
   return (
     <Card
       className={cn('backdrop-blur-xl bg-DarkBlue', className)}
       style={{
         borderColor: borderColor,
+        boxShadow: 'none',
       }}
       {...props}
     />

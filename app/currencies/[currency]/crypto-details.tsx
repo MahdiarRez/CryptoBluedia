@@ -146,14 +146,20 @@ export default function CryptoDetails() {
           </AnimatedTabsTrigger>
         </TabsList>
 
-        <TabsContent value="overview" className="space-y-4 ">
+        <TabsContent value="overview" className=" bg-WHITE">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <GlassCard colors={colorPalette}>
-              <CardContent className="p-6">
+            <GlassCard
+              colors={{
+                primary: '#F5F4F6',
+                secondary: '#F5F4F6',
+                background: '#F5F4F6',
+              }}
+            >
+              <CardContent className="p-0 py-4 bg-WHITE">
                 {loading ? (
                   <div className="space-y-4">
                     <Skeleton className="h-8 w-64" />

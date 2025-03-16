@@ -56,7 +56,7 @@ function CurrencyHeader({
 
   return (
     <motion.header
-      className="mb-7 rounded-2xl border overflow-hidden bg-DarkBlue"
+      className="mb-2 rounded-2xl border overflow-hidden bg-DarkBlue"
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}

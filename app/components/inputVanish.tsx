@@ -1,6 +1,8 @@
 'use client';
 
 import { VanishInputAcet } from '@/app/components/aceternityUi/vanishInputAcet';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 export function InputVanish({
   classes,
@@ -10,13 +12,17 @@ export function InputVanish({
   mt?: string;
 }) {
   const placeholders = ['Currency name', 'Btc', 'Not', 'Ethfi', 'One'];
+  const [inputVal, setInputVal] = useState('');
+  const router = useRouter();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log('val', e.target.value);
+    setInputVal(e.target.value);
   };
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    console.log(e.target);
+
     e.preventDefault();
-    console.log('submitted');
+    router.push(`/currencies/${inputVal}`);
   };
 
   return (
