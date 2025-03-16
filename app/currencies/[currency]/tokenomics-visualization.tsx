@@ -4,14 +4,8 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { withOpacity } from '@/app/lib/color-utils';
 import type { CryptoData } from '@/app/lib/utils/types';
-import {
-  TrendingUp,
-  TrendingDown,
-  Award,
-  DollarSign,
-  BarChart3,
-} from 'lucide-react';
-import { FaDollarSign, FaRankingStar } from 'react-icons/fa6';
+import { TrendingUp, TrendingDown, Award } from 'lucide-react';
+import { FaRankingStar } from 'react-icons/fa6';
 import { MdOutlineAttachMoney } from 'react-icons/md';
 import { IoStatsChart } from 'react-icons/io5';
 
