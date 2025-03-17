@@ -99,15 +99,14 @@ export default function TokenomicsVisualization({
         {metrics.map((metric, metricIndex) => (
           <motion.div
             key={metric.title}
-            className="overflow-hidden rounded-2xl border shadow-sm"
-            style={{ borderColor: colors.background }}
+            className="overflow-hidden rounded-2xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: metricIndex * 0.2 }}
           >
             {/* Metric header */}
             <div
-              className="flex items-center gap-2 px-4 py-3 bg-DarkBlue"
+              className="flex items-center gap-2 px-4 py-3 bg-DarkBlue/10"
               // style={{ backgroundColor: withOpacity(metric.color, 0.2) }}
             >
               <div
@@ -138,7 +137,7 @@ export default function TokenomicsVisualization({
             </div>
 
             {/* Year cards */}
-            <div className="grid grid-cols-2 gap-4 p-4 sm:grid-cols-4 ">
+            <div className="grid grid-cols-2 gap-4 p-4 sm:grid-cols-4 bg-white">
               {years.map((year, yearIndex) => {
                 const value = metric.data[year];
                 const isHighlighted =

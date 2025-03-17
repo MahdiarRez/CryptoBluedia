@@ -36,7 +36,7 @@ interface IndicatorsSectionProps {
 
 export default function IndicatorsSection({
   data,
-  // colors,
+  colors,
 }: IndicatorsSectionProps) {
   if (!data || !data.indicators) return null;
 
@@ -61,15 +61,21 @@ export default function IndicatorsSection({
               </p>
             </div>
             <div className="flex items-center gap-4 md:self-start">
-              <div className="flex items-center gap-2 rounded-lg bg-DarkBlue/80 px-4 py-2">
-                <Calendar className="h-4 w-4 text-[#28c9e1]" />
-                <span className="text-sm text-[#F5F4F6]">
+              <div
+                className="flex items-center gap-2 rounded-lg bg-white border border-solid px-4 py-2"
+                style={{ borderColor: colors?.primaryWithOpacity(0.5) }}
+              >
+                <Calendar className="h-4 w-4 " color={colors?.primary} />
+                <span className="text-sm " style={{ color: colors?.primary }}>
                   Since {indicators.since_of}
                 </span>
               </div>
-              <div className="flex items-center gap-2 rounded-lg bg-DarkBlue/80 px-4 py-2">
-                <Layers className="h-4 w-4 text-[#28c9e1]" />
-                <span className="text-sm text-[#F5F4F6]">
+              <div
+                className="flex items-center gap-2 rounded-lg bg-white border border-solid px-4 py-2"
+                style={{ borderColor: colors?.primaryWithOpacity(0.5) }}
+              >
+                <Layers className="h-4 w-4 " color={colors?.primary} />
+                <span className="text-sm" style={{ color: colors?.primary }}>
                   {indicators.narrative}
                 </span>
               </div>
@@ -77,7 +83,7 @@ export default function IndicatorsSection({
           </div>
 
           <Tabs defaultValue="performance" className="space-y-4 ">
-            <TabsList className="border border-[#28c9e1]/20 bg-DarkBlue/80 flex flex-col xs:flex-row rounded-2xl xs:justify-evenly sm:self-center sm:w-min ">
+            <TabsList className="border border-[#28c9e1]/20 bg-DarkBlue flex flex-col xs:flex-row rounded-2xl xs:justify-evenly justify-self-center xs:w-min md:justify-self-start">
               <AnimatedTabsTrigger value="performance">
                 <Activity className="mr-1 h-4 w-4" /> Performance
               </AnimatedTabsTrigger>
@@ -89,16 +95,16 @@ export default function IndicatorsSection({
               </AnimatedTabsTrigger>
             </TabsList>
 
-            <TabsContent value="performance" className="space-y-6 bg-red-500">
+            <TabsContent value="performance" className="space-y-6">
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                <div className="space-y-4">
+                <div className="space-y-4 rounded-2xl bg-white">
                   <h3 className="text-lg font-semibold text-white">
                     Rank Evolution
                   </h3>
                   <div className="h-[250px] w-full">hi</div>
                 </div>
 
-                <div className="space-y-4">
+                <div className="space-y-4 rounded-2xl bg-white">
                   <h3 className="text-lg font-semibold text-white">
                     Price History
                   </h3>
@@ -106,7 +112,7 @@ export default function IndicatorsSection({
                 </div>
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-4 rounded-2xl bg-white">
                 <h3 className="text-lg font-semibold text-white">
                   Return on Investment
                 </h3>
@@ -116,12 +122,15 @@ export default function IndicatorsSection({
 
             <TabsContent value="metrics" className="space-y-6">
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                <div className="space-y-6">
-                  <div>
+                <div className="space-y-6 ">
+                  <div className="rounded-2xl bg-white p-4">
                     <div className="mb-2 flex items-center justify-between">
                       <div className="flex items-center gap-2">
-                        <Zap className="h-5 w-5 text-pink-400" />
-                        <h3 className="text-lg font-semibold text-white">
+                        <Zap
+                          className="h-5 w-5"
+                          color={colors?.primaryWithOpacity(0.7)}
+                        />
+                        <h3 className="text-lg font-semibold text-DarkBlue">
                           Risk / Reward Ratio
                         </h3>
                       </div>
@@ -131,121 +140,135 @@ export default function IndicatorsSection({
                     </div>
 
                     <div className="grid grid-cols-2 gap-4">
-                      <div className="space-y-2 rounded-lg bg-white/5 p-4">
+                      <div className="space-y-2 rounded-lg bg-DarkBlue/10 p-4">
                         <div className="flex items-center justify-between">
-                          <span className="text-sm text-white/70">Risk</span>
-                          <span className="text-sm font-semibold text-white">
+                          <span className="text-sm text-DarkBlue">Risk</span>
+                          <span className="text-sm font-semibold text-DarkBlue">
                             {indicators.risk}%
                           </span>
                         </div>
                         <ProgressBar
                           value={indicators.risk}
                           maxValue={100}
-                          color="from-[#28c9e1] to-[#F5F4F6]"
+                          absoluteColor={colors?.primaryWithOpacity(0.7)}
+                          gradient={false}
                         />
                       </div>
 
-                      <div className="space-y-2 rounded-lg bg-white/5 p-4">
+                      <div className="space-y-2 rounded-lg bg-DarkBlue/10 p-4">
                         <div className="flex items-center justify-between">
-                          <span className="text-sm text-white/70">Reward</span>
-                          <span className="text-sm font-semibold text-white">
+                          <span className="text-sm text-DarkBlue">Reward</span>
+                          <span className="text-sm font-semibold text-DarkBlue">
                             {indicators.reward}%
                           </span>
                         </div>
                         <ProgressBar
                           value={indicators.reward}
                           maxValue={100}
-                          color="from-[#F5F4F6] to-[#28c9e1]"
+                          absoluteColor={colors?.primaryWithOpacity(0.6)}
+                          gradient={false}
                         />
                       </div>
                     </div>
                   </div>
 
-                  <div>
+                  <div className="rounded-2xl bg-white p-4">
                     <div className="mb-2 flex items-center gap-2">
-                      <Award className="h-5 w-5 text-purple-400" />
-                      <h3 className="text-lg font-semibold text-white">
+                      <Award
+                        className="h-5 w-5 "
+                        color={colors?.primaryWithOpacity(0.7)}
+                      />
+                      <h3 className="text-lg font-semibold text-DarkBlue">
                         Value Assessment
                       </h3>
                     </div>
 
-                    <div className="space-y-2 rounded-lg bg-white/5 p-4">
+                    <div className="space-y-2 rounded-lg bg-DarkBlue/10 p-4">
                       <div className="flex items-center justify-between">
-                        <span className="text-sm text-white/70">Value</span>
-                        <span className="text-sm font-semibold text-white">
+                        <span className="text-sm text-DarkBlue/70">Value</span>
+                        <span className="text-sm font-semibold text-DarkBlue">
                           {indicators.value}%
                         </span>
                       </div>
                       <ProgressBar
                         value={indicators.value}
                         maxValue={100}
-                        color="from-[#0d1217] to-[#28c9e1]"
+                        absoluteColor={colors?.primaryWithOpacity(0.7)}
+                        gradient={false}
                       />
                     </div>
                   </div>
                 </div>
 
                 <div className="space-y-6">
-                  <div>
+                  <div className="rounded-2xl bg-white p-4">
                     <div className="mb-2 flex items-center gap-2">
-                      <LineChart className="h-5 w-5 text-indigo-400" />
-                      <h3 className="text-lg font-semibold text-white">
+                      <LineChart
+                        className="h-5 w-5 "
+                        color={colors?.primaryWithOpacity(0.7)}
+                      />
+                      <h3 className="text-lg font-semibold text-DarkBlue">
                         Market Sentiment
                       </h3>
                     </div>
 
                     <div className="grid grid-cols-2 gap-4">
-                      <div className="space-y-2 rounded-lg bg-white/5 p-4">
+                      <div className="space-y-2 rounded-lg bg-DarkBlue/10 p-4">
                         <div className="flex items-center justify-between">
-                          <span className="text-sm text-white/70">
+                          <span className="text-sm text-DarkBlue">
                             Sentiment
                           </span>
-                          <span className="text-sm font-semibold text-white">
+                          <span className="text-sm font-semibold text-DarkBlue">
                             {indicators.sentiment}%
                           </span>
                         </div>
                         <ProgressBar
                           value={indicators.sentiment}
                           maxValue={100}
-                          color="from-[#28c9e1] to-[#0d1217]"
+                          absoluteColor={colors?.primaryWithOpacity(0.7)}
+                          gradient={false}
                         />
                       </div>
 
-                      <div className="space-y-2 rounded-lg bg-white/5 p-4">
+                      <div className="space-y-2 rounded-lg bg-DarkBlue/10 p-4">
                         <div className="flex items-center justify-between">
-                          <span className="text-sm text-white/70">
+                          <span className="text-sm text-DarkBlue">
                             Digital Type
                           </span>
-                          <span className="text-sm font-semibold text-white">
+                          <span className="text-sm font-semibold text-DarkBlue">
                             {indicators.digitalType}%
                           </span>
                         </div>
                         <ProgressBar
                           value={indicators.digitalType}
                           maxValue={100}
-                          color="from-[#1a95a7] to-[#28c9e1]"
+                          absoluteColor={colors?.primaryWithOpacity(0.7)}
+                          gradient={false}
                         />
                       </div>
                     </div>
                   </div>
 
-                  <div className="rounded-lg bg-gradient-to-br from-[#28c9e1]/10 to-[#0d1217]/30 p-4">
+                  <div className="rounded-2xl bg-white p-4 min-h-[136px]">
                     <div className="mb-2 flex items-center justify-between">
                       <div className="flex items-center gap-2">
-                        <Percent className="h-5 w-5 text-pink-400" />
-                        <h3 className="text-lg font-semibold text-white">
+                        <Percent
+                          className="h-5 w-5"
+                          color={colors?.primaryWithOpacity(0.7)}
+                        />
+                        <h3 className="text-lg font-semibold text-DarkBlue">
                           Market Psychology
                         </h3>
                       </div>
-                      <div className="rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-white">
+                      <div className="rounded-full bg-DarkBlue/10 px-3 py-1 text-xs font-medium text-DarkBlue">
                         {indicators.psychology.toUpperCase()}
                       </div>
                     </div>
 
-                    <div className="mt-4 flex items-center justify-between">
-                      <div className="h-2 w-full rounded-full bg-[#F5F4F6]/10">
+                    <div className="mt-4 flex items-center justify-between ">
+                      <div className="h-2 w-full rounded-full bg-DarkBlue/10">
                         <div
-                          className="h-2 rounded-full bg-gradient-to-r from-red-500 via-[#28c9e1] to-green-500"
+                          className="h-2 rounded-full bg-gradient-to-r from-red-500 via-gray-300 to-green-500"
                           style={{
                             width: '100%',
                             clipPath: getPsychologyClipPath(
@@ -256,11 +279,14 @@ export default function IndicatorsSection({
                       </div>
                     </div>
 
-                    <div className="mt-2 flex justify-between text-xs text-white/50">
+                    <div className="mt-2 flex justify-between text-xs text-DarkBlue/70 font-normal">
                       <span>Fear</span>
                       <span>Accumulation</span>
                       <span>Greed</span>
                     </div>
+                    <span className="mt-2.5 text-center block font-normal text-sm tracking-wide opacity-30 text-DarkBlue/60">
+                      Based on Bluedia param
+                    </span>
                   </div>
                 </div>
               </div>
@@ -268,9 +294,14 @@ export default function IndicatorsSection({
 
             <TabsContent value="community" className="space-y-6">
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                <div className="overflow-hidden rounded-lg border border-[#28c9e1]/10 bg-[#0d1217]/30 p-6">
+                <div className="overflow-hidden rounded-2xl border border-[#28c9e1]/10 bg-white p-6">
                   <div className="mb-4 flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-[#28c9e1] to-[#1a95a7]">
+                    <div
+                      className="flex h-10 w-10 items-center justify-center rounded-md"
+                      style={{
+                        backgroundColor: colors?.primaryWithOpacity(0.85),
+                      }}
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="20"
@@ -287,21 +318,22 @@ export default function IndicatorsSection({
                       </svg>
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-white">
+                      <h3 className="text-lg font-semibold text-DarkBlue">
                         Twitter/X Community
                       </h3>
-                      <p className="text-sm text-white/70">
+                      <p className="text-sm text-DarkBlue/70">
                         Followers in millions
                       </p>
                     </div>
                   </div>
 
                   <div className="mt-6 flex items-end justify-between">
-                    <div className="text-4xl font-bold text-[#F5F4F6]">
-                      {indicators.communityX}M
+                    <div className="text-4xl font-bold text-DarkBlue">
+                      {indicators.communityX}
+                      <span style={{ color: colors?.primary }}>M</span>
                     </div>
                     <div className="h-32 w-full max-w-[200px]">
-                      <div className="h-full w-full rounded-lg bg-[#F5F4F6]/5 p-4">
+                      <div className="h-full w-full rounded-lg bg-DarkBlue/10 p-4">
                         <div className="relative h-full w-full">
                           <div className="absolute bottom-0 left-0 w-full">
                             <div
@@ -317,9 +349,14 @@ export default function IndicatorsSection({
                   </div>
                 </div>
 
-                <div className="overflow-hidden rounded-lg border border-[#28c9e1]/10 bg-[#0d1217]/30 p-6">
+                <div className="overflow-hidden rounded-2xl border border-[#28c9e1]/10 bg-white p-6">
                   <div className="mb-4 flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-[#28c9e1] to-[#1a95a7]">
+                    <div
+                      className="flex h-10 w-10 items-center justify-center rounded-md"
+                      style={{
+                        backgroundColor: colors?.primaryWithOpacity(0.85),
+                      }}
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="20"
@@ -337,21 +374,22 @@ export default function IndicatorsSection({
                       </svg>
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-white">
+                      <h3 className="text-lg font-semibold text-DarkBlue">
                         Telegram Community
                       </h3>
-                      <p className="text-sm text-white/70">
+                      <p className="text-sm text-DarkBlue/70">
                         Members in thousands
                       </p>
                     </div>
                   </div>
 
                   <div className="mt-6 flex items-end justify-between">
-                    <div className="text-4xl font-bold text-[#F5F4F6]">
-                      {indicators.communityTel}K
+                    <div className="text-4xl font-bold text-DarkBlue">
+                      {indicators.communityTel}
+                      <span style={{ color: colors?.primary }}>K</span>
                     </div>
                     <div className="h-32 w-full max-w-[200px]">
-                      <div className="h-full w-full rounded-lg bg-[#F5F4F6]/5 p-4">
+                      <div className="h-full w-full rounded-lg bg-DarkBlue/10 p-4">
                         <div className="relative h-full w-full">
                           <div className="absolute bottom-0 left-0 w-full">
                             <div
