@@ -194,9 +194,16 @@ export default function CryptoDetails() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <GlassCard colors={colorPalette}>
+            <GlassCard
+              className="bg-white"
+              colors={{
+                primary: '#F5F4F6',
+                secondary: '#F5F4F6',
+                background: '#F5F4F6',
+              }}
+            >
               <CardContent className="p-6">
-                <h2 className="mb-4 text-xl font-semibold text-white">
+                <h2 className="mb-4 text-2xl font-semibold text-DarkBlue">
                   Trading Markets
                 </h2>
                 {loading ? (
@@ -209,7 +216,7 @@ export default function CryptoDetails() {
                   <div className="overflow-x-auto">
                     <table className="w-full">
                       <thead>
-                        <tr className="border-b border-white/10 text-white/70">
+                        <tr className="border-b border-white/10 text-DarkBlue/70">
                           <th className="pb-2 text-left">Exchange</th>
                           <th className="pb-2 text-left">Pair</th>
                           <th className="pb-2 text-right">Price</th>
@@ -221,7 +228,7 @@ export default function CryptoDetails() {
                         {cryptoData?.markets?.map((market, index) => (
                           <motion.tr
                             key={index}
-                            className="border-b border-white/10 text-white"
+                            className="border-b border-DarkBlue/10 text-DarkBlue"
                             initial={{ opacity: 0, x: -10 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.3, delay: index * 0.05 }}
@@ -229,7 +236,7 @@ export default function CryptoDetails() {
                             <td className="py-3">
                               <div className="flex items-center">
                                 <div
-                                  className="mr-2 h-6 w-6 rounded-full p-[2px]"
+                                  className="mr-2 h-6 w-6 rounded-full p-[2px] text-white"
                                   style={{
                                     background: `linear-gradient(to right, ${colorPalette.primary}, ${colorPalette.secondary})`,
                                   }}
@@ -242,7 +249,7 @@ export default function CryptoDetails() {
                               </div>
                             </td>
                             <td className="py-3">
-                              <span className="rounded-md bg-white/5 px-2 py-1 text-sm">
+                              <span className="rounded-md bg-DarkBlue/5 px-2 py-1 text-sm">
                                 {market.pair}
                               </span>
                             </td>
@@ -262,7 +269,7 @@ export default function CryptoDetails() {
                                       : 'bg-red-500'
                                 }`}
                               ></span>
-                              <span className="ml-1 text-xs text-white/70">
+                              <span className="ml-1 text-xs text-DarkBlue/70">
                                 {market.trust_score}
                               </span>
                             </td>

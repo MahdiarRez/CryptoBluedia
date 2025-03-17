@@ -14,7 +14,7 @@ export function GlassCard({ className, colors, ...props }: GlassCardProps) {
 
   return (
     <Card
-      className={cn('backdrop-blur-xl bg-DarkBlue', className)}
+      className={cn('backdrop-blur-xl', className)}
       style={{
         borderColor: borderColor,
         boxShadow: 'none',
