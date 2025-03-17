@@ -15,7 +15,7 @@ import React from 'react';
 
 export default function Page() {
   return (
-    <main className="min-h-screen bg-WHITE pb-8">
+    <main className="min-h-screen bg-WHITE pb-8 px-5">
       <div className="absolute inset-0 overflow-hidden">
         <div className="cosmic-background" />
       </div>

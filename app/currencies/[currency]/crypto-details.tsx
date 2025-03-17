@@ -21,7 +21,6 @@ import { generatePalette, withOpacity } from '@/app/lib/color-utils';
 
 // Import components
 import TokenomicsVisualization from '@/app/currencies/[currency]/tokenomics-visualization';
-import MarketData from '@/app/currencies/[currency]/market-data';
 import AboutSection from '@/app/currencies/[currency]/about-section';
 import IndicatorsSection from '@/app/currencies/[currency]/indicators-section';
 import { GlassCard } from '@/app/components/ShadcnUi/glass-card';
@@ -128,7 +127,7 @@ export default function CryptoDetails() {
       />
 
       <Tabs defaultValue="overview" className="space-y-4">
-        <TabsList className="grid w-full rounded-[0.85rem] grid-cols-5 border bg-DarkBlue">
+        <TabsList className="grid w-full rounded-2xl text-xs grid-cols-2 sm:grid-cols-5 border bg-DarkBlue">
           <AnimatedTabsTrigger value="overview" colors={colorPalette}>
             <Zap className="mr-1 h-4 w-4" /> Overview
           </AnimatedTabsTrigger>
@@ -179,12 +178,6 @@ export default function CryptoDetails() {
               </CardContent>
             </GlassCard>
           </motion.div>
-
-          {loading ? (
-            <Skeleton className="h-[200px] w-full" />
-          ) : (
-            <MarketData data={cryptoData} colors={colorPalette} />
-          )}
         </TabsContent>
 
         <TabsContent value="indicators">

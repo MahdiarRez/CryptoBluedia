@@ -82,11 +82,11 @@ export default function TokenomicsVisualization({
 
   return (
     <div>
-      <div className="flex flex-col justify-between mb-5 gap-2 md:flex-row md:items-center">
-        <h2 className="text-lg sm:text-3xl font-bold text-DarkBlue text-center">
+      <div className="flex flex-col justify-between mb-5 gap-1 sm:gap-2 md:flex-row md:items-center">
+        <h2 className="text-2xl sm:text-3xl font-bold text-DarkBlue text-center">
           Historical Performance
         </h2>
-        <p className="text-xs sm:text-lg text-gray-500 font-medium">
+        <p className="text-base sm:text-lg text-gray-500 font-medium text-center">
           2022 till now analysis of{' '}
           <span style={{ color: colors.primary }}>
             {data.symbol.toUpperCase()}
@@ -107,20 +107,20 @@ export default function TokenomicsVisualization({
           >
             {/* Metric header */}
             <div
-              className="flex items-center gap-2 px-4 py-3"
-              style={{ backgroundColor: withOpacity(metric.color, 0.2) }}
+              className="flex items-center gap-2 px-4 py-3 bg-DarkBlue"
+              // style={{ backgroundColor: withOpacity(metric.color, 0.2) }}
             >
               <div
                 className="flex h-8 w-8 items-center justify-center rounded-lg "
-                style={{ backgroundColor: withOpacity(metric.color, 0.2) }}
+                style={{ backgroundColor: withOpacity(metric.color, 0.8) }}
               >
                 {React.cloneElement(metric.icon, {
                   style: { color: ' #0d1217' },
                 })}
               </div>
               <h3
-                className="text-lg font-semibold text-DarkBlue"
-                // style={{ color: metric.color }}
+                className="text-lg font-semibold "
+                style={{ color: metric.color }}
               >
                 {metric.title}
               </h3>
@@ -217,7 +217,7 @@ export default function TokenomicsVisualization({
 
       {/* Visual comparison */}
       <motion.div
-        className="p-8 rounded-2xl mb-12 flex flex-col gap-12 items-center lg2:flex-row lg2:items-start justify-between bg-DarkBlue"
+        className="p-8 rounded-2xl mb-12 flex flex-col gap-12 items-center lg2:flex-row lg2:px-6 xl:px-9 lg2:items-start justify-between bg-DarkBlue"
         style={{ borderColor: themeColors.primaryWithOpacity(0.2) }}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -225,13 +225,13 @@ export default function TokenomicsVisualization({
       >
         <div
           className={
-            'flex flex-col items-center lg2::items-start justify-center gap-0.5'
+            'flex flex-col items-center flex-nowrap lg2:items-start justify-center gap-0.5'
           }
         >
-          <h3 className="text-lg sm:text-2xl font-bold text-white text-left">
+          <h3 className="text-lg sm:text-2xl lg2:text-xl xl:text-2xl font-bold text-nowrap text-white text-left">
             2022 to 2025 comparison
           </h3>
-          <h4 className="text-sm sm:text-lg font-semibold text-gray-200 text-left">
+          <h4 className="text-sm sm:text-lg font-semibold text-nowrap text-gray-200 text-left">
             based on Blue<span className={'text-LightBlue'}>dia</span>{' '}
             parameters
           </h4>

@@ -94,11 +94,11 @@ function CurrencyHeader({
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <h1 className="text-3xl font-bold text-white">
+                    <h1 className="text-3xl font-bold text-white capitalize">
                       {cryptoData?.name || 'Cryptocurrency'}
                     </h1>
                     <span
-                      className="text-sm font-medium px-2 py-0.5 rounded-full text-white"
+                      className="text-sm font-medium px-2 py-0.5 rounded-md text-white"
                       style={{
                         background: `linear-gradient(to right, ${colorPalette.primary}, ${colorPalette.secondary})`,
                       }}
@@ -106,17 +106,17 @@ function CurrencyHeader({
                       {cryptoData?.symbol?.toUpperCase() || 'CRYPTO'}
                     </span>
                   </div>
-                  <div className="flex items-center gap-2 mt-1">
+                  <div className="flex flex-nowrap flex-col xs:flex-row xs:items-center items-start gap-1 my-2 xs:my-1 ">
                     <a
                       href={`https://${cryptoData?.id || 'cryptocurrency'}.network`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center text-xs text-gray-400 hover:text-gray-300"
+                      className="flex items-center text-xs text-nowrap text-gray-400 hover:text-gray-300"
                     >
                       <Globe className="h-3 w-3 mr-1" /> Official Website
                     </a>
-                    <span className="text-gray-600">•</span>
-                    <span className="flex items-center text-xs text-gray-400">
+                    <span className="text-gray-600 hidden xs:block">•</span>
+                    <span className="flex items-center text-xs text-nowrap text-gray-400">
                       <Award className="h-3 w-3 mr-1" /> Rank 2025 #
                       {cryptoData?.market_cap_rank || 'N/A'}
                     </span>
@@ -124,9 +124,9 @@ function CurrencyHeader({
                 </div>
               </div>
 
-              <div className="flex items-center gap-2">
+              <div className="flex flex-nowrap self-start items-center gap-2">
                 <div
-                  className="px-3 py-1 rounded-md text-xs font-medium"
+                  className="px-1.5 sm:px-3 py-1 text-nowrap flex-nowrap rounded-md text-xs font-medium"
                   style={{
                     backgroundColor: withOpacity(colorPalette.primary, 0.2),
                     color: colorPalette.primary,
@@ -180,7 +180,6 @@ function CurrencyHeader({
               </div>
             </div>
 
-            {/* 24h Trading Volume */}
             <div className="p-4 flex flex-col justify-center">
               <div className="text-sm text-gray-400 mb-1">Sicne of</div>
               <div className="flex items-center">
@@ -188,7 +187,6 @@ function CurrencyHeader({
               </div>
             </div>
 
-            {/* All-Time High */}
             <div className="p-4 flex flex-col justify-center">
               <div className="text-sm text-gray-400 mb-1">Narrative</div>
               <div className="flex items-center">
