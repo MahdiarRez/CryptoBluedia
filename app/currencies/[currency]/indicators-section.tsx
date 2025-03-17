@@ -21,6 +21,7 @@ import { ProgressBar } from '@/app/components/ShadcnUi/progress-bar';
 // import { PriceHistoryChart } from '../../../../../../Downloads/crypto-dashboard/components/charts/price-history-chart';
 // import { RolChart } from '../../../../../../Downloads/crypto-dashboard/components/charts/rol-chart';
 import { CryptoData } from '@/app/lib/utils/types';
+import React from 'react';
 
 interface IndicatorsSectionProps {
   data: CryptoData | null;
@@ -49,24 +50,24 @@ export default function IndicatorsSection({
       className="space-y-6"
     >
       <GlassCard>
-        <CardContent className="p-6">
-          <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
+        <CardContent className="px-0 py-4 bg-WHITE">
+          <div className="mb-6 flex flex-nowrap flex-col md:flex-row items-center justify-center md:justify-between gap-4">
             <div>
-              <h2 className="text-2xl font-bold text-[#F5F4F6]">
+              <h2 className="text-2xl sm:text-3xl font-bold text-DarkBlue text-center md:text-left">
                 Advanced Indicators
               </h2>
-              <p className="text-[#F5F4F6]/70">
+              <p className="text-base sm:text-lg text-gray-500 font-medium text-center md:text-left">
                 Comprehensive metrics and analysis for {data.name}
               </p>
             </div>
-            <div className="flex items-center gap-4">
-              <div className="flex items-center gap-2 rounded-full bg-[#28c9e1]/10 px-4 py-2">
+            <div className="flex items-center gap-4 md:self-start">
+              <div className="flex items-center gap-2 rounded-lg bg-DarkBlue/80 px-4 py-2">
                 <Calendar className="h-4 w-4 text-[#28c9e1]" />
                 <span className="text-sm text-[#F5F4F6]">
                   Since {indicators.since_of}
                 </span>
               </div>
-              <div className="flex items-center gap-2 rounded-full bg-[#28c9e1]/10 px-4 py-2">
+              <div className="flex items-center gap-2 rounded-lg bg-DarkBlue/80 px-4 py-2">
                 <Layers className="h-4 w-4 text-[#28c9e1]" />
                 <span className="text-sm text-[#F5F4F6]">
                   {indicators.narrative}
@@ -75,8 +76,8 @@ export default function IndicatorsSection({
             </div>
           </div>
 
-          <Tabs defaultValue="performance" className="space-y-6">
-            <TabsList className="border border-[#28c9e1]/20 bg-[#0d1217]/60">
+          <Tabs defaultValue="performance" className="space-y-4 ">
+            <TabsList className="border border-[#28c9e1]/20 bg-DarkBlue/80 flex flex-col xs:flex-row rounded-2xl xs:justify-evenly sm:self-center sm:w-min ">
               <AnimatedTabsTrigger value="performance">
                 <Activity className="mr-1 h-4 w-4" /> Performance
               </AnimatedTabsTrigger>
@@ -88,7 +89,7 @@ export default function IndicatorsSection({
               </AnimatedTabsTrigger>
             </TabsList>
 
-            <TabsContent value="performance" className="space-y-6">
+            <TabsContent value="performance" className="space-y-6 bg-red-500">
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                 <div className="space-y-4">
                   <h3 className="text-lg font-semibold text-white">

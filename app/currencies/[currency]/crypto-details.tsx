@@ -180,7 +180,7 @@ export default function CryptoDetails() {
           </motion.div>
         </TabsContent>
 
-        <TabsContent value="indicators">
+        <TabsContent value="indicators" className={'bg-WHITE'}>
           {loading ? (
             <Skeleton className="h-[500px] w-full" />
           ) : (
