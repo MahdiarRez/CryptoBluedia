@@ -17,10 +17,10 @@ type currnecyHeaderT = {
     primaryWithOpacity?: (opacity: number) => string;
   };
   cryptoData?: {
-    image: string;
-    name: string;
-    symbol: string;
-    current_price: number;
+    image?: string;
+    name?: string;
+    symbol?: string;
+    current_price?: number;
     price_change_percentage_24h: number;
     market_cap?: number;
     market_cap_rank?: number;
@@ -146,22 +146,22 @@ function CurrencyHeader({
               <div className="text-sm text-gray-400 mb-1">Current Price</div>
               <div className="flex items-center">
                 <span className="text-2xl sm:text-3xl font-bold text-white">
-                  ${cryptoData?.current_price.toLocaleString() || '0.00'}
+                  ${cryptoData?.current_price?.toLocaleString() || '0.00'}
                 </span>
                 {cryptoData && (
                   <span
                     className={`ml-2 flex items-center text-xs sm:text-sm ${
-                      cryptoData.price_change_percentage_24h >= 0
+                      cryptoData?.price_change_percentage_24h >= 0
                         ? 'text-green-400'
                         : 'text-red-400'
                     }`}
                   >
-                    {cryptoData.price_change_percentage_24h >= 0 ? (
+                    {cryptoData?.price_change_percentage_24h >= 0 ? (
                       <ArrowUpRight className="mr-1 h-3 w-3 sm:h-4 sm:w-4" />
                     ) : (
                       <ArrowDownRight className="mr-1 h-3 w-3 sm:h-4 sm:w-4" />
                     )}
-                    {Math.abs(cryptoData.price_change_percentage_24h).toFixed(
+                    {Math.abs(cryptoData?.price_change_percentage_24h).toFixed(
                       2
                     )}
                     %

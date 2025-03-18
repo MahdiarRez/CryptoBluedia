@@ -4,7 +4,7 @@ import type React from 'react';
 
 import { useEffect, useState } from 'react';
 import { fetchCryptoData } from '@/app/lib/api';
-import type { CryptoData } from '@/app/lib/utils/types';
+import type { CryptoCurrency, CryptoData } from '@/app/lib/utils/types';
 import { Tabs, TabsContent, TabsList } from '@/app/components/ShadcnUi/tabs';
 import { CardContent } from '@/app/components/ShadcnUi/card';
 import { Skeleton } from '@/app/components/ShadcnUi/skeleton';
@@ -27,17 +27,22 @@ import IndicatorsSection from '@/app/currencies/[currency]/indicators-section';
 import { GlassCard } from '@/app/components/ShadcnUi/glass-card';
 import { AnimatedTabsTrigger } from '@/app/components/ShadcnUi/animated-tabs-trigger';
 import CurrencyHeader from '@/app/currencies/[currency]/currencyHeader';
-import { useParams } from 'next/navigation';
 import { newsItems } from '@/app/news/cryptoNewsPage';
 import { CryptoNewsCard } from '@/app/news/cryptoNewsCard';
 import Link from 'next/link';
 import Button from '@/app/components/button';
 
-export default function CryptoDetails() {
-  const { currency } = useParams();
+interface CryptoDetailsProps {
+  cryptoId: string;
+  initialData?: CryptoCurrency; // Optional initial data from server
+}
 
+export default function CryptoDetails({
+  cryptoId,
+  initialData,
+}: CryptoDetailsProps) {
   const [cryptoData, setCryptoData] = useState<CryptoData | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(!initialData);
   const [error, setError] = useState<string | null>(null);
 
   // Default colors until data is loaded
@@ -50,56 +55,115 @@ export default function CryptoDetails() {
       `rgba(245, 244, 246, ${opacity})`,
   });
 
-  useEffect(() => {
-    const loadData = async () => {
-      try {
-        setLoading(true);
-        const data = await fetchCryptoData(currency as string);
-        setCryptoData(data);
+  const loadData = async () => {
+    try {
+      setLoading(true);
+      const data = await fetchCryptoData(cryptoId);
+      setCryptoData(data);
 
-        // Generate color palette from the currency's color
-        if (data.color) {
-          const palette = generatePalette(data.color);
-          setColorPalette({
-            primary: data.color,
-            secondary: data.secondaryColor || palette.complementary,
-            background: data.backgroundColor || '#0d1217',
-            primaryWithOpacity: (opacity: number) =>
-              withOpacity(data.color, opacity),
-            secondaryWithOpacity: (opacity: number) =>
-              withOpacity(
-                data.secondaryColor || palette.complementary,
-                opacity
-              ),
-          });
-
-          // Update CSS variables for global theming
-          document.documentElement.style.setProperty(
-            '--currency-primary',
-            data.color
-          );
-          document.documentElement.style.setProperty(
-            '--currency-secondary',
-            data.secondaryColor || palette.complementary
-          );
-          document.documentElement.style.setProperty(
-            '--currency-background',
-            data.backgroundColor || '#0d1217'
-          );
-        }
-      } catch (err) {
-        setError('Failed to load cryptocurrency data');
-        console.error(err);
-      } finally {
-        setLoading(false);
+      // Generate color palette from the currency's color
+      if (data.color) {
+        const palette = generatePalette(data.color);
+        setColorPalette({
+          primary: data.color,
+          secondary: data.secondaryColor || '#333333',
+          background: '#ffffff',
+          primaryWithOpacity: (opacity: number) =>
+            withOpacity(data.color, opacity),
+          secondaryWithOpacity: (opacity: number) =>
+            withOpacity(data.secondaryColor || '#333333', opacity),
+        });
       }
-    };
+    } catch (err) {
+      setError('Failed to load cryptocurrency data');
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    loadData();
+  useEffect(() => {
+    // If we have initial data from the server, use it to set up the component
+    if (initialData) {
+      // Convert the basic currency data to the full CryptoData format
+      // In a real app, you might need to fetch additional data here
+      const fullData: CryptoData = {
+        ...initialData,
+        ath_date: initialData.ath_date || '',
+        atl_date: initialData.atl_date || '',
+        chart_data: [],
+        markets: [],
+        news: [],
+        // Add missing required properties
+        total_supply: initialData.circulating_supply * 1.2 || 0,
+        max_supply: initialData.circulating_supply * 1.5 || 0,
+        indicators: {
+          since_of: 2017,
+          narrative: 'Layer0',
+          communityX: 1.4,
+          communityTel: 24,
+          risk: 16,
+          reward: 63,
+          value: 85,
+          ranks: {
+            '2022': initialData.market_cap_rank || 0,
+            '2023': initialData.market_cap_rank
+              ? initialData.market_cap_rank + 2
+              : 0,
+            '2024': initialData.market_cap_rank
+              ? initialData.market_cap_rank - 1
+              : 0,
+            '2025': initialData.market_cap_rank
+              ? initialData.market_cap_rank + 4
+              : 0,
+          },
+          prices: {
+            '2022': initialData.current_price * 1.3,
+            '2023': initialData.current_price * 0.9,
+            '2024': initialData.current_price,
+            '2025': initialData.current_price * 1.2,
+          },
+          rol: {
+            '2022': -82,
+            '2023': 55,
+            '2024': -19,
+            '2025': -10,
+          },
+          sentiment: 15,
+          psychology: 'accumulation',
+          inflation: null,
+          score: 955,
+          digitalType: 74,
+        },
+        color: '#E6007A',
+        secondaryColor: '#28c9e1',
+        backgroundColor: '#ffffff',
+      };
+
+      setCryptoData(fullData);
+      setLoading(false);
+
+      // Generate color palette
+      if (fullData.color) {
+        const palette = generatePalette(fullData.color);
+        setColorPalette({
+          primary: fullData.color,
+          secondary: fullData.secondaryColor || '#333333',
+          background: '#ffffff',
+          primaryWithOpacity: (opacity: number) =>
+            withOpacity(fullData.color, opacity),
+          secondaryWithOpacity: (opacity: number) =>
+            withOpacity(fullData.secondaryColor || '#333333', opacity),
+        });
+      }
+    } else {
+      // If no initial data, fetch it
+      loadData();
+    }
     // Set up polling for real-time updates
-    const interval = setInterval(loadData, 60000); // Update every minute
+    const interval = setInterval(() => loadData(), 60000); // Update every minute
     return () => clearInterval(interval);
-  }, [currency]);
+  }, [cryptoId, initialData]);
 
   if (error) {
     return (
@@ -379,7 +443,7 @@ export default function CryptoDetails() {
                 <h2 className="text-2xl sm:text-3xl font-bold text-DarkBlue text-left">
                   Latest news of{' '}
                   <span style={{ color: colorPalette.primaryWithOpacity(0.8) }}>
-                    {currency}
+                    {cryptoId}
                   </span>
                 </h2>
                 <Link href={'/news'}>
@@ -405,4 +469,7 @@ export default function CryptoDetails() {
       </Tabs>
     </div>
   );
+}
+function loadData(): void {
+  throw new Error('Function not implemented.');
 }

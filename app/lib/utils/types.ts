@@ -9,6 +9,25 @@ export interface NewsItem {
   url: string;
 }
 
+export interface CryptoCurrency {
+  id: string;
+  symbol: string;
+  name: string;
+  image: string;
+  current_price: number;
+  market_cap: number;
+  market_cap_rank: number;
+  total_volume: number;
+  price_change_percentage_24h: number;
+  circulating_supply: number;
+  ath?: number;
+  ath_date?: string;
+  ath_change_percentage?: number;
+  atl?: number;
+  atl_date?: string;
+  atl_change_percentage?: number;
+}
+
 export interface CoinData {
   id: string;
   name: string;
@@ -21,27 +40,27 @@ export interface CoinData {
 }
 
 export interface CryptoData {
-  id: string;
-  name: string;
-  symbol: string;
-  current_price: number;
-  image: string;
-  market_cap: number;
-  market_cap_rank: number;
-  total_volume: number;
-  high_24h: number;
-  low_24h: number;
+  id?: string;
+  name?: string;
+  symbol?: string;
+  current_price?: number;
+  image?: string;
+  market_cap?: number;
+  market_cap_rank?: number;
+  total_volume?: number;
+  high_24h?: number;
+  low_24h?: number;
   price_change_percentage_24h: number;
-  circulating_supply: number;
-  total_supply: number;
-  max_supply: number;
-  ath: number;
-  ath_date: string;
-  ath_change_percentage: number;
-  atl: number;
-  atl_date: string;
-  atl_change_percentage: number;
-  chart_data: Array<{
+  circulating_supply?: number;
+  total_supply?: number;
+  max_supply?: number;
+  ath?: number;
+  ath_date?: string;
+  ath_change_percentage?: number;
+  atl?: number;
+  atl_date?: string;
+  atl_change_percentage?: number;
+  chart_data?: Array<{
     date: string;
     price: number;
   }>;
