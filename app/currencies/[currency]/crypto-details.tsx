@@ -132,7 +132,7 @@ export default function CryptoDetails() {
       />
 
       <Tabs defaultValue="overview" className="space-y-4">
-        <TabsList className="grid w-full rounded-2xl text-xs grid-cols-2 sm:grid-cols-5 border bg-DarkBlue">
+        <TabsList className="grid w-full rounded-2xl text-xs grid-cols-1 xs:grid-cols-5 sm:grid-cols-5 border bg-DarkBlue">
           <AnimatedTabsTrigger value="overview" colors={colorPalette}>
             <Zap className="mr-1 h-4 w-4" /> Overview
           </AnimatedTabsTrigger>
@@ -199,16 +199,9 @@ export default function CryptoDetails() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <GlassCard
-              className="bg-white"
-              colors={{
-                primary: '#F5F4F6',
-                secondary: '#F5F4F6',
-                background: '#F5F4F6',
-              }}
-            >
-              <CardContent className="p-6">
-                <h2 className="mb-4 text-2xl font-semibold text-DarkBlue">
+            <GlassCard colors={colorPalette}>
+              <CardContent className="p-3 sm:p-4 md:p-6">
+                <h2 className="mb-3 sm:mb-4 text-xl sm:text-2xl font-semibold text-gray-900">
                   Trading Markets
                 </h2>
                 {loading ? (
@@ -218,27 +211,19 @@ export default function CryptoDetails() {
                     ))}
                   </div>
                 ) : (
-                  <div className="overflow-x-auto">
-                    <table className="w-full">
-                      <thead>
-                        <tr className="border-b border-white/10 text-DarkBlue/70">
-                          <th className="pb-2 text-left">Exchange</th>
-                          <th className="pb-2 text-left">Pair</th>
-                          <th className="pb-2 text-right">Price</th>
-                          <th className="pb-2 text-right">Volume (24h)</th>
-                          <th className="pb-2 text-right">Trust Score</th>
-                        </tr>
-                      </thead>
-                      <tbody>
+                  <div className="overflow-x-auto -mx-3 sm:-mx-4 md:-mx-6">
+                    <div className="inline-block min-w-full px-3 sm:px-4 md:px-6">
+                      {/* Mobile view (card-based layout) */}
+                      <div className="md:hidden space-y-4">
                         {cryptoData?.markets?.map((market, index) => (
-                          <motion.tr
+                          <motion.div
                             key={index}
-                            className="border-b border-DarkBlue/10 text-DarkBlue"
-                            initial={{ opacity: 0, x: -10 }}
-                            animate={{ opacity: 1, x: 0 }}
+                            className="rounded-lg border border-gray-200 p-3 bg-white shadow-sm"
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.3, delay: index * 0.05 }}
                           >
-                            <td className="py-3">
+                            <div className="flex items-center justify-between mb-2">
                               <div className="flex items-center">
                                 <div
                                   className="mr-2 h-6 w-6 rounded-full p-[2px] text-white"
@@ -246,42 +231,128 @@ export default function CryptoDetails() {
                                     background: `linear-gradient(to right, ${colorPalette.primary}, ${colorPalette.secondary})`,
                                   }}
                                 >
-                                  <div className="h-full w-full rounded-full bg-black/80 p-[2px] text-center text-xs">
+                                  <div className="h-full w-full rounded-full bg-white p-[2px] text-center text-xs text-gray-900">
                                     {market.exchange.charAt(0)}
                                   </div>
                                 </div>
-                                {market.exchange}
+                                <span className="font-medium text-gray-900">
+                                  {market.exchange}
+                                </span>
                               </div>
-                            </td>
-                            <td className="py-3">
-                              <span className="rounded-md bg-DarkBlue/5 px-2 py-1 text-sm">
+                              <span className="rounded-md bg-gray-100 px-2 py-1 text-xs">
                                 {market.pair}
                               </span>
-                            </td>
-                            <td className="py-3 text-right">
-                              ${market.price.toLocaleString()}
-                            </td>
-                            <td className="py-3 text-right">
-                              ${market.volume.toLocaleString()}
-                            </td>
-                            <td className="py-3 text-right">
-                              <span
-                                className={`inline-block h-2 w-2 rounded-full ${
-                                  market.trust_score === 'high'
-                                    ? 'bg-green-500'
-                                    : market.trust_score === 'medium'
-                                      ? 'bg-yellow-500'
-                                      : 'bg-red-500'
-                                }`}
-                              ></span>
-                              <span className="ml-1 text-xs text-DarkBlue/70">
-                                {market.trust_score}
-                              </span>
-                            </td>
-                          </motion.tr>
+                            </div>
+
+                            <div className="grid grid-cols-2 gap-2 text-sm">
+                              <div>
+                                <div className="text-gray-500 text-xs">
+                                  Price
+                                </div>
+                                <div className="font-medium">
+                                  ${market.price.toLocaleString()}
+                                </div>
+                              </div>
+                              <div>
+                                <div className="text-gray-500 text-xs">
+                                  Volume (24h)
+                                </div>
+                                <div className="font-medium">
+                                  ${market.volume.toLocaleString()}
+                                </div>
+                              </div>
+                              <div className="col-span-2">
+                                <div className="text-gray-500 text-xs">
+                                  Trust Score
+                                </div>
+                                <div className="flex items-center">
+                                  <span
+                                    className={`inline-block h-2 w-2 rounded-full ${
+                                      market.trust_score === 'high'
+                                        ? 'bg-green-500'
+                                        : market.trust_score === 'medium'
+                                          ? 'bg-yellow-500'
+                                          : 'bg-red-500'
+                                    }`}
+                                  ></span>
+                                  <span className="ml-1 text-gray-900">
+                                    {market.trust_score}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </motion.div>
                         ))}
-                      </tbody>
-                    </table>
+                      </div>
+
+                      {/* Desktop view (table layout) */}
+                      <table className="hidden md:table w-full">
+                        <thead>
+                          <tr className="border-b border-gray-200 text-gray-600">
+                            <th className="pb-2 text-left">Exchange</th>
+                            <th className="pb-2 text-left">Pair</th>
+                            <th className="pb-2 text-right">Price</th>
+                            <th className="pb-2 text-right">Volume (24h)</th>
+                            <th className="pb-2 text-right">Trust Score</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {cryptoData?.markets?.map((market, index) => (
+                            <motion.tr
+                              key={index}
+                              className="border-b border-gray-200 text-gray-800"
+                              initial={{ opacity: 0, x: -10 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{
+                                duration: 0.3,
+                                delay: index * 0.05,
+                              }}
+                            >
+                              <td className="py-3">
+                                <div className="flex items-center">
+                                  <div
+                                    className="mr-2 h-6 w-6 rounded-full p-[2px] text-white"
+                                    style={{
+                                      background: `linear-gradient(to right, ${colorPalette.primary}, ${colorPalette.secondary})`,
+                                    }}
+                                  >
+                                    <div className="h-full w-full rounded-full bg-white p-[2px] text-center text-xs text-gray-900">
+                                      {market.exchange.charAt(0)}
+                                    </div>
+                                  </div>
+                                  {market.exchange}
+                                </div>
+                              </td>
+                              <td className="py-3">
+                                <span className="rounded-md bg-gray-100 px-2 py-1 text-sm">
+                                  {market.pair}
+                                </span>
+                              </td>
+                              <td className="py-3 text-right">
+                                ${market.price.toLocaleString()}
+                              </td>
+                              <td className="py-3 text-right">
+                                ${market.volume.toLocaleString()}
+                              </td>
+                              <td className="py-3 text-right">
+                                <span
+                                  className={`inline-block h-2 w-2 rounded-full ${
+                                    market.trust_score === 'high'
+                                      ? 'bg-green-500'
+                                      : market.trust_score === 'medium'
+                                        ? 'bg-yellow-500'
+                                        : 'bg-red-500'
+                                  }`}
+                                ></span>
+                                <span className="ml-1 text-xs text-gray-600">
+                                  {market.trust_score}
+                                </span>
+                              </td>
+                            </motion.tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 )}
               </CardContent>

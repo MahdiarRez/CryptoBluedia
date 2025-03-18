@@ -83,7 +83,7 @@ export default function IndicatorsSection({
           </div>
 
           <Tabs defaultValue="performance" className="space-y-4 ">
-            <TabsList className="border border-[#28c9e1]/20 bg-DarkBlue flex flex-col xs:flex-row rounded-2xl xs:justify-evenly justify-self-center xs:w-min md:justify-self-start">
+            <TabsList className="border border-[#28c9e1]/20 bg-DarkBlue flex flex-col w-full max-w-[243px] xs:max-w-min xs:flex-row rounded-2xl xs:justify-evenly justify-self-center xs:w-min md:justify-self-start">
               <AnimatedTabsTrigger value="performance">
                 <Activity className="mr-1 h-4 w-4" /> Performance
               </AnimatedTabsTrigger>
