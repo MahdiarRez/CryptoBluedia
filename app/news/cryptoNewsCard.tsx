@@ -12,11 +12,14 @@ import pic from '@/public/youtubePic.jpeg';
 
 interface CryptoNewsCardProps {
   newsItem: NewsItem;
+  classes?: string;
 }
 
-export function CryptoNewsCard({ newsItem }: CryptoNewsCardProps) {
+export function CryptoNewsCard({ newsItem, classes }: CryptoNewsCardProps) {
   return (
-    <CardShadcn className="overflow-hidden rounded-2xl transition-all hover:shadow-md">
+    <CardShadcn
+      className={`overflow-hidden rounded-2xl transition-all hover:shadow-md ${classes} self-center`}
+    >
       <div className="relative h-48 w-full">
         <Image
           // src={newsItem.imageUrl || '/placeholder.svg'}

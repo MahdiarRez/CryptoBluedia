@@ -15,6 +15,7 @@ import {
   Info,
   Newspaper,
   Activity,
+  ExternalLink,
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { generatePalette, withOpacity } from '@/app/lib/color-utils';
@@ -27,6 +28,10 @@ import { GlassCard } from '@/app/components/ShadcnUi/glass-card';
 import { AnimatedTabsTrigger } from '@/app/components/ShadcnUi/animated-tabs-trigger';
 import CurrencyHeader from '@/app/currencies/[currency]/currencyHeader';
 import { useParams } from 'next/navigation';
+import { newsItems } from '@/app/news/cryptoNewsPage';
+import { CryptoNewsCard } from '@/app/news/cryptoNewsCard';
+import Link from 'next/link';
+import Button from '@/app/components/button';
 
 export default function CryptoDetails() {
   const { currency } = useParams();
@@ -137,8 +142,8 @@ export default function CryptoDetails() {
           <AnimatedTabsTrigger value="markets" colors={colorPalette}>
             <BarChart3 className="mr-1 h-4 w-4" /> Markets
           </AnimatedTabsTrigger>
-          <AnimatedTabsTrigger value="about" colors={colorPalette}>
-            <Info className="mr-1 h-4 w-4" /> About
+          <AnimatedTabsTrigger value="Video" colors={colorPalette}>
+            <Info className="mr-1 h-4 w-4" /> Video
           </AnimatedTabsTrigger>
           <AnimatedTabsTrigger value="news" colors={colorPalette}>
             <Newspaper className="mr-1 h-4 w-4" /> News
@@ -284,7 +289,7 @@ export default function CryptoDetails() {
           </motion.div>
         </TabsContent>
 
-        <TabsContent value="about">
+        <TabsContent value="Video">
           {loading ? (
             <Skeleton className="h-[400px] w-full" />
           ) : (
@@ -298,61 +303,32 @@ export default function CryptoDetails() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <GlassCard colors={colorPalette}>
-              <CardContent className="p-6">
-                <h2 className="mb-4 text-xl font-semibold text-white">
-                  Latest News
+            <CardContent className="py-4 px-0">
+              <div className="flex flex-col justify-between mb-5 gap-2 xs:flex-row md:items-center">
+                <h2 className="text-2xl sm:text-3xl font-bold text-DarkBlue text-left">
+                  Latest news of{' '}
+                  <span style={{ color: colorPalette.primaryWithOpacity(0.8) }}>
+                    {currency}
+                  </span>
                 </h2>
-                {loading ? (
-                  <div className="space-y-4">
-                    {[...Array(3)].map((_, i) => (
-                      <div key={i} className="space-y-2">
-                        <Skeleton className="h-6 w-3/4" />
-                        <Skeleton className="h-4 w-full" />
-                        <Skeleton className="h-4 w-full" />
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <div className="space-y-6">
-                    {cryptoData?.news?.map((item, index) => (
-                      <motion.div
-                        key={index}
-                        className="overflow-hidden rounded-lg border border-white/10 bg-white/5 p-4 backdrop-blur-sm"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.3, delay: index * 0.1 }}
-                        whileHover={{ scale: 1.02 }}
-                      >
-                        <h3
-                          className="mb-1 text-lg font-medium text-white hover:text-opacity-80"
-                          style={{ color: colorPalette.primary }}
-                        >
-                          <a
-                            href={item.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center"
-                          >
-                            {item.title}
-                            <ArrowUpRight className="ml-1 h-4 w-4" />
-                          </a>
-                        </h3>
-                        <p className="mb-2 text-sm text-white/70">
-                          {item.description}
-                        </p>
-                        <div className="flex items-center justify-between text-xs text-white/50">
-                          <span className="rounded-full bg-white/10 px-2 py-1">
-                            {item.source}
-                          </span>
-                          <span>{item.date}</span>
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
+                <Link href={'/news'}>
+                  <Button classes="rounded-xl">All News</Button>
+                </Link>
+              </div>
+
+              <div className="grid grid-cols-1 gap-5 lg:grid-cols-3 xl:grid-cols-4 content-center place-content-center sm:grid-cols-2">
+                {newsItems.map(
+                  (item, index) =>
+                    index < 4 && (
+                      <CryptoNewsCard
+                        classes="max-w-[313px] mx-auto md:max-w-sm"
+                        key={item.id}
+                        newsItem={item}
+                      />
+                    )
                 )}
-              </CardContent>
-            </GlassCard>
+              </div>
+            </CardContent>
           </motion.div>
         </TabsContent>
       </Tabs>
