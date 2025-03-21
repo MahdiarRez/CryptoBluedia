@@ -10,7 +10,6 @@ export default async function CurrencyPage({
   params: Promise<{ currency: string }>;
 }) {
   const { currency } = await params;
-  // Validate the currency ID
   console.log(currency);
 
   if (!currency || typeof currency !== 'string') {

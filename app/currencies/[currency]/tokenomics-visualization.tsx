@@ -56,7 +56,7 @@ export default function TokenomicsVisualization({
       icon: <MdOutlineAttachMoney className="h-5 w-5" />,
       data: data.indicators.prices,
       prefix: '$',
-      format: (value: number) => value.toFixed(1),
+      format: (value: number) => value?.toFixed(1),
       average: Number(
         (
           Object.values(data.indicators.prices).reduce((a, b) => a + b, 0) /
@@ -271,7 +271,7 @@ export default function TokenomicsVisualization({
                 <div className="flex items-center justify-center gap-1">
                   <MdOutlineAttachMoney className="h-5 w-5 text-gray-500" />
                   <span className="font-medium text-gray-900">
-                    ${data.indicators.prices[year].toFixed(1)}
+                    ${data.indicators.prices[year]?.toFixed(1)}
                   </span>
                 </div>
 
