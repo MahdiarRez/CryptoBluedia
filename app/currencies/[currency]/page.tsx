@@ -2,29 +2,31 @@ import { fetchCurrencyById } from '@/app/lib/utils/supabaseServer';
 import { notFound } from 'next/navigation';
 import CryptoDetails from './crypto-details';
 
-interface CurrencyPageProps {
-  params: {
-    currency: string;
-  };
-}
-
 export const dynamic = 'force-dynamic'; // Ensure data is always fresh
 
-export default async function CurrencyPage({ params }: CurrencyPageProps) {
+export default async function CurrencyPage({
+  params,
+}: {
+  params: Promise<{ currency: string }>;
+}) {
+  const { currency } = await params;
   // Validate the currency ID
-  console.log(params.currency);
+  console.log(currency);
 
-  if (!params.currency || typeof params.currency !== 'string') {
+  if (!currency || typeof currency !== 'string') {
     notFound();
   }
 
   try {
     // Fetch the currency data from Supabase
-    const currency = await fetchCurrencyById(params.currency);
+    const currency = await fetchCurrencyById((await params).currency);
 
     return (
       <div className="min-h-screen w-full bg-white pb-4 sm:pb-8 overflow-x-hidden">
-        <CryptoDetails cryptoId={params.currency} initialData={currency} />
+        <CryptoDetails
+          cryptoId={(await params).currency}
+          initialData={currency}
+        />
       </div>
     );
   } catch (error) {
@@ -33,9 +35,14 @@ export default async function CurrencyPage({ params }: CurrencyPageProps) {
   }
 }
 
-export async function generateMetadata({ params }: CurrencyPageProps) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ currency: string }>;
+}) {
+  const { currency } = await params;
   try {
-    const id = params.currency;
+    const id = (await params).currency;
     const currency = await fetchCurrencyById(id);
 
     return {

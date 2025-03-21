@@ -89,7 +89,7 @@ export default function TokenomicsVisualization({
         <p className="text-base sm:text-lg text-gray-500 font-medium text-center">
           2022 till now analysis of{' '}
           <span style={{ color: colors.primary }}>
-            {data.symbol.toUpperCase()}
+            {data?.symbol?.toUpperCase()}
           </span>
         </p>
       </div>
