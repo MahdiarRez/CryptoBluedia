@@ -20,10 +20,8 @@ const supabase = createClient(supabaseUrl || '', supabaseAnonKey || '');
  */
 export async function fetchCurrencies(): Promise<CryptoCurrency[]> {
   try {
-    const { data, error } = await supabase
-      .from('cryptocurrencies')
-      .select('*')
-      .order('market_cap_rank', { ascending: true });
+    const { data, error } = await supabase.from('currenciesList').select('*');
+    console.log('data : ,', data);
 
     if (error) {
       console.error('Error fetching cryptocurrencies:', error);
@@ -44,7 +42,7 @@ export async function fetchCurrencies(): Promise<CryptoCurrency[]> {
 export async function fetchCurrencyById(id: string): Promise<CryptoCurrency> {
   try {
     const { data, error } = await supabase
-      .from('cryptocurrencies')
+      .from('currenciesList')
       .select('*')
       .eq('id', id)
       .single();

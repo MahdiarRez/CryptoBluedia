@@ -27,8 +27,8 @@ export function CurrencyFilterServer({
       const query = filterQuery.toLowerCase();
       result = result.filter(
         (currency) =>
-          currency.name.toLowerCase().includes(query) ||
-          currency.symbol.toLowerCase().includes(query)
+          currency?.name.toLowerCase().includes(query) ||
+          currency?.symbol.toLowerCase().includes(query)
       );
     }
 

@@ -40,7 +40,7 @@ export function CurrencyCard({ currency }: CurrencyCardProps) {
               <div>
                 <h3 className="font-medium text-gray-900">{currency.name}</h3>
                 <p className="text-sm text-gray-500">
-                  {currency.symbol.toUpperCase()}
+                  {currency?.symbol?.toUpperCase()}
                 </p>
               </div>
               <div className="ml-auto text-right">
