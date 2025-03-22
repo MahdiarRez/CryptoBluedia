@@ -53,7 +53,7 @@ export function CryptoTrendingCoins() {
   ];
 
   return (
-    <CardShadcn>
+    <CardShadcn className="rounded-2xl w-full">
       <CardHeaderShadcn className="flex flex-row items-center justify-between">
         <CardTitleShadcn className="text-xl">Trending Coins</CardTitleShadcn>
         <BadgeShadcn variant="outline" className="flex items-center">

@@ -19,7 +19,6 @@ import { ArrowDown, ArrowUp, DollarSign } from 'lucide-react';
 
 export function CryptoMarketOverview() {
   const [activeTab, setActiveTab] = useState('bitcoin');
-
   const marketData = {
     bitcoin: {
       price: 61245.78,
@@ -42,8 +41,10 @@ export function CryptoMarketOverview() {
   };
 
   return (
-    <CardShadcn>
-      <CardTitleShadcn className="text-xl">Market Overview</CardTitleShadcn>
+    <CardShadcn className="rounded-2xl w-full">
+      <CardTitleShadcn className="text-xl text-center py-6">
+        Market Overview
+      </CardTitleShadcn>
       <CardContentShadcn>
         <TabsShadcn
           defaultValue="bitcoin"

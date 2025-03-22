@@ -18,7 +18,7 @@ interface CryptoNewsCardProps {
 export function CryptoNewsCard({ newsItem, classes }: CryptoNewsCardProps) {
   return (
     <CardShadcn
-      className={`overflow-hidden rounded-2xl transition-all hover:shadow-md ${classes} self-center`}
+      className={`overflow-hidden rounded-2xl transition-all cursor-pointer hover:shadow-md ${classes} self-center group min-h-[412px] max-h-[412px]`}
     >
       <div className="relative h-48 w-full">
         <Image
@@ -26,7 +26,7 @@ export function CryptoNewsCard({ newsItem, classes }: CryptoNewsCardProps) {
           src={pic}
           alt={newsItem.title}
           fill
-          className="object-cover"
+          className="object-cover sm:group-hover:scale-110 transition-all duration-500"
         />
       </div>
       <CardContentShadcn className="p-4">

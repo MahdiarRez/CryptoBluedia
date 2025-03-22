@@ -104,7 +104,7 @@ export function CryptoNewsPage() {
             />
             <CryptoNewsList newsItems={filteredNews} />
           </div>
-          <div className="space-y-8">
+          <div className="gap-4 flex flex-col items-center w-full max-w-sm mx-auto">
             <CryptoMarketOverview />
             <CryptoTrendingCoins />
           </div>

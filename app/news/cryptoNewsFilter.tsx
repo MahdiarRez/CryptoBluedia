@@ -56,7 +56,7 @@ export function CryptoNewsFilters({
           'absolute top-0 w-full -bottom-5 h-full right-0 z-[0] object-cover object-left opacity-40 translate-x-1/3'
         }
       />
-      <div className="flex flex-col sm:flex-row gap-4 relative z-[9]">
+      <div className="flex flex-col sm:flex-row gap-4 relative z-[9] ">
         <SelectShadcn
           value={selectedCategory}
           onValueChange={setSelectedCategory}
@@ -82,7 +82,7 @@ export function CryptoNewsFilters({
             }
             size="sm"
             onClick={() => setSelectedCategory(category.value)}
-            className="text-xs"
+            className="text-xs  rounded-xl hover:bg-LightBlue  border"
           >
             {category.label}
           </Button>
