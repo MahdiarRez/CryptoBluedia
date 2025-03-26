@@ -1,13 +1,28 @@
+'use client';
 import type { CryptoData } from './utils/types';
+
+const options = {
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    'x-cg-demo-api-key': 'CG-BFWDBUWwk7346RxDahTiAzkn',
+  },
+};
+const API = 'CG-BFWDBUWwk7346RxDahTiAzkn';
+
+export function getCurrencyPrice(id: string) {
+  fetch(
+    `https://api.coingecko.com/api/v3/simple/price?ids=${id}&vs_currencies=usd`,
+    options
+  )
+    .then((res) => res.json())
+    .then((res) => console.log(res))
+    .catch((err) => console.error(err));
+}
 
 // This function would normally fetch data from a cryptocurrency API
 // For this example, we're returning mock data
 export async function fetchCryptoData(cryptoId: string): Promise<CryptoData> {
-  // In a real implementation, you would fetch from an API like CoinGecko
-  // const response = await fetch(`https://api.coingecko.com/api/v3/coins/${cryptoId}`)
-  // return await response.json()
-
-  // For demo purposes, return mock data
   return {
     id: cryptoId,
     name: cryptoId,

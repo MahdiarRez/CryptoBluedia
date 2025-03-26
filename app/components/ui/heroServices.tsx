@@ -9,7 +9,7 @@ function HeroServices() {
   return (
     <div
       className={
-        'h-auto  mt-20  w-full flex flex-col justify-center items-center pb-20 '
+        'h-auto  mt-20 lg:mt-0 lg:pb-0 lg:min-h-dvh  w-full flex flex-col justify-center items-center pb-20 '
       }
     >
       <h3

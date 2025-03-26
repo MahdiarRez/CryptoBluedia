@@ -14,11 +14,15 @@ import {
   TabsTrigger,
 } from '@/app/components/tabsShadcn';
 import { ArrowDown, ArrowUp, DollarSign } from 'lucide-react';
+import { getCurrencyPrice } from '../lib/api';
 
 // import { CryptoChart } from '@/components/crypto-chart';
 
 export function CryptoMarketOverview() {
   const [activeTab, setActiveTab] = useState('bitcoin');
+  const data = getCurrencyPrice('bitcoin%2Cethereum%2Csolana');
+  console.log(data);
+
   const marketData = {
     bitcoin: {
       price: 61245.78,
