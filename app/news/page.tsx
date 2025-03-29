@@ -1,4 +1,5 @@
 import { CryptoNewsPage } from '@/app/news/cryptoNewsPage';
+import { getCurrencyPrice } from '../lib/api';
 
 export default function Page() {
   return (

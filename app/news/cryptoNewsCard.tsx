@@ -25,7 +25,7 @@ export function CryptoNewsCard({ newsItem, classes }: CryptoNewsCardProps) {
           // src={newsItem.imageUrl || '/placeholder.svg'}
           src={pic}
           alt={newsItem.title}
-          fill
+          placeholder="blur"
           className="object-cover sm:group-hover:scale-110 transition-all duration-500"
         />
       </div>

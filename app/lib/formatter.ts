@@ -42,3 +42,14 @@ export function formatPercentage(value: number, decimals = 2): string {
 
   return formatter.format(value / 100);
 }
+
+export function formatMarketNumbers(num: number, maxInt: number): string {
+  // Extract the integer part and limit it to a maximum of 2 digits
+  let integerPart: string = Math.floor(num).toString().slice(0, maxInt);
+
+  // Extract the decimal part, limit it to a maximum of 3 digits
+  let decimalPart: string = (num - Math.floor(num)).toFixed(3).slice(2); // Get the decimal part
+
+  // Return the formatted number
+  return decimalPart ? `${integerPart}.${decimalPart}` : integerPart;
+}
