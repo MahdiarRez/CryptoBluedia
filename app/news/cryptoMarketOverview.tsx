@@ -1,21 +1,10 @@
 'use client';
 
-import { useEffect, memo, useState } from 'react';
-import {
-  CardContentShadcn,
-  // CardFooterShadcn,
-  CardShadcn,
-  CardTitleShadcn,
-} from '@/app/components/cardShadcn';
-import {
-  TabsShadcn,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from '@/app/components/tabsShadcn';
-import { ArrowDown, ArrowUp, DollarSign } from 'lucide-react';
+import { use, useEffect, useState } from 'react';
+import { BsCurrencyDollar } from 'react-icons/bs';
+import { LuSquareChartGantt } from 'react-icons/lu';
+import { RiBarChartBoxAiLine } from 'react-icons/ri';
 import { getCurrencyPrice } from '../lib/api';
-import { formatMarketNumbers } from '@/app/lib/formatter';
 
 type marketDataT = {
   bitcoin: {
@@ -38,86 +27,52 @@ type marketDataT = {
   };
 } | null;
 
-export const CryptoMarketOverview = memo(function CryptoMarketOverview() {
-  const [activeTab, setActiveTab] = useState('bitcoin');
+function CryptoMarketOverview() {
   const [data, setData] = useState<marketDataT>(null);
-  console.log(data);
-
-  async function getMarketData() {
-    const res = await getCurrencyPrice('bitcoin%2Cethereum%2Csolana');
-    return res;
-  }
 
   useEffect(() => {
     async function fetchData() {
-      const result = await getMarketData();
+      const result = await getCurrencyPrice('bitcoin');
       setData(result);
+      return result;
     }
-
     fetchData();
   }, []);
+  console.log(data);
 
   return (
-    <CardShadcn className="rounded-2xl w-full">
-      <CardTitleShadcn className="text-xl text-center py-6">
-        Market Overview
-      </CardTitleShadcn>
-      <CardContentShadcn>
-        <TabsShadcn
-          defaultValue="bitcoin"
-          value={activeTab}
-          onValueChange={setActiveTab}
-        >
-          <TabsList className="grid grid-cols-3 mb-4">
-            <TabsTrigger value="bitcoin">Bitcoin</TabsTrigger>
-            <TabsTrigger value="ethereum">Ethereum</TabsTrigger>
-            <TabsTrigger value="solana">Solana</TabsTrigger>
-          </TabsList>
-          {data &&
-            Object.entries(data).map(([coin, val]) => (
-              <TabsContent key={coin} value={coin} className="space-y-4">
-                <div className="flex items-baseline justify-between">
-                  <div className="text-2xl font-bold">
-                    $
-                    {val.usd.toLocaleString(undefined, {
-                      minimumFractionDigits: 2,
-                      maximumFractionDigits: 2,
-                    })}
-                  </div>
-                  <div
-                    className={`flex items-center ${val.usd_24h_change >= 0 ? 'text-green-500' : 'text-red-500'}`}
-                  >
-                    {val.usd_24h_change >= 0 ? (
-                      <ArrowUp className="h-4 w-4 mr-1" />
-                    ) : (
-                      <ArrowDown className="h-4 w-4 mr-1" />
-                    )}
-                    {val.usd_24h_change.toFixed(3)}%
-                  </div>
-                </div>
-
-                {/*<CryptoChart coin={coin} />*/}
-
-                <div className="grid grid-cols-2 gap-4 pt-2">
-                  <div className="space-y-1">
-                    <p className="text-xs text-muted-foreground">Market Cap</p>
-                    <p className="font-medium flex items-center">
-                      <DollarSign className="h-3 w-3 mr-1" />
-                      {formatMarketNumbers(val.usd_market_cap, 3)}B
-                    </p>
-                  </div>
-                  <div className="space-y-1">
-                    <p className="text-xs text-muted-foreground">24h Volume</p>
-                    <p className="font-medium flex items-center">
-                      <DollarSign className="h-3 w-3 mr-1" />
-                      {formatMarketNumbers(val.usd_24h_vol, 2)}B
-                    </p>
-                  </div>
-                </div>
-              </TabsContent>
-            ))}
-        </TabsShadcn>
-      </CardContentShadcn>
-    </CardShadcn>
+    <div className="bg-white w-full rounded-2xl py-8 px-6 flex flex-col">
+      <h4 className="text-DarkBlue font-bold text-2xl mb-6">Market Overview</h4>
+      <div className="flex flex-col items-center w-full gap-3.5 px-0.5 xs:px-1.5">
+        <div className="w-full rounded-lg px-4 py-5 bg-yellow-50 flex flex-col gap-2">
+          <h6 className="text-xl font-semibold">Bitcoin</h6>
+          <div className="flex flex-row justify-between w-full items-center">
+            <span className="flex flex-row items-center gap-px text-2xl font-semibold">
+              <BsCurrencyDollar />
+              102391
+            </span>
+            <span className="text-lg font-normal">-20.55 %</span>
+          </div>
+          <div className="flex flex-col justify-between w-full items-center">
+            <div className="flex flex-row items-center gap-1 justify-between w-full">
+              <span className="flex flex-row items-center gap-0.5 text-sm font-normal">
+                <RiBarChartBoxAiLine />
+                Market Cap
+              </span>
+              <span className=" text-sm font-normal">12039B</span>
+            </div>
+            <div className="flex flex-row items-center gap-1 justify-between w-full">
+              <span className="flex flex-row items-center gap-0.5 text-sm font-normal">
+                <LuSquareChartGantt />
+                Volume 24h
+              </span>
+              <span className=" text-sm font-normal">32039B</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
-});
+}
+
+export { CryptoMarketOverview };

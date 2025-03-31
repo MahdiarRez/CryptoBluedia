@@ -18,15 +18,15 @@ interface CryptoNewsCardProps {
 export function CryptoNewsCard({ newsItem, classes }: CryptoNewsCardProps) {
   return (
     <CardShadcn
-      className={`overflow-hidden rounded-2xl transition-all cursor-pointer hover:shadow-md ${classes} self-center group min-h-[412px] max-h-[412px]`}
+      className={`overflow-hidden flex flex-col rounded-2xl transition-all cursor-pointer hover:shadow-md ${classes} self-center group h-full`}
     >
-      <div className="relative h-48 w-full">
+      <div className="relative w-full overflow-hidden">
         <Image
           // src={newsItem.imageUrl || '/placeholder.svg'}
           src={pic}
           alt={newsItem.title}
           placeholder="blur"
-          className="object-cover sm:group-hover:scale-110 transition-all duration-500"
+          className="object-cover sm:group-hover:grayscale transition-all duration-500"
         />
       </div>
       <CardContentShadcn className="p-4">
