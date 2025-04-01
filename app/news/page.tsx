@@ -1,7 +1,10 @@
 import { CryptoNewsPage } from '@/app/news/cryptoNewsPage';
-import { getCurrencyPrice } from '../lib/api';
+import { getMarketNews } from '../lib/data';
 
-export default function Page() {
+export default async function Page() {
+  const news = await getMarketNews();
+  console.log(news);
+
   return (
     <div className={'sm:px-8 lg:px-28 xl:px-40 bg-WHITE pt-32 px-4'}>
       <CryptoNewsPage />;

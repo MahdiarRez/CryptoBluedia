@@ -48,7 +48,7 @@ export function formatMarketNumbers(num: number, maxInt: number): string {
   let integerPart: string = Math.floor(num).toString().slice(0, maxInt);
 
   // Extract the decimal part, limit it to a maximum of 3 digits
-  let decimalPart: string = (num - Math.floor(num)).toFixed(3).slice(2); // Get the decimal part
+  let decimalPart: string = (num - Math.floor(num)).toFixed(2).slice(2); // Get the decimal part
 
   // Return the formatted number
   return decimalPart ? `${integerPart}.${decimalPart}` : integerPart;

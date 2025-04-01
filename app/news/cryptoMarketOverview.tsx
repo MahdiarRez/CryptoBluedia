@@ -1,75 +1,15 @@
-'use client';
-
-import { use, useEffect, useState } from 'react';
-import { BsCurrencyDollar } from 'react-icons/bs';
-import { LuSquareChartGantt } from 'react-icons/lu';
-import { RiBarChartBoxAiLine } from 'react-icons/ri';
-import { getCurrencyPrice } from '../lib/api';
-
-type marketDataT = {
-  bitcoin: {
-    usd: number;
-    usd_24h_change: number;
-    usd_market_cap: number;
-    usd_24h_vol: number;
-  };
-  ethereum: {
-    usd: number;
-    usd_24h_change: number;
-    usd_market_cap: number;
-    usd_24h_vol: number;
-  };
-  solana: {
-    usd: number;
-    usd_24h_change: number;
-    usd_market_cap: number;
-    usd_24h_vol: number;
-  };
-} | null;
+import { Suspense } from 'react';
+import { CryptoMarketOverviewCard } from './cryptoMarketOverviewCard';
+import { CryptoMarketOverviewSkeleton } from '../components/ui/skeletons/cryptoMarketOverviewSkeleton';
 
 function CryptoMarketOverview() {
-  const [data, setData] = useState<marketDataT>(null);
-
-  useEffect(() => {
-    async function fetchData() {
-      const result = await getCurrencyPrice('bitcoin');
-      setData(result);
-      return result;
-    }
-    fetchData();
-  }, []);
-  console.log(data);
-
   return (
-    <div className="bg-white w-full rounded-2xl py-8 px-6 flex flex-col">
+    <div className="bg-white w-full rounded-2xl py-8 px-6 md:px-5 xl:px-9 flex flex-col lg:items-center">
       <h4 className="text-DarkBlue font-bold text-2xl mb-6">Market Overview</h4>
-      <div className="flex flex-col items-center w-full gap-3.5 px-0.5 xs:px-1.5">
-        <div className="w-full rounded-lg px-4 py-5 bg-yellow-50 flex flex-col gap-2">
-          <h6 className="text-xl font-semibold">Bitcoin</h6>
-          <div className="flex flex-row justify-between w-full items-center">
-            <span className="flex flex-row items-center gap-px text-2xl font-semibold">
-              <BsCurrencyDollar />
-              102391
-            </span>
-            <span className="text-lg font-normal">-20.55 %</span>
-          </div>
-          <div className="flex flex-col justify-between w-full items-center">
-            <div className="flex flex-row items-center gap-1 justify-between w-full">
-              <span className="flex flex-row items-center gap-0.5 text-sm font-normal">
-                <RiBarChartBoxAiLine />
-                Market Cap
-              </span>
-              <span className=" text-sm font-normal">12039B</span>
-            </div>
-            <div className="flex flex-row items-center gap-1 justify-between w-full">
-              <span className="flex flex-row items-center gap-0.5 text-sm font-normal">
-                <LuSquareChartGantt />
-                Volume 24h
-              </span>
-              <span className=" text-sm font-normal">32039B</span>
-            </div>
-          </div>
-        </div>
+      <div className="flex flex-col md:flex-row lg:flex-col items-center w-full gap-3.5 px-0.5 xs:px-1.5 md:px-0">
+        <Suspense fallback={<CryptoMarketOverviewSkeleton />}>
+          <CryptoMarketOverviewCard />
+        </Suspense>
       </div>
     </div>
   );

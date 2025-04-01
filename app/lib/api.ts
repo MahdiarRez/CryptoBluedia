@@ -24,8 +24,7 @@ export async function getCurrencyPrice(id: string): Promise<any> {
     throw err;
   }
 }
-// This function would normally fetch data from a cryptocurrency API
-// For this example, we're returning mock data
+
 export async function fetchCryptoData(cryptoId: string): Promise<CryptoData> {
   return {
     id: cryptoId,

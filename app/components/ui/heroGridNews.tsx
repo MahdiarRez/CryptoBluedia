@@ -2,15 +2,7 @@ import React from 'react';
 import { BentoGrid, BentoGridItem } from '../aceternityUi/gridAcet';
 import { FaBitcoin } from 'react-icons/fa6';
 import { TbWorld } from 'react-icons/tb';
-import { createClient } from '@/app/lib/utils/supabaseClient';
-
-interface MarketNewsItem {
-  id: string;
-  head: string;
-  description: string;
-  image: string;
-  created_at: string; // Assuming a timestamp
-}
+import { getMarketNews } from '@/app/lib/api';
 
 export async function HeroGridNews() {
   const data = await getMarketNews();
@@ -35,19 +27,4 @@ export async function HeroGridNews() {
       ))}
     </BentoGrid>
   );
-}
-
-async function getMarketNews(): Promise<MarketNewsItem[]> {
-  // await new Promise((resolve) => {
-  //   setTimeout(resolve, 10000);
-  // });
-  const supabaseClient = createClient();
-  const { data, error } = await supabaseClient.from('marketNews').select('*');
-
-  if (error) {
-    console.error('Error fetching market news:', error);
-    return [];
-  }
-
-  return data as MarketNewsItem[];
 }
