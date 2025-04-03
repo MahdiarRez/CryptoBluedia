@@ -44,7 +44,7 @@ export async function generateMetadata({
     const currency = await fetchCurrencyById(id);
 
     return {
-      title: `${currency.name} (${currency.symbol.toUpperCase()}) | Crypto Dashboard`,
+      title: `${currency.name} (${currency.id.toUpperCase()}) | Crypto Dashboard`,
       description: `View detailed information, charts, and analysis for ${currency.name}`,
     };
   } catch (error) {
