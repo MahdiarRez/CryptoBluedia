@@ -8,15 +8,7 @@ import type { CryptoCurrency, CryptoData } from '@/app/lib/utils/types';
 import { Tabs, TabsContent, TabsList } from '@/app/components/ShadcnUi/tabs';
 import { CardContent } from '@/app/components/ShadcnUi/card';
 import { Skeleton } from '@/app/components/ShadcnUi/skeleton';
-import {
-  ArrowUpRight,
-  Zap,
-  BarChart3,
-  Info,
-  Newspaper,
-  Activity,
-  ExternalLink,
-} from 'lucide-react';
+import { Zap, BarChart3, Info, Newspaper, Activity } from 'lucide-react';
 import { motion } from 'motion/react';
 import { generatePalette, withOpacity } from '@/app/lib/color-utils';
 
@@ -130,7 +122,7 @@ export default function CryptoDetails({
             '2025': -10,
           },
           sentiment: 15,
-          psychology: 'accumulation',
+          psychology: 'Bear',
           inflation: null,
           score: 955,
           digitalType: 74,

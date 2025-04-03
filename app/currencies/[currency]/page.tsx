@@ -4,20 +4,20 @@ import CryptoDetails from './crypto-details';
 
 export const dynamic = 'force-dynamic'; // Ensure data is always fresh
 
-export default async function CurrencyPage({
+export default async function Page({
   params,
 }: {
   params: Promise<{ currency: string }>;
 }) {
   const { currency } = await params;
-  console.log(currency);
+  console.log('currency : ', currency);
+  console.log((await params).currency);
 
   if (!currency || typeof currency !== 'string') {
     notFound();
   }
 
   try {
-    // Fetch the currency data from Supabase
     const currency = await fetchCurrencyById((await params).currency);
 
     return (
@@ -29,7 +29,6 @@ export default async function CurrencyPage({
       </div>
     );
   } catch (error) {
-    // If the currency is not found, show the 404 page
     notFound();
   }
 }

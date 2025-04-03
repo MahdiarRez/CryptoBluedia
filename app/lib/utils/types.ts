@@ -11,7 +11,6 @@ export interface NewsItem {
 
 export interface CryptoCurrency {
   id: string;
-  symbol: string;
   name: string;
   image: string;
   current_price: number;
@@ -25,6 +24,9 @@ export interface CryptoCurrency {
   ath_change_percentage?: number;
   atl?: number;
   atl_date?: string;
+  risk: number;
+  rank2025: number;
+  reward: number;
   atl_change_percentage?: number;
 }
 

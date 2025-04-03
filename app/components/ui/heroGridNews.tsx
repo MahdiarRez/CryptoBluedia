@@ -2,7 +2,7 @@ import React from 'react';
 import { BentoGrid, BentoGridItem } from '../aceternityUi/gridAcet';
 import { FaBitcoin } from 'react-icons/fa6';
 import { TbWorld } from 'react-icons/tb';
-import { getMarketNews } from '@/app/lib/api';
+import { getMarketNews } from '@/app/lib/data';
 
 export async function HeroGridNews() {
   const data = await getMarketNews();

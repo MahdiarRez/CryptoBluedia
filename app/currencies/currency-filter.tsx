@@ -24,11 +24,11 @@ export function CurrencyFilterServer({
 
     // Apply text filter
     if (filterQuery) {
-      const query = filterQuery.toLowerCase();
+      const query = filterQuery?.toLowerCase();
       result = result.filter(
         (currency) =>
-          currency?.name.toLowerCase().includes(query) ||
-          currency?.symbol.toLowerCase().includes(query)
+          currency?.name?.toLowerCase().includes(query) ||
+          currency?.id?.toLowerCase().includes(query)
       );
     }
 
@@ -103,7 +103,7 @@ export function CurrencyFilterServer({
           </p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {filteredCurrencies.map((currency) => (
             <CurrencyCard key={currency.id} currency={currency} />
           ))}

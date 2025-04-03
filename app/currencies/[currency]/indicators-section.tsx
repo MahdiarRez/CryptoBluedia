@@ -280,9 +280,9 @@ export default function IndicatorsSection({
                     </div>
 
                     <div className="mt-2 flex justify-between text-xs text-DarkBlue/70 font-normal">
-                      <span>Fear</span>
+                      <span>Bear</span>
                       <span>Accumulation</span>
-                      <span>Greed</span>
+                      <span>Bull</span>
                     </div>
                     <span className="mt-2.5 text-center block font-normal text-sm tracking-wide opacity-30 text-DarkBlue/60">
                       Based on Bluedia param
