@@ -1,5 +1,6 @@
 import { fetchCurrencyById } from '@/app/lib/utils/supabaseServer';
 import { notFound } from 'next/navigation';
+import CryptoDetails from './cryptoDetails';
 
 export const dynamic = 'force-dynamic'; // Ensure data is always fresh
 
@@ -19,9 +20,8 @@ export default async function Page({
     console.log('currency : ', currency);
 
     return (
-      <div className="min-h-screen w-full bg-white pb-4 sm:pb-8 overflow-x-hidden">
-        {/* <CryptoDetails currency={currency} /> */}
-        hello
+      <div className="sm:px-8 lg:px-28 xl:px-40 bg-WHITE pt-32 px-4 min-h-dvh w-full">
+        <CryptoDetails currency={currency} />
       </div>
     );
   } catch (error) {

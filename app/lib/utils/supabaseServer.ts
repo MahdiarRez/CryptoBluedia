@@ -2,23 +2,16 @@ import { createClient } from '@supabase/supabase-js';
 import { Currency } from './types';
 import { notFound } from 'next/navigation';
 
-// Check if environment variables are defined
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-
-// Validate environment variables
 if (!supabaseUrl || !supabaseAnonKey) {
   console.error(
     'Missing Supabase environment variables. Please check your .env file or Vercel environment variables.'
   );
 }
-
-// Create a Supabase client for client-side operations
 const supabase = createClient(supabaseUrl || '', supabaseAnonKey || '');
 
-/**
- * Fetch all cryptocurrencies from Supabase
- */
+// Fetch all cryptocurrencies from Supabase
 export async function fetchCurrencies(): Promise<Currency[] | undefined> {
   try {
     const { data, error } = await supabase.from('currenciesList').select('*');
@@ -35,9 +28,7 @@ export async function fetchCurrencies(): Promise<Currency[] | undefined> {
   }
 }
 
-/**
- * Fetch a single cryptocurrency by ID
- */
+// Fetch a single cryptocurrency by ID
 export async function fetchCurrencyById(id: string): Promise<Currency> {
   try {
     const { data, error } = await supabase

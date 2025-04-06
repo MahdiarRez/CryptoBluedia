@@ -34,9 +34,8 @@ export function CurrencyCard({ currency }: CurrencyCardProps) {
                   height={40}
                   placeholder="blur"
                   blurDataURL="/logo.jpeg"
-                  className="w-10 h-10 rounded-full"
+                  className="w-10 h-10 rounded-2xl"
                 />
-                cap
               </div>
               <div>
                 <h3 className="font-medium text-DarkBlue capitalize">

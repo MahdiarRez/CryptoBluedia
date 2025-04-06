@@ -21,17 +21,6 @@ export interface CryptoCurrency {
   reward?: number;
 }
 
-export interface CoinData {
-  id: string;
-  name: string;
-  symbol: string;
-  price: number;
-  change: number;
-  marketCap?: number;
-  volume?: number;
-  logo?: string;
-}
-
 export interface Currency {
   identifier: number;
   name: string;
