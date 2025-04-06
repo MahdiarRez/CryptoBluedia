@@ -2,21 +2,20 @@
 
 import { useState, useEffect } from 'react';
 import { Search, SortAsc } from 'lucide-react';
-import { Label } from '@radix-ui/react-label';
-import { CryptoCurrency } from '../lib/utils/types';
+import { Currency } from '../lib/utils/types';
 import { CurrencyCard } from './currency-card';
 
 interface CurrencyFilterServerProps {
-  currencies: CryptoCurrency[];
+  currencies: Currency[];
 }
 
 export function CurrencyFilterServer({
   currencies,
 }: CurrencyFilterServerProps) {
   const [filteredCurrencies, setFilteredCurrencies] = useState(currencies);
-  const [sortOption, setSortOption] = useState<'rank' | 'price' | 'change'>(
-    'rank'
-  );
+  const [sortOption, setSortOption] = useState<
+    'rank2025' | 'risk' | 'sentiment'
+  >('rank2025');
   const [filterQuery, setFilterQuery] = useState('');
 
   useEffect(() => {
@@ -35,13 +34,13 @@ export function CurrencyFilterServer({
     // Apply sorting
     result.sort((a, b) => {
       switch (sortOption) {
-        case 'price':
-          return b.current_price - a.current_price;
-        case 'change':
-          return b.price_change_percentage_24h - a.price_change_percentage_24h;
-        case 'rank':
+        case 'rank2025':
+          return b.rank2025 - a.rank2025;
+        case 'sentiment':
+          return b.sentiment - a.sentiment;
+        case 'risk':
         default:
-          return a.market_cap_rank - b.market_cap_rank;
+          return a.risk - b.risk;
       }
     });
 
@@ -56,7 +55,7 @@ export function CurrencyFilterServer({
           <input
             type="text"
             placeholder="Search currencies..."
-            className="pl-10"
+            className="pl-10 bg-white text-DarkBlue py-2 rounded-xl focus:border-none border-none outline-none"
             value={filterQuery}
             onChange={(e) => setFilterQuery(e.target.value)}
           />

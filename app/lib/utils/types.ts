@@ -12,22 +12,13 @@ export interface NewsItem {
 export interface CryptoCurrency {
   id: string;
   name: string;
-  image: string;
+  logo: string;
   current_price: number;
+  color: string;
   market_cap: number;
-  market_cap_rank: number;
-  total_volume: number;
-  price_change_percentage_24h: number;
-  circulating_supply: number;
-  ath?: number;
-  ath_date?: string;
-  ath_change_percentage?: number;
-  atl?: number;
-  atl_date?: string;
-  risk: number;
-  rank2025: number;
-  reward: number;
-  atl_change_percentage?: number;
+  risk?: number;
+  rank2025?: number;
+  reward?: number;
 }
 
 export interface CoinData {
@@ -41,69 +32,9 @@ export interface CoinData {
   logo?: string;
 }
 
-export interface CryptoData {
-  id?: string;
-  name?: string;
-  symbol?: string;
-  current_price?: number;
-  image?: string;
-  market_cap?: number;
-  market_cap_rank?: number;
-  total_volume?: number;
-  high_24h?: number;
-  low_24h?: number;
-  price_change_percentage_24h: number;
-  circulating_supply?: number;
-  total_supply?: number;
-  max_supply?: number;
-  ath?: number;
-  ath_date?: string;
-  ath_change_percentage?: number;
-  atl?: number;
-  atl_date?: string;
-  atl_change_percentage?: number;
-  chart_data?: Array<{
-    date: string;
-    price: number;
-  }>;
-  markets: Array<{
-    exchange: string;
-    pair: string;
-    price: number;
-    volume: number;
-    trust_score: string;
-  }>;
-  news: Array<{
-    title: string;
-    description: string;
-    url: string;
-    source: string;
-    date: string;
-  }>;
-  // New indicator fields
-  indicators: CryptoIndicators;
-  ecosystem?: {
-    projects: Array<{
-      name: string;
-      category: string;
-      description: string;
-      link: string;
-      icon?: string;
-    }>;
-    stats?: {
-      projectsCount: number;
-      parachainsCount: number;
-      tvl: number;
-      developersCount: number;
-    };
-  };
-  // New color property for theming
-  color: string;
-  secondaryColor?: string;
-  backgroundColor?: string;
-}
-
-export interface CryptoIndicators {
+export interface Currency {
+  identifier: number;
+  name: string;
   since_of: number;
   narrative: string;
   communityX: number;
@@ -111,20 +42,24 @@ export interface CryptoIndicators {
   risk: number;
   reward: number;
   value: number;
-  ranks: {
-    [key: string]: number;
-  };
-  prices: {
-    [key: string]: number;
-  };
-  rol: {
-    [key: string]: number;
-  };
+  rank2022: number;
+  rank2023: number;
+  rank2024: number;
+  rank2025: number;
+  price2022: number;
+  price2023: number;
+  price2024: number;
+  price2025: number;
+  rol2022: number;
+  rol2023: number;
+  rol2024: number;
+  rol2025: number;
   sentiment: number;
-  psychology: string;
+  psychology: number;
   inflation: number | null;
-  score: number;
+  score: number | null;
   digitalType: number;
+  id: string;
+  color: string;
+  logo: string;
 }
-
-export type TimeframeType = '1d' | '7d' | '30d' | '1y';
