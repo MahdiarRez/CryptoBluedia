@@ -23,7 +23,8 @@ function CryptoBody({ currency }: { currency: Currency }) {
             />
           }
           title="Value"
-          value={`${currency.value}%`}
+          value={currency.value}
+          symbol="%"
         />
         <CardDetails
           currency={currency}
@@ -34,7 +35,10 @@ function CryptoBody({ currency }: { currency: Currency }) {
             />
           }
           title="Risk/Reward"
-          value={`${currency.risk}/${currency.reward}`}
+          risk={currency.risk}
+          reward={currency.reward}
+          symbol="/"
+          value={2}
         />
         <CardDetails
           currency={currency}
@@ -45,7 +49,8 @@ function CryptoBody({ currency }: { currency: Currency }) {
             />
           }
           title="Rank 2025"
-          value={`#${currency.rank2025}`}
+          symbol="#"
+          value={currency.rank2025}
         />
         <CardDetails
           currency={currency}
@@ -56,7 +61,8 @@ function CryptoBody({ currency }: { currency: Currency }) {
             />
           }
           title="Sentiment"
-          value={`${currency.sentiment}%`}
+          value={currency.sentiment}
+          symbol="%"
         />
       </div>
       <div className="flex flex-col lg2:flex-row items-center w-full mt-7 gap-6">
