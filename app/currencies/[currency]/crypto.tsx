@@ -10,7 +10,9 @@ const interFont = Inter({
 
 function Crypto({ currency }: { currency: Currency }) {
   return (
-    <div className={`flex flex-col items-center w-full ${interFont.className}`}>
+    <div
+      className={`flex flex-col items-center h-auto w-full ${interFont.className}`}
+    >
       <CryptoHeader currency={currency} />
       <CryptoBody currency={currency} />
     </div>

@@ -8,6 +8,7 @@ import Image from 'next/image';
 import { FaCaretUp } from 'react-icons/fa6';
 import { RiInfoCardLine } from 'react-icons/ri';
 import { BestDataT, getBestEntry } from '@/app/lib/helper';
+import { TextEffect } from '@/app/components/motionPrimitive/ui/text-effect';
 
 function CryptoHeader({ currency }: { currency: Currency }) {
   const curr: BestDataT = {
@@ -37,32 +38,78 @@ function CryptoHeader({ currency }: { currency: Currency }) {
         </h4>
         <ul className="w-full  flex flex-col items-center justify-center text-DarkBlue ">
           <li className="flex flex-row items-center justify-between w-full text-lg md:text-base flex-nowrap">
-            <span className="text-nowrap font-medium">Best Rank</span>
+            <TextEffect
+              per="line"
+              delay={0.4}
+              preset="fade-in-blur"
+              className="text-nowrap font-normal sm:font-medium"
+              as="span"
+            >
+              Best Rank
+            </TextEffect>
             <span className=" font-semibold text-nowrap">{`#${bestRank.value} (${bestRank.year})`}</span>
           </li>
-          <span className="w-full h-px bg-DarkBlue my-2.5 opacity-30"></span>
+          <span className="w-full h-px bg-gradient-to-r from-transparent via-DarkBlue to-transparent my-2.5 opacity-30"></span>
           <li className="flex flex-row items-center justify-between w-full text-lg md:text-base flex-nowrap">
-            <span className="text-nowrap font-medium">Highest Price</span>
+            <TextEffect
+              per="line"
+              delay={0.6}
+              preset="fade-in-blur"
+              className="text-nowrap font-normal sm:font-medium"
+              as="span"
+            >
+              Highest Price
+            </TextEffect>
             <span className=" font-semibold text-nowrap">{`$${bestPrice.value} (${bestPrice.year})`}</span>
           </li>
-          <span className="w-full h-px bg-DarkBlue my-2.5 opacity-30"></span>
+          <span className="w-full h-px bg-gradient-to-r from-transparent via-DarkBlue to-transparent my-2.5 opacity-30"></span>
           <li className="flex flex-row items-center justify-between w-full text-lg md:text-base flex-nowrap">
-            <span className="text-nowrap font-medium">Best ROL</span>
+            <TextEffect
+              per="line"
+              delay={0.8}
+              preset="fade-in-blur"
+              className="text-nowrap font-normal sm:font-medium"
+              as="span"
+            >
+              Best ROL
+            </TextEffect>
             <span className=" font-semibold text-nowrap">{`${bestRol.value > 0 ? `+${bestRol.value}` : `${bestRol.value}`} (${bestRol.year})`}</span>
           </li>
-          <span className="w-full h-px bg-DarkBlue my-2.5 opacity-30"></span>
+          <span className="w-full h-px bg-gradient-to-r from-transparent via-DarkBlue to-transparent my-2.5 opacity-30"></span>
           <li className="flex flex-row items-center justify-between w-full text-lg md:text-base flex-nowrap">
-            <span className="text-nowrap font-medium">Digital type</span>
+            <TextEffect
+              per="line"
+              delay={1.0}
+              preset="fade-in-blur"
+              className="text-nowrap font-normal sm:font-medium"
+              as="span"
+            >
+              Digital type
+            </TextEffect>
             <span className=" font-semibold text-nowrap">
               %{currency.digitalType}
             </span>
           </li>
-          <span className="w-full h-px bg-DarkBlue my-2.5 opacity-30"></span>
+          <span className="w-full h-px bg-gradient-to-r from-transparent via-DarkBlue to-transparent my-2.5 opacity-30"></span>
           <li className="flex flex-row items-center justify-between w-full text-lg md:text-base flex-nowrap">
-            <span className="text-nowrap font-medium">Narrative</span>
-            <span className=" font-semibold text-nowrap">
+            <TextEffect
+              per="line"
+              delay={1.2}
+              preset="fade-in-blur"
+              className="text-nowrap font-normal sm:font-medium"
+              as="span"
+            >
+              Narrative
+            </TextEffect>
+            <TextEffect
+              per="line"
+              delay={1.2}
+              preset="fade-in-blur"
+              as="span"
+              className=" font-semibold text-nowrap"
+            >
               {currency.narrative}
-            </span>
+            </TextEffect>
           </li>
         </ul>
       </div>
