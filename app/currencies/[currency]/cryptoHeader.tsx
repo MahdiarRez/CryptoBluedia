@@ -29,29 +29,45 @@ function CryptoHeader({ currency }: { currency: Currency }) {
   const bestRol = getBestEntry(curr, 'rol', 'max');
 
   return (
-    <div className="flex flex-col-reverse md:flex-row-reverse items-center w-full gap-6">
-      <div className="min-h-[294px] rounded-2xl w-96 bg-white p-4">
-        <h4 className="text-left flex flex-row items-center gap-1 text-xl font-bold text-DarkBlue mb-3">
-          <RiInfoCardLine color={currency.color} className="text-2xl" />
+    <div className="flex flex-col-reverse md:flex-row-reverse items-center w-full gap-4 md:h-[294px]">
+      <div className=" rounded-2xl w-full md:w-[500px] bg-white p-6 px-8 md:p-5 h-full flex flex-col justify-between">
+        <h4 className="text-left flex flex-row items-center gap-1 text-2xl font-bold text-DarkBlue mb-5 md:mb-0">
+          <RiInfoCardLine color={currency.color} className="text-3xl" />
           Performance
         </h4>
-        <ul className="w-full  flex flex-col items-center justify-center h-full text-DarkBlue gap-y-2">
-          <li className="flex flex-row items-center justify-between w-full text-sm">
-            <span>Best Rank</span>
-            <span className=" font-medium">{`#${bestRank.value} (${bestRank.year})`}</span>
+        <ul className="w-full  flex flex-col items-center justify-center text-DarkBlue ">
+          <li className="flex flex-row items-center justify-between w-full text-lg md:text-base flex-nowrap">
+            <span className="text-nowrap font-medium">Best Rank</span>
+            <span className=" font-semibold text-nowrap">{`#${bestRank.value} (${bestRank.year})`}</span>
           </li>
-          <li className="flex flex-row items-center justify-between w-full text-sm">
-            <span>Highest Price</span>
-            <span className=" font-medium">{`$${bestPrice.value} (${bestPrice.year})`}</span>
+          <span className="w-full h-px bg-DarkBlue my-2.5 opacity-30"></span>
+          <li className="flex flex-row items-center justify-between w-full text-lg md:text-base flex-nowrap">
+            <span className="text-nowrap font-medium">Highest Price</span>
+            <span className=" font-semibold text-nowrap">{`$${bestPrice.value} (${bestPrice.year})`}</span>
           </li>
-          <li className="flex flex-row items-center justify-between w-full text-sm">
-            <span>best ROL</span>
-            <span className=" font-medium">{`+${bestRol.value} (${bestRol.year})`}</span>
+          <span className="w-full h-px bg-DarkBlue my-2.5 opacity-30"></span>
+          <li className="flex flex-row items-center justify-between w-full text-lg md:text-base flex-nowrap">
+            <span className="text-nowrap font-medium">Best ROL</span>
+            <span className=" font-semibold text-nowrap">{`${bestRol.value > 0 ? `+${bestRol.value}` : `${bestRol.value}`} (${bestRol.year})`}</span>
+          </li>
+          <span className="w-full h-px bg-DarkBlue my-2.5 opacity-30"></span>
+          <li className="flex flex-row items-center justify-between w-full text-lg md:text-base flex-nowrap">
+            <span className="text-nowrap font-medium">Digital type</span>
+            <span className=" font-semibold text-nowrap">
+              %{currency.digitalType}
+            </span>
+          </li>
+          <span className="w-full h-px bg-DarkBlue my-2.5 opacity-30"></span>
+          <li className="flex flex-row items-center justify-between w-full text-lg md:text-base flex-nowrap">
+            <span className="text-nowrap font-medium">Narrative</span>
+            <span className=" font-semibold text-nowrap">
+              {currency.narrative}
+            </span>
           </li>
         </ul>
       </div>
       <div
-        className=" flex flex-col items-start w-full p-7 rounded-2xl relative overflow-hidden"
+        className=" flex flex-col items-start w-full p-7 md:py-5 h-full justify-center rounded-2xl relative overflow-hidden"
         style={{ backgroundColor: 'black' }}
       >
         <Balatro
@@ -69,35 +85,35 @@ function CryptoHeader({ currency }: { currency: Currency }) {
               className="w-16 h-16 object-contain xs:w-[5.3rem] xs:h-[5.3rem]"
             />
           </div>
-          <div className="flex flex-col items-start gap-2">
+          <div className="flex flex-col items-start gap-2 h-full justify-between">
             <TextGenerate
               text={currency.name}
               element="h1"
               preset="fade"
               per="line"
-              classes="text-white text-2xl xs:text-6xl tracking-tighter font-black capitalize"
+              classes="text-white text-4xl xs:mb-2 md:mb-0 xs:text-5xl md:text-5xl tracking-tighter font-black capitalize"
             />
 
             <div className="flex flex-row items-center gap-2 font-medium">
               <ShineBorder
                 hiddenOnMobile={false}
-                className=" z-10 relative bg-white/15  px-3.5 py-0.5 xs:py-1"
+                className=" z-10 relative bg-white/25  px-3.5 py-0.5 xs:py-1 backdrop-blur-sm"
                 borderRadius={6}
                 duration={4}
                 color={['#e7e3f3', '#a5aeb7']}
               >
-                <span className="  text-white text-xs xs:text-base ">
-                  {currency.narrative}
+                <span className="  text-white text-xs xs:text-base md:text-sm ">
+                  {currency.id}
                 </span>
               </ShineBorder>
               <ShineBorder
                 hiddenOnMobile={false}
                 duration={4}
-                className=" z-10 relative bg-white/15  px-3.5 py-0.5 xs:py-1"
+                className=" z-10 relative bg-white/25  px-3.5 py-0.5 xs:py-1 backdrop-blur-sm"
                 borderRadius={6}
                 color={['#e7e3f3', '#a5aeb7']}
               >
-                <span className=" text-white text-xs xs:text-base">
+                <span className=" text-white text-xs xs:text-base md:text-sm">
                   Since {currency.since_of}
                 </span>
               </ShineBorder>
