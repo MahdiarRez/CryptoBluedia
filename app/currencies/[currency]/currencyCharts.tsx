@@ -42,8 +42,8 @@ export function PriceHistoryChart({ currency }: { currency: Currency }) {
 
   return (
     <Card className="border-none shadow-none overflow-hidden bg-white dark:bg-slate-900 rounded-2xl w-full ">
-      <CardHeader className=" bg-DarkBlue">
-        <CardTitle className="text-white">Price History</CardTitle>
+      <CardHeader style={{ backgroundColor: currency.color }}>
+        <CardTitle className="text-white">Inflation</CardTitle>
         <CardDescription>Historical and projected price (USD)</CardDescription>
       </CardHeader>
       <CardContent className="p-6">
@@ -204,7 +204,7 @@ export function DonutChart({
 
   return (
     <Card className="border-none shadow-none overflow-hidden bg-white dark:bg-slate-900 rounded-2xl w-full ">
-      <CardHeader className=" bg-DarkBlue">
+      <CardHeader style={{ backgroundColor: '#4B8F3F' }}>
         <CardTitle className="text-white">{title}</CardTitle>
         <CardDescription>{description}</CardDescription>
       </CardHeader>

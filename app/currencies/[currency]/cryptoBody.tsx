@@ -18,7 +18,7 @@ function CryptoBody({ currency }: { currency: Currency }) {
           currency={currency}
           icon={
             <GrScorecard
-              className=" p-2 rounded-md text-4xl text-white"
+              className=" p-2 rounded-md text-[2rem] text-white"
               style={{ backgroundColor: currency.color }}
             />
           }
@@ -30,7 +30,7 @@ function CryptoBody({ currency }: { currency: Currency }) {
           currency={currency}
           icon={
             <GoAlertFill
-              className=" p-2 rounded-md text-4xl text-white"
+              className=" p-2 rounded-md text-[2rem] text-white"
               style={{ backgroundColor: currency.color }}
             />
           }
@@ -44,7 +44,7 @@ function CryptoBody({ currency }: { currency: Currency }) {
           currency={currency}
           icon={
             <FaRankingStar
-              className=" p-2 rounded-md text-4xl text-white"
+              className=" p-2 rounded-md text-[2rem] text-white"
               style={{ backgroundColor: currency.color }}
             />
           }
@@ -56,7 +56,7 @@ function CryptoBody({ currency }: { currency: Currency }) {
           currency={currency}
           icon={
             <MdOutlineSentimentSatisfiedAlt
-              className=" p-2 rounded-md text-4xl text-white"
+              className=" p-2 rounded-md text-[2rem] text-white"
               style={{ backgroundColor: currency.color }}
             />
           }

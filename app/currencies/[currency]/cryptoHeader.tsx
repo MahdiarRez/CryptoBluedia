@@ -1,24 +1,63 @@
 import ShineBorder from '@/app/components/magicUi/shine-border';
 import { TextGenerate } from '@/app/components/textGenerate';
 import GlowText from '@/app/components/ui/glowText';
-import IridescenceServer from '@/app/components/ui/IridescenceServer';
-import { hexToRgb } from '@/app/lib/color-utils';
+import Balatro from '@/app/components/ui/IridescenceServer';
+// import { hexToRgb } from '@/app/lib/color-utils';
 import { Currency } from '@/app/lib/utils/types';
 import Image from 'next/image';
 import { FaCaretUp } from 'react-icons/fa6';
+import { RiInfoCardLine } from 'react-icons/ri';
+import { BestDataT, getBestEntry } from '@/app/lib/helper';
 
 function CryptoHeader({ currency }: { currency: Currency }) {
-  const rgbColor = hexToRgb(currency.color);
+  const curr: BestDataT = {
+    rank2022: currency.rank2022,
+    rank2023: currency.rank2023,
+    rank2024: currency.rank2024,
+    rank2025: currency.rank2025,
+    price2022: currency.price2022,
+    price2023: currency.price2023,
+    price2024: currency.price2024,
+    price2025: currency.price2025,
+    rol2022: currency.rol2022,
+    rol2023: currency.rol2023,
+    rol2024: currency.rol2024,
+    rol2025: currency.rol2025,
+  };
+  const bestRank = getBestEntry(curr, 'rank', 'min');
+  const bestPrice = getBestEntry(curr, 'price', 'max');
+  const bestRol = getBestEntry(curr, 'rol', 'max');
+
   return (
-    <div className="flex flex-row-reverse items-center w-full gap-6">
-      <div className="h-max w-96 bg-red-300">hi</div>
+    <div className="flex flex-col-reverse md:flex-row-reverse items-center w-full gap-6">
+      <div className="min-h-[294px] rounded-2xl w-96 bg-white p-4">
+        <h4 className="text-left flex flex-row items-center gap-1 text-xl font-bold text-DarkBlue mb-3">
+          <RiInfoCardLine color={currency.color} className="text-2xl" />
+          Performance
+        </h4>
+        <ul className="w-full  flex flex-col items-center justify-center h-full text-DarkBlue gap-y-2">
+          <li className="flex flex-row items-center justify-between w-full text-sm">
+            <span>Best Rank</span>
+            <span className=" font-medium">{`#${bestRank.value} (${bestRank.year})`}</span>
+          </li>
+          <li className="flex flex-row items-center justify-between w-full text-sm">
+            <span>Highest Price</span>
+            <span className=" font-medium">{`$${bestPrice.value} (${bestPrice.year})`}</span>
+          </li>
+          <li className="flex flex-row items-center justify-between w-full text-sm">
+            <span>best ROL</span>
+            <span className=" font-medium">{`+${bestRol.value} (${bestRol.year})`}</span>
+          </li>
+        </ul>
+      </div>
       <div
         className=" flex flex-col items-start w-full p-7 rounded-2xl relative overflow-hidden"
-        style={{ backgroundColor: currency.color }}
+        style={{ backgroundColor: 'black' }}
       >
-        <IridescenceServer
+        <Balatro
           classes="absolute z-0 top-0 right-0"
-          color={rgbColor}
+          color3={currency.color}
+          mouseInteraction={false}
         />
         <div className="flex flex-row items-start gap-3 xs:gap-5 z-10">
           <div className="bg-WHITE rounded-xl p-2">
@@ -27,7 +66,7 @@ function CryptoHeader({ currency }: { currency: Currency }) {
               alt={currency.name}
               width={60}
               height={60}
-              className="w-16 h-16 object-contain xs:w-20 xs:h-20"
+              className="w-16 h-16 object-contain xs:w-[5.3rem] xs:h-[5.3rem]"
             />
           </div>
           <div className="flex flex-col items-start gap-2">
@@ -36,7 +75,7 @@ function CryptoHeader({ currency }: { currency: Currency }) {
               element="h1"
               preset="fade"
               per="line"
-              classes="text-white text-2xl xs:text-4xl font-bold capitalize"
+              classes="text-white text-2xl xs:text-6xl tracking-tighter font-black capitalize"
             />
 
             <div className="flex flex-row items-center gap-2 font-medium">

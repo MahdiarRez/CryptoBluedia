@@ -1,11 +1,11 @@
 import dynamic from 'next/dynamic';
-import { IridescenceProps } from './Iridescence';
+import { BalatroProps } from './balatro';
 
-const ClientComponent = dynamic(() => import('./Iridescence'), {
+const ClientComponent = dynamic(() => import('./balatro'), {
   ssr: true,
   loading: () => <div className="w-full h-full bg-DarkBlue animate-pulse" />,
 });
 
-export default function IridescenceServer(props: IridescenceProps) {
+export default function IridescenceServer(props: BalatroProps) {
   return <ClientComponent {...props} />;
 }
