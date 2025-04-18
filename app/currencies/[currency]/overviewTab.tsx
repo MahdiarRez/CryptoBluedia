@@ -1,6 +1,19 @@
-import { ProgressBar } from '@/app/components/ui/progressBar';
+import { RiTelegram2Fill } from 'react-icons/ri';
 import CardDetails from './cardDetails';
 import { Currency } from '@/app/lib/utils/types';
+import { FaXTwitter } from 'react-icons/fa6';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from '@/app/components/ShadcnUi/card';
+import { hexOpacity } from '@/app/lib/helper';
+import { ReactNode } from 'react';
+import { NumberTriggerOnScroll } from '@/app/components/ui/numberFlow';
+import Image, { StaticImageData } from 'next/image';
+import community1 from '@/public/community1.jpg';
+import community2 from '@/public/community2.jpg';
 
 interface HistoryData {
   year: number | null;
@@ -13,14 +26,6 @@ interface HistoryCardProps {
 }
 
 function OverviewTab({ currency }: { currency: Currency }) {
-  const radarData = [
-    { name: 'risk', val: currency.risk },
-    { name: 'reward', val: currency.reward },
-    { name: 'psychology', val: currency.psychology },
-    { name: 'sentiment', val: currency.sentiment },
-    { name: 'value', val: currency.value },
-  ];
-
   return (
     <div className="bg-WHITE h-auto">
       <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 w-full gap-6 ">
@@ -54,27 +59,21 @@ function OverviewTab({ currency }: { currency: Currency }) {
         <HistoryCard curr={currency} about="rank" />
         <HistoryCard curr={currency} about="rol" />
       </div>
-      <div className="w-full flex flex-row items-center justify-center">
-        <div>
-          {radarData.map((item, index) => (
-            <div key={item.name} className="space-y-2">
-              <div className="flex justify-between items-center">
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-purple-500" />
-                  <span className="text-slate-300 font-medium">
-                    {item.name}
-                  </span>
-                </div>
-                <span className="text-slate-400">{item.val}/100</span>
-              </div>
-              <ProgressBar
-                value={item.val}
-                delay={0.1 * index}
-                color="from-purple-500 to-indigo-500"
-              />
-            </div>
-          ))}
-        </div>
+      <div className="grid grid-cols-1 xs:grid-cols-2 gap-6 mb-8">
+        <Community
+          appName="Telegram"
+          icon={<RiTelegram2Fill className="w-8 h-8 text-white" />}
+          number={currency.communityTel}
+          color={currency.color}
+          img={community1}
+        />
+        <Community
+          appName="X/Twitter"
+          icon={<FaXTwitter className="w-8 h-8 text-white" />}
+          number={currency.communityX}
+          color={currency.color}
+          img={community2}
+        />
       </div>
     </div>
   );
@@ -118,12 +117,9 @@ function HistoryCard({ curr, about }: HistoryCardProps) {
         {historyData.map((item) => (
           <li
             key={`${about}-${item.year}`}
+            style={{ backgroundColor: hexOpacity(curr.color, 0.15) }}
             className="w-full relative flex justify-between items-center py-2 px-4 overflow-hidden rounded-lg"
           >
-            <span
-              className=" absolute top-0 right-0 bottom-0 left-0 opacity-15"
-              style={{ backgroundColor: curr.color }}
-            ></span>
             <time className="text-DarkBlue">{item.year}</time>
             <span className="font-medium text-DarkBlue">
               {formatValue(item?.value, about)}
@@ -132,6 +128,64 @@ function HistoryCard({ curr, about }: HistoryCardProps) {
         ))}
       </ul>
     </article>
+  );
+}
+
+function Community({
+  appName,
+  icon,
+  color,
+  number,
+  img,
+}: {
+  appName: string;
+  icon: ReactNode;
+  color: string;
+  number: number;
+  img: StaticImageData;
+}) {
+  return (
+    <Card className="border-0 shadow-none overflow-hidden bg-white rounded-2xl relative">
+      <div
+        className={
+          'absolute w-full top-0  h-full right-0 bg-gradient-to-l from-WHITE/10 via-white to-white  z-[1]'
+        }
+      ></div>
+      <Image
+        src={img}
+        alt={'commmunity'}
+        placeholder={'blur'}
+        className={
+          'absolute top-0 w-full -bottom-5 h-full right-0 z-[0] object-cover object-left opacity-40 translate-x-1/3'
+        }
+      />
+      <CardHeader className="pb-2 z-10">
+        <CardTitle className="text-DarkBlue z-10 text-xl xs:text-lg md:text-xl">
+          {appName} Community
+        </CardTitle>
+      </CardHeader>
+      <CardContent className="p-6 z-10 pt-3">
+        <div className="flex items-center z-10">
+          <div
+            className="p-4 rounded-2xl  mr-4 z-10"
+            style={{ backgroundColor: hexOpacity(color, 0.5) }}
+          >
+            {icon}
+          </div>
+          <div className=" z-10">
+            <span className="text-3xl font-bold text-DarkBlue flex flex-row items-center gap-2 ">
+              <NumberTriggerOnScroll once={false}>
+                {number}
+              </NumberTriggerOnScroll>
+              {appName == 'Telegram' ? 'K' : 'M'}
+            </span>
+            <p className="text-slate-500 dark:text-slate-400 text-sm z-10">
+              Followers
+            </p>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
   );
 }
 

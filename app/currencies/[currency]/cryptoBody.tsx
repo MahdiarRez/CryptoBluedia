@@ -1,10 +1,10 @@
 import { Currency } from '@/app/lib/utils/types';
-
 import { DirectionAwareTabs } from '@/app/components/aceternityUi/tabs';
 import OverviewTab from './overviewTab';
 import { FaEye } from 'react-icons/fa6';
 import { MdInsertChart } from 'react-icons/md';
 import { RiNewsFill } from 'react-icons/ri';
+import FcasTab from './fcasTab';
 
 function CryptoBody({ currency }: { currency: Currency }) {
   const tabs = [
@@ -17,7 +17,7 @@ function CryptoBody({ currency }: { currency: Currency }) {
     {
       id: 1,
       label: 'FCAS',
-      content: <OverviewTab currency={currency} />,
+      content: <FcasTab currency={currency} />,
       icon: <MdInsertChart />,
     },
     {

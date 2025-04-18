@@ -52,3 +52,26 @@ export function formatMarketNumbers(num: number, maxInt: number): string {
 
   return decimalPart ? `${integerPart}.${decimalPart}` : integerPart;
 }
+
+////////////////// format color hex to rgb opacity //////////////////
+
+export function hexOpacity(hex: string, opacity = 1) {
+  // Remove the '#' character if present
+  let sanitizedHex = hex.replace('#', '');
+
+  // Expand short hex format (3 characters) to full format (6 characters)
+  if (sanitizedHex.length === 3) {
+    sanitizedHex = sanitizedHex
+      .split('')
+      .map((char) => char + char)
+      .join('');
+  }
+
+  // Parse the hex values for red, green, and blue
+  const r = parseInt(sanitizedHex.substring(0, 2), 16);
+  const g = parseInt(sanitizedHex.substring(2, 4), 16);
+  const b = parseInt(sanitizedHex.substring(4, 6), 16);
+
+  // Return the RGBA string with specified opacity
+  return `rgba(${r}, ${g}, ${b}, ${opacity})`;
+}

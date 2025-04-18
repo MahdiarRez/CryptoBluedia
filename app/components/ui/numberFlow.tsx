@@ -12,21 +12,25 @@ export function NumberTriggerOnScroll({
   children,
   style,
   delayInMs = 100,
+  once = true,
 }: {
   className?: string;
   children: NumberProps;
-  style: any;
+  style?: any;
   delayInMs?: number;
+  once: boolean;
 }) {
   const [number, setNumber] = useState<NumberProps>(0);
   const ref = useRef(null);
-  const isInView = useInView(ref, { margin: '0px 0px -100px 0px' });
+  const isInView = useInView(ref, { margin: '0px 0px -20px 0px' });
 
   useEffect(() => {
     if (isInView) {
       setTimeout(() => setNumber(children), delayInMs);
-    } else {
+    } else if (!isInView && !once) {
       setNumber(0);
+    } else {
+      setNumber(children);
     }
   }, [isInView, children, delayInMs]);
 
