@@ -41,10 +41,14 @@ export function PriceHistoryChart({ currency }: { currency: Currency }) {
   const color = currency.color;
 
   return (
-    <Card className="border-none shadow-none overflow-hidden bg-white dark:bg-slate-900 rounded-2xl w-full ">
+    <Card className="border-none shadow-none overflow-hidden bg-white dark:bg-slate-900 rounded-2xl w-full">
       <CardHeader style={{ backgroundColor: currency.color }}>
-        <CardTitle className="text-white">Inflation</CardTitle>
-        <CardDescription>Historical and projected price (USD)</CardDescription>
+        <CardTitle className="text-white capitalize">
+          Price history chart
+        </CardTitle>
+        <CardDescription className="text-white/80">
+          Historical and projected price (USD)
+        </CardDescription>
       </CardHeader>
       <CardContent className="p-6">
         <div className="h-80 mt-4">

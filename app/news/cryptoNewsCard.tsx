@@ -20,11 +20,14 @@ export function CryptoNewsCard({ newsItem, classes }: CryptoNewsCardProps) {
     <CardShadcn
       className={`overflow-hidden flex flex-col rounded-2xl transition-all cursor-pointer hover:shadow-md ${classes} self-center group h-full`}
     >
-      <div className="relative w-full overflow-hidden">
+      <div className="relative w-full overflow-hidden h-52">
         <Image
           // src={newsItem.imageUrl || '/placeholder.svg'}
+          priority
           src={pic}
+          fill={true}
           alt={newsItem.title}
+          sizes="200"
           placeholder="blur"
           className="object-cover sm:group-hover:grayscale transition-all duration-500"
         />

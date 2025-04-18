@@ -31,7 +31,10 @@ function CryptoHeader({ currency }: { currency: Currency }) {
 
   return (
     <div className="flex flex-col-reverse md:flex-row-reverse items-center w-full gap-4 md:h-[294px]">
-      <div className=" rounded-2xl w-full md:w-[500px] bg-white p-6 px-8 md:p-5 h-full flex flex-col justify-between">
+      <ShineBorder
+        color={[currency.color]}
+        className=" relative rounded-2xl w-full md:w-[500px] bg-white p-6 px-8 md:p-5 h-full flex flex-col justify-between"
+      >
         <h4 className="text-left flex flex-row items-center gap-1 text-2xl font-bold text-DarkBlue mb-5 md:mb-0">
           <RiInfoCardLine color={currency.color} className="text-3xl" />
           Performance
@@ -112,7 +115,7 @@ function CryptoHeader({ currency }: { currency: Currency }) {
             </TextEffect>
           </li>
         </ul>
-      </div>
+      </ShineBorder>
       <div
         className=" flex flex-col items-start w-full p-7 md:py-5 h-full justify-center rounded-2xl relative overflow-hidden"
         style={{ backgroundColor: 'black' }}

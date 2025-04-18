@@ -14,6 +14,7 @@ function Footer() {
       >
         <Image
           src={bg}
+          priority
           alt={'footer pic'}
           className={
             'absolute object-cover opacity-5  z-10 top-0 left-0 w-full h-full'
@@ -25,6 +26,7 @@ function Footer() {
               src={Logo}
               alt={'logo'}
               className={'h-16 w-16 md:h-20 md:w-20 rounded-full object-center'}
+              priority
             />
             <p className="font-extrabold tracking-wide text-lg uppercase sm:text-2xl">
               Crypto Blue<span className={'text-LightBlue'}>dia</span>

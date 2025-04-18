@@ -1,129 +1,131 @@
 'use client';
 
-import { useState } from 'react';
-import { motion } from 'motion/react';
+import { ReactNode, useMemo, useState } from 'react';
+import { AnimatePresence, MotionConfig, motion } from 'motion/react';
+import useMeasure from 'react-use-measure';
+
 import { cn } from '@/app/lib/utils/framer';
-import { FaEye } from 'react-icons/fa6';
 
 type Tab = {
-  title: string;
-  value: string;
-  content?: string | React.ReactNode | any;
-  icon?: React.ReactNode;
+  id: number;
+  label: string;
+  content: ReactNode;
+  icon?: React.ReactNode | undefined;
 };
 
-export const Tabs = ({
-  tabs: propTabs,
-  containerClassName,
-  activeTabClassName,
-  tabClassName,
-  contentClassName,
-}: {
+interface OgImageSectionProps {
   tabs: Tab[];
-  containerClassName?: string;
-  activeTabClassName?: string;
-  tabClassName?: string;
-  contentClassName?: string;
-}) => {
-  const [active, setActive] = useState<Tab>(propTabs[0]);
-  const [tabs, setTabs] = useState<Tab[]>(propTabs);
+  className?: string;
+  rounded?: boolean;
+  onChange?: () => void;
+}
 
-  const moveSelectedTabToTop = (idx: number) => {
-    const newTabs = [...propTabs];
-    const selectedTab = newTabs.splice(idx, 1);
-    newTabs.unshift(selectedTab[0]);
-    setTabs(newTabs);
-    setActive(newTabs[0]);
+function DirectionAwareTabs({
+  tabs,
+  className,
+  rounded,
+  onChange,
+}: OgImageSectionProps) {
+  const [activeTab, setActiveTab] = useState(0);
+  const [direction, setDirection] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [ref, bounds] = useMeasure();
+
+  const content = useMemo(() => {
+    const activeTabContent = tabs.find((tab) => tab.id === activeTab)?.content;
+    return activeTabContent || null;
+  }, [activeTab, tabs]);
+
+  const handleTabClick = (newTabId: number) => {
+    if (newTabId !== activeTab && !isAnimating) {
+      const newDirection = newTabId > activeTab ? 1 : -1;
+      setDirection(newDirection);
+      setActiveTab(newTabId);
+      onChange ? onChange() : null;
+    }
   };
 
-  const [hovering, setHovering] = useState(false);
+  const variants = {
+    initial: (direction: number) => ({
+      x: 300 * direction,
+      opacity: 0,
+      filter: 'blur(4px)',
+    }),
+    active: {
+      x: 0,
+      opacity: 1,
+      filter: 'blur(0px)',
+    },
+    exit: (direction: number) => ({
+      x: -300 * direction,
+      opacity: 0,
+      filter: 'blur(4px)',
+    }),
+  };
 
   return (
-    <>
+    <div className=" flex flex-col items-center w-full mt-5">
       <div
         className={cn(
-          'flex flex-row items-center gap-x-2.5 justify-start [perspective:1000px] relative overflow-auto sm:overflow-visible no-visible-scrollbar max-w-full w-full',
-          containerClassName
+          'flex space-x-1 mb-5 self-start overflow-hidden w-full border border-none rounded-xl cursor-pointer bg-DarkBlue px-[3px] py-[3.2px] shadow-inner-shadow',
+          className
         )}
       >
-        {propTabs.map((tab, idx) => (
+        {tabs.map((tab) => (
           <button
-            key={tab.title}
-            onClick={() => {
-              moveSelectedTabToTop(idx);
-            }}
-            onMouseEnter={() => setHovering(true)}
-            onMouseLeave={() => setHovering(false)}
+            key={tab.id}
+            onClick={() => handleTabClick(tab.id)}
             className={cn(
-              'relative px-4 py-1.5 rounded-lg bg-DarkBlue',
-              tabClassName
+              'relative rounded-none w-full text-center  py-2.5 text-xs sm:text-sm md:text-base font-medium text-white  transition focus-visible:outline-1 focus-visible:ring-1  focus-visible:outline-none flex justify-center gap-1 items-center ',
+              activeTab === tab.id
+                ? 'text-white'
+                : 'hover:text-white/50  text-white'
             )}
-            style={{
-              transformStyle: 'preserve-3d',
-            }}
+            style={{ WebkitTapHighlightColor: 'transparent' }}
           >
-            {active.value === tab.value && (
-              <motion.div
-                layoutId="clickedbutton"
-                transition={{ type: 'spring', bounce: 0.3, duration: 0.6 }}
-                className={cn(
-                  'absolute inset-0 bg-white/40 dark:bg-zinc-800 rounded-lg ',
-                  activeTabClassName
-                )}
+            {activeTab === tab.id && (
+              <motion.span
+                layoutId="bubble"
+                className="absolute inset-0 z-10 bg-white brightness-110 mix-blend-difference shadow-inner-shadow border border-white/10"
+                style={rounded ? { borderRadius: 11 } : { borderRadius: 9999 }}
+                transition={{ type: 'spring', bounce: 0.19, duration: 0.4 }}
               />
             )}
-            <span className="relative flex-nowrap text-white dark:text-DarkBlue flex flex-row items-center gap-1.5">
-              {tab.icon}
-              {tab.title}
-            </span>
+
+            {tab.icon}
+            {tab.label}
           </button>
         ))}
       </div>
-      <FadeInDiv
-        tabs={tabs}
-        active={active}
-        key={active.value}
-        hovering={hovering}
-        className={cn('mt-9', contentClassName)}
-      />
-    </>
-  );
-};
-
-export const FadeInDiv = ({
-  className,
-  tabs,
-  hovering,
-}: {
-  className?: string;
-  key?: string;
-  tabs: Tab[];
-  active: Tab;
-  hovering?: boolean;
-}) => {
-  const isActive = (tab: Tab) => {
-    return tab.value === tabs[0].value;
-  };
-  return (
-    <div className="relative w-full h-full">
-      {tabs.map((tab, idx) => (
+      <MotionConfig transition={{ duration: 0.4, type: 'spring', bounce: 0.2 }}>
         <motion.div
-          key={tab.value}
-          layoutId={tab.value}
-          style={{
-            scale: 1 - idx * 0.1,
-            top: hovering ? idx * -20 : 0,
-            zIndex: -idx,
-            opacity: idx < 3 ? 1 - idx * 0.1 : 0,
-          }}
-          animate={{
-            y: isActive(tab) ? [0, 40, 0] : 0,
-          }}
-          className={cn('w-full h-full absolute top-0 left-0', className)}
+          className="relative mx-auto w-full h-full overflow-hidden"
+          initial={false}
+          animate={{ height: bounds.height }}
         >
-          {tab.content}
+          <div className="p-1" ref={ref}>
+            <AnimatePresence
+              custom={direction}
+              mode="popLayout"
+              onExitComplete={() => setIsAnimating(false)}
+            >
+              <motion.div
+                key={activeTab}
+                variants={variants}
+                initial="initial"
+                animate="active"
+                exit="exit"
+                custom={direction}
+                onAnimationStart={() => setIsAnimating(true)}
+                onAnimationComplete={() => setIsAnimating(false)}
+              >
+                {content}
+              </motion.div>
+            </AnimatePresence>
+          </div>
         </motion.div>
-      ))}
+      </MotionConfig>
     </div>
   );
-};
+}
+export { DirectionAwareTabs };

@@ -10,10 +10,12 @@ type NumberProps = number | `${number}`;
 export function NumberTriggerOnScroll({
   className,
   children,
+  style,
   delayInMs = 100,
 }: {
   className?: string;
   children: NumberProps;
+  style: any;
   delayInMs?: number;
 }) {
   const [number, setNumber] = useState<NumberProps>(0);
@@ -33,11 +35,9 @@ export function NumberTriggerOnScroll({
       ref={ref}
       value={Number(number)}
       isolate={true}
+      style={style}
       spinTiming={{ duration: 1200, easing: 'ease-in-out' }}
-      className={cn(
-        'z-20 dark:text-neutral-300 text-neutral-700 text-4xl font-medium tracking-tighter',
-        className
-      )}
+      className={cn('z-20  text-4xl font-medium tracking-tighter', className)}
     />
   );
 }

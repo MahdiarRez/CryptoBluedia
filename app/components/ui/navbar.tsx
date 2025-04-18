@@ -44,6 +44,9 @@ function Navbar() {
             src={BluediaLogo}
             alt={'Bluedia logo'}
             placeholder={'blur'}
+            width={40}
+            height={40}
+            priority
             className={`w-10 h-10 rounded-lg object-cover cursor-pointer md:h-11 md:w-11 z-50 ${isScrolled ? 'dark:border dark:border-white' : 'dark:border-none'}`}
           />
         </Link>

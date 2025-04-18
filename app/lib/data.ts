@@ -11,9 +11,6 @@ interface MarketNewsItem {
 }
 
 export async function getMarketNews(): Promise<MarketNewsItem[]> {
-  await new Promise((resolve) => {
-    setTimeout(resolve, 10000);
-  });
   const supabaseClient = createClient();
   const { data, error } = await supabaseClient.from('marketNews').select('*');
 
