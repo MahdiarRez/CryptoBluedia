@@ -147,7 +147,7 @@ function CryptoHeader({ currency }: { currency: Currency }) {
             <div className="flex flex-row items-center gap-2 font-medium">
               <ShineBorder
                 hiddenOnMobile={false}
-                className=" z-10 relative bg-white/25  px-3.5 py-0.5 xs:py-1 backdrop-blur-sm"
+                className=" z-10 relative bg-white/30  px-3.5 py-0.5 xs:py-1 backdrop-blur-sm"
                 borderRadius={6}
                 duration={4}
                 color={['#e7e3f3', '#a5aeb7']}
@@ -159,7 +159,7 @@ function CryptoHeader({ currency }: { currency: Currency }) {
               <ShineBorder
                 hiddenOnMobile={false}
                 duration={4}
-                className=" z-10 relative bg-white/25  px-3.5 py-0.5 xs:py-1 backdrop-blur-sm"
+                className=" z-10 relative bg-white/30  px-3.5 py-0.5 xs:py-1 backdrop-blur-sm"
                 borderRadius={6}
                 color={['#e7e3f3', '#a5aeb7']}
               >

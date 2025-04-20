@@ -8,6 +8,10 @@ import { getCurrencyPrice } from '../lib/api';
 import { formatMarketNumbers } from '@/app/lib/helper';
 import clsx from 'clsx';
 import { CryptoMarketOverviewSkeleton } from '../components/ui/skeletons/cryptoMarketOverviewSkeleton';
+import Image from 'next/image';
+import btcNews from '@/public/btcNews.jpg';
+import ethNews from '@/public/ethNews.jpg';
+import solanaNews from '@/public/solanaNews.jpg';
 
 type marketDataT = {
   bitcoin: {
@@ -51,10 +55,33 @@ function CryptoMarketOverviewCard() {
     <>
       {Object.entries(data).map((item) => {
         const details = item[1];
+        const name = item[0];
+        let picture = null;
+        switch (name) {
+          case 'bitcoin':
+            picture = btcNews;
+            break;
+          case 'ethereum':
+            picture = ethNews;
+            break;
+          case 'solana':
+            picture = solanaNews;
+            break;
+
+          default:
+            picture = btcNews;
+            break;
+        }
         return (
-          <div className="w-full rounded-lg px-4 py-5 bg-yellow-50 flex flex-col gap-2">
-            <h6 className="text-xl font-semibold capitalize">{item[0]}</h6>
-            <div className="flex flex-row justify-between w-full items-center">
+          <div className="w-full rounded-lg px-4 py-5 relative flex flex-col gap-2 overflow-hidden text-white bg-DarkBlue ">
+            <Image
+              src={picture}
+              alt="newspic"
+              className=" absolute top-0 right-0 z-0 opacity-70 object-center"
+              placeholder="blur"
+            />
+            <h6 className="text-xl font-semibold capitalize z-10">{name}</h6>
+            <div className="flex flex-row justify-between w-full items-center z-10 ">
               <span className="flex flex-row items-center gap-px text-2xl font-semibold">
                 <BsCurrencyDollar />
                 {details.usd}
@@ -68,7 +95,7 @@ function CryptoMarketOverviewCard() {
                 {formatMarketNumbers(details.usd_24h_change, 2)} %
               </span>
             </div>
-            <div className="flex flex-col justify-between w-full items-center">
+            <div className="flex flex-col justify-between w-full items-center z-10">
               <div className="flex flex-row items-center gap-1 justify-between w-full">
                 <span className="flex flex-row items-center gap-0.5 text-sm xs:text-lg md:text-sm font-normal">
                   <RiBarChartBoxAiLine />

@@ -1,5 +1,7 @@
 'use client';
 
+import type { NewsItem } from '@/app/lib/utils/types';
+
 const options = {
   method: 'GET',
   headers: {

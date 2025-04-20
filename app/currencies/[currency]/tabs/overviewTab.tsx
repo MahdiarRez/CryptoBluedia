@@ -1,5 +1,5 @@
 import { RiTelegram2Fill } from 'react-icons/ri';
-import CardDetails from './cardDetails';
+import CardDetails from '../cardDetails';
 import { Currency } from '@/app/lib/utils/types';
 import { FaXTwitter } from 'react-icons/fa6';
 import {
@@ -102,7 +102,7 @@ function HistoryCard({ curr, about }: HistoryCardProps) {
     <article className="w-full flex flex-col bg-white p-7 rounded-2xl md:p-5 lg:p-6">
       <header className="mb-4">
         <h2 className="text-DarkBlue font-medium text-xl md:text-lg lg:text-xl">
-          {about == 'rol' ? 'ROL Hisotry' : title}
+          {about == 'rol' ? 'ROL History' : title}
         </h2>
         <p className="text-gray-500 md:text-xs lg:text-sm">
           {about !== 'rol'
@@ -173,7 +173,7 @@ function Community({
             {icon}
           </div>
           <div className=" z-10">
-            <span className="text-3xl font-bold text-DarkBlue flex flex-row items-center gap-2 ">
+            <span className="text-4xl font-semibold text-DarkBlue flex flex-row items-center gap-2 ">
               <NumberTriggerOnScroll once={false}>
                 {number}
               </NumberTriggerOnScroll>
