@@ -14,7 +14,10 @@ const supabase = createClient(supabaseUrl || '', supabaseAnonKey || '');
 // Fetch all cryptocurrencies from Supabase
 export async function fetchCurrencies(): Promise<Currency[] | undefined> {
   try {
-    const { data, error } = await supabase.from('currenciesList').select('*');
+    const { data, error } = await supabase
+      .from('currenciesList')
+      .select('*')
+      .order('rank2025', { ascending: true });
     console.log('data : ,', data);
 
     if (error) {

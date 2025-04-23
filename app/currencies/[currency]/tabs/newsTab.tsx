@@ -1,9 +1,5 @@
 import { CryptoNewsCard } from '@/app/news/cryptoNewsCard';
 import { newsItems } from '@/app/news/cryptoNewsList';
-import Image from 'next/image';
-import pic from '@/public/technical.jpg';
-import { TextEffect } from '@/app/components/motionPrimitive/ui/text-effect';
-import { TextGenerate } from '@/app/components/textGenerate';
 
 function NewsTab() {
   const items = newsItems;
@@ -13,14 +9,14 @@ function NewsTab() {
 
   return (
     <div className="flex flex-col items-start justify-center">
-      <TextGenerate
+      {/* <TextGenerate
         preset="fade-in-blur"
         delay={0.35}
         text="Technical Analysis"
         per="line"
         classes="text-2xl my-4 mb-7 border-l-4 border-solid border-DarkBlue pl-2 text-DarkBlue font-medium text-left"
-      />
-
+      /> */}
+      {/* 
       <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-4 mb-9 px-5">
         <Image
           src={pic}
@@ -34,15 +30,15 @@ function NewsTab() {
           className="w-full h-96 rounded-2xl"
           placeholder="blur"
         />
-      </div>
-      <TextGenerate
+      </div> */}
+      {/* <TextGenerate
         preset="fade-in-blur"
         delay={0.35}
         text={`Latest News`}
         per="line"
         classes="text-2xl my-4 mb-7 border-l-4 border-solid border-DarkBlue pl-2 text-DarkBlue font-medium text-left"
-      />
-      <div className="w-full grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4 px-5">
+      /> */}
+      <div className="w-full grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4 ">
         {items.slice(0, 4).map((item) => (
           <CryptoNewsCard newsItem={item} />
         ))}

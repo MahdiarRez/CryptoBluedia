@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import './global.css';
-import Navbar from '@/app/components/ui/navbar';
+import { Navbar } from '@/app/components/ui/navbar';
 import ThemeButton from '@/app/components/ui/themeButton';
 import React from 'react';
 import { Manrope } from 'next/font/google';

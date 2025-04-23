@@ -1,8 +1,8 @@
 import { fetchCurrencyById } from '@/app/lib/utils/supabaseServer';
 import { notFound } from 'next/navigation';
 import Crypto from './crypto';
-
-export const dynamic = 'force-dynamic'; // Ensure data is always fresh
+import { Suspense } from 'react';
+import { CurrencySkeleton } from '@/app/components/ui/skeletons/currencySkeleton';
 
 export default async function Page({
   params,
@@ -21,7 +21,9 @@ export default async function Page({
 
     return (
       <div className="sm:px-8 lg:px-28 xl:px-40 bg-WHITE pt-32 px-4 min-h-dvh h-auto w-full">
-        <Crypto currency={currency} />
+        <Suspense fallback={<CurrencySkeleton />}>
+          <Crypto currency={currency} />
+        </Suspense>
       </div>
     );
   } catch (error) {

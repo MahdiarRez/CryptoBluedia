@@ -118,7 +118,7 @@ function CryptoHeader({ currency }: { currency: Currency }) {
       </ShineBorder>
       <div
         className=" flex flex-col items-start w-full p-7 md:py-5 h-full justify-center rounded-2xl relative overflow-hidden"
-        style={{ backgroundColor: 'black' }}
+        style={{ backgroundColor: currency.color }}
       >
         <Balatro
           classes="absolute z-0 top-0 right-0"
