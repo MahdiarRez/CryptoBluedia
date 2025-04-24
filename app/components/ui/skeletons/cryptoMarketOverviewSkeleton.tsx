@@ -4,7 +4,7 @@ export function CryptoMarketOverviewSkeleton() {
       {[1, 2, 3].map((item) => (
         <div
           key={item}
-          className="w-full rounded-lg px-4 py-5 bg-gray-100 animate-pulse flex flex-col gap-2"
+          className="w-full rounded-lg px-4 py-5 bg-gray-100 animate-pulse flex flex-col gap-2 min-h-[156px]"
         >
           <div className="h-6 bg-gray-300 rounded w-1/4" />
           <div className="flex justify-between items-center">

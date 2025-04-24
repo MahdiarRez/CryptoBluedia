@@ -4,12 +4,13 @@ import { SiVictoriametrics } from 'react-icons/si';
 import { FaMagnifyingGlassChart } from 'react-icons/fa6';
 import { FaUserSecret } from 'react-icons/fa';
 import { BsPeopleFill } from 'react-icons/bs';
+import { InfinitySlider } from './infinitySlider';
 
 function HeroServices() {
   return (
     <div
       className={
-        'h-auto  mt-20 lg:mt-0 lg:pb-0 lg:min-h-dvh  w-full flex flex-col justify-center items-center pb-20 '
+        'h-auto my-16 lg:min-h-dvh lg:mt-0 lg:pb-0  w-full flex flex-col justify-center items-center pb-20 '
       }
     >
       <h3
@@ -25,6 +26,7 @@ function HeroServices() {
         ratings of crypto currencies. <br /> Our goal is to equip you with the
         knowledge you need to invest wisely.
       </p>
+      <InfinitySlider />
       <ServicesList />
     </div>
   );
@@ -34,7 +36,7 @@ function ServicesList() {
   return (
     <div
       className={
-        'mt-16 flex flex-col max-w-[705px] lg2:max-w-[1991px] lg2:min-w-full lg2:flex-row items-center justify-center gap-6 '
+        'mt-5 flex flex-col max-w-[705px] lg2:max-w-[1991px] lg2:min-w-full lg2:flex-row items-center justify-center gap-6 '
       }
     >
       <ServiceItem

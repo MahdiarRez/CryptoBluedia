@@ -88,7 +88,7 @@ export function InfiniteSlider({
   return (
     <div
       className={cn(
-        'overflow-hidden w-full py-20 relative [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)]',
+        'overflow-hidden w-2/3 py-10 relative [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)]',
         className
       )}
     >

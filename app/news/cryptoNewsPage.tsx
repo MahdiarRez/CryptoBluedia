@@ -5,6 +5,7 @@ import { CryptoNewsList, newsItems } from '@/app/news/cryptoNewsList';
 import { CryptoMarketOverview } from '@/app/news/cryptoMarketOverview';
 import { CryptoTrendingCoins } from '@/app/news/cryptoTrendCoins';
 import { CryptoNewsFilters } from '@/app/news/cryptoNewsFilter';
+import { CryptoTrendingCoinsSkeleton } from '../components/ui/skeletons/trendingCoinsSkeleton';
 
 // This would typically come from an API
 
@@ -37,9 +38,7 @@ export function CryptoNewsPage() {
           </div>
           <div className="gap-4 flex flex-col items-center w-full mx-auto">
             <CryptoMarketOverview />
-            <Suspense fallback={'loading'}>
-              <CryptoTrendingCoins />
-            </Suspense>
+            <CryptoTrendingCoins />
           </div>
         </div>
       </div>
