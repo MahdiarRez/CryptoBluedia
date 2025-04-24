@@ -73,7 +73,10 @@ function CryptoMarketOverviewCard() {
             break;
         }
         return (
-          <div className="w-full rounded-lg px-4 py-5 relative flex flex-col gap-2 overflow-hidden text-white bg-DarkBlue ">
+          <div
+            className="w-full rounded-lg px-4 py-5 relative flex flex-col gap-2 overflow-hidden text-white bg-DarkBlue "
+            key={name}
+          >
             <Image
               src={picture}
               alt="newspic"

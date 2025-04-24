@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import { CryptoNewsList, newsItems } from '@/app/news/cryptoNewsList';
 import { CryptoMarketOverview } from '@/app/news/cryptoMarketOverview';
 import { CryptoTrendingCoins } from '@/app/news/cryptoTrendCoins';
@@ -37,7 +37,9 @@ export function CryptoNewsPage() {
           </div>
           <div className="gap-4 flex flex-col items-center w-full mx-auto">
             <CryptoMarketOverview />
-            <CryptoTrendingCoins />
+            <Suspense fallback={'loading'}>
+              <CryptoTrendingCoins />
+            </Suspense>
           </div>
         </div>
       </div>

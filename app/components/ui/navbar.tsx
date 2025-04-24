@@ -5,7 +5,7 @@
 // import BluediaLogo from '../../../public/logo.jpeg';
 // import HamberMenu from '@/app/components/hamberMenu';
 // import Link from 'next/link';
-// import NavMenuItem from '@/app/components/navMenuItem';
+import NavMenuItem from '@/app/components/navMenuItem';
 // import { usePathname } from 'next/navigation';
 // import clsx from 'clsx';
 // import { HiCurrencyDollar } from 'react-icons/hi2';
@@ -63,9 +63,7 @@
 //             <NavMenuItem isScrolled={isScrolled} href={'/youtube'}>
 //               Youtube
 //             </NavMenuItem>
-//             <NavMenuItem isScrolled={isScrolled} href={'/news'}>
-//               News
-//             </NavMenuItem>
+
 //             <NavMenuItem isScrolled={isScrolled} href={'/qwe'}>
 //               Contact us
 //             </NavMenuItem>
@@ -118,26 +116,28 @@ import {
   NavItems,
   MobileNav,
   NavbarLogo,
-  NavbarButton,
   MobileNavHeader,
   MobileNavToggle,
   MobileNavMenu,
 } from '@/app/components/aceternityUi/resiableNav';
 import { useState } from 'react';
+import Button from '../button';
+import { InteractiveHoverButton } from '../aceternityUi/btnAcet';
+import Link from 'next/link';
 
 export function Navbar() {
   const navItems = [
     {
-      name: 'Features',
-      link: '#features',
+      name: 'Home',
+      link: '/',
     },
     {
-      name: 'Pricing',
-      link: '#pricing',
+      name: 'News',
+      link: '/news',
     },
     {
-      name: 'Contact',
-      link: '#contact',
+      name: 'About Bluedia',
+      link: '/contact',
     },
   ];
 
@@ -149,10 +149,11 @@ export function Navbar() {
       <NavBody>
         <NavbarLogo />
         <NavItems items={navItems} />
-        <div className="flex items-center gap-4">
-          <NavbarButton variant="secondary">Login</NavbarButton>
-          <NavbarButton variant="primary">Book a call</NavbarButton>
-        </div>
+        <Link href={'/currencies'}>
+          <InteractiveHoverButton className="bg-DarkBlue text-WHITE text-sm rounded-lg">
+            Currencies
+          </InteractiveHoverButton>
+        </Link>
       </NavBody>
 
       {/* Mobile Navigation */}
@@ -180,20 +181,20 @@ export function Navbar() {
             </a>
           ))}
           <div className="flex w-full flex-col gap-4">
-            <NavbarButton
-              onClick={() => setIsMobileMenuOpen(false)}
-              variant="primary"
-              className="w-full"
+            <Button
+              // onClick={() => setIsMobileMenuOpen(false)}
+              // variant="primary"
+              classes="w-full"
             >
               Login
-            </NavbarButton>
-            <NavbarButton
-              onClick={() => setIsMobileMenuOpen(false)}
-              variant="primary"
-              className="w-full"
+            </Button>
+            <Button
+              // onClick={() => setIsMobileMenuOpen(false)}
+              // variant="primary"
+              classes="w-full"
             >
               Book a call
-            </NavbarButton>
+            </Button>
           </div>
         </MobileNavMenu>
       </MobileNav>

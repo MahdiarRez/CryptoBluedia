@@ -21,6 +21,13 @@ export interface CryptoCurrency {
   reward?: number;
 }
 
+export type TrendingCoin = {
+  id: string;
+  name: string;
+  icon: string;
+  narrative: string;
+};
+
 export interface Currency {
   identifier: number;
   name: string;
