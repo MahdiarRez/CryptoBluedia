@@ -1,34 +1,12 @@
 import { fetchCurrencyById } from '@/app/lib/utils/supabaseServer';
-import { notFound } from 'next/navigation';
 import Crypto from './crypto';
-import { Suspense } from 'react';
-import { CurrencySkeleton } from '@/app/components/ui/skeletons/currencySkeleton';
 
-export default async function Page({
-  params,
-}: {
-  params: Promise<{ currency: string }>;
-}) {
-  const { currency } = await params;
-
-  if (!currency || typeof currency !== 'string') {
-    notFound();
-  }
-
-  try {
-    const currency = await fetchCurrencyById((await params).currency);
-    console.log('currency : ', currency);
-
-    return (
-      <div className="sm:px-8 lg:px-28 xl:px-40 bg-WHITE pt-32 px-4 min-h-dvh h-auto w-full">
-        <Suspense fallback={<CurrencySkeleton />}>
-          <Crypto currency={currency} />
-        </Suspense>
-      </div>
-    );
-  } catch (error) {
-    notFound();
-  }
+export default function Page() {
+  return (
+    <div className="sm:px-8 lg:px-28 xl:px-40 bg-WHITE pt-32 px-4 min-h-dvh h-auto w-full">
+      <Crypto />
+    </div>
+  );
 }
 
 export async function generateMetadata({

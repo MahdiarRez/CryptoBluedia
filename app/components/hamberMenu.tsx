@@ -25,51 +25,6 @@ function HamberMenu({ isScrolled }: { isScrolled: boolean }) {
         isOpen={menuIsOpen}
         setIsOpen={setMenuIsOpen}
       />
-      <AnimatePresence initial={false}>
-        {menuIsOpen && (
-          <motion.div
-            initial={{
-              opacity: 0,
-              filter: 'blur(4px)',
-            }}
-            animate={{
-              opacity: 1,
-              filter: 'blur(0px)',
-            }}
-            exit={{ opacity: 0, filter: 'blur(4px)' }}
-            transition={{ duration: 0.3 }}
-            onClick={() => setMenuIsOpen(false)}
-            className={`bg-white dark:bg-DarkBlue md:hidden z-50 dark:bg-opacity-80 dark:backdrop-blur-sm bg-opacity-80 backdrop-blur-2xl fixed  ${isScrolled ? 'w-auto top-16 h-auto pb-3 rounded-2xl' : 'w-dvh top-20 h-dvh'} left-0 right-0 px-4 pt-3`}
-          >
-            <motion.ul
-              initial={{ opacity: 0, y: '-20px' }}
-              animate={{ opacity: 1, y: '0px' }}
-              exit={{ opacity: 0, y: '-20px' }}
-              transition={{
-                type: 'spring',
-                stiffness: 100,
-                duration: 0.1,
-                delay: 0.2,
-              }}
-              onClick={(e) => e.stopPropagation()}
-              className={`bg-DarkBlue  font-normal  text-white dark:bg-white dark:text-DarkBlue overflow-hidden ${isScrolled ? 'w-auto rounded-lg' : 'w-full rounded-xl'} py-2.5`}
-            >
-              <HamberMenuItem setMenuIsOpen={setMenuIsOpen} href={'/'}>
-                Home
-              </HamberMenuItem>
-              <HamberMenuItem setMenuIsOpen={setMenuIsOpen} href={'/youtube'}>
-                Youtube
-              </HamberMenuItem>
-              <HamberMenuItem setMenuIsOpen={setMenuIsOpen} href={'/news'}>
-                News{' '}
-              </HamberMenuItem>
-              <HamberMenuItem setMenuIsOpen={setMenuIsOpen} href={'/ww'}>
-                Contact us
-              </HamberMenuItem>
-            </motion.ul>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </>
   );
 }

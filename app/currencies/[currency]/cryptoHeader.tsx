@@ -9,6 +9,7 @@ import { FaCaretUp } from 'react-icons/fa6';
 import { RiInfoCardLine } from 'react-icons/ri';
 import { BestDataT, getBestEntry } from '@/app/lib/helper';
 import { TextEffect } from '@/app/components/motionPrimitive/ui/text-effect';
+import { InteractiveHoverButton } from '@/app/components/aceternityUi/btnAcet';
 
 function CryptoHeader({ currency }: { currency: Currency }) {
   const curr: BestDataT = {

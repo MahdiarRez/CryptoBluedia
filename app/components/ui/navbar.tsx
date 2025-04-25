@@ -121,9 +121,10 @@ import {
   MobileNavMenu,
 } from '@/app/components/aceternityUi/resiableNav';
 import { useState } from 'react';
-import Button from '../button';
+import { AnimatePresence, motion } from 'motion/react';
 import { InteractiveHoverButton } from '../aceternityUi/btnAcet';
 import Link from 'next/link';
+import HamberMenuItem from '../hamberMenuItem';
 
 export function Navbar() {
   const navItems = [
@@ -165,8 +166,61 @@ export function Navbar() {
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           />
         </MobileNavHeader>
-
-        <MobileNavMenu
+        <AnimatePresence initial={false}>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{
+                opacity: 0,
+                filter: 'blur(4px)',
+              }}
+              animate={{
+                opacity: 1,
+                filter: 'blur(0px)',
+              }}
+              exit={{ opacity: 0, filter: 'blur(4px)' }}
+              transition={{ duration: 0.3 }}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className={`bg-white dark:bg-DarkBlue md:hidden z-50 dark:bg-opacity-80 dark:backdrop-blur-sm bg-opacity-80 backdrop-blur-2xl fixed  top-20 left-0 right-0 px-4 pt-3`}
+            >
+              <motion.ul
+                initial={{ opacity: 0, y: '-20px' }}
+                animate={{ opacity: 1, y: '0px' }}
+                exit={{ opacity: 0, y: '-20px' }}
+                transition={{
+                  type: 'spring',
+                  stiffness: 100,
+                  duration: 0.1,
+                  delay: 0.2,
+                }}
+                onClick={(e) => e.stopPropagation()}
+                className={`bg-DarkBlue  font-normal  text-white dark:bg-white dark:text-DarkBlue overflow-hidden py-2.5`}
+              >
+                <HamberMenuItem setMenuIsOpen={setIsMobileMenuOpen} href={'/'}>
+                  Home
+                </HamberMenuItem>
+                <HamberMenuItem
+                  setMenuIsOpen={setIsMobileMenuOpen}
+                  href={'/youtube'}
+                >
+                  Youtube
+                </HamberMenuItem>
+                <HamberMenuItem
+                  setMenuIsOpen={setIsMobileMenuOpen}
+                  href={'/news'}
+                >
+                  News{' '}
+                </HamberMenuItem>
+                <HamberMenuItem
+                  setMenuIsOpen={setIsMobileMenuOpen}
+                  href={'/ww'}
+                >
+                  Contact us
+                </HamberMenuItem>
+              </motion.ul>
+            </motion.div>
+          )}
+        </AnimatePresence>
+        {/* <MobileNavMenu
           isOpen={isMobileMenuOpen}
           onClose={() => setIsMobileMenuOpen(false)}
         >
@@ -196,7 +250,7 @@ export function Navbar() {
               Book a call
             </Button>
           </div>
-        </MobileNavMenu>
+        </MobileNavMenu> */}
       </MobileNav>
     </N>
   );
