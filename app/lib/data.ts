@@ -1,6 +1,7 @@
 'use server';
 
 import { createClient } from '@/app/lib/utils/supabaseClient';
+import { TrendingCoin } from './utils/types';
 
 interface MarketNewsItem {
   id: string;
@@ -20,4 +21,22 @@ export async function getMarketNews(): Promise<MarketNewsItem[]> {
   }
 
   return data as MarketNewsItem[];
+}
+
+export async function fetchTrendingCoins(): Promise<
+  TrendingCoin[] | undefined
+> {
+  const supa = createClient();
+  try {
+    const { data, error } = await supa.from('trendingCoins').select('*');
+
+    if (error) {
+      console.error('Error fetching Trending Coins:', error);
+      throw new Error(`Failed to fetch Trending Coins: ${error.message}`);
+    }
+
+    return data || [];
+  } catch (error) {
+    console.error('Error in fetch Trending Currencies:', error);
+  }
 }

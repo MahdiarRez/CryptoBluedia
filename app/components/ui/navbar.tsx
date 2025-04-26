@@ -180,7 +180,7 @@ export function Navbar() {
               exit={{ opacity: 0, filter: 'blur(4px)' }}
               transition={{ duration: 0.3 }}
               onClick={() => setIsMobileMenuOpen(false)}
-              className={`bg-white dark:bg-DarkBlue md:hidden z-50 dark:bg-opacity-80 dark:backdrop-blur-sm bg-opacity-80 backdrop-blur-2xl fixed  top-20 left-0 right-0 px-4 pt-3`}
+              className={`bg-white min-w-full sm:min-w-[80%] dark:bg-DarkBlue md:hidden z-50 dark:bg-opacity-80 dark:backdrop-blur-sm bg-opacity-80 backdrop-blur-2xl fixed top-20 transform -translate-x-1/2 left-1/2 px-4 py-3 rounded-2xl`}
             >
               <motion.ul
                 initial={{ opacity: 0, y: '-20px' }}
@@ -193,29 +193,32 @@ export function Navbar() {
                   delay: 0.2,
                 }}
                 onClick={(e) => e.stopPropagation()}
-                className={`bg-DarkBlue  font-normal  text-white dark:bg-white dark:text-DarkBlue overflow-hidden py-2.5`}
+                className={`bg-DarkBlue flex flex-col items-start font-normal  text-white dark:bg-white dark:text-DarkBlue overflow-hidden rounded-md`}
               >
                 <HamberMenuItem setMenuIsOpen={setIsMobileMenuOpen} href={'/'}>
                   Home
                 </HamberMenuItem>
-                <HamberMenuItem
-                  setMenuIsOpen={setIsMobileMenuOpen}
-                  href={'/youtube'}
-                >
-                  Youtube
-                </HamberMenuItem>
+
+                <span className="w-full bg-gradient-to-r via-white/10 from-white/40 to-transparent h-px z-50 block"></span>
                 <HamberMenuItem
                   setMenuIsOpen={setIsMobileMenuOpen}
                   href={'/news'}
                 >
-                  News{' '}
+                  News
                 </HamberMenuItem>
+                <span className="w-full bg-gradient-to-r via-white/10 from-white/40 to-transparent h-px z-50 block"></span>
                 <HamberMenuItem
                   setMenuIsOpen={setIsMobileMenuOpen}
-                  href={'/ww'}
+                  href={'/youtube'}
                 >
-                  Contact us
+                  About Bluedia
                 </HamberMenuItem>
+                <span className="w-full bg-gradient-to-r via-white/10 from-white/40 to-transparent h-px z-50 block"></span>
+                <Link href={'/currencies'} className="self-center">
+                  <button className="px-20 self-center my-3 h-10 rounded-lg hover:bg-LightBlue transition-colors duration-300 bg-white text-DarkBlue font-semibold">
+                    Currencies
+                  </button>
+                </Link>
               </motion.ul>
             </motion.div>
           )}

@@ -18,7 +18,7 @@ function Page() {
       <div className={'py-20 w-full'}>
         <TimelineDemo />
       </div>
-      <div className="my-20 p-7 rounded-2xl flex justify-center items-center w-full bg-DarkBlue">
+      <div className="my-20 p-7 rounded-2xl flex justify-center items-center w-full bg-DarkBlue animate-pulse">
         <GlowText className="text-white text-xl sm:text-2xl">
           🇮🇷 Persian language will be added soon.
         </GlowText>

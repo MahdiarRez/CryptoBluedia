@@ -1,6 +1,7 @@
-'use client';
+'use server';
 import { RiNumber1, RiNumber2, RiNumber3, RiNumber4 } from 'react-icons/ri';
-import { fetchTrendingCoins } from '../lib/api';
+import { fetchTrendingCoins } from '../lib/data';
+
 async function CryptoTrendCoinsCard() {
   const data = await fetchTrendingCoins();
   return (

@@ -7,7 +7,7 @@ function BackBtn() {
   return (
     <InteractiveHoverButton
       onClick={() => router.back()}
-      className=" fixed text-DarkBlue left-5 bottom-5 z-50 rounded-lg bg-white/50"
+      className=" fixed text-white left-5 bottom-5 z-50 rounded-lg bg-DarkBlue"
     >
       Back
     </InteractiveHoverButton>

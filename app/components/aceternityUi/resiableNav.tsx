@@ -102,7 +102,7 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
         damping: 50,
       }}
       className={cn(
-        'relative z-[60]  mx-auto hidden w-full min-w-[800px] xl:min-w-[900px] flex-row items-center justify-between self-start rounded-2xl bg-transparent px-5 sm:px-8 lg:px-28 xl:px-40 py-2 lg:flex dark:bg-transparent',
+        'relative z-[60]  mx-auto hidden w-full md:min-w-[700px] lg:min-w-[840px] min-w-[800px] xl:min-w-[900px] flex-row items-center justify-between self-start rounded-2xl bg-transparent px-5 sm:px-8 lg:px-28 xl:px-40 py-2 md:flex dark:bg-transparent',
         visible && 'bg-white/80 dark:bg-white/80',
         className
       )}
@@ -118,7 +118,7 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
   return (
     <motion.div
       className={cn(
-        'absolute inset-0 px-20 hidden flex-1 flex-row items-center justify-center space-x-2 text-sm font-semibold text-zinc-600 transition duration-200 hover:text-zinc-800 lg:flex lg:space-x-2',
+        'absolute inset-0 px-20 hidden flex-1 flex-row items-center justify-center space-x-2 text-sm font-semibold text-zinc-600 transition duration-200 hover:text-zinc-800 md:flex lg:space-x-2',
         className
       )}
     >
@@ -161,7 +161,7 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
         damping: 50,
       }}
       className={cn(
-        'relative z-50 mx-auto flex w-full rounded-2xl  flex-col items-center justify-between bg-transparent  py-2 lg:hidden',
+        'relative z-50 mx-auto flex w-full rounded-2xl  flex-col items-center justify-between bg-transparent  py-2 md:hidden',
         visible && 'bg-white/80 dark:bg-neutral-950/80',
         className
       )}

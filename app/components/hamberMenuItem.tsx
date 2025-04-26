@@ -14,7 +14,7 @@ function HamberMenuItem({
 }) {
   const pathname = usePathname();
   return (
-    <li className={'flex h-10 items-center justify-start'}>
+    <li className={'flex h-14 items-center justify-start'}>
       <Link
         className={`w-full h-full flex relative justify-start items-center group pl-7`}
         onClick={() => setMenuIsOpen(false)}

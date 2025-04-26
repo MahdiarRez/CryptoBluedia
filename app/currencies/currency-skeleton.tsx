@@ -30,7 +30,7 @@ export function CurrencyListSkeleton() {
 
 function CurrencyCardSkeleton() {
   return (
-    <div className="animate-pulse border-none rounded-2xl overflow-hidden min-h-[189px]">
+    <div className="animate-pulse border-none rounded-2xl overflow-hidden min-h-[189px] h-[189px] bg-white">
       <div className="p-4 border-b bg-white">
         <div className="flex items-center">
           {/* Logo Skeleton */}
@@ -61,13 +61,13 @@ function CurrencyCardSkeleton() {
         </div>
       </div>
 
-      {/* Footer Skeleton */}
-      <div className="px-4 py-3 bg-gray-50">
+      {/* Footer Skeleton
+      <div className="px-4 py-3 bg-gray-100">
         <div className="flex justify-between">
           <div className="h-3 bg-gray-200 w-24 rounded"></div>
           <div className="h-3 bg-gray-200 w-16 rounded"></div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

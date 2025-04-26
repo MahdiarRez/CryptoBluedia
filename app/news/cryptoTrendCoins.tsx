@@ -7,12 +7,16 @@ import {
 import { Suspense } from 'react';
 import { CryptoTrendingCoinsSkeleton } from '../components/ui/skeletons/trendingCoinsSkeleton';
 import CryptoTrendCoinsCard from './cryptoTrendCoinsCard';
+import { BsArrowUpSquareFill } from 'react-icons/bs';
 
 export function CryptoTrendingCoins() {
   return (
     <CardShadcn className="w-full rounded-2xl">
       <CardHeaderShadcn className="flex flex-row items-center justify-between">
-        <CardTitleShadcn className="text-xl">Trending Coins</CardTitleShadcn>
+        <CardTitleShadcn className="text-xl flex-row flex items-center gap-2">
+          <BsArrowUpSquareFill className="text-LightBlue" />
+          Trending Coins
+        </CardTitleShadcn>
       </CardHeaderShadcn>
       <CardContentShadcn>
         <Suspense fallback={<CryptoTrendingCoinsSkeleton />}>
