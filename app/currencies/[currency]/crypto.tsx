@@ -3,7 +3,7 @@ import { Inter } from 'next/font/google';
 import CryptoHeader from './cryptoHeader';
 import CryptoBody from './cryptoBody';
 import { notFound, useParams } from 'next/navigation';
-import { fetchCurrencyById } from '@/app/lib/utils/supabaseServer';
+import { fetchCurrencyById } from '@/app/lib/data';
 import { useEffect, useState } from 'react';
 import { Currency } from '@/app/lib/utils/types';
 import { CurrencySkeleton } from '@/app/components/ui/skeletons/currencySkeleton';

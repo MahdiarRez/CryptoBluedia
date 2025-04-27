@@ -1,4 +1,4 @@
-import { fetchCurrencies } from '../lib/utils/supabaseServer';
+import { fetchCurrencies } from '../lib/data';
 import { CurrencyFilterServer } from './currency-filter';
 
 export default async function CurrenciesListServer() {

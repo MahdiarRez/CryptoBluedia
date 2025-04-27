@@ -17,6 +17,19 @@
   }
 }
 
+.downArrow-motion {
+  animation: downArrow 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes downArrow {
+  from {
+    bottom: 1.75rem;
+  }
+  to {
+    bottom: 3rem;
+  }
+}
+
 .arrow-motion {
   animation: arrowBottom 1s ease-in-out infinite alternate;
 }

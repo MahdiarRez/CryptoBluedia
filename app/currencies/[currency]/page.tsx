@@ -1,4 +1,4 @@
-import { fetchCurrencyById } from '@/app/lib/utils/supabaseServer';
+import { fetchCurrencyById } from '@/app/lib/data';
 import Crypto from './crypto';
 
 export default function Page() {
