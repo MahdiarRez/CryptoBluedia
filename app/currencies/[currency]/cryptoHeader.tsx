@@ -1,15 +1,12 @@
 import ShineBorder from '@/app/components/magicUi/shine-border';
 import { TextGenerate } from '@/app/components/textGenerate';
-import GlowText from '@/app/components/ui/glowText';
 import Balatro from '@/app/components/ui/IridescenceServer';
-// import { hexToRgb } from '@/app/lib/color-utils';
 import { Currency } from '@/app/lib/utils/types';
 import Image from 'next/image';
-import { FaCaretUp } from 'react-icons/fa6';
 import { RiInfoCardLine } from 'react-icons/ri';
 import { BestDataT, getBestEntry } from '@/app/lib/helper';
 import { TextEffect } from '@/app/components/motionPrimitive/ui/text-effect';
-import { InteractiveHoverButton } from '@/app/components/aceternityUi/btnAcet';
+import PriceAndChange from './priceAndChange';
 
 function CryptoHeader({ currency }: { currency: Currency }) {
   const curr: BestDataT = {
@@ -29,7 +26,6 @@ function CryptoHeader({ currency }: { currency: Currency }) {
   const bestRank = getBestEntry(curr, 'rank', 'min');
   const bestPrice = getBestEntry(curr, 'price', 'max');
   const bestRol = getBestEntry(curr, 'rol', 'max');
-
   return (
     <div className="flex flex-col-reverse md:flex-row-reverse items-center w-full gap-4 md:h-[294px]">
       <ShineBorder
@@ -171,21 +167,7 @@ function CryptoHeader({ currency }: { currency: Currency }) {
             </div>
           </div>
         </div>
-        <div className="mt-7 flex flex-row items-stretch justify-between w-full bg-white/20 backdrop-blur-sm p-5 rounded-xl border border-white/10 shadow-md">
-          <div className="flex flex-col min-h-full justify-between">
-            <span className="text-white text-sm mb-1">Current Price</span>
-            <GlowText className="text-white font-black text-3xl xs:text-5xl bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
-              $46.24
-            </GlowText>
-          </div>
-          <div className="flex flex-col min-h-full justify-between items-end">
-            <span className="text-white text-sm mb-1">24h Change</span>
-            <span className="flex flex-row items-center text-green-300 font-bold text-xl gap-1">
-              <FaCaretUp className="w-5 h-5" />
-              4.05%
-            </span>
-          </div>
-        </div>
+        <PriceAndChange name={currency.name} />
       </div>
     </div>
   );

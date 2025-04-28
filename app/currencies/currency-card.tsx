@@ -12,7 +12,11 @@ export function CurrencyCard({ currency }: CurrencyCardProps) {
   const color = currency.color;
 
   return (
-    <Link href={`/currencies/${currency.id}`} className="block h-full">
+    <Link
+      href={`/currencies/${currency.id}`}
+      prefetch={true}
+      className="block h-full"
+    >
       <Card className="h-full overflow-hidden border-none hover:shadow-md hover:-translate-y-0.5 transition-all  duration-300">
         <CardContent className="p-0">
           <div className="flex items-center p-4 border-b bg-white">

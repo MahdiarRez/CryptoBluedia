@@ -2,8 +2,15 @@
 
 import { createClient } from '@/app/lib/utils/supabaseClient';
 import { Currency, TrendingCoin } from './utils/types';
-import { notFound } from 'next/navigation';
 import { supabase } from './utils/supabaseServer';
+
+const options = {
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    'x-cg-demo-api-key': 'CG-BFWDBUWwk7346RxDahTiAzkn',
+  },
+};
 
 interface MarketNewsItem {
   id: string;
@@ -63,27 +70,36 @@ export async function fetchCurrencies(): Promise<Currency[] | undefined> {
   }
 }
 
-// Fetch a single cryptocurrency by ID
 export async function fetchCurrencyById(id: string): Promise<Currency> {
+  const { data, error } = await supabase
+    .from('currenciesList')
+    .select('*')
+    .eq('id', id)
+    .single();
+
+  if (error?.code === 'PGRST116') {
+    throw new Error('NOT_FOUND');
+  }
+
+  if (error) {
+    throw new Error('FETCH_ERROR');
+  }
+
+  return data as Currency;
+}
+
+export async function getCurrencyPrice(id: string): Promise<any> {
   try {
-    const { data, error } = await supabase
-      .from('currenciesList')
-      .select('*')
-      .eq('id', id)
-      .single();
-
-    if (error) {
-      console.error(`Error fetching cryptocurrency with ID ${id}:`, error);
-      throw new Error(`Failed to fetch cryptocurrency: ${error.message}`);
+    const res = await fetch(
+      `https://api.coingecko.com/api/v3/simple/price?ids=${id}&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true`,
+      options
+    );
+    if (!res.ok) {
+      throw new Error(`HTTP error! status: ${res.status}`);
     }
-
-    if (!data) {
-      throw new Error(`Cryptocurrency with ID ${id} not found`);
-    }
-
-    return data;
-  } catch (error) {
-    console.error(`Error in fetchCurrencyById for ${id}:`, error);
-    notFound();
+    return await res.json();
+  } catch (err) {
+    console.error('Fetch error:', err);
+    throw err;
   }
 }

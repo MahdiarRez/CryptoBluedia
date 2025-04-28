@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { BsCurrencyDollar } from 'react-icons/bs';
 import { LuSquareChartGantt } from 'react-icons/lu';
 import { RiBarChartBoxAiLine } from 'react-icons/ri';
-import { getCurrencyPrice } from '../lib/api';
+import { getCurrencyPrice } from '../lib/data';
 import { formatMarketNumbers } from '@/app/lib/helper';
 import clsx from 'clsx';
 import { CryptoMarketOverviewSkeleton } from '../components/ui/skeletons/cryptoMarketOverviewSkeleton';
