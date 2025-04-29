@@ -1,12 +1,12 @@
 export interface NewsItem {
   id: string;
-  title: string;
-  summary: string;
+  head: string;
+  created_at: string;
+  description: string;
   source: string;
-  date: string;
-  imageUrl: string;
-  category: string;
-  url: string;
+  image: string;
+  currency_id: string;
+  news_link: string;
 }
 
 export interface CryptoCurrency {
