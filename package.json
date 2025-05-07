@@ -43,6 +43,7 @@
     "motion": "^11.17.0",
     "next": "15.2.2",
     "ogl": "^1.0.11",
+    "outline": "link:@heroicons/react/24/outline",
     "react": "^19.0.0",
     "react-apexcharts": "^1.7.0",
     "react-dom": "^19.0.0",

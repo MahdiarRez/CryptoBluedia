@@ -89,6 +89,9 @@ importers:
       ogl:
         specifier: ^1.0.11
         version: 1.0.11
+      outline:
+        specifier: link:@heroicons/react/24/outline
+        version: link:@heroicons/react/24/outline
       react:
         specifier: ^19.0.0
         version: 19.0.0

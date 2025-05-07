@@ -138,7 +138,7 @@ export function Navbar() {
     },
     {
       name: 'About Bluedia',
-      link: '/contact',
+      link: '/aboutBluedia',
     },
   ];
 
@@ -209,7 +209,7 @@ export function Navbar() {
                 <span className="w-full bg-gradient-to-r via-white/10 from-white/40 to-transparent h-px z-50 block"></span>
                 <HamberMenuItem
                   setMenuIsOpen={setIsMobileMenuOpen}
-                  href={'/youtube'}
+                  href={'/aboutBluedia'}
                 >
                   About Bluedia
                 </HamberMenuItem>
