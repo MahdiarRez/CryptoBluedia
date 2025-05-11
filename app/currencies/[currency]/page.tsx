@@ -1,4 +1,3 @@
-// app/crypto/[currency]/page.tsx
 import { Suspense } from 'react';
 import Crypto from './crypto';
 import { fetchCurrencyById } from '@/app/lib/data';
@@ -7,6 +6,7 @@ import { CurrencySkeleton } from '@/app/components/ui/skeletons/currencySkeleton
 
 async function CryptoWrapper({ currencyId }: { currencyId: string }) {
   try {
+    // Fetch the currency data based on the currencyId
     const currency = await fetchCurrencyById(currencyId);
     return <Crypto currency={currency} />;
   } catch (error) {
@@ -15,33 +15,17 @@ async function CryptoWrapper({ currencyId }: { currencyId: string }) {
   }
 }
 
-export default function Page({ params }: { params: { currency: string } }) {
-  return (
-    <Suspense fallback={<CurrencySkeleton />}>
-      <div className="sm:px-8 lg:px-28 xl:px-40 bg-WHITE pt-32 px-4 min-h-dvh h-auto w-full">
-        <CryptoWrapper currencyId={params.currency} />
-      </div>
-    </Suspense>
-  );
-}
-
-export async function generateMetadata({
+export default async function Page({
   params,
 }: {
   params: Promise<{ currency: string }>;
 }) {
-  try {
-    const id = (await params).currency;
-    const currency = await fetchCurrencyById(id);
-
-    return {
-      title: `${currency.name} (${currency.id.toUpperCase()})`,
-      description: `View detailed information, charts, and analysis for ${currency.name}`,
-    };
-  } catch (error) {
-    return {
-      title: 'Bluedia',
-      description: 'View detailed information about this cryptocurrency',
-    };
-  }
+  const { currency } = await params;
+  return (
+    <Suspense fallback={<CurrencySkeleton />}>
+      <div className="sm:px-8 lg:px-28 xl:px-40 bg-WHITE pt-32 px-4 min-h-dvh h-auto w-full">
+        <CryptoWrapper currencyId={currency} />
+      </div>
+    </Suspense>
+  );
 }

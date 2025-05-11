@@ -13,7 +13,8 @@ export function ProgressBar({
   return (
     <div className="h-2 bg-slate-700/50 rounded-full overflow-hidden">
       <motion.div
-        className={`h-full bg-gradient-to-r ${color}`}
+        className={`h-full `}
+        style={{ backgroundColor: color }}
         initial={{ width: 0 }}
         animate={{ width: `${value}%` }}
         transition={{ duration: 1, delay }}

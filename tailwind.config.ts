@@ -25,6 +25,7 @@ export default {
     extend: {
       screens: {
         xs: '521px',
+        md2: '900px',
         lg2: '1150px',
       },
       colors: {

@@ -1,4 +1,8 @@
 export interface NewsItem {
+  title: string;
+  category: string;
+  summary: string;
+  url: string;
   id: string;
   head: string;
   created_at: string;
