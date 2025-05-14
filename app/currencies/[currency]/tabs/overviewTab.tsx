@@ -27,7 +27,7 @@ interface HistoryCardProps {
 
 function OverviewTab({ currency }: { currency: Currency }) {
   return (
-    <div className="bg-WHITE h-auto">
+    <div className="bg-WHITE dark:bg-DarkBlue h-auto">
       <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 w-full gap-6 ">
         <CardDetails
           currency={currency}

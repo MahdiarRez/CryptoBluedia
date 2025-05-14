@@ -102,7 +102,7 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
         damping: 50,
       }}
       className={cn(
-        'relative z-[60]  mx-auto hidden w-full md:min-w-[700px] lg:min-w-[840px] min-w-[800px] xl:min-w-[900px] flex-row items-center justify-between self-start rounded-2xl bg-transparent px-5 sm:px-8 lg:px-28 xl:px-40 py-2 md:flex dark:bg-transparent',
+        'relative z-[60]  mx-auto hidden w-full md:min-w-[700px] lg:min-w-[840px] min-w-[800px] xl:min-w-[900px] flex-row items-center justify-between self-start rounded-2xl bg-transparent px-5 sm:px-8 lg:px-28 xl:px-40 py-2 md:flex dark:bg-white',
         visible && 'bg-white/80 dark:bg-white/80',
         className
       )}
@@ -127,7 +127,7 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
           <Link
             onClick={onItemClick}
             className={clsx(
-              `relative px-4 py-2 text-DarkBlue  dark:text-white`,
+              `relative px-4 py-2 text-DarkBlue  `,
               path == item.link ? 'opacity-20' : 'opacity-100 hover:opacity-60'
             )}
             key={`link-${idx}`}
@@ -281,7 +281,7 @@ export const NavbarLogo = () => {
         height={33}
         className="rounded-lg"
       />
-      <span className="font-medium text-black dark:text-white uppercase">
+      <span className="font-medium text-black uppercase">
         Blue<span className="text-LightBlue">dia</span>
       </span>
     </Link>

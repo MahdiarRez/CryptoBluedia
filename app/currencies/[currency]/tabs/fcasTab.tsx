@@ -116,7 +116,7 @@ function FcasTab({ currency }: { currency: Currency }) {
           Upsite : 1200%
         </span> */}
         </div>
-        <div className="w-full h-full flex flex-col  justify-between ">
+        <div className="w-full h-full flex flex-col  justify-between">
           {radarData.map((item, index) => (
             <div key={item.name} className="space-y-1">
               <div className="flex justify-between items-center">
@@ -125,9 +125,13 @@ function FcasTab({ currency }: { currency: Currency }) {
                     className="w-3 h-3 rounded-full "
                     style={{ backgroundColor: cColor }}
                   />
-                  <span className="text-DarkBlue font-medium">{item.name}</span>
+                  <span className="text-DarkBlue font-medium dark:text-white">
+                    {item.name}
+                  </span>
                 </div>
-                <span className="text-DarkBlue/80">{item.val}/100</span>
+                <span className="text-DarkBlue/80 dark:text-white">
+                  {item.val}/100
+                </span>
               </div>
               <ProgressBar
                 value={item.val}

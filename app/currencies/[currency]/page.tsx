@@ -23,7 +23,7 @@ export default async function Page({
   const { currency } = await params;
   return (
     <Suspense fallback={<CurrencySkeleton />}>
-      <div className="sm:px-8 lg:px-28 xl:px-40 bg-WHITE pt-32 px-4 min-h-dvh h-auto w-full">
+      <div className="sm:px-8 lg:px-28 xl:px-40 bg-WHITE pt-32 px-4 min-h-dvh h-auto w-full dark:bg-DarkBlue">
         <CryptoWrapper currencyId={currency} />
       </div>
     </Suspense>

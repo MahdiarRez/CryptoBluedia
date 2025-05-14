@@ -81,7 +81,7 @@ export function CurrencyFilterServer({
               <RadioGroupItem value="rank2025" id="sort-rank2025" />
               <Label
                 htmlFor="sort-rank2025"
-                className="text-sm cursor-pointer text-DarkBlue"
+                className="text-sm cursor-pointer dark:text-white text-DarkBlue"
               >
                 Rank
               </Label>
@@ -90,7 +90,7 @@ export function CurrencyFilterServer({
               <RadioGroupItem value="sentiment" id="sort-sentiment" />
               <Label
                 htmlFor="sort-sentiment"
-                className="text-sm cursor-pointer text-DarkBlue"
+                className="text-sm cursor-pointer dark:text-white text-DarkBlue"
               >
                 Sentiment
               </Label>
@@ -99,7 +99,7 @@ export function CurrencyFilterServer({
               <RadioGroupItem value="risk" id="sort-risk" />
               <Label
                 htmlFor="sort-risk"
-                className="text-sm cursor-pointer text-DarkBlue"
+                className="text-sm cursor-pointer dark:text-white text-DarkBlue"
               >
                 Risk
               </Label>
