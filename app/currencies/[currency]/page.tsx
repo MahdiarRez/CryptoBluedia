@@ -4,6 +4,12 @@ import { fetchCurrencyById } from '@/app/lib/data';
 import { notFound } from 'next/navigation';
 import { CurrencySkeleton } from '@/app/components/ui/skeletons/currencySkeleton';
 
+export const metadata = {
+  title: 'Currency',
+  description:
+    'Browse and analyze the top cryptocurrencies by market capitalization',
+};
+
 async function CryptoWrapper({ currencyId }: { currencyId: string }) {
   try {
     // Fetch the currency data based on the currencyId

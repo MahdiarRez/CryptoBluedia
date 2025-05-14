@@ -1,6 +1,11 @@
 import { CryptoNewsPage } from '@/app/news/cryptoNewsPage';
 import { getMarketNews } from '../lib/data';
 
+export const metadata = {
+  title: 'News',
+  description: 'get latest market news.',
+};
+
 export default async function Page() {
   const news = await getMarketNews();
   console.log(news);

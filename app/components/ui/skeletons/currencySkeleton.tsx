@@ -3,7 +3,7 @@ import { Skeleton } from '../../ShadcnUi/skeleton';
 export function CurrencySkeleton() {
   return (
     <div
-      className={`sm:px-8 lg:px-28 xl:px-40 bg-WHITE pt-32 px-4 min-h-dvh h-auto w-full`}
+      className={`sm:px-8 lg:px-28 xl:px-40 bg-WHITE dark:bg-DarkBlue pt-32 px-4 min-h-dvh h-auto w-full`}
     >
       <CryptoHeaderSkeleton />
       <CryptoContentSkeleton />
