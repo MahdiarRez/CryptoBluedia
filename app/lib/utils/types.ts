@@ -58,6 +58,14 @@ export interface Currency {
   psychology: number;
   inflation: number | null;
   score: number | null;
+  coin_level: string;
+  upside: number;
+  techno: number;
+  anchain: number;
+  fanda: number;
+  structure: number;
+  eco: number;
+  investment: number;
   digitalType: number;
   id: string;
   color: string;

@@ -19,6 +19,7 @@ export function CurrencyFilterServer({
     'rank2025' | 'risk' | 'sentiment'
   >('rank2025');
   const [filterQuery, setFilterQuery] = useState('');
+  console.log(currencies.map((item) => item.name));
 
   useEffect(() => {
     let result = [...currencies];

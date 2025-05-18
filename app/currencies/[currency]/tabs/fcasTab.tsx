@@ -8,38 +8,38 @@ import GlowText from '@/app/components/ui/glowText';
 import { ResponsiveRadar } from '@nivo/radar';
 import { hexOpacity } from '@/app/lib/helper';
 
-const chartData = [
-  {
-    taste: 'Techno',
-    Value: 123,
-  },
-  {
-    taste: 'Anchain',
-    Value: 11,
-  },
-  {
-    taste: 'Fanda',
-    Value: 66,
-  },
-  {
-    taste: 'Structure',
-    Value: 88,
-  },
-  {
-    taste: 'Economy',
-    Value: 199,
-  },
-];
-
 function FcasTab({ currency }: { currency: Currency }) {
   const radarData = [
-    { name: 'Thecno', val: currency.risk },
-    { name: 'Anchain', val: currency.reward },
-    { name: 'Fanda', val: currency.psychology },
-    { name: 'Structure', val: currency.sentiment },
-    { name: 'Economy', val: currency.value },
+    { name: 'Thecno', val: currency.techno },
+    { name: 'Anchain', val: currency.anchain },
+    { name: 'Fanda', val: currency.fanda },
+    { name: 'Structure', val: currency.structure },
+    { name: 'Economy', val: currency.eco },
+  ];
+  const chartData = [
+    {
+      taste: 'Techno',
+      Value: currency.techno,
+    },
+    {
+      taste: 'Anchain',
+      Value: currency.anchain,
+    },
+    {
+      taste: 'Fanda',
+      Value: currency.fanda,
+    },
+    {
+      taste: 'Structure',
+      Value: currency.structure,
+    },
+    {
+      taste: 'Economy',
+      Value: currency.eco,
+    },
   ];
   const cColor = currency.color;
+
   return (
     <div className="w-full flex flex-col items-center justify-center">
       <div className="w-full flex flex-col md2:flex-row items-start justify-start gap-5 h-full md2:h-60 ">
@@ -92,20 +92,20 @@ function FcasTab({ currency }: { currency: Currency }) {
               className="w-full h-full"
               currency={currency}
               title="Score"
-              value={980}
+              value={currency.score}
             />
             <CardDetails
               className="w-full h-full"
               currency={currency}
               title="Coin Level"
-              value={'Gem'}
+              value={currency.coin_level}
               isNumberVal={false}
             />
             <CardDetails
               className="w-full h-full"
               currency={currency}
               title="Upside"
-              value={1150}
+              value={currency.upside}
               symbol=" %"
             />
           </div>
@@ -145,7 +145,7 @@ function FcasTab({ currency }: { currency: Currency }) {
       <div className="w-full flex flex-row-reverse items-center justify-between mt-8 bg-DarkBlue/85 py-3 px-5 rounded-xl">
         <div className="flex flex-row items-center gap-4">
           <div className="flex flex-row items-center gap-2">
-            {[...Array(5)].map((_, i) => {
+            {[...Array(Math.round(currency.investment / 25))].map((_, i) => {
               return (
                 <div
                   className="w-10 h-10 rounded-lg bg-white flex justify-center items-center"
@@ -165,7 +165,12 @@ function FcasTab({ currency }: { currency: Currency }) {
             })}
           </div>
           <GlowText className="text-xl text-white font-bold">
-            <NumberTriggerOnScroll className="text-xl" once children={86} /> %
+            <NumberTriggerOnScroll
+              className="text-xl"
+              once
+              children={currency.investment}
+            />{' '}
+            %
           </GlowText>
         </div>
         <span className="text-lg text-white font-semibold">

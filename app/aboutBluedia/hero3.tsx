@@ -7,11 +7,12 @@ import GlowText from '../components/ui/glowText';
 
 export function Hero3() {
   return (
-    <div className="text-DarkBlue bg-white rounded-2xl flex flex-col items-center justify-center mt-24 py-10 px-4 md:py-16 gap-9">
-      <h6 className="text-DarkBlue xs:text-3xl sm:text-4xl text-xl font-bold text-center ">
-        Connect With Us
-      </h6>
-      <div className="flex flex-col md:flex-row items-center justify-center w-full gap-4 px-10 md:px-20">
+    // <div className="text-white bg-DarkBlue dark:bg-white rounded-2xl flex flex-col items-center justify-center mt-24 py-10 px-4 md:py-16 gap-9">
+    // {/* <h6 className="text-white xs:text-3xl sm:text-4xl text-xl font-bold text-center  dark:text-DarkBlue">
+    //   Connect With Us
+    // </h6> */}
+    <>
+      <div className="flex flex-col mt-24 md:flex-row items-center justify-center w-full gap-7 px-10 md:px-0">
         <BluediaCommunity
           img={youtube}
           name={'Youtube'}
@@ -23,7 +24,8 @@ export function Hero3() {
           link={'https://t.me/crypto_bluedia'}
         />
       </div>
-    </div>
+    </>
+    // </div>
   );
 }
 

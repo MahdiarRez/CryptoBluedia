@@ -14,7 +14,7 @@ function CardDetails({
   currency: Currency;
   title: string;
   icon?: ReactElement;
-  value: number | string;
+  value: number | string | null;
   symbol?: string;
   className?: string;
   isNumberVal?: boolean;
@@ -38,7 +38,7 @@ function CardDetails({
             {value}
           </NumberTriggerOnScroll>
         ) : (
-          <span className="text-xl font-bold text-DarkBlue outline-2 outline-transparent  py-1.5 ">
+          <span className="text-xl font-bold text-DarkBlue outline-2 outline-transparent  py-1.5 capitalize tracking-normal">
             {value}
           </span>
         )}
