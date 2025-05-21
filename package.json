@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@docsearch/react": "^3.8.3",
+    "@emailjs/browser": "^4.4.1",
     "@material-tailwind/react": "^2.1.10",
     "@nivo/radar": "^0.94.0",
     "@number-flow/react": "^0.5.9",

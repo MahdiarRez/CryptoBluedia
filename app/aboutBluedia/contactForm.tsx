@@ -1,7 +1,7 @@
 'use client';
 
 import type React from 'react';
-
+import emailjs from '@emailjs/browser';
 import { useState, type FormEvent } from 'react';
 import {
   AtSignIcon as AtIcon,
@@ -23,6 +23,7 @@ export default function ContactForm() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
+  console.log(formData);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -39,17 +40,29 @@ export default function ContactForm() {
     setIsSubmitting(true);
 
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const templateParams = {
+        name: formData.name,
+        email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+      };
+
+      await emailjs.send(
+        'service_ywotzgv', // Replace with your EmailJS service ID
+        'template_gbrdbp6', // Replace with your EmailJS template ID
+        templateParams,
+        'uuCYNQDKd4LgQnm3N' // Replace with your EmailJS user ID
+      );
+
       setSubmitMessage('Message sent successfully!');
       setFormData({ name: '', email: '', subject: '', message: '' });
     } catch (error) {
+      console.error('Error sending message:', error);
       setSubmitMessage('Failed to send message. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
   };
-
   return (
     <div className="flex flex-col md:flex-row max-w-6xl mx-auto rounded-2xl overflow-hidden mt-24">
       {/* Contact Information Section */}
