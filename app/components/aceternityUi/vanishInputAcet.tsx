@@ -205,6 +205,7 @@ export function VanishInputAcet({
         }}
         onKeyDown={handleKeyDown}
         ref={inputRef}
+        // autoComplete=''
         value={value}
         spellCheck={false}
         type="text"

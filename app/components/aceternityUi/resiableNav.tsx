@@ -281,7 +281,7 @@ export const NavbarLogo = () => {
         height={33}
         className="rounded-lg"
       />
-      <span className="font-medium text-black uppercase">
+      <span className="font-medium dark:text-WHITE text-black uppercase">
         Blue<span className="text-LightBlue">dia</span>
       </span>
     </Link>

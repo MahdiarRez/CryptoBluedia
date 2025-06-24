@@ -2,9 +2,8 @@
 
 import { createClient } from '@/app/lib/utils/supabaseClient';
 import { Currency, TrendingCoin } from './utils/types';
-import { supabase } from './utils/supabaseServer';
 
-const options = {
+const cgOptions = {
   method: 'GET',
   headers: {
     accept: 'application/json',
@@ -20,86 +19,130 @@ interface MarketNewsItem {
   created_at: string; // Assuming a timestamp
 }
 
+// Fetch all market news items from Supabase
 export async function getMarketNews(): Promise<MarketNewsItem[]> {
-  const supabaseClient = createClient();
-  const { data, error } = await supabaseClient.from('marketNews').select('*');
-
-  if (error) {
-    console.error('Error fetching market news:', error);
-    return [];
-  }
-
-  return data as MarketNewsItem[];
-}
-
-export async function fetchTrendingCoins(): Promise<
-  TrendingCoin[] | undefined
-> {
-  const supa = createClient();
+  const supabase = createClient();
   try {
-    const { data, error } = await supa.from('trendingCoins').select('*');
+    const { data, error } = await supabase.from('marketNews').select('*');
 
     if (error) {
-      console.error('Error fetching Trending Coins:', error);
-      throw new Error(`Failed to fetch Trending Coins: ${error.message}`);
+      console.error(
+        '[getMarketNews] Supabase error:',
+        error.code,
+        error.message
+      );
+      return [];
     }
 
-    return data || [];
-  } catch (error) {
-    console.error('Error in fetch Trending Currencies:', error);
+    return (data ?? []) as MarketNewsItem[];
+  } catch (err) {
+    console.error('[getMarketNews] Unexpected error:', err);
+    return [];
   }
 }
 
-// Fetch all cryptocurrencies from Supabase
-export async function fetchCurrencies(): Promise<Currency[] | undefined> {
+// Fetch all trending coins from Supabase
+export async function fetchTrendingCoins(): Promise<TrendingCoin[]> {
+  const supabase = createClient();
+  try {
+    const { data, error } = await supabase.from('trendingCoins').select('*');
+
+    if (error) {
+      console.error(
+        '[fetchTrendingCoins] Supabase error:',
+        error.code,
+        error.message
+      );
+      return [];
+    }
+
+    return (data ?? []) as TrendingCoin[];
+  } catch (err) {
+    console.error('[fetchTrendingCoins] Unexpected error:', err);
+    return [];
+  }
+}
+
+// Fetch all currencies from Supabase, ordered by rank2025
+export async function fetchCurrencies(): Promise<Currency[]> {
+  const supabase = createClient();
   try {
     const { data, error } = await supabase
       .from('currenciesList')
       .select('*')
       .order('rank2025', { ascending: true });
-    console.log('data : ,', data);
 
     if (error) {
-      console.error('Error fetching cryptocurrencies:', error);
-      throw new Error(`Failed to fetch cryptocurrencies: ${error.message}`);
+      console.error(
+        '[fetchCurrencies] Supabase error:',
+        error.code,
+        error.message
+      );
+      return [];
     }
 
-    return data || [];
-  } catch (error) {
-    console.error('Error in fetchCurrencies:', error);
+    return (data ?? []) as Currency[];
+  } catch (err) {
+    console.error('[fetchCurrencies] Unexpected error:', err);
+    return [];
   }
 }
 
+// Fetch a single currency by its ID
 export async function fetchCurrencyById(id: string): Promise<Currency> {
-  const { data, error } = await supabase
-    .from('currenciesList')
-    .select('*')
-    .eq('id', id)
-    .single();
+  const supabase = createClient();
+  try {
+    const { data, error } = await supabase
+      .from('currenciesList')
+      .select('*')
+      .eq('id', id)
+      .single();
 
-  if (error?.code === 'PGRST116') {
-    throw new Error('NOT_FOUND');
+    if (error) {
+      // PGRST116 is the Supabase code for "No rows found"
+      if (error.code === 'PGRST116') {
+        throw new Error('NOT_FOUND');
+      }
+      console.error(
+        '[fetchCurrencyById] Supabase error:',
+        error.code,
+        error.message
+      );
+      throw new Error('FETCH_ERROR');
+    }
+
+    return data as Currency;
+  } catch (err) {
+    console.error('[fetchCurrencyById] Unexpected error:', err);
+    throw err;
   }
-
-  if (error) {
-    throw new Error('FETCH_ERROR');
-  }
-
-  return data as Currency;
 }
 
-export async function getCurrencyPrice(id: string): Promise<any> {
+// Fetch price data for a given currency ID from CoinGecko
+export async function getCurrencyPrice(id: string): Promise<{
+  [key: string]: {
+    usd: number;
+    usd_market_cap: number;
+    usd_24h_vol: number;
+    usd_24h_change: number;
+  };
+}> {
   try {
     const res = await fetch(
-      `https://api.coingecko.com/api/v3/simple/price?ids=${id}&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true`,
-      options
+      `https://api.coingecko.com/api/v3/simple/price?ids=${encodeURIComponent(
+        id
+      )}&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true`,
+      cgOptions
     );
+
     if (!res.ok) {
-      throw new Error(`HTTP error! status: ${res.status}`);
+      throw new Error(`[getCurrencyPrice] HTTP error: ${res.status}`);
     }
-    return await res.json();
+
+    const json = await res.json();
+    return json;
   } catch (err) {
-    console.error('Fetch error:', err);
+    console.error('[getCurrencyPrice] Fetch error:', err);
     throw err;
   }
 }

@@ -8,7 +8,7 @@ function HeroDiamond() {
   return (
     <div
       className={
-        'h-auto w-full bg-DarkBlue dark:bg-WHITE mt-32 lg:mt-0 rounded-3xl flex flex-col xs:flex-row-reverse xs:justify-center items-center gap-3 p-10 md:px-14 lg:p-20'
+        'h-auto w-full bg-DarkBlue dark:bg-WHITE mt-10 lg:mt-0 rounded-3xl flex flex-col xs:flex-row-reverse xs:justify-center items-center gap-3 p-10 md:px-14 lg:p-20'
       }
     >
       <Image

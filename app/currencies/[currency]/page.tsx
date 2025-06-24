@@ -1,8 +1,10 @@
+// app/currencies/[currency]/page.tsx
 import { Suspense } from 'react';
-import Crypto from './crypto';
-import { fetchCurrencyById } from '@/app/lib/data';
+import dynamic from 'next/dynamic';
+import { fetchCurrencies, fetchCurrencyById } from '@/app/lib/data';
 import { notFound } from 'next/navigation';
 import { CurrencySkeleton } from '@/app/components/ui/skeletons/currencySkeleton';
+import { Currency } from '@/app/lib/utils/types';
 
 export const metadata = {
   title: 'Currency',
@@ -10,13 +12,26 @@ export const metadata = {
     'Browse and analyze the top cryptocurrencies by market capitalization',
 };
 
+export const revalidate = 60;
+
+export async function generateStaticParams(): Promise<{ currency: string }[]> {
+  const currencies: Currency[] = await fetchCurrencies();
+  return currencies.map((c) => ({ currency: c.id }));
+}
+
+const Crypto = dynamic(() => import('./crypto'), {
+  loading: () => <CurrencySkeleton />,
+  ssr: true,
+});
+
 async function CryptoWrapper({ currencyId }: { currencyId: string }) {
   try {
-    // Fetch the currency data based on the currencyId
     const currency = await fetchCurrencyById(currencyId);
     return <Crypto currency={currency} />;
   } catch (error) {
-    if (error instanceof Error && error.message === 'NOT_FOUND') notFound();
+    if (error instanceof Error && error.message === 'NOT_FOUND') {
+      notFound();
+    }
     throw error;
   }
 }
@@ -29,7 +44,7 @@ export default async function Page({
   const { currency } = await params;
   return (
     <Suspense fallback={<CurrencySkeleton />}>
-      <div className="sm:px-8 lg:px-28 xl:px-40 bg-WHITE pt-32 px-4 min-h-dvh h-auto w-full dark:bg-DarkBlue">
+      <div className="sm:px-8 lg:px-28 xl:px-40 bg-WHITE pt-10 px-4 min-h-dvh h-auto w-full dark:bg-DarkBlue">
         <CryptoWrapper currencyId={currency} />
       </div>
     </Suspense>

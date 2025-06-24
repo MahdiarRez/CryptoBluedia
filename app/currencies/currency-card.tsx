@@ -22,12 +22,11 @@ export function CurrencyCard({ currency }: CurrencyCardProps) {
           <div className="flex items-center p-4 border-b bg-white">
             <div className="relative mr-3">
               <Image
-                src={currency.logo || '/logo.jpeg'}
+                src={currency.logo}
                 alt={`${currency.name} logo`}
                 width={40}
                 height={40}
-                placeholder="blur"
-                blurDataURL="/logo.jpeg"
+                placeholder="empty"
                 className="w-10 h-10 rounded-2xl"
               />
             </div>

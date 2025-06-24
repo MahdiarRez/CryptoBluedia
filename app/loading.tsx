@@ -2,7 +2,7 @@ import React from 'react';
 
 function Loading() {
   return (
-    <div className=" bg-WHITE h-dvh w-dvw flex justify-center items-center">
+    <div className="dark:bg-DarkBlue bg-WHITE h-pageHeight w-dvw flex justify-center items-center">
       <div className="loader"></div>
     </div>
   );

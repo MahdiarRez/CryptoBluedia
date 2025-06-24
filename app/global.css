@@ -2,6 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
+.hero__headline::after {
+  content: '';
+  position: absolute;
+  bottom: 1.5vmin;
+  left: 0;
+  width: 100%;
+  height: 1.5vmin;
+  background: white;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 400ms cubic-bezier(0.25, 1, 0.5, 1) 200ms;
+}
+
+.hero.active .hero__headline::after {
+  transform: scaleX(1);
+  transition-delay: 0s;
+}
+
+.hero__headline span {
+  transition: transform 400ms cubic-bezier(0.25, 1, 0.5, 1);
+  transform: translateY(110%);
+}
+
+.hero.active .hero__headline span {
+  transform: translateY(0);
+  transition-delay: 200ms;
+}
+
 .diamond-motion {
   animation: diamondBob 3s ease-in-out infinite alternate;
 }

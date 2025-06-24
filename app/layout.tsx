@@ -29,7 +29,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`antialiased relative ${ManropeFont.className} `}>
-        <BackBtn />
         <ScrollProgress />
         <Navbar />
         {children}

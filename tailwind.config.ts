@@ -23,6 +23,9 @@ export default {
       },
     },
     extend: {
+      height: {
+        pageHeight: 'calc(100dvh - 80px)',
+      },
       screens: {
         xs: '521px',
         md2: '900px',

@@ -4,8 +4,8 @@ import { CurrencyFilterServer } from './currency-filter';
 export default async function CurrenciesListServer() {
   const currencies = await fetchCurrencies();
 
-  if (!currencies) {
-    throw new Error('there`s no currency');
+  if (!currencies || currencies.length === 0) {
+    return <p className="text-DarkBlue/70 text-center">There is no currency</p>;
   }
 
   return (
