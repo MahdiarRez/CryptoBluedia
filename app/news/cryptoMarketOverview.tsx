@@ -10,7 +10,7 @@ import { SiMoneygram } from 'react-icons/si';
 function CryptoMarketOverview() {
   return (
     <div className="bg-white w-full rounded-2xl py-8 px-6 md:px-5 xl:px-9 flex flex-col lg:items-start relative">
-      <h4 className="text-DarkBlue font-bold text-2xl mb-6 flex flex-row items-center gap-2">
+      <h4 className="text-DarkBlue font-bold text-xl lg2:text-2xl mb-6 flex flex-row items-center gap-2">
         <SiMoneygram className=" text-LightBlue" />
         Market Overview
       </h4>

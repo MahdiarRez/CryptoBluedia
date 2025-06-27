@@ -39,7 +39,7 @@ function CryptoMarketOverviewCard() {
 
   useEffect(() => {
     async function fetchData() {
-      const result = await getCurrencyPrice('bitcoin%2Cethereum%2Csolana');
+      const result = await getCurrencyPrice('bitcoin,ethereum,solana');
       setData(result as marketDataT);
       return result;
     }
