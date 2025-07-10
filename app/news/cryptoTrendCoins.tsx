@@ -5,7 +5,7 @@ import {
   CardTitleShadcn,
 } from '@/app/components/cardShadcn';
 import { Suspense } from 'react';
-import { CryptoTrendingCoinsSkeleton } from '../components/ui/skeletons/trendingCoinsSkeleton';
+import { CryptoTrendingCoinsSkeleton } from '../components/skeletons/trendingCoinsSkeleton';
 import CryptoTrendCoinsCard from './cryptoTrendCoinsCard';
 import { BsArrowUpSquareFill } from 'react-icons/bs';
 

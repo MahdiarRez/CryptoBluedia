@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import { CryptoMarketOverviewCard } from './cryptoMarketOverviewCard';
-import { CryptoMarketOverviewSkeleton } from '../components/ui/skeletons/cryptoMarketOverviewSkeleton';
+import { CryptoMarketOverviewSkeleton } from '../components/skeletons/cryptoMarketOverviewSkeleton';
 import ShineBorder from '../components/magicUi/shine-border';
 import { MdOutlineGridView } from 'react-icons/md';
 import { FaGlobe, FaMoneyCheckDollar } from 'react-icons/fa6';

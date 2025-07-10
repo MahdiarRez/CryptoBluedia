@@ -1,10 +1,10 @@
-import { TextEffect } from '../components/motionPrimitive/ui/text-effect';
-import { GlowEffect } from '../components/motionPrimitive/ui/glow-effect';
+import { TextEffect } from '../../components/motionPrimitive/ui/text-effect';
+import { GlowEffect } from '../../components/motionPrimitive/ui/glow-effect';
 import Image, { StaticImageData } from 'next/image';
-import mahdiar from '@/public/mahdiar.jpeg';
-import hesam from '@/public/hesam.jpeg';
+import mahdiarPic from '@/public/mahdiarPic.png';
+import hesamPic from '@/public/hesamPic.png';
 
-export function Hero2() {
+export function BluediaTeam() {
   return (
     <div className="text-DarkBlue flex gap-4 flex-col items-center justify-center mt-24">
       <TextEffect
@@ -16,17 +16,9 @@ export function Hero2() {
       >
         Bluedia Team (Head & CEO)
       </TextEffect>
-      <div className="flex flex-col xs:flex-row items-center justify-center w-full mt-5 gap-7 max-w-xl">
-        <TeamCard
-          name="Mahdiar"
-          position="Founder & Lead Developer"
-          img={mahdiar}
-        />
-        <TeamCard
-          name="Hesam"
-          position="Founder & Marketing Director"
-          img={hesam}
-        />
+      <div className="flex flex-col xs:flex-row items-end justify-center w-full mt-5 gap-7 max-w-xl border-b border-gray-400 border-solid">
+        <Image src={mahdiarPic} alt="mahdiar" />
+        <Image src={hesamPic} alt="hesam" />
       </div>
     </div>
   );

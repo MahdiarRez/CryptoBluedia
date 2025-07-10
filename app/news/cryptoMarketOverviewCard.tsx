@@ -7,7 +7,7 @@ import { RiBarChartBoxAiLine } from 'react-icons/ri';
 import { getCurrencyPrice } from '../lib/data';
 import { formatMarketNumbers } from '@/app/lib/helper';
 import clsx from 'clsx';
-import { CryptoMarketOverviewSkeleton } from '../components/ui/skeletons/cryptoMarketOverviewSkeleton';
+import { CryptoMarketOverviewSkeleton } from '../components/skeletons/cryptoMarketOverviewSkeleton';
 import Image from 'next/image';
 import btcNews from '@/public/btcNews.jpg';
 import ethNews from '@/public/ethNews.jpg';

@@ -3,8 +3,6 @@ import HeroDiamond from '@/app/components/ui/heroDiamond';
 import HeroServices from '@/app/components/ui/heroServices';
 import { TimelineDemo } from '@/app/components/timeline';
 import GlowText from './components/ui/glowText';
-import { MdOutlineDoubleArrow } from 'react-icons/md';
-import HeroNeat from './aboutBluedia/gsapCom';
 import { RiArrowDownDoubleLine } from 'react-icons/ri';
 
 function Page() {
@@ -20,7 +18,6 @@ function Page() {
         <RiArrowDownDoubleLine className="lg:block diamond-motion hidden  text-6xl" />
         <HeroDiamond />
       </div>
-      {/* <HeroNeat /> */}
       <HeroServices />
       <div className={'py-20 w-full'}>
         <TimelineDemo />

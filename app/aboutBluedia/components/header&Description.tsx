@@ -1,13 +1,13 @@
 import { FaTelegram } from 'react-icons/fa6';
-import Button from '../components/button';
-import { BoxReveal } from '../components/magicUi/boxReveal';
-import { TextEffect } from '../components/motionPrimitive/ui/text-effect';
+import Button from '../../components/button';
+import { TextEffect } from '../../components/motionPrimitive/ui/text-effect';
 import { IoLogoYoutube } from 'react-icons/io5';
 import Link from 'next/link';
-import { ChartSpline, Globe, Kanban, TrendingUpDown } from 'lucide-react';
-import ServiceItem from '../components/serviceItem';
-import { FadeUp } from '../components/motions/fade';
-export function Hero1() {
+import { Globe, Kanban, TrendingUpDown } from 'lucide-react';
+import ServiceItem from '../../components/serviceItem';
+import { FadeUp } from '../../components/motions/fade';
+
+export function HeaderDescription() {
   return (
     <div className="min-h-dvh w-full flex flex-col items-center gap-10">
       <div className="flex flex-col items-center justify-center gap-y-7 bg-DarkBlue  text-white dark:bg-white dark:text-DarkBlue rounded-2xl w-full px-9 py-10 xs:px-11 sm:p-12 xs:py-14">

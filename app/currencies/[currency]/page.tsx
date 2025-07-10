@@ -3,7 +3,7 @@ import { Suspense } from 'react';
 import dynamic from 'next/dynamic';
 import { fetchCurrencies, fetchCurrencyById } from '@/app/lib/data';
 import { notFound } from 'next/navigation';
-import { CurrencySkeleton } from '@/app/components/ui/skeletons/currencySkeleton';
+import { CurrencySkeleton } from '@/app/components/skeletons/currencySkeleton';
 import { Currency } from '@/app/lib/utils/types';
 
 export const metadata = {
