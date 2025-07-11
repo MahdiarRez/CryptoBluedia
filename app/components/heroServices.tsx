@@ -1,5 +1,5 @@
 import React from 'react';
-import ServiceItem from '@/app/components/serviceItem';
+import ServiceItem from '@/app/components/ui/serviceItem';
 import { SiVictoriametrics } from 'react-icons/si';
 import { FaMagnifyingGlassChart } from 'react-icons/fa6';
 import { FaUserSecret } from 'react-icons/fa';

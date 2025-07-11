@@ -1,25 +1,14 @@
 'use client';
 
-import {
-  Navbar as N,
-  NavBody,
-  NavItems,
-  MobileNav,
-  NavbarLogo,
-  MobileNavHeader,
-  MobileNavToggle,
-  MobileNavMenu,
-} from '@/app/components/aceternityUi/resiableNav';
 import { useState } from 'react';
-import { AnimatePresence, motion } from 'motion/react';
-import { InteractiveHoverButton } from '../aceternityUi/btnAcet';
 import Link from 'next/link';
-import HamberMenuItem from '../hamberMenuItem';
-import NavMenuItem from '../navMenuItem';
-import { BsSuitDiamondFill } from 'react-icons/bs';
 import { PiNewspaperClippingFill } from 'react-icons/pi';
 import { FaHome } from 'react-icons/fa';
 import { TbDiamondsFilled } from 'react-icons/tb';
+import NavMenuItem from './navMenuItem';
+import { ButtonIntractive } from '../ui/buttonIntractive';
+import Image from 'next/image';
+import logo from '@/public/logo.jpeg';
 
 export function Navbar() {
   const navItems = [
@@ -56,9 +45,9 @@ export function Navbar() {
           })}
         </ul>
         <Link href={'/currencies'}>
-          <InteractiveHoverButton className="bg-DarkBlue text-WHITE text-sm rounded-lg dark:bg-WHITE dark:text-DarkBlue">
+          <ButtonIntractive className="bg-DarkBlue text-WHITE text-sm rounded-lg dark:bg-WHITE dark:text-DarkBlue">
             Currencies
-          </InteractiveHoverButton>
+          </ButtonIntractive>
         </Link>
       </nav>
       {/* Mobile Navigation */}
@@ -74,7 +63,26 @@ export function Navbar() {
     </>
   );
 }
-
+const NavbarLogo = () => {
+  return (
+    <Link
+      href="/"
+      className="relative  cursor-pointer z-20 mr-4 flex items-center space-x-2 py-1 text-xl font-normal text-black"
+    >
+      <Image
+        src={logo}
+        alt="logo"
+        placeholder="blur"
+        width={33}
+        height={33}
+        className="rounded-lg"
+      />
+      <span className="font-medium dark:text-WHITE text-black uppercase">
+        Blue<span className="text-LightBlue">dia</span>
+      </span>
+    </Link>
+  );
+};
 {
   /* <AnimatePresence initial={false}>
   {isMobileMenuOpen && (

@@ -1,12 +1,12 @@
-import ShineBorder from '@/app/components/magicUi/shine-border';
-import { TextGenerate } from '@/app/components/textGenerate';
-import Balatro from '@/app/components/ui/IridescenceServer';
+import ShineBorder from '@/app/components/ui/shineBorder';
+import { TextGenerate } from '@/app/components/ui/textGenerate';
 import { Currency } from '@/app/lib/utils/types';
 import Image from 'next/image';
 import { RiInfoCardLine } from 'react-icons/ri';
 import { BestDataT, getBestEntry } from '@/app/lib/helper';
-import { TextEffect } from '@/app/components/motionPrimitive/ui/text-effect';
+import { TextEffect } from '@/app/components/ui/textEffect';
 import PriceAndChange from './priceAndChange';
+import CurrnecyHeaderAni from './currencyHeaderAni';
 
 function CryptoHeader({ currency }: { currency: Currency }) {
   const curr: BestDataT = {
@@ -117,7 +117,7 @@ function CryptoHeader({ currency }: { currency: Currency }) {
         className=" flex flex-col items-start w-full p-7 md:py-5 h-full justify-center rounded-2xl relative overflow-hidden"
         style={{ backgroundColor: currency.color }}
       >
-        <Balatro
+        <CurrnecyHeaderAni
           classes="absolute z-0 top-0 right-0"
           color3={currency.color}
           mouseInteraction={false}

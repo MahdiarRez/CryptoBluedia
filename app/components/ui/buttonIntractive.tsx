@@ -2,12 +2,12 @@ import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { cn } from '@/app/lib/utils/framer';
 
-interface InteractiveHoverButtonProps
+interface ButtonIntractiveProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
 
-export const InteractiveHoverButton = React.forwardRef<
+export const ButtonIntractive = React.forwardRef<
   HTMLButtonElement,
-  InteractiveHoverButtonProps
+  ButtonIntractiveProps
 >(({ children, className, ...props }, ref) => {
   return (
     <button
@@ -32,4 +32,4 @@ export const InteractiveHoverButton = React.forwardRef<
   );
 });
 
-InteractiveHoverButton.displayName = 'InteractiveHoverButton';
+ButtonIntractive.displayName = 'ButtonIntractive';

@@ -1,13 +1,13 @@
 import React from 'react';
-import { Timeline } from './aceternityUi/timelineAcet';
+import { Timeline } from './uiKits/timelineAcet';
 import Link from 'next/link';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 import { BiNews } from 'react-icons/bi';
-import { TextShimmer } from '@/app/components/motionPrimitive/ui/text-shimmer';
-import HeroVideoDialog from '@/app/components/magicUi/hero-video-dialog';
+import { TextShimmer } from '@/app/components/ui/textShimmer';
+import HeroVideoDialog from '@/app/components/uiKits/heroVideoDialog';
 import youtubePic from '../../public/youtubePic.jpeg';
 import { RiTelegram2Fill } from 'react-icons/ri';
-import { InteractiveHoverButton } from './aceternityUi/btnAcet';
+import { ButtonIntractive } from './ui/buttonIntractive';
 
 export function TimelineDemo() {
   const data = [
@@ -74,13 +74,13 @@ export function TimelineDemo() {
               'font-extrabold no-underline mt-2.5 group text-base flex flex-row max-w-fit items-center gap-1 md:text-lg'
             }
           >
-            <InteractiveHoverButton
+            <ButtonIntractive
               className={
                 'rounded-lg text-base font-medium bg-DarkBlue text-white'
               }
             >
               Let&#39;s Explore
-            </InteractiveHoverButton>
+            </ButtonIntractive>
           </Link>
         </div>
       ),
@@ -109,13 +109,13 @@ export function TimelineDemo() {
               'font-extrabold no-underline mt-2.5 group text-base flex flex-row max-w-fit items-center gap-1 md:text-lg'
             }
           >
-            <InteractiveHoverButton
+            <ButtonIntractive
               className={
                 'rounded-lg text-base font-medium bg-DarkBlue text-white'
               }
             >
               Market News
-            </InteractiveHoverButton>
+            </ButtonIntractive>
           </Link>
         </div>
       ),

@@ -1,8 +1,14 @@
-import { TextEffect } from '../../components/motionPrimitive/ui/text-effect';
-import { GlowEffect } from '../../components/motionPrimitive/ui/glow-effect';
 import Image, { StaticImageData } from 'next/image';
-import mahdiarPic from '@/public/mahdiarPic.png';
-import hesamPic from '@/public/hesamPic.png';
+import mahdiar from '@/public/mahdiarPic.png';
+import hesam from '@/public/hesamPic.png';
+import { GlowEffect } from '@/app/components/ui/glowEffect';
+import { TextEffect } from '@/app/components/ui/textEffect';
+import { Yellowtail } from 'next/font/google';
+
+const yellowtail = Yellowtail({
+  subsets: ['latin'],
+  weight: ['400'],
+});
 
 export function BluediaTeam() {
   return (
@@ -16,15 +22,23 @@ export function BluediaTeam() {
       >
         Bluedia Team (Head & CEO)
       </TextEffect>
-      <div className="flex flex-col xs:flex-row items-end justify-center w-full mt-5 gap-7 max-w-xl border-b border-gray-400 border-solid">
-        <Image src={mahdiarPic} alt="mahdiar" />
-        <Image src={hesamPic} alt="hesam" />
+      <div className="flex flex-col xs:flex-row items-center justify-center w-full mt-5 gap-7 max-w-xl">
+        <Founder
+          name="Mahdiar"
+          position="Founder & Lead Developer"
+          img={mahdiar}
+        />
+        <Founder
+          name="Hesam"
+          position="Founder & Marketing Director"
+          img={hesam}
+        />
       </div>
     </div>
   );
 }
 
-function TeamCard({
+function Founder({
   name,
   position,
   img,
@@ -37,22 +51,26 @@ function TeamCard({
 }) {
   return (
     <div className="relative  w-full max-w-60 xs:max-w-max">
-      <GlowEffect
+      {/* <GlowEffect
         colors={['#29c8e153', '#0d121850']}
         mode="colorShift"
         blur="soft"
         className="rounded-2xl"
-      />
+      /> */}
       <div className="relative  w-full rounded-2xl bg-white text-DarkBlue dark:bg-white dark:text-black gap-y-2 p-5">
         <Image
           src={img}
           alt="pic1"
-          className={`${className} aspect-square object-cover rounded-lg`}
+          className={`${className} aspect-square object-cover object-top rounded-lg`}
           placeholder="blur"
           priority
         />
-        <div className="flex flex-col items-start justify-center gap-0 mt-4">
-          <span className="text-xl font-bold tracking-normal">{name}</span>
+        <div className={`flex flex-col items-start justify-center gap-0 mt-4 `}>
+          <span
+            className={`text-2xl font-bold tracking-normal ${yellowtail.className}`}
+          >
+            {name}
+          </span>
           <span className="text-sm text-nowrap sm:text-base font-medium">
             {position}
           </span>

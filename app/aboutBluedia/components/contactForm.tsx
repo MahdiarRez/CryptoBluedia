@@ -9,7 +9,7 @@ import {
   ClockIcon,
   SendIcon,
 } from 'lucide-react';
-import Button from '../../components/button';
+import Button from '../../components/ui/button';
 import pic from '@/public/contact.jpg';
 import Image from 'next/image';
 

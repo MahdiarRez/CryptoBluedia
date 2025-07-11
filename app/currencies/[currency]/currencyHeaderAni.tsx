@@ -122,7 +122,7 @@ void main() {
 }
 `;
 
-export default function Balatro({
+export default function CurrnecyHeaderAni({
   classes,
   spinRotation = -0.5,
   spinSpeed = 7.0,

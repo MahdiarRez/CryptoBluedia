@@ -2,7 +2,7 @@ import {
   PerType,
   PresetType,
   TextEffect,
-} from '@/app/components/motionPrimitive/ui/text-effect';
+} from '@/app/components/ui/textEffect';
 import React from 'react';
 
 export function TextGenerate({

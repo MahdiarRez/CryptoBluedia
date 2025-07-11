@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import HamberMenuItem from '@/app/components/hamberMenuItem';
+import HamberMenuItem from '@/app/components/navbar/hamberMenuItem';
 import { AnimatePresence, motion } from 'motion/react';
 
 function HamberMenu({ isScrolled }: { isScrolled: boolean }) {

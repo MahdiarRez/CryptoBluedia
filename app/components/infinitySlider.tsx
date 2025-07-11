@@ -1,4 +1,4 @@
-import { InfiniteSlider } from '@/app/components/motionPrimitive/ui/infinite-slider';
+import { InfiniteSlider } from '@/app/components/uiKits/infiniteSlider';
 import Image from 'next/image';
 import shiba from '../../../public/shibainu.png';
 import uniswap from '../../../public/uniswap.png';

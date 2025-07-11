@@ -1,16 +1,10 @@
 'use client';
 import React from 'react';
-import { Button } from '@/app/components/ShadcnUi/button';
-import {
-  SelectShadcn,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/app/components/selectShadcn';
+import { SelectItem, Select } from '@/app/components/ui/select';
 import Image from 'next/image';
 import ppl from '@/public/newsPpl.jpg';
-import { TextGenerate } from '@/app/components/textGenerate';
+import { TextGenerate } from '@/app/components/ui/textGenerate';
+import Button from '../components/ui/button';
 
 interface CryptoNewsFiltersProps {
   searchQuery: string;
@@ -57,30 +51,23 @@ export function CryptoNewsFilters({
         }
       />
       <div className="flex flex-col sm:flex-row gap-4 relative z-[9] ">
-        <SelectShadcn
+        <Select
           value={selectedCategory}
           onValueChange={setSelectedCategory}
+          placeholder="Category"
+          className="w-full sm:w-[180px]"
         >
-          <SelectTrigger className="w-full sm:w-[180px]">
-            <SelectValue placeholder="Category" />
-          </SelectTrigger>
-          <SelectContent>
-            {categories.map((category) => (
-              <SelectItem key={category.value} value={category.value}>
-                {category.label}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </SelectShadcn>
+          {categories.map((category) => (
+            <SelectItem key={category.value} value={category.value}>
+              {category.label}
+            </SelectItem>
+          ))}
+        </Select>
       </div>
       <div className="flex flex-wrap text-DarkBlue relative z-[9]  gap-2">
         {categories.slice(1).map((category) => (
           <Button
             key={category.value}
-            variant={
-              selectedCategory === category.value ? 'default' : 'outline'
-            }
-            size="sm"
             onClick={() => setSelectedCategory(category.value)}
             className="text-xs  rounded-xl hover:bg-LightBlue  border"
           >

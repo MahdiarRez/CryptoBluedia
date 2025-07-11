@@ -1,10 +1,10 @@
 import { FaTelegram } from 'react-icons/fa6';
-import Button from '../../components/button';
-import { TextEffect } from '../../components/motionPrimitive/ui/text-effect';
+import Button from '../../components/ui/button';
+import { TextEffect } from '../../components/ui/textEffect';
 import { IoLogoYoutube } from 'react-icons/io5';
 import Link from 'next/link';
 import { Globe, Kanban, TrendingUpDown } from 'lucide-react';
-import ServiceItem from '../../components/serviceItem';
+import ServiceItem from '../../components/ui/serviceItem';
 import { FadeUp } from '../../components/motions/fade';
 
 export function HeaderDescription() {

@@ -1,6 +1,6 @@
 import React from 'react';
-import HeroDiamond from '@/app/components/ui/heroDiamond';
-import HeroServices from '@/app/components/ui/heroServices';
+import HeroDiamond from '@/app/components/heroDiamond';
+import HeroServices from '@/app/components/heroServices';
 import { TimelineDemo } from '@/app/components/timeline';
 import GlowText from './components/ui/glowText';
 import { RiArrowDownDoubleLine } from 'react-icons/ri';

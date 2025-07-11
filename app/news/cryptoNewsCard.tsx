@@ -2,12 +2,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ExternalLink } from 'lucide-react';
 import type { NewsItem } from '@/app/lib/utils/types';
-import { BadgeShadcn } from '@/app/components/badgeShadcn';
+import { BadgeShadcn } from '@/app/components/ui/badge';
 import {
   CardContentShadcn,
   CardFooterShadcn,
   CardShadcn,
-} from '@/app/components/cardShadcn';
+} from '@/app/components/ui/card';
 import pic from '@/public/youtubePic.jpeg';
 
 interface CryptoNewsCardProps {

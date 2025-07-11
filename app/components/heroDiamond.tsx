@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import diamond from '@/public/diamondB.png';
 import { InputVanish } from '@/app/components/inputVanish';
-import { TextGenerate } from '@/app/components/textGenerate';
+import { TextGenerate } from '@/app/components/ui/textGenerate';
 
 function HeroDiamond() {
   return (

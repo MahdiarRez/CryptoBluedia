@@ -1,6 +1,6 @@
 'use client';
 
-import { VanishInputAcet } from '@/app/components/aceternityUi/vanishInputAcet';
+import { VanishInputAcet } from '@/app/components/uiKits/vanishInputAcet';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 

@@ -1,12 +1,11 @@
 import type { Metadata } from 'next';
 import './global.css';
-import { Navbar } from '@/app/components/ui/navbar';
-import ThemeButton from '@/app/components/ui/themeButton';
+import ThemeButton from '@/app/components/themeButton';
 import React from 'react';
 import { Manrope } from 'next/font/google';
 import Footer from '@/app/footer';
-import { ScrollProgress } from '@/app/components/magicUi/scrollProg';
-import BackBtn from './components/backBtn';
+import { ScrollProgress } from '@/app/components/scrollProgress';
+import { Navbar } from './components/navbar/navbar';
 
 export const metadata: Metadata = {
   title: {
