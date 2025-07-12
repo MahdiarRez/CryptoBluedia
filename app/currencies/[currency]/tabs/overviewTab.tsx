@@ -7,7 +7,7 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
-} from '@/app/components/ShadcnUi/card';
+} from '@/app/components/uiKits/cardShadcn';
 import { hexOpacity } from '@/app/lib/helper';
 import { ReactNode } from 'react';
 import { NumberTriggerOnScroll } from '@/app/components/ui/numberFlow';

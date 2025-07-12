@@ -66,13 +66,13 @@ export function CryptoNewsFilters({
       </div>
       <div className="flex flex-wrap text-DarkBlue relative z-[9]  gap-2">
         {categories.slice(1).map((category) => (
-          <Button
+          <button
             key={category.value}
             onClick={() => setSelectedCategory(category.value)}
             className="text-xs  rounded-xl hover:bg-LightBlue  border"
           >
             {category.label}
-          </Button>
+          </button>
         ))}
       </div>
     </div>

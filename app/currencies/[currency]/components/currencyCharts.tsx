@@ -19,7 +19,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@/app/components/ShadcnUi/card';
+} from '@/app/components/uiKits/cardShadcn';
 import type { Currency } from '@/app/lib/utils/types';
 
 interface DonutChartProps {

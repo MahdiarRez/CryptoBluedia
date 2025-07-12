@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Card, CardContent } from '../components/ShadcnUi/card';
+import { Card, CardContent } from '../components/uiKits/cardShadcn';
 import { Currency } from '../lib/utils/types';
 import { hexOpacity } from '../lib/helper';
 

@@ -1,5 +1,5 @@
-import { fetchCurrencies } from '../lib/data';
-import { CurrencyFilterServer } from './currency-filter';
+import { fetchCurrencies } from '../../lib/data';
+import { CurrencyFilterServer } from './currencyFilter';
 
 export default async function CurrenciesListServer() {
   const currencies = await fetchCurrencies();

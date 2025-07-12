@@ -2,10 +2,10 @@
 
 import { useState, useEffect } from 'react';
 import { Search, SortAsc } from 'lucide-react';
-import { Currency } from '../lib/utils/types';
-import { CurrencyCard } from './currency-card';
+import { CurrencyCard } from './currencyCard';
 import { Label } from '@radix-ui/react-label';
-import { RadioGroup, RadioGroupItem } from '../components/ui/radioGroup';
+import { Currency } from '@/app/lib/utils/types';
+import { RadioGroup, RadioGroupItem } from '@/app/components/ui/radioGroup';
 
 interface CurrencyFilterServerProps {
   currencies: Currency[];

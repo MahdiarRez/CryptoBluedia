@@ -3,7 +3,7 @@ import { Suspense } from 'react';
 import dynamic from 'next/dynamic';
 import { fetchCurrencies, fetchCurrencyById } from '@/app/lib/data';
 import { notFound } from 'next/navigation';
-import { CurrencySkeleton } from '@/app/components/skeletons/currencySkeleton';
+import { CurrencySkeleton } from '@/app/components/skeletons/currencyPageSkeleton';
 import { Currency } from '@/app/lib/utils/types';
 
 export const metadata = {
@@ -19,7 +19,7 @@ export async function generateStaticParams(): Promise<{ currency: string }[]> {
   return currencies.map((c) => ({ currency: c.id }));
 }
 
-const Crypto = dynamic(() => import('./crypto'), {
+const Crypto = dynamic(() => import('./components/crypto'), {
   loading: () => <CurrencySkeleton />,
   ssr: true,
 });

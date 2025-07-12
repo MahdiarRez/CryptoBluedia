@@ -1,4 +1,4 @@
-import { Skeleton } from '../../ShadcnUi/skeleton';
+import { Skeleton } from '../ui/skeletonShadcn';
 
 export function CurrencySkeleton() {
   return (
