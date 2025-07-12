@@ -1,4 +1,4 @@
-import { fetchCurrencies } from '../../lib/data';
+import { fetchCurrencies } from '@/app/lib/utils/data';
 import { CurrencyFilterServer } from './currencyFilter';
 
 export default async function CurrenciesListServer() {

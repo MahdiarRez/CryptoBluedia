@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { Play } from 'lucide-react';
 
-import { cn } from '@/app/lib/utils/framer';
+import { cn } from '@/app/lib/utils/cn';
 import Image, { StaticImageData } from 'next/image';
 
 type AnimationStyle =

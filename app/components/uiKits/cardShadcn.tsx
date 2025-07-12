@@ -1,5 +1,5 @@
 import React from 'react';
-import { cn } from '@/app/lib/utils/framer';
+import { cn } from '@/app/lib/utils/cn';
 import type { ComponentPropsWithoutRef } from 'react';
 
 const Card = React.forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'>>(

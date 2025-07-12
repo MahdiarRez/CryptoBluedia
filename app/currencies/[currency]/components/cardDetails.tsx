@@ -1,5 +1,5 @@
 import { NumberTriggerOnScroll } from '@/app/components/ui/numberFlow';
-import { Currency } from '@/app/lib/utils/types';
+import { Currency } from '@/app/lib/types';
 import { ReactElement } from 'react';
 import { hexOpacity } from '@/app/lib/helper';
 function CardDetails({

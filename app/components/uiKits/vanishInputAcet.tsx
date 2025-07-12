@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from 'motion/react';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { cn } from '@/app/lib/utils/framer';
+import { cn } from '@/app/lib/utils/cn';
 
 interface NewDataItem {
   x: number;

@@ -2,7 +2,7 @@
 import { Inter } from 'next/font/google';
 import CryptoHeader from './cryptoHeader';
 import CryptoBody from './cryptoBody';
-import { Currency } from '@/app/lib/utils/types';
+import { Currency } from '@/app/lib/types';
 import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 

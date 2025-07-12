@@ -1,6 +1,6 @@
 'use client';
 
-import { cn } from '@/app/lib/utils/framer';
+import { cn } from '@/app/lib/utils/cn';
 import NumberFlow from '@number-flow/react';
 import { useState, useRef, useEffect } from 'react';
 import { useInView } from 'motion/react';

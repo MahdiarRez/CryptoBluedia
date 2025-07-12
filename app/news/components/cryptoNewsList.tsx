@@ -1,5 +1,5 @@
 import { CryptoNewsCard } from '@/app/news/cryptoNewsCard';
-import type { NewsItem } from '@/app/lib/utils/types';
+import type { NewsItem } from '@/app/lib/types';
 
 interface CryptoNewsListProps {
   newsItems: NewsItem[];

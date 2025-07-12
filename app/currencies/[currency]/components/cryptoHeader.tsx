@@ -1,6 +1,6 @@
 import ShineBorder from '@/app/components/ui/shineBorder';
 import { TextGenerate } from '@/app/components/ui/textGenerate';
-import { Currency } from '@/app/lib/utils/types';
+import { Currency } from '@/app/lib/types';
 import Image from 'next/image';
 import { RiInfoCardLine } from 'react-icons/ri';
 import { BestDataT, getBestEntry } from '@/app/lib/helper';

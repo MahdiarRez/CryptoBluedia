@@ -1,4 +1,4 @@
-import { Currency } from '@/app/lib/utils/types';
+import { Currency } from '@/app/lib/types';
 import { ProgressBar } from '@/app/components/ui/progressBar';
 import { TiArrowSortedUp } from 'react-icons/ti';
 import CardDetails from '../cardDetails';

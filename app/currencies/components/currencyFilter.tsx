@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { Search, SortAsc } from 'lucide-react';
 import { CurrencyCard } from './currencyCard';
 import { Label } from '@radix-ui/react-label';
-import { Currency } from '@/app/lib/utils/types';
+import { Currency } from '@/app/lib/types';
 import { RadioGroup, RadioGroupItem } from '@/app/components/ui/radioGroup';
 
 interface CurrencyFilterServerProps {

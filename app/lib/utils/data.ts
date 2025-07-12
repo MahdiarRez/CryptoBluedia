@@ -1,7 +1,7 @@
 'use server';
 
-import { createClient } from '@/app/lib/utils/supabaseClient';
-import { Currency, TrendingCoin } from './utils/types';
+import { createClient } from '@/app/lib/supabase/client';
+import { Currency, TrendingCoin } from './../types';
 
 const cgOptions = {
   method: 'GET',

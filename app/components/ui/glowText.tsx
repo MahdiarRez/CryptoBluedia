@@ -1,4 +1,4 @@
-import { cn } from '@/app/lib/utils/framer';
+import { cn } from '@/app/lib/utils/cn';
 import type { ComponentProps, CSSProperties, ReactNode } from 'react';
 
 export const GlowText = ({

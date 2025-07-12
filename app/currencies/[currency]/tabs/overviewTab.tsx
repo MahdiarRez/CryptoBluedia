@@ -1,6 +1,6 @@
 import { RiTelegram2Fill } from 'react-icons/ri';
 import CardDetails from '../cardDetails';
-import { Currency } from '@/app/lib/utils/types';
+import { Currency } from '@/app/lib/types';
 import { FaXTwitter } from 'react-icons/fa6';
 import {
   Card,

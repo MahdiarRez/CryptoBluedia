@@ -1,7 +1,3 @@
-import Lightning from './components/ui/auraBackground';
-import Aurora from './components/ui/auraBackground';
-import GlowText from './components/ui/glowText';
-
 export default function NotFound() {
   const navigations = [
     {
@@ -72,9 +68,6 @@ export default function NotFound() {
   return (
     <main>
       <div className="w-dvw mx-auto relative px-4 flex items-center bg-WHITE justify-start h-dvh pt-10 md:px-8 dark:bg-DarkBlue">
-        {/* <div style={{ width: '100%', height: '600px', position: 'relative' }}> */}
-        <Lightning hue={220} xOffset={0} speed={1} intensity={1} size={1} />
-        {/* </div> */}
         <div className="max-w-lg mx-auto text-gray-600 z-50">
           <div className="space-y-3 text-center">
             <h3 className="text-LightBlue font-semibold text-6xl">404 Error</h3>

@@ -1,4 +1,4 @@
-import { cn } from '@/app/lib/utils/framer';
+import { cn } from '@/app/lib/utils/cn';
 import React from 'react';
 
 function Skeleton({

@@ -20,7 +20,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/app/components/uiKits/cardShadcn';
-import type { Currency } from '@/app/lib/utils/types';
+import type { Currency } from '@/app/lib/types';
 
 interface DonutChartProps {
   data: Array<{ name: string; value: number }>;

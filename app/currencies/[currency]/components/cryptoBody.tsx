@@ -1,4 +1,4 @@
-import { Currency } from '@/app/lib/utils/types';
+import { Currency } from '@/app/lib/types';
 import { DirectionAwareTabs } from '@/app/components/ui/tabs';
 import OverviewTab from './tabs/overviewTab';
 import { FaEye } from 'react-icons/fa6';

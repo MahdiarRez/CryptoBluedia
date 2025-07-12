@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { ExternalLink } from 'lucide-react';
-import type { NewsItem } from '@/app/lib/utils/types';
+import type { NewsItem } from '@/app/lib/types';
 import { BadgeShadcn } from '@/app/components/ui/badge';
 import {
   CardContentShadcn,

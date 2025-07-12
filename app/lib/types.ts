@@ -71,3 +71,28 @@ export interface Currency {
   color: string;
   logo: string;
 }
+
+export interface CurrencyData<T> {
+  [key: string]: T;
+}
+
+export interface YearEntry<T> {
+  year: number;
+  value: T;
+}
+
+export interface BestDataT {
+  [key: string]: number;
+  rank2022: number;
+  rank2023: number;
+  rank2024: number;
+  rank2025: number;
+  price2022: number;
+  price2023: number;
+  price2024: number;
+  price2025: number;
+  rol2022: number;
+  rol2023: number;
+  rol2024: number;
+  rol2025: number;
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
-import { cn } from '@/app/lib/utils/framer';
+import { cn } from '@/app/lib/utils/cn';
 
 interface ButtonIntractiveProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
