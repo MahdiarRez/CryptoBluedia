@@ -1,10 +1,10 @@
 'use client';
 import { FaCaretUp } from 'react-icons/fa6';
 import GlowText from '@/app/components/ui/glowText';
-import { getCurrencyPrice } from '@/app/lib/data';
 import { useEffect, useState } from 'react';
 import { formatMarketNumbers } from '@/app/lib/helper';
 import clsx from 'clsx';
+import { getCurrencyPrice } from '@/app/lib/utils/data';
 
 type DataT = {
   usd: number;

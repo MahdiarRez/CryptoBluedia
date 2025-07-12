@@ -1,12 +1,13 @@
 'use server';
+import { TrendingCoin } from '@/app/lib/types';
+import { fetchTrendingCoins } from '@/app/lib/utils/data';
 import { RiNumber1, RiNumber2, RiNumber3, RiNumber4 } from 'react-icons/ri';
-import { fetchTrendingCoins } from '../lib/data';
 
 async function CryptoTrendCoinsCard() {
   const data = await fetchTrendingCoins();
   return (
     <div className="space-y-4">
-      {data?.map((coin) => (
+      {data?.map((coin: TrendingCoin) => (
         <div key={coin.id} className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="p-2.5 rounded-md bg-LightBlue  text-white">

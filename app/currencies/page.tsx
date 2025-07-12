@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
-import { CurrencyListSkeleton } from './currency-skeleton';
-import CurrenciesListServer from './currenciesList';
+import { CurrencyListSkeleton } from '../components/skeletons/currencyCardSkeleton';
+import CurrenciesListServer from './components/currenciesList';
 
 export const metadata = {
   title: 'Currencies',

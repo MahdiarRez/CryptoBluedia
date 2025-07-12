@@ -3,12 +3,12 @@ import Link from 'next/link';
 import { ExternalLink } from 'lucide-react';
 import type { NewsItem } from '@/app/lib/types';
 import { BadgeShadcn } from '@/app/components/ui/badge';
-import {
-  CardContentShadcn,
-  CardFooterShadcn,
-  CardShadcn,
-} from '@/app/components/ui/card';
 import pic from '@/public/youtubePic.jpeg';
+import {
+  Card,
+  CardContent,
+  CardFooter,
+} from '@/app/components/uiKits/cardShadcn';
 
 interface CryptoNewsCardProps {
   newsItem: NewsItem;
@@ -17,7 +17,7 @@ interface CryptoNewsCardProps {
 
 export function CryptoNewsCard({ newsItem, classes }: CryptoNewsCardProps) {
   return (
-    <CardShadcn
+    <Card
       className={`overflow-hidden flex flex-col rounded-2xl transition-all cursor-pointer hover:shadow-md ${classes} self-center group h-full`}
     >
       <div className="relative w-full overflow-hidden h-52">
@@ -32,7 +32,7 @@ export function CryptoNewsCard({ newsItem, classes }: CryptoNewsCardProps) {
           className="object-cover sm:group-hover:grayscale transition-all duration-500"
         />
       </div>
-      <CardContentShadcn className="p-4">
+      <CardContent className="p-4">
         <div className="flex items-center justify-between mb-2">
           <BadgeShadcn variant="outline" className="capitalize">
             {newsItem.category}
@@ -45,8 +45,8 @@ export function CryptoNewsCard({ newsItem, classes }: CryptoNewsCardProps) {
         <p className="text-sm text-muted-foreground line-clamp-3">
           {newsItem.summary}
         </p>
-      </CardContentShadcn>
-      <CardFooterShadcn className="p-4 pt-0 flex items-center justify-between">
+      </CardContent>
+      <CardFooter className="p-4 pt-0 flex items-center justify-between">
         <span className="text-xs text-muted-foreground">
           Source: {newsItem.source}
         </span>
@@ -56,7 +56,7 @@ export function CryptoNewsCard({ newsItem, classes }: CryptoNewsCardProps) {
         >
           Read more <ExternalLink className="ml-1 h-3 w-3" />
         </Link>
-      </CardFooterShadcn>
-    </CardShadcn>
+      </CardFooter>
+    </Card>
   );
 }

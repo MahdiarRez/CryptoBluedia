@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
-import { CryptoNewsList, newsItems } from '@/app/news/cryptoNewsList';
-import { CryptoNewsFilters } from '@/app/news/cryptoNewsFilter';
+import { CryptoNewsList, newsItems } from './cryptoNewsList';
+import { CryptoNewsFilters } from './cryptoNewsFilter';
 
 function NewsFilterAndList() {
   const [searchQuery, setSearchQuery] = useState('');

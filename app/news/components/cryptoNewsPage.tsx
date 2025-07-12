@@ -1,5 +1,5 @@
-import { CryptoMarketOverview } from '@/app/news/cryptoMarketOverview';
-import { CryptoTrendingCoins } from '@/app/news/cryptoTrendCoins';
+import { CryptoMarketOverview } from './cryptoMarketOverview';
+import { CryptoTrendingCoins } from './cryptoTrendCoins';
 import NewsFilterAndList from './newsFilterAndList';
 
 export function CryptoNewsPage() {

@@ -1,5 +1,5 @@
-import { CryptoNewsCard } from '@/app/news/cryptoNewsCard';
-import { newsItems } from '@/app/news/cryptoNewsList';
+import { CryptoNewsCard } from '@/app/news/components/cryptoNewsCard';
+import { newsItems } from '@/app/news/components/cryptoNewsList';
 
 function NewsTab() {
   const items = newsItems;

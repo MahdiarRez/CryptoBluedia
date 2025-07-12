@@ -4,14 +4,14 @@ import { useEffect, useState } from 'react';
 import { BsCurrencyDollar } from 'react-icons/bs';
 import { LuSquareChartGantt } from 'react-icons/lu';
 import { RiBarChartBoxAiLine } from 'react-icons/ri';
-import { getCurrencyPrice } from '../lib/data';
 import { formatMarketNumbers } from '@/app/lib/helper';
 import clsx from 'clsx';
-import { CryptoMarketOverviewSkeleton } from '../components/skeletons/cryptoMarketOverviewSkeleton';
 import Image from 'next/image';
 import btcNews from '@/public/btcNews.jpg';
 import ethNews from '@/public/ethNews.jpg';
 import solanaNews from '@/public/solanaNews.jpg';
+import { getCurrencyPrice } from '@/app/lib/utils/data';
+import { CryptoMarketOverviewSkeleton } from '@/app/components/skeletons/cryptoMarketOverviewSkeleton';
 
 type marketDataT = {
   bitcoin: {

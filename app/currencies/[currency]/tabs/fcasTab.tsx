@@ -1,7 +1,7 @@
 import { Currency } from '@/app/lib/types';
 import { ProgressBar } from '@/app/components/ui/progressBar';
 import { TiArrowSortedUp } from 'react-icons/ti';
-import CardDetails from '../cardDetails';
+import CardDetails from '../components/cardDetails';
 import Image from 'next/image';
 import { NumberTriggerOnScroll } from '@/app/components/ui/numberFlow';
 import GlowText from '@/app/components/ui/glowText';

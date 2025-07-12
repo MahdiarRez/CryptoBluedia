@@ -1,7 +1,7 @@
 // app/currencies/[currency]/page.tsx
 import { Suspense } from 'react';
 import dynamic from 'next/dynamic';
-import { fetchCurrencies, fetchCurrencyById } from '@/app/lib/data';
+import { fetchCurrencies, fetchCurrencyById } from '@/app/lib/utils/data';
 import { notFound } from 'next/navigation';
 import { CurrencySkeleton } from '@/app/components/skeletons/currencyPageSkeleton';
 import { Currency } from '@/app/lib/types';

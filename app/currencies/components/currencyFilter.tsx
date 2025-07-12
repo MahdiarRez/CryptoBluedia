@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Search, SortAsc } from 'lucide-react';
+import { Search } from 'lucide-react';
 import { CurrencyCard } from './currencyCard';
 import { Label } from '@radix-ui/react-label';
 import { Currency } from '@/app/lib/types';

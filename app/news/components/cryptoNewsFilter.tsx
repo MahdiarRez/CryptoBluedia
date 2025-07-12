@@ -4,7 +4,6 @@ import { SelectItem, Select } from '@/app/components/ui/select';
 import Image from 'next/image';
 import ppl from '@/public/newsPpl.jpg';
 import { TextGenerate } from '@/app/components/ui/textGenerate';
-import Button from '../components/ui/button';
 
 interface CryptoNewsFiltersProps {
   searchQuery: string;

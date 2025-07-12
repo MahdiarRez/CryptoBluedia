@@ -5,9 +5,9 @@ import {
   CardTitle,
 } from '@/app/components/ui/card';
 import { Suspense } from 'react';
-import { CryptoTrendingCoinsSkeleton } from '../components/skeletons/trendingCoinsSkeleton';
 import CryptoTrendCoinsCard from './cryptoTrendCoinsCard';
 import { BsArrowUpSquareFill } from 'react-icons/bs';
+import { CryptoTrendingCoinsSkeleton } from '@/app/components/skeletons/trendingCoinsSkeleton';
 
 export function CryptoTrendingCoins() {
   return (

@@ -1,5 +1,4 @@
-import { CryptoNewsPage } from '@/app/news/cryptoNewsPage';
-import { getMarketNews } from '../lib/data';
+import { CryptoNewsPage } from './components/cryptoNewsPage';
 
 export const metadata = {
   title: 'News',
