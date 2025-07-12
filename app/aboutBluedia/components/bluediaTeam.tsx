@@ -1,7 +1,6 @@
 import Image, { StaticImageData } from 'next/image';
 import mahdiar from '@/public/mahdiarPic.png';
 import hesam from '@/public/hesamPic.png';
-import { GlowEffect } from '@/app/components/ui/glowEffect';
 import { TextEffect } from '@/app/components/ui/textEffect';
 import { Yellowtail } from 'next/font/google';
 
