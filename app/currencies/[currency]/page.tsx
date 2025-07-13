@@ -1,40 +1,10 @@
-// app/currencies/[currency]/page.tsx
-import { Suspense } from 'react';
-import dynamic from 'next/dynamic';
-import { fetchCurrencies, fetchCurrencyById } from '@/app/lib/utils/data';
 import { notFound } from 'next/navigation';
-import { CurrencySkeleton } from '@/app/components/skeletons/currencyPageSkeleton';
-import { Currency } from '@/app/lib/types';
+import { fetchCurrencies, fetchCurrencyById } from '@/app/lib/utils/data';
+import type { Currency } from '@/app/lib/types';
+import type { Metadata } from 'next';
+import CurrencyMainPage from './components/currencyMainPage';
 
-export const metadata = {
-  title: 'Currency',
-  description:
-    'Browse and analyze the top cryptocurrencies by market capitalization',
-};
-
-export const revalidate = 60;
-
-export async function generateStaticParams(): Promise<{ currency: string }[]> {
-  const currencies: Currency[] = await fetchCurrencies();
-  return currencies.map((c) => ({ currency: c.id }));
-}
-
-const Crypto = dynamic(() => import('./components/crypto'), {
-  loading: () => <CurrencySkeleton />,
-  ssr: true,
-});
-
-async function CryptoWrapper({ currencyId }: { currencyId: string }) {
-  try {
-    const currency = await fetchCurrencyById(currencyId);
-    return <Crypto currency={currency} />;
-  } catch (error) {
-    if (error instanceof Error && error.message === 'NOT_FOUND') {
-      notFound();
-    }
-    throw error;
-  }
-}
+export const revalidate = 500;
 
 export default async function Page({
   params,
@@ -42,11 +12,62 @@ export default async function Page({
   params: Promise<{ currency: string }>;
 }) {
   const { currency } = await params;
+  const fetchedCurrency = await fetchCurrencyById(currency);
+  console.log(currency);
+
+  if (!currency || typeof currency !== 'string' || currency.length < 2) {
+    notFound();
+  }
+
   return (
-    <Suspense fallback={<CurrencySkeleton />}>
-      <div className="sm:px-8 lg:px-28 xl:px-40 bg-WHITE pt-10 px-4 min-h-dvh h-auto w-full dark:bg-DarkBlue">
-        <CryptoWrapper currencyId={currency} />
-      </div>
-    </Suspense>
+    <main className="min-h-screen w-full bg-WHITE px-4 pt-10 transition-colors duration-200 dark:bg-slate-900 sm:px-8 lg:px-28 xl:px-40">
+      <CurrencyMainPage currency={fetchedCurrency} />
+    </main>
   );
+}
+
+//////// Metadata & static params
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ currency: string }>;
+}): Promise<Metadata> {
+  const { currency } = await params;
+
+  try {
+    const currencyData = await fetchCurrencyById(currency);
+
+    return {
+      title: `${currencyData.name} (${currencyData.id.toUpperCase()})`,
+      description: `Track ${currencyData.name} price, market cap, volume and technical analysis. Real-time cryptocurrency data and insights.`,
+      keywords: [
+        currencyData.name,
+        currencyData.id,
+        'cryptocurrency',
+        'price',
+        'market cap',
+      ],
+    };
+  } catch {
+    return {
+      title: 'Cryptocurrency Details',
+      description:
+        'View detailed cryptocurrency information and live market data',
+    };
+  }
+}
+
+export async function generateStaticParams(): Promise<
+  Array<{ currency: string }>
+> {
+  try {
+    const currencies: Currency[] = await fetchCurrencies();
+
+    return currencies.slice(0, 50).map((currency) => ({
+      currency: currency.id,
+    }));
+  } catch (error) {
+    console.error('Failed to generate static params:', error);
+    return [];
+  }
 }

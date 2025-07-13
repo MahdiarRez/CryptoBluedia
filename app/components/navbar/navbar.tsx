@@ -121,7 +121,6 @@ const NavbarLogo = () => {
       <Image
         src={logo}
         alt="logo"
-        placeholder="blur"
         width={33}
         height={33}
         className="rounded-lg"
