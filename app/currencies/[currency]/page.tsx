@@ -20,7 +20,7 @@ export default async function Page({
   }
 
   return (
-    <main className="min-h-screen w-full bg-WHITE px-4 pt-10 transition-colors duration-200 dark:bg-slate-900 sm:px-8 lg:px-28 xl:px-40">
+    <main className="min-h-screen w-full bg-WHITE px-4 pt-10 transition-colors duration-200 dark:bg-DarkBlue sm:px-8 lg:px-28 xl:px-40">
       <CurrencyMainPage currency={fetchedCurrency} />
     </main>
   );

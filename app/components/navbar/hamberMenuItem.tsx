@@ -7,16 +7,18 @@ function HamberMenuItem({
   children,
   setMenuIsOpen,
   href,
+  icon,
 }: {
   children: ReactNode;
   setMenuIsOpen: (value: boolean | ((prevValue: boolean) => boolean)) => void;
   href: string;
+  icon?: ReactNode;
 }) {
   const pathname = usePathname();
   return (
     <li className={'flex h-14 items-center justify-start'}>
       <Link
-        className={`w-full h-full flex relative justify-start items-center group pl-7`}
+        className={`w-full h-full flex flex-row  gap-2 relative justify-start items-center group pl-9`}
         onClick={() => setMenuIsOpen(false)}
         href={href}
       >
@@ -29,6 +31,7 @@ function HamberMenuItem({
             }
           )}
         ></span>
+        {icon}
         {children}
       </Link>
     </li>

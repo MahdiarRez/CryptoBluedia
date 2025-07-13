@@ -2,7 +2,6 @@ import React, { ReactNode } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import clsx from 'clsx';
-import { PiNewspaperClippingFill } from 'react-icons/pi';
 
 function NavMenuItem({
   children,
@@ -28,15 +27,6 @@ function NavMenuItem({
         {icon}
         {children}
       </Link>
-      {/* <span
-        className={clsx(
-          `w-1 h-1 absolute left-1/2 transform bg-DarkBlue bottom-1 -translate-x-1/2 animate-fade bg-opacity-70 animate-duration-500 rounded-full group-hover:flex`,
-          {
-            'flex group-hover:bg-opacity-70': pathname == href,
-            'hidden group-hover:bg-opacity-40': pathname !== href,
-          }
-        )}
-      ></span> */}
     </li>
   );
 }

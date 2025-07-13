@@ -31,7 +31,7 @@ function CryptoBody({ currency }: { currency: Currency }) {
   ];
 
   return (
-    <div className="flex flex-col items-center w-full h-full bg-WHITE">
+    <div className="flex flex-col items-center w-full h-full bg-WHITE dark:bg-DarkBlue">
       <div className="min-h-dvh [perspective:1000px]   flex flex-col  w-full  items-start justify-start my-4">
         <DirectionAwareTabs rounded={true} tabs={tabs} />
       </div>

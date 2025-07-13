@@ -11,6 +11,10 @@ import Image from 'next/image';
 import logo from '@/public/logo.jpeg';
 import { AnimatePresence, motion } from 'motion/react';
 import HamberMenuItem from './hamberMenuItem';
+import HamberMenu from './hamberMenu';
+import Button from '../ui/button';
+import { MdOutlineFormatListNumbered } from 'react-icons/md';
+import { RiFileList2Fill } from 'react-icons/ri';
 
 export function Navbar() {
   const navItems = [
@@ -37,7 +41,7 @@ export function Navbar() {
     <>
       <nav className="w-full flex flex-row justify-between items-center z-[999] dark:bg-DarkBlue bg-WHITE h-20 px-4 sm:px-8 lg:px-28 xl:px-40">
         <NavbarLogo />
-        <ul className="flex flex-row items-center justify-center gap-4">
+        <ul className="md:flex flex-row items-center justify-center gap-4 hidden">
           {navItems.map((item) => {
             return (
               <NavMenuItem key={item.link} icon={item.icon} href={item.link}>
@@ -46,11 +50,12 @@ export function Navbar() {
             );
           })}
         </ul>
-        <Link href={'/currencies'}>
+        <Link href={'/currencies'} className="md:block hidden">
           <ButtonIntractive className="bg-DarkBlue text-WHITE text-sm rounded-lg dark:bg-WHITE dark:text-DarkBlue">
             Currencies
           </ButtonIntractive>
         </Link>
+        <HamberMenu setIsOpen={setIsMobileMenuOpen} isOpen={isMobileMenuOpen} />
         <AnimatePresence initial={false}>
           {isMobileMenuOpen && (
             <motion.div
@@ -65,7 +70,7 @@ export function Navbar() {
               exit={{ opacity: 0, filter: 'blur(4px)' }}
               transition={{ duration: 0.3 }}
               onClick={() => setIsMobileMenuOpen(false)}
-              className={`bg-white min-w-full sm:min-w-[80%] dark:bg-DarkBlue md:hidden z-50 dark:bg-opacity-80 dark:backdrop-blur-sm bg-opacity-80 backdrop-blur-2xl fixed top-20 transform -translate-x-1/2 left-1/2 px-4 py-3 rounded-2xl`}
+              className={`bg-WHITE min-w-full sm:min-w-[80%] h-dvh dark:bg-DarkBlue md:hidden z-50 dark:bg-opacity-80 dark:backdrop-blur-sm bg-opacity-80 backdrop-blur-sm fixed top-20 transform -translate-x-1/2 left-1/2 px-4 py-3 rounded-2xl`}
             >
               <motion.ul
                 initial={{ opacity: 0, y: '-20px' }}
@@ -78,31 +83,31 @@ export function Navbar() {
                   delay: 0.2,
                 }}
                 onClick={(e) => e.stopPropagation()}
-                className={`bg-DarkBlue flex flex-col items-start font-normal  text-white dark:bg-white dark:text-DarkBlue overflow-hidden rounded-md`}
+                className={`bg-DarkBlue flex flex-col items-start font-normal  text-white dark:bg-WHITE dark:text-DarkBlue overflow-hidden rounded-md py-3`}
               >
-                <HamberMenuItem setMenuIsOpen={setIsMobileMenuOpen} href={'/'}>
-                  Home
-                </HamberMenuItem>
-
-                <span className="w-full bg-gradient-to-r via-white/10 from-white/40 to-transparent h-px z-50 block"></span>
-                <HamberMenuItem
-                  setMenuIsOpen={setIsMobileMenuOpen}
-                  href={'/news'}
+                {navItems.map((item) => (
+                  <HamberMenuItem
+                    href={item.link}
+                    icon={item.icon}
+                    key={item.name}
+                    setMenuIsOpen={setIsMobileMenuOpen}
+                  >
+                    {item.name}
+                  </HamberMenuItem>
+                ))}
+                <span className="w-full bg-gradient-to-r via-white/10 from-white/40 to-transparent h-px z-50 block my-3"></span>
+                <Link
+                  href={'/currencies'}
+                  className="w-2/3 pl-9"
+                  onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  News
-                </HamberMenuItem>
-                <span className="w-full bg-gradient-to-r via-white/10 from-white/40 to-transparent h-px z-50 block"></span>
-                <HamberMenuItem
-                  setMenuIsOpen={setIsMobileMenuOpen}
-                  href={'/aboutBluedia'}
-                >
-                  About Bluedia
-                </HamberMenuItem>
-                <span className="w-full bg-gradient-to-r via-white/10 from-white/40 to-transparent h-px z-50 block"></span>
-                <Link href={'/currencies'} className="self-center">
-                  <button className="px-20 self-center my-3 h-10 rounded-lg hover:bg-LightBlue transition-colors duration-300 bg-white text-DarkBlue font-semibold">
+                  {/* <button className="px-20 self-center my-3 h-10 rounded-lg hover:bg-LightBlue transition-colors duration-300 bg-white text-DarkBlue font-semibold">
                     Currencies
-                  </button>
+                  </button> */}
+                  <Button classes="my-3 rounded-lg border border-black border-solid bg-LightBlue flex flex-row items-center justify-center gap-1 font-medium w-full">
+                    <RiFileList2Fill />
+                    Currencies
+                  </Button>
                 </Link>
               </motion.ul>
             </motion.div>
