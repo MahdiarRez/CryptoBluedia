@@ -2,6 +2,7 @@
 
 import { createClient } from '@/app/lib/supabase/client';
 import { Currency, TrendingCoin } from './../types';
+import { cache } from 'react';
 
 const cgOptions = {
   method: 'GET',

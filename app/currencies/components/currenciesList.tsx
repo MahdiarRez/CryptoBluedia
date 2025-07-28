@@ -4,10 +4,10 @@ import { CurrencyFilterServer } from './currencyFilter';
 export default async function CurrenciesList() {
   const currencies = await fetchCurrencies();
 
-  if (!currencies || currencies.length === 0) {
+  if (!currencies?.length) {
     return (
-      <p className="text-DarkBlue/70 text-center py-20">
-        There is no currency !
+      <p className="text-center text-DarkBlue/70 py-20">
+        There is no currency!
       </p>
     );
   }

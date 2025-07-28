@@ -2,7 +2,6 @@ import React from 'react';
 import HeroDiamond from '@/app/components/heroDiamond';
 import HeroServices from '@/app/components/heroServices';
 import { TimelineDemo } from '@/app/components/timeline';
-import GlowText from './components/ui/glowText';
 import { RiArrowDownDoubleLine } from 'react-icons/ri';
 
 function Page() {
@@ -21,11 +20,6 @@ function Page() {
       <HeroServices />
       <div className={'py-20 w-full'}>
         <TimelineDemo />
-      </div>
-      <div className="my-20 p-7 rounded-2xl flex justify-center items-center w-full bg-DarkBlue animate-pulse">
-        <GlowText className="text-white text-lg sm:text-2xl">
-          🇮🇷 Persian language will be added soon.
-        </GlowText>
       </div>
     </div>
   );
