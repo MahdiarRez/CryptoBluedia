@@ -50,9 +50,9 @@ export function Navbar() {
             );
           })}
         </ul>
-        <Link href={'/currencies'} className="md:block hidden">
+        <Link href={'/login'} className="md:block hidden">
           <ButtonIntractive className="bg-DarkBlue text-WHITE text-sm rounded-lg dark:bg-WHITE dark:text-DarkBlue">
-            Currencies
+            Login / Register
           </ButtonIntractive>
         </Link>
         <HamberMenu setIsOpen={setIsMobileMenuOpen} isOpen={isMobileMenuOpen} />
@@ -97,7 +97,7 @@ export function Navbar() {
                 ))}
                 <span className="w-full bg-gradient-to-r via-white/10 from-white/40 to-transparent h-px z-50 block my-3"></span>
                 <Link
-                  href={'/currencies'}
+                  href={'/login'}
                   className="w-2/3 pl-9"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
@@ -106,7 +106,7 @@ export function Navbar() {
                   </button> */}
                   <Button classes="my-3 rounded-lg border border-black border-solid bg-LightBlue flex flex-row items-center justify-center gap-1 font-medium w-full">
                     <RiFileList2Fill />
-                    Currencies
+                    Login/Register
                   </Button>
                 </Link>
               </motion.ul>

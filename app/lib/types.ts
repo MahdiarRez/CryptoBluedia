@@ -1,3 +1,5 @@
+import { InputHTMLAttributes, ReactNode } from 'react';
+
 export interface NewsItem {
   title: string;
   category: string;
@@ -96,3 +98,18 @@ export interface BestDataT {
   rol2024: number;
   rol2025: number;
 }
+
+export interface InputFloatProps extends InputHTMLAttributes<HTMLInputElement> {
+  error?: string;
+  label?: string;
+  icon?: ReactNode;
+  borderClr?: string;
+}
+
+export type ActionHandlerProps = (
+  state: unknown,
+  formData: FormData
+) => Promise<{
+  success: boolean;
+  errors?: { field: string; message: string }[];
+}>;
