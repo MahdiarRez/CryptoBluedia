@@ -1,20 +1,35 @@
-import React, { ReactNode } from 'react';
+'use client';
+
+import React, { ReactNode, ButtonHTMLAttributes } from 'react';
+import clsx from 'clsx';
+
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  children: ReactNode;
+  classes?: string;
+  textColor?: string;
+  isDisabled?: boolean;
+}
 
 function Button({
   children,
   classes,
-  text = 'text-white',
+  textColor = 'text-white',
   isDisabled = false,
-}: {
-  children: ReactNode;
-  classes?: string;
-  text?: string;
-  isDisabled?: boolean;
-}) {
+  ...props
+}: ButtonProps) {
   return (
     <button
       disabled={isDisabled}
-      className={`${classes} ${text} disabled:hover:bg-gray-500 disabled:bg-gray-500 ${isDisabled && 'disabled'} bg-DarkBlue dark:text-DarkBlue dark:hover:bg-LightBlue dark:bg-WHITE transition-all duration-300 ease-out hover:bg-LightBlue px-6 h-10`}
+      className={clsx(
+        classes,
+        textColor,
+        'bg-DarkBlue hover:bg-LightBlue transition-all duration-300 ease-out px-6 h-10',
+        {
+          'disabled:bg-gray-500 disabled:hover:bg-gray-500': isDisabled,
+          'dark:text-DarkBlue dark:bg-WHITE dark:hover:bg-LightBlue': true,
+        }
+      )}
+      {...props}
     >
       {children}
     </button>

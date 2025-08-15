@@ -1,6 +1,7 @@
 'use server';
 
-import { createClient } from '@/app/lib/supabase/client';
+import { supabase } from '../supabase/client';
+import { createClient } from '../supabase/server';
 import { Currency, TrendingCoin } from './../types';
 import { cache } from 'react';
 
@@ -22,7 +23,7 @@ interface MarketNewsItem {
 
 // Fetch all market news items from Supabase
 export async function getMarketNews(): Promise<MarketNewsItem[]> {
-  const supabase = createClient();
+  const supabase = await createClient();
   try {
     const { data, error } = await supabase.from('marketNews').select('*');
 
@@ -44,7 +45,7 @@ export async function getMarketNews(): Promise<MarketNewsItem[]> {
 
 // Fetch all trending coins from Supabase
 export async function fetchTrendingCoins(): Promise<TrendingCoin[]> {
-  const supabase = createClient();
+  const supabase = await createClient();
   try {
     const { data, error } = await supabase.from('trendingCoins').select('*');
 
@@ -66,7 +67,7 @@ export async function fetchTrendingCoins(): Promise<TrendingCoin[]> {
 
 // Fetch all currencies from Supabase, ordered by rank2025
 export async function fetchCurrencies(): Promise<Currency[]> {
-  const supabase = createClient();
+  const supabase = await createClient();
   try {
     const { data, error } = await supabase
       .from('currenciesList')
@@ -91,7 +92,7 @@ export async function fetchCurrencies(): Promise<Currency[]> {
 
 // Fetch a single currency by its ID
 export async function fetchCurrencyById(id: string): Promise<Currency> {
-  const supabase = createClient();
+  const supabase = await createClient();
   try {
     const { data, error } = await supabase
       .from('currenciesList')
@@ -145,5 +146,24 @@ export async function getCurrencyPrice(id: string): Promise<{
   } catch (err) {
     console.error('[getCurrencyPrice] Fetch error:', err);
     throw err;
+  }
+}
+
+export async function fetchCurrenciesPublic(): Promise<Currency[]> {
+  try {
+    const { data, error } = await supabase
+      .from('currenciesList')
+      .select('*')
+      .order('rank2025', { ascending: true });
+
+    if (error) {
+      console.error('[fetchCurrenciesPublic] Supabase error:', error);
+      return [];
+    }
+
+    return (data ?? []) as Currency[];
+  } catch (err) {
+    console.error('[fetchCurrenciesPublic] Unexpected error:', err);
+    return [];
   }
 }

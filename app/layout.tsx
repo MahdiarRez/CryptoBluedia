@@ -6,6 +6,8 @@ import { Manrope } from 'next/font/google';
 import Footer from '@/app/footer';
 import { ScrollProgress } from '@/app/components/scrollProgress';
 import { Navbar } from './components/navbar/navbar';
+import { AuthProvider } from './context/authContext';
+import { getUserWithProfile } from './dashboard/actions/getUserProfile';
 
 export const metadata: Metadata = {
   title: {
@@ -29,8 +31,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={`antialiased relative ${ManropeFont.className} `}>
         <ScrollProgress />
-        <Navbar />
-        {children}
+        <AuthProvider>
+          <Navbar />
+          {children}
+        </AuthProvider>
         <ThemeButton />
         <Footer />
       </body>

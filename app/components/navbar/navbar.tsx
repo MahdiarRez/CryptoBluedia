@@ -6,35 +6,34 @@ import { PiNewspaperClippingFill } from 'react-icons/pi';
 import { FaHome } from 'react-icons/fa';
 import { TbDiamondsFilled } from 'react-icons/tb';
 import NavMenuItem from './navMenuItem';
-import { ButtonIntractive } from '../ui/buttonIntractive';
 import Image from 'next/image';
 import logo from '@/public/logo.jpeg';
 import { AnimatePresence, motion } from 'motion/react';
 import HamberMenuItem from './hamberMenuItem';
 import HamberMenu from './hamberMenu';
 import Button from '../ui/button';
-import { MdOutlineFormatListNumbered } from 'react-icons/md';
 import { RiFileList2Fill } from 'react-icons/ri';
+import MainButton from './mainButtonAuth';
+
+const navItems = [
+  {
+    name: 'Home',
+    link: '/',
+    icon: <FaHome size={17} />,
+  },
+  {
+    name: 'News',
+    link: '/news',
+    icon: <PiNewspaperClippingFill size={17} />,
+  },
+  {
+    name: 'About Bluedia',
+    link: '/aboutBluedia',
+    icon: <TbDiamondsFilled size={17} />,
+  },
+];
 
 export function Navbar() {
-  const navItems = [
-    {
-      name: 'Home',
-      link: '/',
-      icon: <FaHome size={17} />,
-    },
-    {
-      name: 'News',
-      link: '/news',
-      icon: <PiNewspaperClippingFill size={17} />,
-    },
-    {
-      name: 'About Bluedia',
-      link: '/aboutBluedia',
-      icon: <TbDiamondsFilled size={17} />,
-    },
-  ];
-
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
@@ -50,11 +49,7 @@ export function Navbar() {
             );
           })}
         </ul>
-        <Link href={'/login'} className="md:block hidden">
-          <ButtonIntractive className="bg-DarkBlue text-WHITE text-sm rounded-lg dark:bg-WHITE dark:text-DarkBlue">
-            Login / Register
-          </ButtonIntractive>
-        </Link>
+        <MainButton />
         <HamberMenu setIsOpen={setIsMobileMenuOpen} isOpen={isMobileMenuOpen} />
         <AnimatePresence initial={false}>
           {isMobileMenuOpen && (
@@ -70,7 +65,7 @@ export function Navbar() {
               exit={{ opacity: 0, filter: 'blur(4px)' }}
               transition={{ duration: 0.3 }}
               onClick={() => setIsMobileMenuOpen(false)}
-              className={`bg-WHITE min-w-full sm:min-w-[80%] h-dvh dark:bg-DarkBlue md:hidden z-50 dark:bg-opacity-80 dark:backdrop-blur-sm bg-opacity-80 backdrop-blur-sm fixed top-20 transform -translate-x-1/2 left-1/2 px-4 py-3 rounded-2xl`}
+              className={`bg-WHITE min-w-full sm:min-w-[80%] h-dvh dark:bg-DarkBlue md:hidden z-50 dark:bg-opacity-80 dark:backdrop-blur-sm bg-opacity-80 backdrop-blur-sm fixed top-20 right-0 left-0 px-4 py-3`}
             >
               <motion.ul
                 initial={{ opacity: 0, y: '-20px' }}
@@ -98,15 +93,15 @@ export function Navbar() {
                 <span className="w-full bg-gradient-to-r via-white/10 from-white/40 to-transparent h-px z-50 block my-3"></span>
                 <Link
                   href={'/login'}
-                  className="w-2/3 pl-9"
+                  className="w-1/2 self-center"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {/* <button className="px-20 self-center my-3 h-10 rounded-lg hover:bg-LightBlue transition-colors duration-300 bg-white text-DarkBlue font-semibold">
                     Currencies
                   </button> */}
-                  <Button classes="my-3 rounded-lg border border-black border-solid bg-LightBlue flex flex-row items-center justify-center gap-1 font-medium w-full">
+                  <Button classes="my-3 rounded-lg border border-black border-solid bg-LightBlue flex flex-row  items-center justify-center gap-1 font-medium w-full">
                     <RiFileList2Fill />
-                    Login/Register
+                    Login / Register
                   </Button>
                 </Link>
               </motion.ul>

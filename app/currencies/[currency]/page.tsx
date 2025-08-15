@@ -1,5 +1,9 @@
 import { notFound } from 'next/navigation';
-import { fetchCurrencies, fetchCurrencyById } from '@/app/lib/utils/data';
+import {
+  fetchCurrencies,
+  fetchCurrenciesPublic,
+  fetchCurrencyById,
+} from '@/app/lib/utils/data';
 import type { Currency } from '@/app/lib/types';
 import type { Metadata } from 'next';
 import CurrencyMainPage from './components/currencyMainPage';
@@ -61,7 +65,7 @@ export async function generateStaticParams(): Promise<
   Array<{ currency: string }>
 > {
   try {
-    const currencies: Currency[] = await fetchCurrencies();
+    const currencies: Currency[] = await fetchCurrenciesPublic();
 
     return currencies.slice(0, 50).map((currency) => ({
       currency: currency.id,

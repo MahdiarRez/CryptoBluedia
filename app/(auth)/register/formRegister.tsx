@@ -1,18 +1,20 @@
 'use client';
 import React, { useActionState, useEffect, useState } from 'react';
 import FormAuth from '../components/formAuth';
-import { handleRegister } from '../../lib/utils/actions';
 import InputFloat from '../components/inputFloat';
 import PasswordInput from '../components/inputPassword';
 import toast from 'react-hot-toast';
+import { handleRegister } from '@/app/lib/supabase/actions/register';
+import { useAuth } from '@/app/context/authContext';
 
 function FormRegister() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
+  const { refreshUser } = useAuth();
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [state, formAction, isPending] = useActionState(handleRegister, {
     success: false,
     errors: [],
@@ -31,6 +33,12 @@ function FormRegister() {
       setErrors({});
     }
   }, [state.errors]);
+
+  useEffect(() => {
+    if (state.success) {
+      refreshUser();
+    }
+  }, [state]);
 
   return (
     <FormAuth isPending={isPending} formAction={formAction}>
