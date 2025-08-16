@@ -38,7 +38,7 @@ function FormRegister() {
   useEffect(() => {
     if (state.success) {
       refreshUser();
-      redirect('/currencies');
+      redirect('/dashboard');
     }
   }, [state]);
 

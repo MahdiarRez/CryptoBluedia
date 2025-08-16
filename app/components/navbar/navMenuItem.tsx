@@ -17,7 +17,7 @@ function NavMenuItem({
     <li className={'group relative min-w-fit'}>
       <Link
         className={clsx(
-          'px-4 py-2.5 h-full font-semibold group-hover:opacity-40 text-sm gap-1 transition-opacity duration-200 dark:text-WHITE text-DarkBlue flex flex-row items-center',
+          'px-4 py-2.5 h-full font-semibold group-hover:opacity-40 text-sm gap-2 transition-opacity duration-200 dark:text-WHITE text-DarkBlue flex flex-row items-center',
           {
             'opacity-40': pathname == href,
           }

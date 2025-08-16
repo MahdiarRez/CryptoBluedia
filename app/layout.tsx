@@ -7,7 +7,6 @@ import Footer from '@/app/footer';
 import { ScrollProgress } from '@/app/components/scrollProgress';
 import { Navbar } from './components/navbar/navbar';
 import { AuthProvider } from './context/authContext';
-import { getUserWithProfile } from './dashboard/actions/getUserProfile';
 
 export const metadata: Metadata = {
   title: {

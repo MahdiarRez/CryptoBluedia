@@ -10,7 +10,7 @@ export const ButtonInteractiveSkeleton: React.FC<
   return (
     <div
       className={cn(
-        'w-auto min-w-[137px] h-[38px] text-DarkBlue flex items-center justify-center px-6 rounded-lg border border-solid border-DarkBlue dark:border-WHITE bg-gray-200 dark:bg-gray-700 animate-pulse',
+        'w-auto cursor-not-allowed min-w-[168.73px] h-[38px] text-white flex items-center justify-center px-6 rounded-lg border border-solid border-DarkBlue dark:border-WHITE bg-DarkBlue dark:bg-gray-700 animate-pulse',
         className
       )}
       {...props}

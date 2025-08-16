@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { PiNewspaperClippingFill } from 'react-icons/pi';
-import { FaHome } from 'react-icons/fa';
+import { FaCoins, FaHome } from 'react-icons/fa';
 import { TbDiamondsFilled } from 'react-icons/tb';
 import NavMenuItem from './navMenuItem';
 import Image from 'next/image';
@@ -16,10 +16,15 @@ import { RiFileList2Fill } from 'react-icons/ri';
 import MainButton from './mainButtonAuth';
 
 const navItems = [
+  // {
+  //   name: 'Home',
+  //   link: '/',
+  //   icon: <FaHome size={17} />,
+  // },
   {
-    name: 'Home',
-    link: '/',
-    icon: <FaHome size={17} />,
+    name: 'Currencies',
+    link: '/currencies',
+    icon: <FaCoins size={17} />,
   },
   {
     name: 'News',

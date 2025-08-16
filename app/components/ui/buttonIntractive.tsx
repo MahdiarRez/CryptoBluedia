@@ -13,7 +13,7 @@ export const ButtonIntractive = React.forwardRef<
     <button
       ref={ref}
       className={cn(
-        'group relative  w-auto cursor-pointer border border-solid border-DarkBlue dark:border-WHITE overflow-hidden rounded-2xl  bg-background py-2 px-6 text-center font-medium',
+        'group relative w-auto cursor-pointer border border-solid border-DarkBlue dark:border-WHITE overflow-hidden rounded-2xl  bg-background py-2 px-6 text-center font-medium',
         className
       )}
       {...props}

@@ -1,4 +1,4 @@
-import { InputHTMLAttributes, ReactNode } from 'react';
+import { ButtonHTMLAttributes, InputHTMLAttributes, ReactNode } from 'react';
 
 export interface NewsItem {
   title: string;
@@ -113,3 +113,13 @@ export type ActionHandlerProps = (
   success: boolean;
   errors?: { field: string; message: string }[];
 }>;
+
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  loading?: boolean;
+  label: string;
+  icon?: ReactNode;
+  hasArrow?: boolean;
+  bg?: string;
+  text?: string;
+  borderClr?: string;
+}
