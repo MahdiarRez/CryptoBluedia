@@ -1,6 +1,5 @@
 'use server';
 
-import { redirect } from 'next/navigation';
 import { loginSchema } from '@/app/(auth)/schemas/authSchemas';
 import { ZodError } from 'zod';
 import { createClient } from '../server';
@@ -64,5 +63,5 @@ export async function handleLogin(
     };
   }
 
-  redirect('/currencies');
+  return { success: true };
 }

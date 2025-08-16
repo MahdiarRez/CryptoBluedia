@@ -6,6 +6,7 @@ import PasswordInput from '../components/inputPassword';
 import toast from 'react-hot-toast';
 import { handleLogin } from '@/app/lib/supabase/actions/login';
 import { useAuth } from '@/app/context/authContext';
+import { redirect } from 'next/navigation';
 
 function FormLogin() {
   const [email, setEmail] = useState('');
@@ -35,8 +36,9 @@ function FormLogin() {
   useEffect(() => {
     if (state.success) {
       refreshUser();
+      redirect('/currencies');
     }
-  }, [state]);
+  }, [state.success]);
 
   return (
     <FormAuth formAction={formAction} isPending={isPending}>

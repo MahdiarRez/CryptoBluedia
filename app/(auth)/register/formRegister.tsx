@@ -6,6 +6,7 @@ import PasswordInput from '../components/inputPassword';
 import toast from 'react-hot-toast';
 import { handleRegister } from '@/app/lib/supabase/actions/register';
 import { useAuth } from '@/app/context/authContext';
+import { redirect } from 'next/navigation';
 
 function FormRegister() {
   const [name, setName] = useState('');
@@ -37,6 +38,7 @@ function FormRegister() {
   useEffect(() => {
     if (state.success) {
       refreshUser();
+      redirect('/currencies');
     }
   }, [state]);
 

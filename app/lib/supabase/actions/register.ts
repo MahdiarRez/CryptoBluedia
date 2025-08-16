@@ -1,10 +1,8 @@
 'use server';
 
-import { redirect } from 'next/navigation';
 import { registerSchema } from '@/app/(auth)/schemas/authSchemas';
 import { ZodError } from 'zod';
 import { createClient } from '../server';
-import { revalidatePath } from 'next/cache';
 
 export async function handleRegister(
   state: unknown,
@@ -105,6 +103,6 @@ export async function handleRegister(
       };
     }
   }
-  // revalidatePath('/', 'layout');
-  redirect('/currencies');
+
+  return { success: true };
 }

@@ -13,7 +13,7 @@ function MainButton() {
 
   return (
     <>
-      {profile ? (
+      {!!profile ? (
         <Link href={'/dashboard'} className="md:block hidden">
           <ButtonIntractive className="bg-DarkBlue text-WHITE text-sm rounded-lg dark:bg-WHITE dark:text-DarkBlue">
             Dashboard
