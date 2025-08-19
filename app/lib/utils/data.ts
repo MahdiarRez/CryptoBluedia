@@ -3,7 +3,6 @@
 import { supabase } from '../supabase/client';
 import { createClient } from '../supabase/server';
 import { Currency, TrendingCoin } from './../types';
-import { cache } from 'react';
 
 const cgOptions = {
   method: 'GET',
@@ -165,5 +164,42 @@ export async function fetchCurrenciesPublic(): Promise<Currency[]> {
   } catch (err) {
     console.error('[fetchCurrenciesPublic] Unexpected error:', err);
     return [];
+  }
+}
+
+export async function fetchWatchlist() {
+  try {
+    const supabase = await createClient();
+
+    const {
+      data: { user },
+      error: userError,
+    } = await supabase.auth.getUser();
+
+    if (userError || !user) {
+      return { watchlist: [], user: null };
+    }
+
+    const { data: watchlist, error: watchlistError } = await supabase
+      .from('watchlist')
+      .select('currency_id')
+      .eq('user_id', user.id);
+
+    if (watchlistError) {
+      console.error('[Watchlist API] Supabase error:', watchlistError);
+      return { watchlist: [], user };
+    }
+
+    const currencyIds = watchlist.map((item) => item.currency_id);
+    const { data: currencies, error: currenciesError } = await supabase
+      .from('currenciesList')
+      .select('*')
+      .in('name', currencyIds);
+    console.log(currencies);
+
+    return { watchlist: currencies ?? [], user };
+  } catch (err) {
+    console.error('[Watchlist API] Unexpected error:', err);
+    return { watchlist: [], user: null };
   }
 }

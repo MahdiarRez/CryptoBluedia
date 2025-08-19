@@ -3,7 +3,13 @@ import { hexOpacity } from '@/app/lib/helper';
 import Image from 'next/image';
 import { Currency } from '@/app/lib/types';
 
-function WatchlistCard({ curr: data }: { curr: Currency }) {
+function WatchlistCard({
+  curr: data,
+  showPrice = true,
+}: {
+  curr: Currency;
+  showPrice?: boolean;
+}) {
   return (
     <div
       className="w-full shadow rounded-xl h-28 justify-between px-8 flex flex-row items-center tracking-normal text-DarkBlue relative group "
@@ -23,8 +29,12 @@ function WatchlistCard({ curr: data }: { curr: Currency }) {
         </div>
       </div>
       <div className="flex flex-col justify-center items-end">
-        <span className="text-2xl font-medium text-DarkBlue">0.005 $</span>
-        <span className="text-lg font-medium text-red-600">- 0.4 %</span>
+        <span className="text-2xl font-medium text-DarkBlue">
+          {showPrice ? '0.005 $' : `Upside: ${data.upside}`}
+        </span>
+        <span className="text-lg font-medium text-red-600">
+          {showPrice ? '-0.8 %' : `Sentiment: ${data.sentiment}`}
+        </span>
         <span className="text-base opacity-80 font-normal ">
           Score: {data.score}
         </span>

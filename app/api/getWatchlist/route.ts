@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/app/lib/supabase/server';
-import { fetchCurrencyById } from '@/app/lib/utils/data';
 
 export async function GET(req: NextRequest) {
   try {
