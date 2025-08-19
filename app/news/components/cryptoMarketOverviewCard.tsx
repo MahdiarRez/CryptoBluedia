@@ -5,47 +5,29 @@ import { BsCurrencyDollar } from 'react-icons/bs';
 import { LuSquareChartGantt } from 'react-icons/lu';
 import { RiBarChartBoxAiLine } from 'react-icons/ri';
 import { formatMarketNumbers } from '@/app/lib/helper';
-import clsx from 'clsx';
-import Image from 'next/image';
-import btcNews from '@/public/btcNews.jpg';
-import ethNews from '@/public/ethNews.jpg';
-import solanaNews from '@/public/solanaNews.jpg';
+import Image, { StaticImageData } from 'next/image';
 import { getCurrencyPrice } from '@/app/lib/utils/data';
 import { CryptoMarketOverviewSkeleton } from '@/app/components/skeletons/cryptoMarketOverviewSkeleton';
+import clsx from 'clsx';
+import logo from '@/public/logo.jpeg';
 
-type marketDataT = {
-  bitcoin: {
-    usd: number;
-    usd_24h_change: number;
-    usd_market_cap: number;
-    usd_24h_vol: number;
-  };
-  ethereum: {
-    usd: number;
-    usd_24h_change: number;
-    usd_market_cap: number;
-    usd_24h_vol: number;
-  };
-  solana: {
-    usd: number;
-    usd_24h_change: number;
-    usd_market_cap: number;
-    usd_24h_vol: number;
-  };
-} | null;
-
-function CryptoMarketOverviewCard() {
-  const [data, setData] = useState<marketDataT>(null);
+function CryptoMarketOverviewCard({
+  currencies,
+  pic,
+}: {
+  currencies: string;
+  pic: { name: string; url: StaticImageData }[];
+}) {
+  const [data, setData] = useState<unknown>(null);
 
   useEffect(() => {
     async function fetchData() {
-      const result = await getCurrencyPrice('bitcoin,ethereum,solana');
-      setData(result as marketDataT);
+      const result = await getCurrencyPrice(currencies);
+      setData(result as unknown);
       return result;
     }
     fetchData();
   }, []);
-  console.log(data);
 
   if (!data) {
     return <CryptoMarketOverviewSkeleton />;
@@ -56,22 +38,12 @@ function CryptoMarketOverviewCard() {
       {Object.entries(data).map((item) => {
         const details = item[1];
         const name = item[0];
-        let picture = null;
-        switch (name) {
-          case 'bitcoin':
-            picture = btcNews;
-            break;
-          case 'ethereum':
-            picture = ethNews;
-            break;
-          case 'solana':
-            picture = solanaNews;
-            break;
-
-          default:
-            picture = btcNews;
-            break;
-        }
+        let picture = logo;
+        pic.forEach((obj) => {
+          if (name === obj.name) {
+            picture = obj.url;
+          }
+        });
         return (
           <div
             className="w-full rounded-lg px-4 py-5 relative flex flex-col gap-2 overflow-hidden text-white bg-DarkBlue "

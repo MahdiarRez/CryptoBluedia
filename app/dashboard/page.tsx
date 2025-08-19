@@ -1,7 +1,5 @@
-import CurrenciesPage from '../currencies/page';
-
 function Dashboard() {
-  return <div>{<CurrenciesPage />}</div>;
+  return <div>hi</div>;
 }
 
 export default Dashboard;

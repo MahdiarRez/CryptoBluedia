@@ -2,9 +2,12 @@
 import { interFont } from '@/app/currencies/[currency]/components/currencyMainPage';
 import WatchlistCard from './components/watchlistCard';
 import { useEffect, useState } from 'react';
-import { archivoFont } from '../layout';
-import AddAssest from './components/addAssest';
+import { Cabin } from 'next/font/google';
 
+const archivoFont = Cabin({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+});
 function WatchList() {
   const [watchlist, setWatchlist] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -41,7 +44,7 @@ function WatchList() {
         >
           Your Watch List
         </h4>
-        <AddAssest />
+        {/* <AddAssest /> */}
       </div>
       <div className="flex flex-col items-center justify-center w-full gap-4 max-h-full overflow-auto">
         {watchlist.map((item) => (

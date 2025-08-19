@@ -7,7 +7,7 @@ interface CryptoProps {
   currency: Currency;
 }
 
-const interFont = Inter({
+export const interFont = Inter({
   subsets: ['latin'],
   weight: ['200', '300', '400', '500', '700', '600', '800'],
 });
