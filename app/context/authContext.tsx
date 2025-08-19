@@ -1,5 +1,6 @@
 'use client';
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { handleLogout } from '../lib/supabase/actions/logout';
 
 interface AuthContextType {
   profile: any | null;
@@ -29,6 +30,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   function handleLogoutClient() {
     setProfile(null);
+    handleLogout();
   }
 
   useEffect(() => {
