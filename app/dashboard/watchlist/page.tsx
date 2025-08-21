@@ -1,39 +1,38 @@
-import { interFont } from '@/app/currencies/[currency]/components/currencyMainPage';
-import WatchlistCard from './components/watchlistCard';
-import { Cabin } from 'next/font/google';
-import AddWatchlistServer from './components/addWatchlistServer';
-import { fetchWatchlist } from '@/app/lib/utils/data';
+import { Poppins } from 'next/font/google';
+import AddWatchlistServer from './components/addWatchlist';
+import { Suspense } from 'react';
+import Watchlist from './components/watchlist';
+import WatchlistCardSkeleton from '@/app/components/skeletons/watchlistCardSkeleton';
 
-const archivoFont = Cabin({
+const poppins = Poppins({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+  weight: ['400', '500', '600', '700', '100', '200', '300', '800', '900'],
 });
 
-async function WatchList() {
-  const { watchlist } = await fetchWatchlist();
-
-  // if (loading) return <p>Loading watchlist...</p>;
-  if (!watchlist.length) return <p>Your watchlist is empty.</p>;
-
+function Page() {
   return (
     <div
-      className={`${interFont.className} flex flex-col items-center w-full gap-y-4 relative`}
+      className={`${poppins.className} flex flex-col items-center w-full gap-y-4 relative`}
     >
       <div className="flex flex-row justify-between items-center w-full py-5 sticky bg-white/85 backdrop-blur-sm z-20 -top-7">
-        <h4
-          className={` ${archivoFont.className} text-3xl text-DarkBlue font-medium`}
-        >
+        <h4 className={`  text-3xl text-DarkBlue font-medium`}>
           Your Watch List
         </h4>
-        <AddWatchlistServer />
+        <Suspense
+          fallback={
+            <div className="px-6 py-2 bg-DarkBlue text-WHITE rounded-lg cursor-progress animate-pulse">
+              Loading...
+            </div>
+          }
+        >
+          <AddWatchlistServer />
+        </Suspense>
       </div>
-      <div className="flex flex-col items-center justify-center w-full gap-4 max-h-full overflow-auto">
-        {watchlist.map((item) => (
-          <WatchlistCard key={item.name} curr={item} />
-        ))}
-      </div>
+      <Suspense fallback={<WatchlistCardSkeleton />}>
+        <Watchlist />
+      </Suspense>
     </div>
   );
 }
 
-export default WatchList;
+export default Page;

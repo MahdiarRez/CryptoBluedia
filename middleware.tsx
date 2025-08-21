@@ -6,5 +6,5 @@ export default async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: '/aboutBluedia',
+  matcher: '/dashboard/:path',
 };

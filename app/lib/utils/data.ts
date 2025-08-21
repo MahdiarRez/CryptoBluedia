@@ -1,5 +1,6 @@
 'use server';
 
+import { revalidatePath } from 'next/cache';
 import { supabase } from '../supabase/client';
 import { createClient } from '../supabase/server';
 import { Currency, TrendingCoin } from './../types';
@@ -202,4 +203,18 @@ export async function fetchWatchlist() {
     console.error('[Watchlist API] Unexpected error:', err);
     return { watchlist: [], user: null };
   }
+}
+
+export async function insertWatchlist(userId: string, currId: string) {
+  const supabase = await createClient();
+
+  const { data, error } = await supabase
+    .from('watchlist')
+    .insert({ user_id: userId, currency_id: currId })
+    .select();
+
+  if (error) return error;
+
+  revalidatePath('/dashboard/watchlist');
+  return data;
 }
