@@ -3,7 +3,7 @@
 import { revalidatePath } from 'next/cache';
 import { supabase } from '../supabase/client';
 import { createClient } from '../supabase/server';
-import { Currency, TrendingCoin } from './../types';
+import { Currency, MarketNewsItemProps, TrendingCoin } from './../types';
 
 const cgOptions = {
   method: 'GET',
@@ -13,16 +13,8 @@ const cgOptions = {
   },
 };
 
-interface MarketNewsItem {
-  id: string;
-  head: string;
-  description: string;
-  image: string;
-  created_at: string; // Assuming a timestamp
-}
-
 // Fetch all market news items from Supabase
-export async function getMarketNews(): Promise<MarketNewsItem[]> {
+export async function getMarketNews(): Promise<MarketNewsItemProps[]> {
   const supabase = await createClient();
   try {
     const { data, error } = await supabase.from('marketNews').select('*');
@@ -36,7 +28,7 @@ export async function getMarketNews(): Promise<MarketNewsItem[]> {
       return [];
     }
 
-    return (data ?? []) as MarketNewsItem[];
+    return (data ?? []) as MarketNewsItemProps[];
   } catch (err) {
     console.error('[getMarketNews] Unexpected error:', err);
     return [];
@@ -196,7 +188,6 @@ export async function fetchWatchlist() {
       .from('currenciesList')
       .select('*')
       .in('name', currencyIds);
-    console.log(currencies);
 
     return { watchlist: currencies ?? [], user };
   } catch (err) {
@@ -213,8 +204,21 @@ export async function insertWatchlist(userId: string, currId: string) {
     .insert({ user_id: userId, currency_id: currId })
     .select();
 
-  if (error) return error;
+  if (error) throw new Error(error.message);
 
   revalidatePath('/dashboard/watchlist');
-  return data;
+}
+
+export async function deleteWatchlist(userId: string, currId: string) {
+  const supabase = await createClient();
+
+  const { error } = await supabase
+    .from('watchlist')
+    .delete()
+    .eq('user_id', userId)
+    .eq('currency_id', currId);
+
+  if (error) throw new Error(error.message);
+
+  revalidatePath('/dashboard/watchlist');
 }

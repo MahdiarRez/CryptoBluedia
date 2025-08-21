@@ -99,6 +99,14 @@ export interface BestDataT {
   rol2025: number;
 }
 
+export interface MarketNewsItemProps {
+  id: string;
+  head: string;
+  description: string;
+  image: string;
+  created_at: string;
+}
+
 export interface InputFloatProps extends InputHTMLAttributes<HTMLInputElement> {
   error?: string;
   label?: string;

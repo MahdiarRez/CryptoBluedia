@@ -24,10 +24,10 @@ function ButtonAddWatchlist({
   return (
     <button
       className={cn(
-        `w-full  flex items-center justify-center`,
+        `w-full rounded-xl flex items-center justify-center`,
         isPending
-          ? 'opacity-50 animate-pulse sm:scale-105'
-          : 'opacity-100 animate-none sm:hover:scale-105 transition-transform duration-300'
+          ? ' animate-pulse shadow-lg'
+          : 'opacity-100 animate-none sm:hover:shadow-lg transition-shadow duration-300'
       )}
       onClick={handleClick}
       disabled={isPending}

@@ -12,7 +12,7 @@ function WatchlistCard({
 }) {
   return (
     <div
-      className="w-full shadow rounded-xl h-28 justify-between px-8 flex flex-row items-center tracking-normal text-DarkBlue relative "
+      className="w-full rounded-xl h-28 justify-between px-8 flex flex-row items-center tracking-normal text-DarkBlue relative group-hover:brightness-75"
       style={{ backgroundColor: hexOpacity(data.color, 0.3) }}
     >
       <div className="flex flex-row items-center justify-center gap-2">
