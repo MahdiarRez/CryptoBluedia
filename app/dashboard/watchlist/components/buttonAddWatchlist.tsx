@@ -1,6 +1,8 @@
 'use client';
+
+import { cn } from '@/app/lib/utils/cn';
 import { insertWatchlist } from '@/app/lib/utils/data';
-import { ReactNode } from 'react';
+import { Children, ReactNode, useTransition } from 'react';
 
 function ButtonAddWatchlist({
   children,
@@ -11,10 +13,24 @@ function ButtonAddWatchlist({
   userId: string;
   currId: string;
 }) {
+  const [isPending, startTransition] = useTransition();
+
+  const handleClick = () => {
+    startTransition(async () => {
+      await insertWatchlist(userId, currId);
+    });
+  };
+
   return (
     <button
-      className="w-full hover:scale-105 transition-transform duration-300"
-      onClick={() => insertWatchlist(userId, currId)}
+      className={cn(
+        `w-full  flex items-center justify-center`,
+        isPending
+          ? 'opacity-50 animate-pulse sm:scale-105'
+          : 'opacity-100 animate-none sm:hover:scale-105 transition-transform duration-300'
+      )}
+      onClick={handleClick}
+      disabled={isPending}
     >
       {children}
     </button>

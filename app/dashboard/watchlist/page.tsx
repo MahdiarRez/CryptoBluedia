@@ -3,6 +3,7 @@ import AddWatchlistServer from './components/addWatchlist';
 import { Suspense } from 'react';
 import Watchlist from './components/watchlist';
 import WatchlistCardSkeleton from '@/app/components/skeletons/watchlistCardSkeleton';
+import ModalBox from '@/app/components/ui/modalBox';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -18,15 +19,17 @@ function Page() {
         <h4 className={`  text-3xl text-DarkBlue font-medium`}>
           Your Watch List
         </h4>
-        <Suspense
-          fallback={
-            <div className="px-6 py-2 bg-DarkBlue text-WHITE rounded-lg cursor-progress animate-pulse">
-              Loading...
-            </div>
-          }
-        >
-          <AddWatchlistServer />
-        </Suspense>
+        <ModalBox headerText="Select Currency" buttonText="Add Currency">
+          <Suspense
+            fallback={
+              <div className="px-9 pb-7">
+                <WatchlistCardSkeleton />
+              </div>
+            }
+          >
+            <AddWatchlistServer />
+          </Suspense>
+        </ModalBox>
       </div>
       <Suspense fallback={<WatchlistCardSkeleton />}>
         <Watchlist />
