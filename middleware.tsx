@@ -1,10 +1,14 @@
+// middleware.ts
 import { NextRequest } from 'next/server';
-import { updateSession } from './app/lib/supabase/middleware';
+import { checkAuthCookie } from './app/lib/supabase/middleware';
 
-export default async function middleware(req: NextRequest) {
-  return await updateSession(req);
+export default function middleware(req: NextRequest) {
+  return checkAuthCookie(req);
 }
 
 export const config = {
-  matcher: '/dashboard',
+  matcher: [
+    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
+    '/dashboard/:path*',
+  ],
 };

@@ -1,45 +1,19 @@
-import { createServerClient } from '@supabase/ssr';
+// app/lib/supabase/middleware.ts
 import { NextResponse, type NextRequest } from 'next/server';
 
-export async function updateSession(request: NextRequest) {
-  let supabaseResponse = NextResponse.next({
-    request,
-  });
+export function checkAuthCookie(request: NextRequest) {
+  // بررسی وجود هر auth-token پروژه به صورت دینامیک
+  const authCookieExists = request.cookies
+    .getAll()
+    .some((cookie) => /^sb-.*-auth-token$/.test(cookie.name));
 
-  const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    {
-      cookies: {
-        getAll() {
-          return request.cookies.getAll();
-        },
-        setAll(cookiesToSet) {
-          supabaseResponse = NextResponse.next({
-            request,
-          });
-          cookiesToSet.forEach(({ name, value, options }) =>
-            supabaseResponse.cookies.set(name, value, options)
-          );
-        },
-      },
-    }
-  );
-
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-  console.log('data', user);
-
-  if (
-    !user &&
-    !request.nextUrl.pathname.startsWith('/login') &&
-    !request.nextUrl.pathname.startsWith('/auth')
-  ) {
+  // اگر کوکی وجود ندارد و مسیر login نیست → redirect سریع
+  if (!authCookieExists && !request.nextUrl.pathname.startsWith('/login')) {
     const url = request.nextUrl.clone();
     url.pathname = '/login';
     return NextResponse.redirect(url);
   }
 
-  return supabaseResponse;
+  // کوکی وجود دارد → ادامه مسیر
+  return NextResponse.next({ request });
 }

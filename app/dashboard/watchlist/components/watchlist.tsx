@@ -4,6 +4,8 @@ import ButtonDeleteWatchlist from './buttonDeleteWatchlist';
 import { redirect } from 'next/navigation';
 import { BsFillEmojiGrinFill } from 'react-icons/bs';
 
+export const dynamic = 'force-dynamic';
+
 async function Watchlist() {
   const { watchlist, user } = await fetchWatchlist();
 

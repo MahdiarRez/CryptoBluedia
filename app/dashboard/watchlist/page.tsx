@@ -11,6 +11,8 @@ const poppins = Poppins({
 });
 
 function Page() {
+  console.log('rendered');
+
   return (
     <div
       className={`${poppins.className} flex flex-col items-center w-full gap-y-4 relative`}

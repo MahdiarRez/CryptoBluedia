@@ -17,7 +17,7 @@ export default function Sidebar() {
       <aside className="bg-white flex flex-col items-center justify-start rounded-2xl relative w-64 h-full">
         <nav className=" flex flex-col justify-between py-7 w-5/6">
           {links.map((link) => (
-            <Link key={link.href} href={link.href}>
+            <Link key={link.href} href={link.href} prefetch={true}>
               <ButtonSidebar
                 icon={link.icon}
                 label={link.label}
