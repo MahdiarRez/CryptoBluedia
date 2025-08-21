@@ -4,6 +4,7 @@ import { Suspense } from 'react';
 import Watchlist from './components/watchlist';
 import WatchlistCardSkeleton from '@/app/components/skeletons/watchlistCardSkeleton';
 import ModalBox from '@/app/components/ui/modalBox';
+import { IoMdAdd } from 'react-icons/io';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -21,7 +22,13 @@ function Page() {
         <h4 className={`  text-3xl text-DarkBlue font-medium`}>
           Your Watch List
         </h4>
-        <ModalBox headerText="Select Currency" buttonText="Add Currency">
+        <ModalBox
+          icon={
+            <IoMdAdd className="group-hover/button:rotate-180 transition-transform duration-300 scale-110" />
+          }
+          headerText="Select Currency"
+          buttonText="Add Currency"
+        >
           <Suspense
             fallback={
               <div className="px-9 pb-7">

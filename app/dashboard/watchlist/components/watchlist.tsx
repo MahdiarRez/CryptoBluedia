@@ -23,12 +23,13 @@ async function Watchlist() {
   }
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 w-full gap-4 max-h-full overflow-auto">
+    <div className="grid grid-cols-1 lg:grid-cols-2 w-full gap-4 max-h-full overflow-auto py-3">
       {watchlist.map((item) => (
         <ButtonDeleteWatchlist
           key={item.name}
           userId={user?.id}
           currId={item.name}
+          currSymbol={item.id}
         >
           <WatchlistCard curr={item} />
         </ButtonDeleteWatchlist>

@@ -5,15 +5,18 @@ import { AnimatePresence, motion } from 'motion/react';
 import { ReactNode, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { IoClose } from 'react-icons/io5';
+import Button from './button';
 
 function ModalBox({
   children,
   buttonText,
   headerText,
+  icon,
 }: {
   children: ReactNode;
   buttonText?: string;
   headerText?: string;
+  icon?: ReactNode;
 }) {
   const [showModal, setShowModal] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
@@ -22,12 +25,14 @@ function ModalBox({
 
   return (
     <>
-      <button
+      <Button
         onClick={() => setShowModal(true)}
-        className="px-6 py-2 bg-DarkBlue text-WHITE rounded-lg"
+        // className="px-6 py-2 rounded-lg"
+        classes="rounded-lg group/button flex flex-row items-center gap-2"
       >
         {buttonText}
-      </button>
+        {icon}
+      </Button>
 
       {showModal &&
         createPortal(

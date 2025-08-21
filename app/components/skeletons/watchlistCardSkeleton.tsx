@@ -1,7 +1,7 @@
 function WatchlistCardSkeleton() {
   return (
-    <div className="flex flex-col items-center justify-center w-full gap-4 max-h-full overflow-auto">
-      {[1, 2, 3, 4, 5].map((item) => (
+    <div className="grid grid-cols-1 lg:grid-cols-2 py-3 w-full gap-4 max-h-full overflow-auto">
+      {[1, 2, 3, 4, 5, 6].map((item) => (
         <div
           className="w-full shadow rounded-xl h-28 justify-between px-8 flex flex-row items-center tracking-normal text-DarkBlue relative bg-gray-200 animate-pulse"
           key={item}

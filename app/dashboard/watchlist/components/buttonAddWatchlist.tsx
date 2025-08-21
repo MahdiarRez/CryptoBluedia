@@ -26,8 +26,8 @@ function ButtonAddWatchlist({
       className={cn(
         `w-full rounded-xl flex items-center justify-center`,
         isPending
-          ? ' animate-pulse shadow-lg'
-          : 'opacity-100 animate-none sm:hover:shadow-lg transition-shadow duration-300'
+          ? 'opacity-50 shadow-lg cursor-progress'
+          : 'opacity-100  sm:hover:shadow-lg transition-shadow duration-300'
       )}
       onClick={handleClick}
       disabled={isPending}
