@@ -5,8 +5,8 @@ import CardDetails from '../components/cardDetails';
 import Image from 'next/image';
 import { NumberTriggerOnScroll } from '@/app/components/ui/numberFlow';
 import GlowText from '@/app/components/ui/glowText';
-import { ResponsiveRadar } from '@nivo/radar';
 import { hexOpacity } from '@/app/lib/helper';
+import { FcasChart } from '@/app/components/uiKits/fcasChart';
 
 function FcasTab({ currency }: { currency: Currency }) {
   const radarData = [
@@ -181,49 +181,6 @@ function FcasTab({ currency }: { currency: Currency }) {
         <FcasChart data={chartData} color={cColor} />
       </div>
     </div>
-  );
-}
-
-export function FcasChart({ data, color }: { data: any; color: string }) {
-  return (
-    <ResponsiveRadar
-      data={data}
-      keys={['Value']}
-      indexBy="taste"
-      valueFormat=">-0.3"
-      margin={{ top: 70, right: 80, bottom: 40, left: 80 }}
-      borderColor={{ from: 'color' }}
-      gridLabelOffset={36}
-      dotSize={10}
-      gridShape="linear"
-      dotColor={{ theme: 'background' }}
-      dotBorderWidth={2}
-      colors={color}
-      blendMode="multiply"
-      motionConfig="stiff"
-      legends={[
-        {
-          anchor: 'top-left',
-          direction: 'column',
-
-          translateX: -50,
-          translateY: -40,
-          itemWidth: 80,
-          itemHeight: 20,
-          itemTextColor: '#3e3e3e',
-          symbolSize: 12,
-          symbolShape: 'square',
-          effects: [
-            {
-              on: 'hover',
-              style: {
-                itemTextColor: '#000',
-              },
-            },
-          ],
-        },
-      ]}
-    />
   );
 }
 

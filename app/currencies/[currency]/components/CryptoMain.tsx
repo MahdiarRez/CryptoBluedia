@@ -3,16 +3,12 @@ import CryptoHeader from './cryptoHeader';
 import CryptoBody from './cryptoBody';
 import { Currency } from '@/app/lib/types';
 
-interface CryptoProps {
-  currency: Currency;
-}
-
 export const interFont = Inter({
   subsets: ['latin'],
   weight: ['200', '300', '400', '500', '700', '600', '800'],
 });
 
-function CurrencyMainPage({ currency }: CryptoProps) {
+function CryptoMain({ currency }: { currency: Currency }) {
   return (
     <div
       className={`flex flex-col items-center h-auto w-full ${interFont.className}`}
@@ -23,4 +19,4 @@ function CurrencyMainPage({ currency }: CryptoProps) {
   );
 }
 
-export default CurrencyMainPage;
+export default CryptoMain;
