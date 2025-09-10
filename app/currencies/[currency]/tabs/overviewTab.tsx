@@ -27,7 +27,7 @@ interface HistoryCardProps {
 
 function OverviewTab({ currency }: { currency: Currency }) {
   return (
-    <div className="bg-WHITE dark:bg-DarkBlue h-auto">
+    <div className="bg-WHITE dark:bg-DarkBlue h-auto w-full ">
       <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 w-full gap-6 ">
         <CardDetails
           currency={currency}
@@ -59,7 +59,7 @@ function OverviewTab({ currency }: { currency: Currency }) {
         <HistoryCard curr={currency} about="rank" />
         <HistoryCard curr={currency} about="rol" />
       </div>
-      <div className="grid grid-cols-1 xs:grid-cols-2 gap-6 mb-8">
+      <div className="grid grid-cols-1 xs:grid-cols-2 gap-6 ">
         <Community
           appName="Telegram"
           icon={<RiTelegram2Fill className="w-8 h-8 text-white" />}

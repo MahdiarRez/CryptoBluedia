@@ -1,14 +1,8 @@
 import { notFound } from 'next/navigation';
-import {
-  fetchCurrencies,
-  fetchCurrenciesPublic,
-  fetchCurrencyById,
-} from '@/app/lib/utils/data';
+import { fetchCurrenciesPublic, fetchCurrencyById } from '@/app/lib/utils/data';
 import type { Currency } from '@/app/lib/types';
 import type { Metadata } from 'next';
 import CurrencyMainPage from './components/currencyMainPage';
-
-export const revalidate = 500;
 
 export default async function Page({
   params,

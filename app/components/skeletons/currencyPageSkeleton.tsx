@@ -1,3 +1,4 @@
+import Seperator from '../ui/seperator';
 import { Skeleton } from '../ui/skeletonShadcn';
 
 export function CurrencySkeleton() {
@@ -66,18 +67,8 @@ function CryptoHeaderSkeleton() {
 
 function CryptoContentSkeleton() {
   return (
-    <div className="flex flex-col items-center w-full mt-8">
-      {/* Tab Navigation Skeleton */}
-      <div className="flex mb-5 self-start overflow-hidden w-full rounded-xl bg-gray-200 px-[3px] py-[3.2px] animate-pulse">
-        {[...Array(3)].map((_, i) => (
-          <div
-            key={i}
-            className="relative w-full py-2.5 flex justify-center gap-1 items-center"
-          >
-            <Skeleton className="h-4 w-16 bg-gray-300" />
-          </div>
-        ))}
-      </div>
+    <div className="flex flex-col items-center w-full my-4">
+      <Seperator>Overview</Seperator>
 
       {/* Main Content Skeleton */}
       <div

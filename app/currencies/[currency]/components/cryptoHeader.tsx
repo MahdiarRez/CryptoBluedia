@@ -8,7 +8,7 @@ import { TextEffect } from '@/app/components/ui/textEffect';
 import PriceAndChange from './priceAndChange';
 import CurrnecyHeaderAni from './currencyHeaderAni';
 
-function CryptoHeader({ currency }: { currency: Currency }) {
+async function CryptoHeader({ currency }: { currency: Currency }) {
   const curr: BestDataT = {
     rank2022: currency.rank2022,
     rank2023: currency.rank2023,
@@ -26,6 +26,7 @@ function CryptoHeader({ currency }: { currency: Currency }) {
   const bestRank = getBestEntry(curr, 'rank', 'min');
   const bestPrice = getBestEntry(curr, 'price', 'max');
   const bestRol = getBestEntry(curr, 'rol', 'max');
+
   return (
     <div className="flex flex-col-reverse md:flex-row-reverse items-center w-full gap-4 md:h-[294px]">
       <ShineBorder

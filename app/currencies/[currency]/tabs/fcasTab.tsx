@@ -91,7 +91,7 @@ function FcasTab({ currency }: { currency: Currency }) {
             <CardDetails
               className="w-full h-full"
               currency={currency}
-              title="Score"
+              title="Bluedia Score"
               value={currency.score}
             />
             <CardDetails
