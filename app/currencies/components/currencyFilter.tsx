@@ -4,22 +4,21 @@ import { useState, useEffect } from 'react';
 import { Search } from 'lucide-react';
 import { CurrencyCard } from './currencyCard';
 import { Label } from '@radix-ui/react-label';
-import { Currency } from '@/app/lib/types';
+import { CoinData, Currency } from '@/app/lib/types';
 import { RadioGroup, RadioGroupItem } from '@/app/components/ui/radioGroup';
-
-interface CurrencyFilterServerProps {
-  currencies: Currency[];
-}
 
 export function CurrencyFilterServer({
   currencies,
-}: CurrencyFilterServerProps) {
+  marketData,
+}: {
+  currencies: Currency[];
+  marketData: CoinData[];
+}) {
   const [filteredCurrencies, setFilteredCurrencies] = useState(currencies);
   const [sortOption, setSortOption] = useState<
     'rank2025' | 'risk' | 'sentiment'
   >('rank2025');
   const [filterQuery, setFilterQuery] = useState('');
-  console.log(currencies.map((item) => item.name));
 
   useEffect(() => {
     let result = [...currencies];

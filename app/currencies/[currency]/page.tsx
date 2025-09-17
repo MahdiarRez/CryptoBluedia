@@ -11,7 +11,7 @@ export default async function Page({
 }) {
   const { currency } = await params;
   const fetchedCurrency = await fetchCurrencyById(currency);
-  console.log(currency);
+  console.log(fetchedCurrency);
 
   if (!currency || typeof currency !== 'string' || currency.length < 2) {
     notFound();

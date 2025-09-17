@@ -156,8 +156,6 @@ function FcasTab({ currency }: { currency: Currency }) {
                     alt={currency.name}
                     width={24}
                     height={24}
-                    blurDataURL={`/logo.jpeg`}
-                    placeholder="blur"
                     className="h-6 w-6 object-cover"
                   />
                 </div>
